@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>61</sort>
+	<admin>
+		<navigation>
+			<trim>Trim URL</trim>
+		</navigation>
+	</admin>
+</module>

@@ -1,0 +1,21 @@
+/*
+ * CSS Document
+ * admin.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+
+.siteContainer .pageContainer .cp {
+	display:block;
+	float:left;
+	margin:20px 0;
+	}
+.siteContainer .pageContainer .main {
+	margin:0;
+	padding:10px 25px;
+	}
+.siteContainer .pageContainer .cp_box_1 h2,
+.siteContainer .pageContainer .cp_box_2 h2 {
+	margin:0 0 35px;
+	}
+	

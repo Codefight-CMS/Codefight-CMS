@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>60</sort>
+	<admin>
+		<navigation>
+			<page title="Page">
+				<page position="2">Static Page</page>
+				<blog position="1">Blog Page</blog>
+			</page>
+		</navigation>
+	</admin>
+</module>

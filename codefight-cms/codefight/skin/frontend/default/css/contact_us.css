@@ -1,0 +1,75 @@
+/*
+ * CSS Document
+ * information.css
+ * Created by DAMU for codefight CMS
+ * First created on 10.09.08 
+ */
+h2 {
+	color:#666;
+}
+.siteContainer .pageContainer .page_content .contact_us {
+	color:#80807d;
+	display:block;
+	float:left;
+	margin:0 80px 20px 15px;
+	}
+.siteContainer .pageContainer .page_content .contact_us form {
+	display:block;
+	width:610px;
+	}
+.siteContainer .pageContainer .page_content .contact_us .contact_us_form {
+	display:block;
+	}
+.siteContainer .pageContainer .page_content .contact_us .contact_us_form .left {
+	display:block;
+	float:left;
+	margin:0 0 0 0;
+	width:330px;
+	}
+.siteContainer .pageContainer .page_content .contact_us .contact_us_form .right {
+	display:block;
+	float:right;
+	margin:0 0 0 15px;
+	text-align:left !important;
+	width:204px;
+	}
+.siteContainer .pageContainer .page_content .contact_us .contact_us_form .right h4 {
+	color:#000;
+}
+.siteContainer .pageContainer .page_content .contact_us .contact_us_form .right h4 span {
+	color:#D42229;
+}
+.siteContainer .pageContainer .page_content .contact_us .contact_us_form label {
+	display:block;
+	font-weight:bold;
+	}
+.siteContainer .pageContainer .page_content .contact_us .contact_us_form input,.siteContainer .pageContainer .page_content .contact_us .contact_us_form textarea {
+	background-color:#FFFFFF !important;
+	border:1px solid #CCCCCC;
+	color:#80807d;
+	display:block;
+	font-size:11px;
+	margin:4px 0 16px 0;
+	padding:4px;
+	width:100%;
+	}
+.siteContainer .pageContainer .page_content .contact_us .contact_us_form .right div span {
+	display:block;
+	font-size:11px;
+	margin-bottom:7px;
+	}
+.contact_success {
+	display:block;
+	}
+.contact_success p {
+	margin-bottom:4px !important;
+	}
+.contact_success a {
+	color:#D42229;
+	text-decoration:underline;
+	}
+.contact_success {
+	color:#333;
+	text-decoration:none;
+	}
+

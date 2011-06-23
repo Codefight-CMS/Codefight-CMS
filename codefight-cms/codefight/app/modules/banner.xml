@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>100</sort>
+	<admin>
+		<navigation>
+			<banner title="Banner">
+				<manage>Manage</manage>
+				<create>Create New Banner</create>
+			</banner>
+		</navigation>
+	</admin>
+</module>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>50</sort>
+	<admin>
+		<navigation>
+			<form title="Form">
+				<item>Items</item>
+				<group>Group</group>
+				<submitted>Submitted</submitted>
+			</form>
+		</navigation>
+	</admin>
+</module>

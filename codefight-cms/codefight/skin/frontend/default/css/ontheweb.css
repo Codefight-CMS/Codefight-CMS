@@ -1,0 +1,4 @@
+.ontheweb_most_recent_visited {}
+.ontheweb_most_recent_visited a { text-decoration:underline; color:#66CC66 !important;}
+.ontheweb_most_recent_visited a:hover { text-decoration:none; color:#000 !important;}
+.ontheweb_excerpt{background-color:#FFFFCC; color:#006600; padding:15px;}

@@ -1,0 +1,81 @@
+/*
+ * CSS Document
+ * pages.css
+ * Created by DAMU for codefight CMS
+ * First created on 10.09.08 
+ */
+.pages {
+	display:block;
+	margin:0 auto;
+	padding-top:50px;
+	width:100%;
+	}
+
+.pages_grid, .pages_create {
+	display:block;
+	margin:0;
+	padding:0;
+	}
+
+.pages_grid ul, .pages_grid ul li {
+	display:block;
+	clear:both;
+	list-style:none;
+	list-style-position:outside;
+	}
+
+.pages_grid ul {
+	margin-bottom:10px;
+	}
+
+.pages_grid ul li {
+	border-bottom:1px dashed #ccc;
+	padding:2px;
+	height:20px;
+	overflow:hidden;
+	}
+
+.pages_grid ul li:hover {
+	background-color:#eee;
+	border-bottom:1px solid #ccc;
+	}
+
+.pages_grid .pages_grid_heading_chkbox {
+	width:60px;
+	}
+/*
+.pages_grid .pages_grid_heading_id {
+	width:40px;
+	}
+*/
+.pages_grid .pages_grid_heading_title {
+	width:160px;
+	}
+
+.pages_grid .pages_grid_heading_description {
+	padding:0 6px;
+	width:476px;
+	}
+	
+.pages_create label {
+	display:block;
+	float:left;
+	width:90px;
+	}
+	
+.pages_create .txtFld {
+	background-color:#fff !important;
+	border:1px solid #CCCCCC;
+	display:block;
+	float:left;
+	margin-bottom:4px;
+	padding:6px;
+	width:290px;
+	}
+
+	
+	
+	
+	
+	
+	

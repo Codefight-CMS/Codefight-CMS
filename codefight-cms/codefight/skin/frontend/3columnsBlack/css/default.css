@@ -1,0 +1,107 @@
+/*
+ * CSS Document
+ * default.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+.logo_text
+{
+	margin:10px 0 0;
+}
+.logo_text, .logo_text a
+{
+	color:#F3F3F3;
+	display:block;
+	float:left;
+	font-size:20px;
+	font-weight:bold;
+}
+#tag_cloud, ul.favourite_links, ul.blog_roll
+{
+	display:none;
+	margin:0;
+}
+ul.blog_categories 
+{
+	display:block;
+	margin:0;
+}
+.blog_categories li a, .favourite_links li a 
+{
+	color:#333333;
+	display:block;
+	padding:0 0 5px;
+}
+.blog_categories li a:hover, .favourite_links li a:hover 
+{
+	/*background:#90d47e;*/
+}
+div.favorite_links 
+{
+	background:#fff;
+	display:block;
+	padding:0 0 0 0;
+	text-align:center;
+}
+.menuLeft h2,
+.blog_categories h2,
+.blog_roll h2,
+.favorite_links h2,
+.sponsored_links h2,
+.tag_cloud h2,
+.footer_ontheweb_popular h2,
+.footer_recent_entry h2,
+.footer_most_popular h2
+ {
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	-khtml-border-radius:4px;
+	border-radius:4px;
+	background:none repeat scroll 0 0 #222222;
+	color:#EEEEEE;
+	display:block;
+	font-size:14px;
+	margin:0;
+	padding:4px;
+	text-align:center;
+}
+.feed_counter 
+{
+	background:#99CC99;
+	display:block;
+	float:left;
+	height:26px;
+	overflow:hidden;
+	text-align:center;
+	width:90px;
+}
+.welcome 
+{
+	display:block;
+	float:right;
+	margin:6px 0 0;
+}
+select#template 
+{
+	background:none repeat scroll 0 0 #000000;
+	border:1px solid #333333;
+	color:#EEEEEE;
+	float:left;
+	margin:3px 0 0 6px;
+	padding:5px;
+}
+.right_column 
+{
+	background:#E4EEDE
+	display:block;
+	margin:0 0 10px;
+	width:160px;
+	float:right;
+}
+.banner_left 
+{
+	margin:10px 0 0 0;
+}
+
+
+

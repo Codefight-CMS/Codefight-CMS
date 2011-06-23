@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>70</sort>
+	<admin>
+		<navigation>
+			<comment title="Comment">
+				<pending-comment>Pending</pending-comment>
+				<approved-comment>Approved</approved-comment>
+			</comment>
+		</navigation>
+	</admin>
+</module>

@@ -1,0 +1,26 @@
+.siteContainer .footer {
+	background:#201A16;
+	border-top:1px solid #212B36;
+	color:#635644;
+	display:block;
+	text-align:center;
+	}
+.siteContainer .footer a {
+	color:#666;
+	}
+.siteContainer .footer a:hover {
+	text-decoration:underline;
+	color:#fff;
+	}
+
+
+
+div.footer_info {
+	background:#212B36;
+	color:#CCCCCC;
+	display:block;
+	font-weight:bold;
+	margin:15px 0;
+	padding:5px;
+	text-align:center;
+}

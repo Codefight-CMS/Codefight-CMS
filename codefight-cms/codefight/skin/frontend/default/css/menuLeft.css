@@ -1,0 +1,58 @@
+/*
+ * CSS Document
+ * menuLeft.css
+ * Created by DAMU for codeFight CMS
+ * First created on 06.10.08 
+ */
+.menuLeft {
+	display:block;
+	float:left;
+	margin:20px 10px 10px 20px;
+	width:160px;
+	} /*
+.menuLeft ul {
+	display:block;
+	list-style:none;
+	list-style-position:outside;
+	}
+.menuLeft ul li {
+	margin-bottom:1px;
+	}
+.menuLeft ul li a {
+	background-color:#FFFFFF;
+	border:1px solid #DDDDDD;
+	display:block;
+	padding:4px;
+	}
+.menuLeft ul li a:hover {
+	background-color:#eee;
+	}
+.menuLeft ul li ul {
+	display:none;
+	}
+.menuLeft ul li ul li {
+	margin-bottom:0;
+	}
+.menuLeft ul li ul li a {
+	border-top:none;
+	}
+.menuLeft ul li ul li a {
+	padding-left:8px;
+	background-color:#eee;
+	}
+.menuLeft ul li ul li a:hover {
+	background-color:#ddd;
+	}
+.menuLeft ul li.current {
+	margin:10px 0;
+	}
+.menuLeft ul li.current a {
+	background-color:#eee;
+	}
+.menuLeft ul li.current ul {
+	display:block;
+	}
+.menuLeft ul li.current ul li a {
+	background-color:#fff;
+	}
+*/	

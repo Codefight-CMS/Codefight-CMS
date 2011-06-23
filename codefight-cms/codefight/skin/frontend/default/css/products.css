@@ -1,0 +1,73 @@
+/*
+ * CSS Document
+ * products.css
+ * Created by DAMU for codefight CMS
+ * First created on 10.09.08 
+ */
+
+.siteContainer .pageContainer .leftNav {
+	display:block;
+	float:left;
+	margin:0 20px 50px 0;
+	width:174px;
+	}
+.siteContainer .pageContainer .leftNav ul {
+	display:block;
+	list-style:none;
+	list-style-position:outside;
+	}
+.siteContainer .pageContainer .leftNav ul li {
+	background:#FFFFFF url(../images/li.jpg) no-repeat 6px 10px;
+	display:block;
+	border-bottom:1px solid #999;
+	}
+.siteContainer .pageContainer .leftNav ul li a {
+	display:block;
+	padding:6px 0 6px 16px;
+	}
+.siteContainer .pageContainer .leftNav ul li.heading {
+	background:none !important;
+	color:#666666;
+	display:block;
+	padding:6px 0 6px 4px;
+	font-weight:bold;
+	}
+.siteContainer .pageContainer .leftNav ul li.red {
+	display:block;
+	padding:6px 0 6px 16px;
+	}
+.siteContainer .pageContainer .page_content {
+	display:block;
+	float:left;
+	margin:0 0 20px 0;
+	width:760;
+	}
+.siteContainer .pageContainer .latest_products {
+	clear:both;
+	display:block;
+	text-align:center;
+	width:100%;
+	}
+.siteContainer .pageContainer .latestProducts {
+	display:block;
+	float:left;
+	margin:15px 2px 15px 0;
+	overflow:hidden;
+	width:19%;
+	}
+.siteContainer .pageContainer .specials_products {
+	clear:both;
+	display:block;
+	text-align:center;
+	width:100%;
+	}
+.siteContainer .pageContainer .specialProducts {
+	display:block;
+	float:left;
+	margin:15px 2px 15px 0;
+	overflow:hidden;
+	width:19%;
+	}
+.productSpecialPrice {
+	color:#D42229;
+}

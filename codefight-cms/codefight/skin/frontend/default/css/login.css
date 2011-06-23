@@ -1,0 +1,74 @@
+/*
+ * CSS Document
+ * information.css
+ * Created by DAMU for codefight CMS
+ * First created on 10.09.08 
+ */
+.login {
+	display:block;
+	margin:0 auto;
+	padding-top:50px;
+	width:100%;
+}
+.loginBg {
+	background:url(../images/admin-login-side.png) left top repeat-y;
+        display:block;
+        padding:20px 30px;
+        width:324px;
+}
+.loginBgBottom {
+	background:url(../images/admin-login-bot.png) left bottom no-repeat;
+        display:block;
+        margin:0 auto;
+	padding:0 0 24px 0;
+	width:384px;
+}
+.loginBgTop {
+        display:block;
+}
+.loginBgTop h2 {
+	background:url(../images/admin-login-top.png) left top no-repeat;
+        display:block;
+	margin:0;
+        padding:26px 20px 16px;
+        width:344px;
+}
+.login label.txtFld {
+	border:none !important;
+	display:block;
+	float:left;
+	font-weight:bold;
+	padding-top:17px;
+	width:100px;
+}
+.login input.txtFld {
+	background-color:#FFFFFF !important;
+	border:1px solid #EEEEEE;
+	display:block;
+	float:left;
+	margin:12px 0pt;
+	padding:4px;
+	width:206px;
+}
+.forgot {
+	display:block;
+	padding:1px 7px 3px 4px;
+	text-align:right;
+}
+
+/* old stuff */
+.contact_success {
+	display:block;
+	}
+.contact_success p {
+	margin-bottom:4px !important;
+	}
+.contact_success a {
+	color:#D42229;
+	text-decoration:underline;
+	}
+.contact_success {
+	color:#333;
+	text-decoration:none;
+	}
+

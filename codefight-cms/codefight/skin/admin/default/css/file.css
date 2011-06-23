@@ -1,0 +1,98 @@
+/*
+ * CSS Document
+ * file.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+.file {
+	display:block;
+	margin:0 auto;
+	padding-top:50px;
+	width:100%;
+	}
+
+.file_grid, .file_create {
+	display:block;
+	margin:0;
+	padding:0;
+	}
+
+.file_grid ul, .file_grid ul li {
+	display:block;
+	clear:both;
+	list-style:none;
+	list-style-position:outside;
+	}
+
+.file_grid ul {
+	margin-bottom:10px;
+	}
+
+.file_grid ul li {
+	border-bottom:1px dashed #ccc;
+	padding:2px;
+	overflow:hidden;
+	}
+
+.file_grid ul li:hover {
+	background-color:#eee;
+	border-bottom:1px solid #ccc;
+	}
+
+.file_grid .file_grid_heading_chkbox {
+	width:5%;
+	}
+/*
+.file_grid .file_grid_heading_id {
+	width:40px;
+	}
+*/
+.file_grid .file_grid_heading_title {
+	width:29%;
+	}
+
+.file_grid .file_grid_heading_status {
+	width:5%;
+	}
+
+.file_grid .file_grid_heading_description {
+	padding:0 6px;
+	width:160px;
+	}
+	
+.file_create label {
+	display:block;
+	float:left;
+	width:90px;
+	}
+	
+.file_create .txtFld {
+	background-color:#fff !important;
+	border:1px solid #CCCCCC;
+	display:block;
+	float:left;
+	margin-bottom:4px;
+	padding:6px;
+	width:290px;
+}
+.file_grid li div a
+{
+	color:#FF6600;
+	display:block;
+	font-size:15px;
+	font-weight:bold;
+}
+.file_grid li div a:hover
+{
+	background:#5690C0;
+	color:#FFFFFF;
+}
+
+form#file_search_form{float:right;}
+form#file_search_form input#q{}
+form#file_search_form input#search{}
+
+
+	
+	
+	

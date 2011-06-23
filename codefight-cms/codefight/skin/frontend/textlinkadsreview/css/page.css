@@ -1,0 +1,89 @@
+/*
+* CSS Document
+* page.css
+* Created by DAMU
+* First created on 10.09.08 
+*/
+.wrapper{width:980px;height:100%;margin:0 auto;}
+.inner-wrapper{position:relative;}
+.header{background:#fff;border:1px solid #2884F4;height:126px;margin:5px 0 0;padding:5px;}
+.logo{float:left;height:100px;margin:0 0 0 5px;width:218px;}
+.logo a{display:block;font-size:18px;padding:35px 0;}
+.banner{background:#ff0;border:1px solid #2884F4;float:right;height:90px;margin:5px;width:728px;}
+.sidebar .banner{float:none;}
+.b_336x280{height:280px;width:336px;}
+.b_300x250{height:250px;width:300px;margin:0 auto;}
+
+.content{border:1px solid #fff;background:#eeeeee;margin:0 auto;padding:40px 10px 10px;text-align:left;}
+.content .sidebar{float:right;background:#eee;width:340px;}
+.content .sidebar-header{color: #000000;border: 1px solid #dddddd;background-color: #f7f7f7;font-weight: bold;margin:15px 0 0;padding: 5px 10px;}
+.content .sidebar ul{list-style: none;padding:0 ;margin: 0;overflow: hidden;}
+.content .sidebar ul li{display:block;margin:0;padding:2px 0 2px 15px;}
+
+.content-main{float:left;margin:5px 0 0;width:600px;}
+
+.content p,.content blockquote {padding:.42em 0;text-align:justify}
+.content blockquote {
+padding:0 15px;margin:.42em 20px;background:#f5f5f5;border-left:5px solid #888;color:#666}
+.content blockquote blockquote {background:#F3F3F3;border:1px dashed #DEDEDE;font-style:italic;font-weight:bold;margin:25px;overflow:auto;padding:10px;}
+.content ol,.content ul {padding:.84em 20px;list-style:disc inside; font:1.2em arial,helvetica,sans-serif;
+color:#3b3b3b;line-height:1.5}
+.content ol {list-style-type:decimal;margin:0 0 0 18px}
+.content ul ul {list-style:circle inside}
+.content ul ul ul {list-style:disc inside}
+.content ul li {padding:0 0 0 18px;margin:0 0 .42em}
+.content ol li {margin:0 0 .42em}
+
+.footer{background:#FFFFFF;clear:both;color:#666666;font-size:91.7%;margin:20px 0 110px;padding:0;position:relative;width:980px;}
+.footer .footer-links{padding:15px 20px 15px 5px;text-align:left;}
+.footer .footer-links div{display:block;float:left;padding:0 0 0 3%;width:30%;}
+
+.footer .footer-links div h2 {border-bottom:1px dotted #999999;display:block;font-size:116.7%;font-weight:bold;margin:0 0 6px;padding:0 0 6px 10px;text-transform:uppercase;}
+
+
+.author_date{background-color:#90D47E;-moz-border-radius:4px;-webkit-border-radius:4px;-khtml-border-radius:4px;border-radius:4px;padding:4px;border:1px solid #eee;color:#333;display:block;font-size:9px;margin-bottom:5px;padding:5px 10px;text-align:right;}
+.author_date .author{padding-right:10px;}
+.author_date .date{float:right;}
+.tag{display:block;padding:5px;}
+.tag .title{background:#DEDEDE;border:1px solid #999999;display:block;float:left;font-weight:bold;padding:2px 4px;}
+.tag a.tag{background:#F3F3F3;border:1px solid #DEDEDE;color:#666;display:block;float:left;margin-left:5px;margin-bottom:5px;padding:2px 4px;}
+.tag a.tag:hover{border:1px solid #AEE474;color:#218B03;}
+.tag a.tag_last {}
+.comment_holder{clear:both;display:block;margin-top:10px;}
+.comment_holder .title{border-bottom:1px dashed #CCCCCC;display:block;font-weight:bold;margin:4px 0;padding:5px 0;}
+.comment_holder form.comment{display:block;margin-top:20px;}
+.comment_holder form.comment label{display:block;float:left;font-weight:bold;padding:4px;text-align:right;width:115px;}
+.comment_holder form.comment .inputtxt{background:#EEEEEE;border:1px solid #AAAAAA;margin-bottom:6px;padding:4px;}
+.comment_holder form.comment .txtfield{width:230px;}
+.comment_holder form.comment .txtarea{height:80px;overflow:auto;width:230px;}
+.comment_holder form.comment .button{margin-left:107px;}
+.comment_holder form.comment label.spam_question{clear:both;display:block;float:none;margin-left:103px;text-align:left;width:auto;}
+.comment_holder #comment{display:block;}
+.comment_holder #comment div.comment{background:#FFFFFF url(../images/admin-bg.gif) repeat-x left top;display:block;margin-top:15px;}
+.comment_holder #comment p.comment{display:block;margin:0;padding:4px 10px;}
+.comment_holder #comment p.commenter{border-top:1px solid #FFFFFF;color:#777777;display:block;height:22px;margin:0;overflow:hidden;text-align:right;}
+.comment_holder #comment p.commenter a{color:#777777;display:block;float:right;padding-right:6px;}
+.comment_holder #comment p.commenter a:hover{color:#000;text-decoration:underline;}
+.comment_holder #comment p.commenter span{display:block;float:right;padding:0 5px;}
+
+img.gravatar {float:left;margin:0 10px 5px 0;}
+.cf_form_label{display:block;float:left;width:120px;}
+.txtFld{border:1px solid #999999;display:block;float:left;margin-bottom:2px;width:220px;}
+
+.content-main em,.content-main strong {border-bottom:1px dotted #CCCCCC;font-style:normal;font-weight:normal;}
+
+.banner_full_length{float:none;height:90px;margin:0 auto;text-align:center;width:728px;}
+
+.post_share {background: #FFFFFF;border: 1px solid #DDDDDD;float: left;margin-left: -78px;position: relative;}
+.post_share .wdt_button{clear:left;margin:0;}
+.WPDiggThis_Google{width:50px !important;}
+.post_share a.chicklet{display:block;border:1px solid #e8e8e8;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;padding:2px 2px;width:44px;margin:0;font:normal 9px/1.625 verdana,sans-serif;color:#989898;background:#fff url(../images/spritemap.png);-webkit-transition:all .2s ease-out;-moz-transition:all .2s ease-out;text-align:right;}
+.post_share a#st_email.chicklet,
+.post_share a#st_email_min.chicklet{background-position:2px -218px;}
+.post_share a#st_sharethis.chicklet,
+.post_share a#st_sharethis_min.chicklet{background-position:2px -238px;}
+.post_share a.chicklet:hover,
+.post_share a#st_email.chicklet:hover,
+.post_share a#st_sharethis.chicklet:hover{background-color:#eef5ff;text-decoration:none;cursor:pointer;}
+.wdt_button{padding:5px;}
+.wdt_button_min{float:left;clear:none;padding:5px;}

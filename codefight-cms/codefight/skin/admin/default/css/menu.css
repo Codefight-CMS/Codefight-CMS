@@ -1,0 +1,95 @@
+/*
+ * CSS Document
+ * menu.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+.menu {
+	display:block;
+	margin:0 auto;
+	padding-top:50px;
+	width:100%;
+	}
+
+.menu_grid, .menu_create {
+	display:block;
+	margin:0;
+	padding:0;
+	}
+
+.menu_grid ul, .menu_grid ul li {
+	display:block;
+	clear:both;
+	list-style:none;
+	list-style-position:outside;
+	}
+
+.menu_grid ul {
+	margin-bottom:10px;
+	}
+
+.menu_grid ul li {
+	border-bottom:1px dashed #ccc;
+	padding:2px;
+	height:20px;
+	overflow:hidden;
+	}
+
+.menu_grid ul li:hover {
+	background-color:#eee;
+	border-bottom:1px solid #ccc;
+	}
+
+.menu_grid .menu_grid_heading_chkbox {
+	width:60px;
+	}
+.menu_grid .menu_grid_heading_sort {
+	width:40px;
+	}
+.menu_grid .menu_grid_heading_title {
+	width:300px;
+	}
+
+.menu_grid .menu_grid_heading_description {
+	padding:0 6px;
+	}
+	
+.menu_create label {
+	display:block;
+	float:left;
+	width:90px;
+	}
+	
+.menu_create .txtFld {
+	background-color:#fff !important;
+	border:1px solid #CCCCCC;
+	display:block;
+	float:left;
+	margin-bottom:4px;
+	padding:6px;
+	width:290px;
+	}
+span.display_level1 {
+	color:#060;
+	display:block;
+	font-weight:bold;
+	padding-left:4px;
+	}
+span.display_level2 {
+	color:#666;
+	display:block;
+	font-weight:bold;
+	padding-left:24px;
+	}
+span.display_level3 {
+	color:#f00;
+	display:block;
+	font-weight:bold;
+	padding-left:44px;
+	}
+	
+	
+	
+	
+	
+	

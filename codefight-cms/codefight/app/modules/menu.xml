@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>40</sort>
+	<admin>
+		<navigation>
+			<menu title="Menu">
+				<page position="1">Page Links</page>
+				<blog position="2">Blog Categories</blog>
+				<blog-roll position="3">Blog Roll</blog-roll>
+			</menu>
+		</navigation>
+	</admin>
+</module>

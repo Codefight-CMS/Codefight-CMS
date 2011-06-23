@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>10</sort>
+	<admin>
+		<navigation>
+			<cp title="Admin">
+				<cp>Admin</cp>
+				<update>Updates</update>
+			</cp>
+		</navigation>
+	</admin>
+</module>

@@ -1,0 +1,100 @@
+/*
+ * CSS Document
+ * comment.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+.comment {
+	display:block;
+	margin:0 auto;
+	padding-top:50px;
+	width:100%;
+	}
+
+.comment_grid, .comment_create {
+	display:block;
+	margin:0;
+	padding:0;
+	}
+
+.comment_create .left {
+	display:block;
+	float:left;
+	overflow:hidden;
+	width:48%;
+	}
+
+.comment_create .right {
+	display:block;
+	float:right;
+	overflow:hidden;
+	text-align:left !important;
+	width:48%;
+	}
+
+.comment_grid ul, .comment_grid ul li {
+	display:block;
+	clear:both;
+	list-style:none;
+	list-style-position:outside;
+	}
+
+.comment_grid ul {
+	margin-bottom:10px;
+	}
+
+.comment_grid ul li {
+	border-bottom:1px dashed #ccc;
+	padding:2px;
+	min-height:20px;
+	}
+
+.comment_grid ul li:hover {
+	background-color:#eee;
+	border-bottom:1px solid #ccc;
+	}
+
+.comment_grid .comment_grid_heading_chkbox {
+	width:60px;
+	}
+/*
+.comment_grid .comment_grid_heading_id {
+	width:40px;
+	}
+*/
+.comment_grid .comment_grid_heading_title {
+	font-weight:bold;
+	padding:0 6px 0 10px;
+	width:620px;
+	}
+
+.comment_grid .comment_grid_heading_description {
+	background-color:#F3F3F3;
+	clear:both;
+	color:#218B03;
+	padding:0 6px 5px 80px;
+	width:90%;
+	}
+	
+.comment_create label {
+	display:block;
+	float:left;
+	width:130px;;
+	}
+	
+.comment_create .txtFld {
+	background-color:#fff !important;
+	border:1px solid #CCCCCC;
+	display:block;
+	float:left;
+	margin-bottom:4px;
+	padding:6px;
+	width:290px;
+	}
+
+	
+	
+	
+	
+	
+	

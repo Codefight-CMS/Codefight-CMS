@@ -1,0 +1,66 @@
+/*
+ * CSS Document
+ * header.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+
+.siteContainer .header {
+	background:#009933;
+	color:#AEE474;
+	display:block;
+	height:27px;
+	margin:0 auto;
+	overflow:hidden;
+	width:960px;
+	}
+.siteContainer .header .logo {
+	display:block;
+	float:left;
+	height:70px;
+	overflow:hidden;
+	width:170px;
+	}
+.siteContainer .header .logo a {
+	background:transparent url(../images/logo.gif) no-repeat 10px 14px;
+	display:block;
+	height:70px;
+	text-indent:-99999px;
+	}
+.siteContainer .header .userLogged {
+	background:#FF6600;
+	border-left:5px solid #009933;
+	border-right:5px solid #009933;
+	clear:both;
+	color:#FFFFFF;
+	display:block;
+	font-size:12px;
+	font-weight:bold;
+	height:26px;
+	margin:1px 0 0;
+	overflow:hidden;
+	padding:0 5px;
+	text-align:right;
+	}
+.siteContainer .header .userLogged a {
+	color:#AEE474;
+	font-size:12px;
+	font-weight:bold;
+	text-align:right;
+	}
+.siteContainer .header .userLogged a:hover {
+	color:#ffffff;
+	text-decoration:underline;
+	}
+.google_468_60_top {
+	display:block;
+	float:right;
+	height:60px;
+	margin-top:12px;
+	overflow:hidden;
+	width:468px;
+	}
+#languages {
+	padding:5px;}
+	
+.ticker {display:block;padding:5px;color:#000;background:#093;text-align:center;}

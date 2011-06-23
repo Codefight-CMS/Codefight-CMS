@@ -1,0 +1,81 @@
+/*
+ * CSS Document
+ * user.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+.user {
+	display:block;
+	margin:0 auto;
+	padding-top:50px;
+	width:100%;
+	}
+
+.user_grid, .user_create {
+	display:block;
+	margin:0;
+	padding:0;
+	}
+
+.user_grid ul, .user_grid ul li {
+	display:block;
+	clear:both;
+	list-style:none;
+	list-style-position:outside;
+	}
+
+.user_grid ul {
+	margin-bottom:10px;
+	}
+
+.user_grid ul li {
+	border-bottom:1px dashed #ccc;
+	padding:2px;
+	height:20px;
+	overflow:hidden;
+	}
+
+.user_grid ul li:hover {
+	background-color:#eee;
+	border-bottom:1px solid #ccc;
+	}
+
+.user_grid .user_grid_heading_chkbox {
+	width:60px;
+	}
+/*
+.user_grid .user_grid_heading_id {
+	width:40px;
+	}
+*/
+.user_grid .user_grid_heading_title {
+	width:240px;
+	}
+
+.user_grid .user_grid_heading_description {
+	padding:0 6px;
+	width:160px;
+	}
+	
+.user_create label {
+	display:block;
+	float:left;
+	width:90px;
+	}
+	
+.user_create .txtFld {
+	background-color:#fff !important;
+	border:1px solid #CCCCCC;
+	display:block;
+	float:left;
+	margin-bottom:4px;
+	padding:6px;
+	width:290px;
+	}
+
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,241 @@
+/*
+ * CSS Document
+ * page.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+
+.siteContainer .pageContainer .contents {
+	border-top:7px solid #009933;
+	display:block;
+	float:left;
+	margin:0 0 18px;
+	width:640px;
+	}
+.siteContainer .pageContainer .contents h2 {
+	background-color:#009933;
+	color:#FFFFFF;
+	font-size:18px;
+	margin:0;
+	padding:5px 10px;
+	}
+.siteContainer .pageContainer .contents h2 a {
+	color:#F3F3F3;
+	}
+.siteContainer .pageContainer .contents .content {
+	display:block;
+	margin:0 10px 30px;
+	padding:0 16px;
+	}
+.siteContainer .pageContainer .contents a {
+	color:#333;
+	font-weight:bold;
+	}
+.siteContainer .pageContainer .contents a:hover {
+	color:#90D47E;
+	}
+.siteContainer .pageContainer .contents .no_access {
+	color:#CCCCCC;
+	}
+.siteContainer .pageContainer .contents blockquote {
+	background:#F3F3F3 none repeat scroll 0 0;
+	border:1px dashed #DEDEDE;
+	font-style:italic;
+	font-weight:bold;
+	margin:25px;
+	overflow:auto;
+	padding:10px;
+	}
+.siteContainer .pageContainer .contents blockquote.code {
+	background-color:#FBFBFD;
+	border-color:#DAE0E4;
+	border-style:solid;
+	border-width:1px 1px 1px 3px;
+	font-style:normal;
+	padding:5px 8px;
+	margin:4px 0 15px 4px;
+	}
+blockquote.code div#phpcode {
+	color:#352B95;
+	font-style:normal;
+	}
+blockquote.code div#phpcode h6 {
+	background:#999999;
+	color:#FFFFFF;
+	padding:2px 22px;
+	}
+.siteContainer .pageContainer .contents .author_date {
+	background-color:#90D47E;
+	border-top:1px dashed #FFFFFF;
+	color:#009933;
+	display:block;
+	font-size:9px;
+	margin-bottom:5px;
+	padding:5px 10px;
+	text-align:right;
+	}
+.siteContainer .pageContainer .contents .author_date .author {
+	padding-right:10px;
+	}
+.siteContainer .pageContainer .contents .author_date .date {
+	float:right;
+	}
+.siteContainer .pageContainer .contents .tag {
+	display:block;
+	padding:5px;
+	}
+.siteContainer .pageContainer .contents .tag .title {
+	background:#DEDEDE;
+	border:1px solid #999999;
+	display:block;
+	float:left;
+	font-weight:bold;
+	padding:2px 4px;
+	}
+.siteContainer .pageContainer .contents .tag a.tag {
+	background:#F3F3F3;
+	border:1px solid #DEDEDE;
+	color:#666;
+	display:block;
+	float:left;
+	margin-left:5px;
+	margin-bottom:5px;
+	padding:2px 4px;
+	}
+.siteContainer .pageContainer .contents .tag a.tag:hover {
+	border:1px solid #AEE474;
+	color:#218B03;
+	}
+.siteContainer .pageContainer .contents .tag a.tag_last {
+	}
+.siteContainer .pageContainer .contents .comment_holder {
+	clear:both;
+	display:block;
+	margin-top:10px;
+	}
+.siteContainer .pageContainer .contents .comment_holder .title {
+	border-bottom:1px dashed #CCCCCC;
+	display:block;
+	font-weight:bold;
+	margin:4px 0;
+	padding:5px 0;
+	}
+.siteContainer .pageContainer .contents .comment_holder form.comment {
+	display:block;
+	margin-top:20px;
+	}
+.siteContainer .pageContainer .contents .comment_holder form.comment label {
+	display:block;
+	float:left;
+	font-weight:bold;
+	padding:4px;
+	text-align:right;
+	width:115px;
+	}
+.siteContainer .pageContainer .contents .comment_holder form.comment .inputtxt {
+	background:#EEEEEE;
+	border:1px solid #AAAAAA;
+	margin-bottom:6px;
+	padding:4px;
+	}
+.siteContainer .pageContainer .contents .comment_holder form.comment .txtfield {
+	width:230px;
+	}
+.siteContainer .pageContainer .contents .comment_holder form.comment .txtarea {
+	height:80px;
+	overflow:auto;
+	width:230px;
+	}
+.siteContainer .pageContainer .contents .comment_holder form.comment .button {
+	margin-left:107px;
+	}
+.siteContainer .pageContainer .contents .comment_holder form.comment label.spam_question {
+	clear:both;
+	display:block;
+	float:none;
+	margin-left:103px;
+	text-align:left;
+	width:auto;
+	}
+.comment_holder #comment {
+	display:block;
+	}
+.comment_holder #comment div.comment {
+	background:#FFFFFF url(../images/admin-bg.gif) repeat-x left top;
+	display:block;
+	margin-top:15px;
+	}
+.comment_holder #comment p.comment {
+	display:block;
+	margin:0;
+	padding:4px 10px;
+	}
+.comment_holder #comment p.commenter {
+	border-top:1px solid #FFFFFF;
+	color:#777777;
+	display:block;
+	height:22px;
+	margin:0;
+	overflow:hidden;
+	text-align:right;
+	}
+.comment_holder #comment p.commenter a {
+	color:#777777;
+	display:block;
+	float:right;
+	padding-right:6px;
+	}
+.comment_holder #comment p.commenter a:hover {
+	color:#000;
+	text-decoration:underline;
+	}
+.comment_holder #comment p.commenter span {
+	display:block;
+	float:right;
+	padding:0 5px;
+	}
+div.footer_recent_entry {
+	display:block;
+	width:36%;
+	float:left;
+	margin-right:4%;
+	}
+div.footer_most_popular {
+	display:block;
+	width:36%;
+	float:left;
+	}
+div.footer_ontheweb_popular {
+	display:block;
+	width:20%;
+	float:right;
+}
+.siteContainer .pageContainer .contents li {
+	margin:0 0 10px;
+}
+.siteContainer .pageContainer .contents li p {
+	margin:10px 0 0;
+}
+.siteContainer .pageContainer .contents li a {
+	color:#009933;
+	text-decoration:underline;
+}
+.siteContainer .pageContainer .contents li p img {
+	border:5px solid #FF6600;
+	display:block;
+	margin:0 auto;
+}
+
+img.gravatar {
+	float:left;
+	margin:0 10px 5px 0;
+}
+
+
+
+
+
+
+
+
+

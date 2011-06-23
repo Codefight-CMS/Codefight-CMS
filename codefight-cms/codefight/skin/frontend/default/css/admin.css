@@ -1,0 +1,13 @@
+/*
+ * CSS Document
+ * products.css
+ * Created by DAMU for codefight CMS
+ * First created on 10.09.08 
+ */
+
+.siteContainer .pageContainer .cp {
+	display:block;
+	float:left;
+	margin:20px 0;
+	width:730px;
+	}

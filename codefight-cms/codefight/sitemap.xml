@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<urlset xmlns="http://www.google.com/schemas/sitemap/0.84">
+		<url>
+			<loc>http://local.codefight.org/</loc>
+			<lastmod>2010-12-24</lastmod>
+			<changefreq>daily</changefreq>
+			<priority>1.0</priority>
+		</url>
+
+		<url>
+			<loc>http://local.codefight.org/blog/65/58/Internet-Advertising-Text-Links</loc>
+			<lastmod>2010-11-27</lastmod>
+			<changefreq>daily</changefreq>
+			<priority>0.5</priority>
+		</url>
+
+		<url>
+			<loc>http://local.codefight.org/file</loc>
+			<lastmod>2010-08-13</lastmod>
+			<changefreq>daily</changefreq>
+			<priority>0.5</priority>
+		</url>
+
+		<url>
+			<loc>http://local.codefight.org/about</loc>
+			<lastmod>2010-07-25</lastmod>
+			<changefreq>daily</changefreq>
+			<priority>0.5</priority>
+		</url>
+
+		<url>
+			<loc>http://local.codefight.org/home</loc>
+			<lastmod>2010-07-04</lastmod>
+			<changefreq>daily</changefreq>
+			<priority>0.5</priority>
+		</url>
+
+		<url>
+			<loc>http://local.codefight.org/contact-us</loc>
+			<lastmod>2010-06-21</lastmod>
+			<changefreq>daily</changefreq>
+			<priority>0.5</priority>
+		</url>
+
+		<url>
+			<loc>http://local.codefight.org/blog/65/49/Installation-successful</loc>
+			<lastmod>2009-11-21</lastmod>
+			<changefreq>daily</changefreq>
+			<priority>0.5</priority>
+		</url>
+
+	</urlset>
+

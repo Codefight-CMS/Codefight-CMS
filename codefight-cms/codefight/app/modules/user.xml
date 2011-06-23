@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>30</sort>
+	<admin>
+		<navigation>
+			<user title="User"/>
+		</navigation>
+	</admin>
+</module>

@@ -1,0 +1,70 @@
+ul.jd_menu, 
+ul.jd_menu_vertical {
+}
+ul.jd_menu ul,
+ul.jd_menu_vertical ul {
+	display: none;
+}
+ul.jd_menu li {
+	float: left;
+}
+ul.jd_menu_vertical {
+	width: 160px;
+}
+ul.jd_menu_vertical li {
+	float: none;
+}
+
+/* -- Sub-Menus -- */
+ul.jd_menu ul,
+ul.jd_menu_vertical ul {
+	position: absolute;
+	display: none;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	z-index: 10000;
+}
+ul.jd_menu ul li,
+ul.jd_menu_vertical ul li {
+	float: none;
+	margin: 0px;
+}
+
+
+ul.jd_menu,
+ul.jd_menu ul,
+ul.jd_menu_vertical,
+ul.jd_menu_vertical ul {
+}
+ul.jd_menu_vertical {
+	height: auto;
+}
+ul.jd_menu ul {
+	height: auto;
+}
+* html ul.jd_menu ul {
+	width: 1%;
+}
+ul.jd_menu li {}
+ul.jd_menu li li {
+	width: 160px;
+	margin:2px 0 0 2px;
+}
+ul.jd_menu li a {
+	color: #fff;
+	display:block;
+	text-decoration: none;
+}
+ul.jd_menu li a:hover {
+	color: #fcff00;
+}
+
+ul.jd_menu li.jdm_hover,
+ul.jd_menu li.jdm_active {
+}
+
+
+
+
+

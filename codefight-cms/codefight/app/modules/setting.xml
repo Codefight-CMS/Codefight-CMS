@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>110</sort>
+	<admin>
+		<navigation>
+			<setting title="Setting">
+				<site>Defaults</site>
+				<websites>Websites</websites>
+				<keys>Keys</keys>
+				<cache>Cache</cache>
+				<sitemap>Sitemap</sitemap>
+			</setting>
+		</navigation>
+	</admin>
+</module>

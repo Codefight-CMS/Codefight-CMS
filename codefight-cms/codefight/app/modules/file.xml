@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>80</sort>
+	<admin>
+		<navigation>
+			<file title="File Manager">
+				<manage-file>Files</manage-file>
+				<upload-file>New File</upload-file>
+			</file>
+		</navigation>
+	</admin>
+</module>

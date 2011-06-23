@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>20</sort>
+	<admin>
+		<navigation>
+			<group title="Group"/>
+		</navigation>
+	</admin>
+</module>

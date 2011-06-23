@@ -1,0 +1,56 @@
+/*
+ * CSS Document
+ * header.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+
+.siteContainer .header {
+	background:#218b03 url(../images/bg_green.jpg) left top repeat-x;
+	color:#AEE474;
+	display:block;
+	height:113px;
+	margin:0 auto;
+	overflow:hidden;
+	width:960px;
+	}
+.siteContainer .header .logo {
+	display:block;
+	float:left;
+	height:70px;
+	overflow:hidden;
+	}
+.siteContainer .header .logo a {
+	color:#FFFFFF;
+	display:block;
+	font-size:22px;
+	font-weight:bold;
+	margin:24px 0 0 5px;
+}
+.siteContainer .header .userLogged {
+	clear:both;
+	color:#FFFFFF;
+	display:block;
+	font-size:12px;
+	font-weight:bold;
+	padding:9px 10px 0 6px;
+	text-align:right;
+	}
+.siteContainer .header .userLogged a {
+	color:#AEE474;
+	font-size:12px;
+	font-weight:bold;
+	text-align:right;
+	}
+.siteContainer .header .userLogged a:hover {
+	color:#ffffff;
+	text-decoration:underline;
+	}
+.google_468_60_top {
+	display:block;
+	float:right;
+	height:60px;
+	margin-top:12px;
+	overflow:hidden;
+	width:468px;
+	}

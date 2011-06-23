@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>90</sort>
+	<admin>
+		<navigation>
+			<folder title="Folder Manager">
+				<manage-folder>Folders</manage-folder>
+				<create-folder>New Folders</create-folder>
+			</folder>
+		</navigation>
+	</admin>
+</module>

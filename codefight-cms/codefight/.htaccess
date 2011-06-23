@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+	
+	#disable directory listing for security reasons
+	Options -Indexes
+	
+	#RewriteBase /codefight_141/
+	#RewriteCond %{HTTP_HOST} !^skin.zoosper.com [NC] 
+	#RewriteRule ^(.*)$ http://skin.zoosper.com/$1 [L,R=301]
+	
+	RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?/$1 [L]
+
+</IfModule>
+
+php_flag display_errors on

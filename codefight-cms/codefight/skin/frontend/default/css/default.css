@@ -1,0 +1,39 @@
+/*
+ * CSS Document
+ * default.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+
+.blog_categories {
+	display:block;
+	}
+.blog_categories h2,.blog_roll h2,.tag_cloud h2 {
+	border-bottom:1px dotted #999999;
+	display:block;
+	font-size:14px;
+	margin:0 0 6px 0;
+	padding:0 0 6px 10px;
+	text-align:left !important;
+	}
+.feed_counter {
+	background:#99CC99;
+	display:block;
+	float:left;
+	height:26px;
+	overflow:hidden;
+	text-align:center;
+	width:90px;
+	}
+.welcome {
+	display:block;
+	float:right;
+	margin:6px 0 0;
+	}
+select#template {
+	float:left;
+	}
+
+
+
+

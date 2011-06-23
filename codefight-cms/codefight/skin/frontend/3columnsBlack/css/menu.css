@@ -1,0 +1,113 @@
+/*START:Menu Left*/
+.menuLeft
+{
+	display:block;
+	float:left;
+	margin:0 0 10px;
+	width:170px;
+}
+.menuLeft .banner_left
+{
+	display:block;
+	width:160px;
+	overflow:hidden;
+}
+.menuLeft div
+{
+	clear:both;
+	margin:0 4px 10px;
+}
+.menuLeft div ul
+{
+	-moz-border-radius:0 0 4px 4px;
+	-webkit-border-radius:0 0 4px 4px;
+	-khtml-border-radius:0 0 4px 4px;
+	border-radius:0 0 4px 4px;
+	background:#fff;
+	padding:10px 0 6px;
+	margin:0;
+}
+.menuLeft div ul li
+{
+	border-bottom:1px solid #DDDDDD;
+	display:block;
+	margin:0 0 5px;
+	text-align:center;
+}
+.menuLeft div ul li.last
+{
+	border:none !important;
+}
+.menuLeft div.tag_cloud 
+{
+	display:block;
+	overflow:hidden;
+	padding:0;
+	text-align:center;
+	width:162px;
+}
+/*END:Menu Left*/
+
+/*START:Menu Top*/
+.top_menu_container
+{
+	background:#333333;
+	border:1px solid #444444;
+	display:block;
+	margin:0;
+	padding:0;
+}
+.menu_top
+{
+	clear:both;
+	display:block;
+	margin:0 auto;
+	padding:10px 0;
+	width:960px;
+}
+.menu_top ul
+{
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	-khtml-border-radius:8px;
+	border-radius:8px;
+	background:#222222;
+	float:right;
+	height:26px !important;
+	padding:8px !important;
+}
+.menu_top ul.jd_menu li
+{
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	-khtml-border-radius:4px;
+	border-radius:4px;
+	background:#333333;
+	height:18px;
+	line-height:18px;
+	margin:0 10px 0 0;
+	padding:4px;
+}
+.menu_top ul.jd_menu li:hover
+{
+	margin:0 10px 0 0;
+}
+.menu_top ul.jd_menu li.last
+{
+	margin:0 !important;
+}
+.menu_top ul.jd_menu li a
+{
+	font-size:14px;
+	font-weight:bold;
+	color:#999999;
+}
+.menu_top ul.jd_menu li ul
+{
+	margin:2px 2px 0 0;
+}
+.menu_top ul.jd_menu li ul li ul
+{
+	margin:2px 0 0 2px;
+}
+/*END:Menu Top*/

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<module>
+	<active>true</active>
+	<sort>20</sort>
+	<admin>
+		<navigation>
+			<menu title="Menu">
+				<classifieds>Classified Categories</classifieds>
+			</menu>
+		</navigation>
+	</admin>
+</module>

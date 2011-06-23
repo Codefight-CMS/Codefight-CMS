@@ -1,0 +1,41 @@
+/*
+ * CSS Document
+ * information.css
+ * Created by DAMU for codefight CMS
+ * First created on 10.09.08 
+ */
+
+.siteContainer .pageContainer .page_content .information {
+	color:#666;
+	display:block;
+	float:left;
+	margin:0 80px 20px 15px;
+	}
+.siteContainer .pageContainer .page_content .information .info_title {
+	display:block;
+	margin:0 0 20px 0;
+	}
+.siteContainer .pageContainer .page_content .information .info_body {
+	display:block;
+	margin:0 0 20px 0;
+	}
+.siteContainer .pageContainer .page_content .information a {
+	color:#D42229;
+	text-decoration:underline;
+	}
+.siteContainer .pageContainer .page_content .information a:hover {
+	color:#333;
+	text-decoration:none;
+	}
+.siteContainer .pageContainer .page_content .information ul {
+	display:block;
+	margin-left:20px;
+	list-style-position:outside;
+	list-style-type:none;
+}
+.siteContainer .pageContainer .page_content .information li {
+	background:#FFFFFF url(../images/li.jpg) no-repeat left center;
+	margin-bottom:10px;
+	padding:0 0 2px 14px;
+}
+
