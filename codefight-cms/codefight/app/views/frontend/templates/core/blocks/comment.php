@@ -32,7 +32,7 @@
 	
 </script>
 <div class="comment_holder">
-	<div class="title"><a name="comment"></a>COMMENTS: <img src="assets/common/icons/feed.png" alt="FEED" name="Feed" width="16" height="16" border="0" id="Feed" />( <?php echo anchor('tools/feed/approved-comment','Approved Comment'); ?> | <?php echo anchor('tools/feed/pending-comment','Pending Comment'); ?> ) </div>
+	<div class="title"><a name="comment"></a>COMMENTS: <img src="assets/common/icons/feed.png" alt="FEED" name="Feed" width="16" height="16" border="0" id="Feed" />( <?php echo anchor('feed/approved-comment','Approved Comment'); ?> | <?php echo anchor('feed/pending-comment','Pending Comment'); ?> ) </div>
 	<div id="comment"><?php $this->cf_blog_model->get_comment(preg_replace('/[^0-9]+/','',$this->uri->segment(3, 0))); ?></div>
 	<div id="comment_new">&nbsp;</div>
 <?php 

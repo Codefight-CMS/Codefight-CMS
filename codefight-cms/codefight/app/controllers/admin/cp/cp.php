@@ -89,7 +89,7 @@ class Cp extends MY_Controller {
 		$this->cf_asset_lib->load($assets);
 		
 		$codefight = array();
-		if($xml = simplexml_load_file('http://codefight.org/tools/feed/releases'))
+		if($xml = simplexml_load_file('http://codefight.org/feed/releases'))
 		{
 			$channel = ($xml->channel);
 			
