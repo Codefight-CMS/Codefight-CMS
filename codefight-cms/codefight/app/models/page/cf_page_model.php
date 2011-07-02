@@ -35,6 +35,7 @@ class Cf_page_model extends MY_Model
 		$this->db->where('page_type', 'page');
 		
 		$this->db->where(array('page.page_active' => '1'));
+		$this->db->group_by('page.page_id');
 		$this->db->order_by('page.page_sort', 'asc');
 		$this->db->order_by('page.page_id', 'desc');
 
