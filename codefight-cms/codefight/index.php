@@ -58,7 +58,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = "CIcore";
+	$system_path = "../CIcore";
 
 /*
  *---------------------------------------------------------------

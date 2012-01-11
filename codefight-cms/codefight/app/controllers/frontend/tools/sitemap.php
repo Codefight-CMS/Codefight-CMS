@@ -28,43 +28,43 @@
  */
 class Sitemap extends MY_Controller
 {
-	/**
-	 * Constructor method
-	 * 
-	 * @access public
-	 * @return void
-	 */
-	public function __construct()
+    /**
+     * Constructor method
+     *
+     * @access public
+     * @return void
+     */
+    public function __construct()
     {
         parent::MY_Controller();
         $this->load->helper(array('text'));
-        $this->load->library('cf_sitemap_lib');//Load Plugin
+        $this->load->library('cf_sitemap_lib'); //Load Plugin
         $this->load->model('blog/cf_blog_model');
     }
 
-	
+
     public function index()
     {
 
-		//$sitemap = new google_sitemap; //Create a new Sitemap Object
-		$posts = $this->cf_blog_model->getRecentPosts('50');
-		
-		$item = $this->cf_sitemap_lib->google_sitemap_item(site_url(), date("Y-m-d",time()), 'daily', '1.0' ); //Create a new Item
-		$this->cf_sitemap_lib->add_item($item);
-		
-		foreach($posts->result_array() as $entry) {
+        //$sitemap = new google_sitemap; //Create a new Sitemap Object
+        $posts = $this->cf_blog_model->getRecentPosts('50');
 
-			$link = get_page_url($entry);
+        $item = $this->cf_sitemap_lib->google_sitemap_item(site_url(), date("Y-m-d", time()), 'daily', '1.0'); //Create a new Item
+        $this->cf_sitemap_lib->add_item($item);
 
-			//Create a new Item
-			$item = $this->cf_sitemap_lib->google_sitemap_item(site_url($link), date("Y-m-d",strtotime($entry['page_date'])), 'daily', '0.5' );
-			
-			//Append the item to the sitemap object
-			$this->cf_sitemap_lib->add_item($item); 
-		}
+        foreach ($posts->result_array() as $entry) {
+
+            $link = get_page_url($entry);
+
+            //Create a new Item
+            $item = $this->cf_sitemap_lib->google_sitemap_item(site_url($link), date("Y-m-d", strtotime($entry['page_date'])), 'daily', '0.5');
+
+            //Append the item to the sitemap object
+            $this->cf_sitemap_lib->add_item($item);
+        }
         $this->cf_sitemap_lib->build("sitemap.xml"); //Build it...
-                
-         //Let's compress it to gz
+
+        //Let's compress it to gz
         $data = implode("", file("sitemap.xml"));
         $gzdata = gzencode($data, 9);
         $fp = fopen("sitemap.xml.gz", "w");
@@ -72,35 +72,33 @@ class Sitemap extends MY_Controller
         fclose($fp);
 
         //Let's Ping google
-        $this->_pingGoogleSitemaps(base_url()."/sitemap.xml.gz");
-		
-		echo site_url();
+        $this->_pingGoogleSitemaps(base_url() . "/sitemap.xml.gz");
+
+        echo site_url();
     }
 
-    public function _pingGoogleSitemaps( $url_xml )
+    public function _pingGoogleSitemaps($url_xml)
     {
-       $status = 0;
-       $google = 'www.google.com';
-       if( $fp=@fsockopen($google, 80) )
-       {
-          $req =  'GET /webmasters/sitemaps/ping?sitemap=' .
-                  urlencode( $url_xml ) . " HTTP/1.1\r\n" .
-                  "Host: $google\r\n" .
-                  "User-Agent: Mozilla/5.0 (compatible; " .
-                  PHP_OS . ") PHP/" . PHP_VERSION . "\r\n" .
-                  "Connection: Close\r\n\r\n";
-          fwrite( $fp, $req );
-          while( !feof($fp) )
-          {
-             if( @preg_match('~^HTTP/\d\.\d (\d+)~i', fgets($fp, 128), $m) )
-             {
-                $status = intval( $m[1] );
-                break;
-             }
-          }
-          fclose( $fp );
-       }
-       return( $status );
+        $status = 0;
+        $google = 'www.google.com';
+        if ($fp = @fsockopen($google, 80)) {
+            $req = 'GET /webmasters/sitemaps/ping?sitemap=' .
+                   urlencode($url_xml) . " HTTP/1.1\r\n" .
+                   "Host: $google\r\n" .
+                   "User-Agent: Mozilla/5.0 (compatible; " .
+                   PHP_OS . ") PHP/" . PHP_VERSION . "\r\n" .
+                   "Connection: Close\r\n\r\n";
+            fwrite($fp, $req);
+            while (!feof($fp))
+            {
+                if (@preg_match('~^HTTP/\d\.\d (\d+)~i', fgets($fp, 128), $m)) {
+                    $status = intval($m[1]);
+                    break;
+                }
+            }
+            fclose($fp);
+        }
+        return ($status);
     }
 
 } 

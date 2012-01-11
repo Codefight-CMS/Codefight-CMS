@@ -1,52 +1,54 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
-<?php if(isset($content) && is_array($content) && count($content) > 0): ?>
+<?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
+<?php if (isset($content) && is_array($content) && count($content) > 0): ?>
 
-	<?php foreach($content as $v): ?>
+<?php foreach ($content as $v): ?>
 
-		<div class="content">
+    <div class="content">
 
-		<div class="posthead">
+        <div class="posthead">
 
-			<h2><?php echo $v['title']; ?></h2>
+            <h2><?php echo $v['title']; ?></h2>
 
-			<small class="postauthor">Posted on <?php echo $v['year']; ?> under <?php echo $v['categories']; ?> | <?php echo $v['comment_count']; ?> Comment</small>
+            <small class="postauthor">Posted on <?php echo $v['year']; ?> under <?php echo $v['categories']; ?>
+                | <?php echo $v['comment_count']; ?> Comment
+            </small>
 
-			<p class="postdate">
+            <p class="postdate">
 
-			<small class="day"><?php echo $v['day']; ?></small>
+                <small class="day"><?php echo $v['day']; ?></small>
 
-			<small class="month"><?php echo $v['month']; ?></small>
+                <small class="month"><?php echo $v['month']; ?></small>
 
-			<small class="year">&nbsp;</small>
+                <small class="year">&nbsp;</small>
 
-			</p>
+            </p>
 
-		</div>
+        </div>
 
-		<?php echo $v['content']; //Show content ?>
+        <?php echo $v['content']; //Show content ?>
 
-		<?php if(isset($v['addthis'])) echo $v['addthis']; //Display Addthis button ?>
+        <?php if (isset($v['addthis'])) echo $v['addthis']; //Display Addthis button ?>
 
-		<?php if(isset($v['comment'])) echo $v['comment']; //Show Comment ?>
+        <?php if (isset($v['comment'])) echo $v['comment']; //Show Comment ?>
 
-		<!-- <div class="tag">
+        <!-- <div class="tag">
 
 			<?php //if(isset($v['tag'])) echo $v['tag']; //Show tag of the post ?>
 
 		</div> -->
 
-		<p class="clear">&nbsp;</p>
+        <p class="clear">&nbsp;</p>
 
-		</div>
+    </div>
 
-	<?php endforeach; ?>
+    <?php endforeach; ?>
 
 <?php else: ?>
 
-	   <h2>Content Couldn't be found.</h2>
+<h2>Content Couldn't be found.</h2>
 
 <?php endif; ?>
 
 <p class="clear">&nbsp;</p>
 
-<?php if(isset($pagination)) echo $pagination; ?>
+<?php if (isset($pagination)) echo $pagination; ?>

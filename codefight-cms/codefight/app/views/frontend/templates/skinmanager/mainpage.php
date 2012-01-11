@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
+<?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -7,68 +7,68 @@
 
 <div class="siteContainer">
 
-	<div class="header">
+    <div class="header">
 
-		<div class="logo"><?php $this->cf_block_lib->load('page_html/logo'); //Load logo block ?></div>
+        <div class="logo"><?php $this->cf_block_lib->load('page_html/logo'); //Load logo block ?></div>
 
-		<div class="userLogged">
+        <div class="userLogged">
 
-			<div class="feed_counter"><?php $this->cf_block_lib->load('feed/feed_counter'); //Load Feed Counter block ?></div>
+            <div class="feed_counter"><?php $this->cf_block_lib->load('feed/feed_counter'); //Load Feed Counter block ?></div>
 
-			<?php $this->cf_block_lib->load('welcome'); //Load welcome block ?>
+            <?php $this->cf_block_lib->load('welcome'); //Load welcome block ?>
 
-		</div>
+        </div>
 
-	</div>
-	<?php
-	
-	//Load message block
-	$this->cf_block_lib->load('page_html/message'); ?>
-	
-	<div class="pageContainer">
+    </div>
+    <?php
 
-		<div class="menu_top">
+    //Load message block
+    $this->cf_block_lib->load('page_html/message'); ?>
 
-			<?php $this->cf_block_lib->load('menu/page_horizontal'); //Load page menu horizontal block ?>
+    <div class="pageContainer">
 
-			<p class="clear">&nbsp;</p>
+        <div class="menu_top">
 
-		</div>
+            <?php $this->cf_block_lib->load('menu/page_horizontal'); //Load page menu horizontal block ?>
 
-		<p class="clear">&nbsp;</p>
+            <p class="clear">&nbsp;</p>
 
-		<div class="contents">
+        </div>
 
-			<?php $this->cf_block_lib->load($content_block); //Load Content Block ?>
+        <p class="clear">&nbsp;</p>
 
-		</div>
+        <div class="contents">
 
-		 <p class="clear">&nbsp;</p>
+            <?php $this->cf_block_lib->load($content_block); //Load Content Block ?>
 
-	</div>
+        </div>
 
-	 <p class="clear">&nbsp;</p>
+        <p class="clear">&nbsp;</p>
 
-	<div id="footer">
+    </div>
 
-		<p class="clear">&nbsp;</p>
+    <p class="clear">&nbsp;</p>
 
-		<div class="copyright">
+    <div id="footer">
 
-			<?php $this->cf_block_lib->load('page_html/copyright'); //Load copyright Block ?>
+        <p class="clear">&nbsp;</p>
 
-		</div>
+        <div class="copyright">
 
-		<p class="clear">&nbsp;</p>
+            <?php $this->cf_block_lib->load('page_html/copyright'); //Load copyright Block ?>
 
-		<div class="powered_by">
+        </div>
 
-			<?php $this->cf_block_lib->load('page_html/powered_by'); //Powered By: Please give me some credit :) ?>
+        <p class="clear">&nbsp;</p>
 
-		</div>
+        <div class="powered_by">
 
-	</div>
-	
+            <?php $this->cf_block_lib->load('page_html/powered_by'); //Powered By: Please give me some credit :) ?>
+
+        </div>
+
+    </div>
+
 </div>
 </body>
 </html>

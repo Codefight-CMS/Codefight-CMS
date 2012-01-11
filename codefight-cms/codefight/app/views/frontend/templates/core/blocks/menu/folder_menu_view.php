@@ -1,6 +1,9 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
+<?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
 <?php echo $this->cf_file_model->get_folder_menu(); ?>
-<script type="text/javascript">jQuery('ul.folder_menu li a.active').each(function(){jQuery(this).parents('ul:hidden').show();jQuery(this).parent().find('ul:first').show();});</script>
+<script type="text/javascript">jQuery('ul.folder_menu li a.active').each(function() {
+    jQuery(this).parents('ul:hidden').show();
+    jQuery(this).parent().find('ul:first').show();
+});</script>
 <?php
 
 /*

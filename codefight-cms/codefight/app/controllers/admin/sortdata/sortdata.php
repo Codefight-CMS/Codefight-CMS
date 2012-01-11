@@ -26,28 +26,29 @@
 /**
  * Admin sortdata Controller
  */
-class Sortdata extends MY_Controller {
+class Sortdata extends MY_Controller
+{
 
-	function __construct()
-	{
-		parent::MY_Controller();
-	}
+    function __construct()
+    {
+        parent::MY_Controller();
+    }
 
-	function index()
-	{
-		!isset($_POST['sortme']) ? $_POST['sortme'] = array() : '';
+    function index()
+    {
+        !isset($_POST['sortme']) ? $_POST['sortme'] = array() : '';
 
-		$sortme = $_POST['sortme'];
+        $sortme = $_POST['sortme'];
 
-		$table = $this->uri->segment(3, 0);
+        $table = $this->uri->segment(3, 0);
 
-		for ($i = 0; $i < count($sortme); $i++)
-		{
-			if($this->db->update($table, array($table.'_sort'=>$i), array($table.'_id'=>$sortme[$i]))) echo "OK";
-		}
+        for ($i = 0; $i < count($sortme); $i++)
+        {
+            if ($this->db->update($table, array($table . '_sort' => $i), array($table . '_id' => $sortme[$i]))) echo "OK";
+        }
 
-		//$this->load->view('welcome_message');
-	}
+        //$this->load->view('welcome_message');
+    }
 }
 
 /* End of file welcome.php */

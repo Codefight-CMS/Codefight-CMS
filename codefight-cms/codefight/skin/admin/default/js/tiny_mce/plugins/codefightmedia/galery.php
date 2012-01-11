@@ -222,7 +222,7 @@ if (!extension_loaded('gd')) {
    }
 }
 if (isset($_GET['dirname'])) $dirname = $_GET['dirname']; else $dirname = $IMGFOLDER;
-if (isset($_GET['act'])) $act = $_GET['act']; else $act = $list;
+if (isset($_GET['act'])) $act = $_GET['act']; else $act = '';//$list;
 if (isset($_POST['act'])) $act = $_POST['act'];
 if (isset($_POST['fname'])) $fname = $_POST['fname']; else $fname = '';
 if ($act == 'upload') {

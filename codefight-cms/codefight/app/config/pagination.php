@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 //$config['base_url'] = '';
 $config['total_rows'] = '5';
 //Total posts per page

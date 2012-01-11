@@ -49,13 +49,16 @@
 /*END:Menu Left*/
 
 /*START:Menu Top*/
-.top_menu_container
-{
-	background:#333333;
-	border:1px solid #444444;
-	display:block;
-	margin:0;
-	padding:0;
+.top_menu_container {
+    background: url("../images/dark_leather.png") repeat scroll 0 0 #333333;
+    border-bottom: 1px solid #444444;
+    display: block;
+    margin: 0;
+    min-width: 960px;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 .menu_top
 {
@@ -71,7 +74,7 @@
 	-webkit-border-radius:8px;
 	-khtml-border-radius:8px;
 	border-radius:8px;
-	background:#222222;
+	background: url("../images/type.png") repeat scroll 0 0 #FFFFFF;
 	float:right;
 	height:26px !important;
 	padding:8px !important;
@@ -82,7 +85,7 @@
 	-webkit-border-radius:4px;
 	-khtml-border-radius:4px;
 	border-radius:4px;
-	background:#333333;
+	background:url("../images/dark_leather.png") repeat scroll 0 0 #333333;
 	height:18px;
 	line-height:18px;
 	margin:0 10px 0 0;

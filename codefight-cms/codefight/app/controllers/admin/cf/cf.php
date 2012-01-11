@@ -28,23 +28,23 @@
  */
 class Cf extends MY_Controller
 {
-	function __construct()
-	{
-		parent::MY_Controller();
-	}
+    function __construct()
+    {
+        parent::MY_Controller();
+    }
 
-	function index()
-	{
-		$data = array();
-		$data['logged_in'] = 0;
-		$_isLoggedIn = $this->session->userdata('logged_in');
-		
-		if($_isLoggedIn != 1) die(json_encode($data));
-		
-		$data['logged_in'] = 1;
-		$data['FCPATH'] = FCPATH;
-		$data['base_url'] = base_url();
-		
-		echo json_encode($data);
-	}
+    function index()
+    {
+        $data = array();
+        $data['logged_in'] = 0;
+        $_isLoggedIn = $this->session->userdata('logged_in');
+
+        if ($_isLoggedIn != 1) die(json_encode($data));
+
+        $data['logged_in'] = 1;
+        $data['FCPATH'] = FCPATH;
+        $data['base_url'] = base_url();
+
+        echo json_encode($data);
+    }
 }

@@ -26,38 +26,39 @@
 /**
  * Version Controller
  */
-class Version extends MY_Controller {
+class Version extends MY_Controller
+{
 
-	/**
-	 * Constructor method
-	 * 
-	 * @access public
-	 * @return void
-	 */
-	public function __construct()
-	{
-		parent::MY_Controller();
-	}
+    /**
+     * Constructor method
+     *
+     * @access public
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::MY_Controller();
+    }
 
 
-	/*
-	 | if the called function doesn't exists, show the index, good for security
-	 */
-	function _remap($method)
-	{
-		$method = str_replace('-', '_', $method);
-		
-		if (method_exists($this,$method)) {
-			$this->$method();
-		} else {
-			$this->index();
-		}
-	}
+    /*
+      | if the called function doesn't exists, show the index, good for security
+      */
+    function _remap($method)
+    {
+        $method = str_replace('-', '_', $method);
 
-	public function index()
-	{
-		echo '2.0';
-	}
+        if (method_exists($this, $method)) {
+            $this->$method();
+        } else {
+            $this->index();
+        }
+    }
+
+    public function index()
+    {
+        echo '2.0.1.0';
+    }
 }
 
 /* End of file page.php */

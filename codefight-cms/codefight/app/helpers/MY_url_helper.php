@@ -1,15 +1,15 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * CodeIgniter
  *
  * An open source application development framework for PHP 4.3.2 or newer
  *
- * @package		CodeIgniter
- * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2010, EllisLab, Inc.
- * @license		http://codeigniter.com/user_guide/license.html
- * @link		http://codeigniter.com
- * @since		Version 1.0
+ * @package        CodeIgniter
+ * @author        ExpressionEngine Dev Team
+ * @copyright    Copyright (c) 2008 - 2010, EllisLab, Inc.
+ * @license        http://codeigniter.com/user_guide/license.html
+ * @link        http://codeigniter.com
+ * @since        Version 1.0
  * @filesource
  */
 
@@ -18,11 +18,11 @@
 /**
  * CodeIgniter URL Helpers
  *
- * @package		CodeIgniter
- * @subpackage	Helpers
- * @category	Helpers
- * @author		ExpressionEngine Dev Team
- * @link		http://codeigniter.com/user_guide/helpers/url_helper.html
+ * @package        CodeIgniter
+ * @subpackage    Helpers
+ * @category    Helpers
+ * @author        ExpressionEngine Dev Team
+ * @link        http://codeigniter.com/user_guide/helpers/url_helper.html
  */
 // ------------------------------------------------------------------------
 
@@ -33,53 +33,50 @@
  * human-friendly URL string with either a dash
  * or an underscore as the word separator.
  *
- * @access	public
- * @param	string	the string
- * @param	string	the separator: dash, or underscore
- * @return	string
+ * @access    public
+ * @param    string    the string
+ * @param    string    the separator: dash, or underscore
+ * @return    string
  */
-if ( ! function_exists('url_title'))
-{
-	function url_title($str, $separator = 'dash', $lowercase = FALSE)
-	{
-		$str = trim($str);
-		
-		if ($separator == 'dash')
-		{
-			$search		= '_';
-			$replace	= '-';
-		}
-		else
-		{
-			$search		= '-';
-			$replace	= '_';
-		}
+if (!function_exists('url_title')) {
+    function url_title($str, $separator = 'dash', $lowercase = FALSE)
+    {
+        $str = trim($str);
 
-		$trans = array(
-						'&\#\d+?;'				=> '',
-						'&\S+?;'				=> '',
-						'\s+'					=> $replace,
-						'[^a-z0-9\-\._]'		=> '',
-						$replace.'+'			=> $replace,
-						$replace.'$'			=> $replace,
-						'^'.$replace			=> $replace,
-						'\.+$'					=> ''
-					  );
+        if ($separator == 'dash') {
+            $search = '_';
+            $replace = '-';
+        }
+        else
+        {
+            $search = '-';
+            $replace = '_';
+        }
 
-		$str = trim(strip_tags($str));
+        $trans = array(
+            '&\#\d+?;' => '',
+            '&\S+?;' => '',
+            '\s+' => $replace,
+            '[^a-z0-9\-\._]' => '',
+            $replace . '+' => $replace,
+            $replace . '$' => $replace,
+            '^' . $replace => $replace,
+            '\.+$' => ''
+        );
 
-		foreach ($trans as $key => $val)
-		{
-			$str = preg_replace("#".$key."#i", $val, $str);
-		}
+        $str = trim(strip_tags($str));
 
-		if ($lowercase === TRUE)
-		{
-			$str = strtolower($str);
-		}
-		
-		return trim(stripslashes($str));
-	}
+        foreach ($trans as $key => $val)
+        {
+            $str = preg_replace("#" . $key . "#i", $val, $str);
+        }
+
+        if ($lowercase === TRUE) {
+            $str = strtolower($str);
+        }
+
+        return trim(stripslashes($str));
+    }
 }
 
 

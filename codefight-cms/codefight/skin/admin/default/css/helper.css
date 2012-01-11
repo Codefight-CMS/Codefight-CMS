@@ -208,10 +208,11 @@ a.red:hover {
 	padding:0 20px;
 	}
 .siteContainer .pageContainer {
-	background:#fff url(../images/admin-bg.gif) left top repeat-x;
-	display:block;
-	font-size:12px;
-	}
+    background: url("../images/admin-bg.gif") repeat-x scroll left top #FFFFFF;
+    display: block;
+    font-size: 12px;
+    padding: 0 10px;
+}
 /* END: ----------------------- */
 
 /* Main Site/page Containers definition */

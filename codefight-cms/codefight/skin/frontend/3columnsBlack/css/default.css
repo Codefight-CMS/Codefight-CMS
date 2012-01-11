@@ -92,7 +92,7 @@ select#template
 }
 .right_column 
 {
-	background:#E4EEDE
+	background:#E4EEDE;
 	display:block;
 	margin:0 0 10px;
 	width:160px;

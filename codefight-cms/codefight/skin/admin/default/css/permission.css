@@ -1,0 +1,88 @@
+/*
+ * CSS Document
+ * permission.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+.permission {
+	display:block;
+	margin:0 auto;
+	padding-top:50px;
+	width:100%;
+	}
+
+.permission_grid, .permission_create {
+	display:block;
+	margin:0;
+	padding:0;
+	}
+
+.permission_grid ul, .permission_grid ul li {
+	display:block;
+	clear:both;
+	list-style:none;
+	list-style-position:outside;
+	}
+
+.permission_grid ul {
+	margin: 0 0 10px 30px;
+	background:#eee;
+	padding:2px;
+	}
+
+.permission_grid ul  ul{
+	background:#ccc;
+	}
+.permission_grid ul  ul ul{
+	background:#dedede;
+	}
+
+.permission_grid ul li {
+	border-bottom:1px solid #fff;
+	padding:2px;
+	}
+
+.permission_grid ul li:hover {
+	background-color:#fff;
+	}
+
+.permission_grid .permission_grid_heading_chkbox {
+	width:60px;
+	}
+/*
+.permission_grid .permission_grid_heading_id {
+	width:40px;
+	}
+*/
+.permission_grid .permission_grid_heading_title {
+	width:160px;
+	}
+
+.permission_grid .permission_grid_heading_description {
+	padding:0 6px;
+	width:476px;
+	}
+	
+.permission_create label {
+	display:block;
+	float:left;
+	width:90px;
+	}
+	
+.permission_create .txtFld {
+	background-color:#fff !important;
+	border:1px solid #CCCCCC;
+	display:block;
+	float:left;
+	margin-bottom:4px;
+	padding:6px;
+	width:290px;
+	}
+.messageRead{}
+.messageUnread{background:#FFEE99;}
+.permission_grid ul li.last {border:none;}	
+	
+	
+	
+	
+	

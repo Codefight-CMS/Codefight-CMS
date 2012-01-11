@@ -1,2 +1,1 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
-&nbsp;
+<?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>

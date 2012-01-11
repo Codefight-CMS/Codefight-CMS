@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -14,29 +14,28 @@
 | path to your installation.
 |
 */
-if (defined('ENVIRONMENT'))
-{
-	switch (ENVIRONMENT)
-	{
-		case 'development':
-			$config['base_url']	= "http://www.codefight.dev/";
-		break;
-	
-		case 'testing':
-		case 'production':
-			$config['base_url']	= "http://www.codefight.org/";
-		break;
+if (defined('ENVIRONMENT')) {
+    switch (ENVIRONMENT)
+    {
+        case 'development':
+            $config['base_url'] = "http://nplab.codefight.org/";
+            break;
 
-		default:
-			die('The application environment is not set correctly.');
-	}
+        case 'testing':
+        case 'production':
+            $config['base_url'] = "http://www.codefight.org/";
+            break;
+
+        default:
+            die('The application environment is not set correctly.');
+    }
 }
 
 /*domain where skin files are hosted*/
-$config['skin_url']	= $config['base_url'];
+$config['skin_url'] = $config['base_url'];
 
-if(defined('CFWEBSITE'))
-	$config['base_url']	= CFWEBSITE;
+if (defined('CFWEBSITE'))
+    $config['base_url'] = CFWEBSITE;
 
 
 /*
@@ -67,7 +66,7 @@ $config['index_page'] = "";
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= 'AUTO';
+$config['uri_protocol'] = 'AUTO';
 
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +91,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language'] = 'english';
 
 /*
 |--------------------------------------------------------------------------
@@ -177,11 +176,11 @@ $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 | use segment based URLs.
 |
 */
-$config['allow_get_array']		= TRUE;
+$config['allow_get_array'] = TRUE;
 $config['enable_query_strings'] = FALSE;
-$config['controller_trigger']	= 'c';
-$config['function_trigger']		= 'm';
-$config['directory_trigger']	= 'd'; // experimental not currently in use
+$config['controller_trigger'] = 'c';
+$config['function_trigger'] = 'm';
+$config['directory_trigger'] = 'd'; // experimental not currently in use
 
 /*
 |--------------------------------------------------------------------------
@@ -203,7 +202,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 1;
 
 /*
 |--------------------------------------------------------------------------
@@ -267,15 +266,15 @@ $config['encryption_key'] = 's78d6f78sd6f8sd7zx6f8ds6f8s7d6fsd78';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'ci_session';
-$config['sess_expiration']		= 7200;
-$config['sess_expire_on_close']	= FALSE;
-$config['sess_encrypt_cookie']	= FALSE;
-$config['sess_use_database']	= FALSE;
-$config['sess_table_name']		= 'ci_sessions';
-$config['sess_match_ip']		= FALSE;
-$config['sess_match_useragent']	= TRUE;
-$config['sess_time_to_update']	= 300;
+$config['sess_cookie_name'] = 'codefight_' . (defined('ENVIRONMENT') ? ENVIRONMENT : '');
+$config['sess_expiration'] = 7200;
+$config['sess_expire_on_close'] = TRUE;
+$config['sess_encrypt_cookie'] = FALSE;
+$config['sess_use_database'] = TRUE;
+$config['sess_table_name'] = 'cf_sessions';
+$config['sess_match_ip'] = FALSE;
+$config['sess_match_useragent'] = TRUE;
+$config['sess_time_to_update'] = 300;
 
 /*
 |--------------------------------------------------------------------------
@@ -288,10 +287,10 @@ $config['sess_time_to_update']	= 300;
 | 'cookie_secure' =  Cookies will only be set if a secure HTTPS connection exists.
 |
 */
-$config['cookie_prefix']	= "";
-$config['cookie_domain']	= "";
-$config['cookie_path']		= "/";
-$config['cookie_secure']	= FALSE;
+$config['cookie_prefix'] = "";
+$config['cookie_domain'] = "";
+$config['cookie_path'] = "/";
+$config['cookie_secure'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
+<?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
@@ -6,119 +6,119 @@
 
 <div class="siteContainer">
 
-	<div class="header">
+    <div class="header">
 
-		<div class="logo"><?php $this->cf_block_lib->load('page_html/logo'); //Load logo block ?></div>
+        <div class="logo"><?php $this->cf_block_lib->load('page_html/logo'); //Load logo block ?></div>
 
-		<div class="google_468_60_top"><?php $this->cf_block_lib->load('advertisements/banner_468x60'); //Load Banner 468 X 60 block ?></div>
+        <div class="google_468_60_top"><?php $this->cf_block_lib->load('advertisements/banner_468x60'); //Load Banner 468 X 60 block ?></div>
 
-		<div class="userLogged">
+        <div class="userLogged">
 
-			<div class="feed_counter"><?php $this->cf_block_lib->load('feed/feed_counter'); //Load Feed Counter block ?></div>
+            <div class="feed_counter"><?php $this->cf_block_lib->load('feed/feed_counter'); //Load Feed Counter block ?></div>
 
-			<?php $this->cf_block_lib->load('welcome'); //Load welcome block ?>
+            <?php $this->cf_block_lib->load('welcome'); //Load welcome block ?>
 
-		</div>
+        </div>
 
-	</div>
-	<?php
-	
-	//Load Downloads Block
-	$this->cf_block_lib->load('downloads');
-	
-	//Load Language Selection Block
-	$this->cf_block_lib->load('languages');
-	
-	//Load message block
-	$this->cf_block_lib->load('page_html/message'); ?>
-	
-	<div class="pageContainer">
+    </div>
+    <?php
 
-		<div class="menu_top">
+    //Load Downloads Block
+    $this->cf_block_lib->load('downloads');
 
-			<?php $this->cf_block_lib->load('template_select'); //Load Template Select Block ?>
+    //Load Language Selection Block
+    $this->cf_block_lib->load('languages');
 
-			<?php $this->cf_block_lib->load('menu/page_horizontal'); //Load page menu horizontal block ?>
+    //Load message block
+    $this->cf_block_lib->load('page_html/message'); ?>
 
-			<p class="clear">&nbsp;</p>
+    <div class="pageContainer">
 
-		</div>
+        <div class="menu_top">
 
-		<p class="clear">&nbsp;</p>
+            <?php $this->cf_block_lib->load('template_select'); //Load Template Select Block ?>
 
-		<div class="menuLeft">
+            <?php $this->cf_block_lib->load('menu/page_horizontal'); //Load page menu horizontal block ?>
 
-			<div class="blog_categories">
+            <p class="clear">&nbsp;</p>
 
-				<h2>CATEGORIES</h2>
-				
-				<?php $this->cf_block_lib->load('menu/blog_categories_vertical'); //Load Blog Categories block ?>
+        </div>
 
-			</div>
+        <p class="clear">&nbsp;</p>
 
-			<div class="blog_roll">
-				<h2>BLOG ROLL</h2>
+        <div class="menuLeft">
 
-				<?php $this->cf_block_lib->load('menu/blog_roll_vertical'); //Load Blog Roll block ?>
+            <div class="blog_categories">
 
-			</div>
+                <h2>CATEGORIES</h2>
 
-			<?php $this->cf_block_lib->load('advertisements/banner_160x600'); //Load Banner 160 X 600 block ?>
+                <?php $this->cf_block_lib->load('menu/blog_categories_vertical'); //Load Blog Categories block ?>
 
-			<p class="clear">&nbsp;</p>
+            </div>
 
-			<div class="tag_cloud">
+            <div class="blog_roll">
+                <h2>BLOG ROLL</h2>
 
-				<?php $this->cf_block_lib->load('tag_cloud'); //Load Tag Cloud block ?>
+                <?php $this->cf_block_lib->load('menu/blog_roll_vertical'); //Load Blog Roll block ?>
 
-			</div>
+            </div>
 
-		</div>
+            <?php $this->cf_block_lib->load('advertisements/banner_160x600'); //Load Banner 160 X 600 block ?>
 
-		<div class="contents">
+            <p class="clear">&nbsp;</p>
 
-			<?php $this->cf_block_lib->load($content_block); //Load Content Block ?>
+            <div class="tag_cloud">
 
-		</div>
+                <?php $this->cf_block_lib->load('tag_cloud'); //Load Tag Cloud block ?>
 
-		 <p class="clear">&nbsp;</p>
+            </div>
 
-	</div>
+        </div>
 
-	 <p class="clear">&nbsp;</p>
+        <div class="contents">
 
-	<div id="footer">
+            <?php $this->cf_block_lib->load($content_block); //Load Content Block ?>
 
-		<div class="footer_banner">
+        </div>
 
-			<?php $this->cf_block_lib->load('advertisements/banner_728x90'); //Load Banner 728 X 90 Block ?>
+        <p class="clear">&nbsp;</p>
 
-		</div>
+    </div>
 
-		<div class="footer_links">
+    <p class="clear">&nbsp;</p>
 
-			<?php $this->cf_block_lib->load('page_html/footer'); //Load Footer Block ?>
+    <div id="footer">
 
-		</div>
+        <div class="footer_banner">
 
-		<p class="clear">&nbsp;</p>
+            <?php $this->cf_block_lib->load('advertisements/banner_728x90'); //Load Banner 728 X 90 Block ?>
 
-		<div class="copyright">
+        </div>
 
-			<?php $this->cf_block_lib->load('page_html/copyright'); //Load copyright Block ?>
+        <div class="footer_links">
 
-		</div>
+            <?php $this->cf_block_lib->load('page_html/footer'); //Load Footer Block ?>
 
-		<p class="clear">&nbsp;</p>
+        </div>
 
-		<div class="powered_by">
+        <p class="clear">&nbsp;</p>
 
-			<?php $this->cf_block_lib->load('page_html/powered_by'); //Powered By: Please give me some credit :) ?>
+        <div class="copyright">
 
-		</div>
+            <?php $this->cf_block_lib->load('page_html/copyright'); //Load copyright Block ?>
 
-	</div>
-	
+        </div>
+
+        <p class="clear">&nbsp;</p>
+
+        <div class="powered_by">
+
+            <?php $this->cf_block_lib->load('page_html/powered_by'); //Powered By: Please give me some credit :) ?>
+
+        </div>
+
+    </div>
+
 </div>
 </body>
 </html>

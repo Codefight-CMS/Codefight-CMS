@@ -1,0 +1,4 @@
+28.09.2011
+----------
+--add new column on menu
+ALTER TABLE `cf_menu` ADD `menu_params` VARCHAR( 255 ) NULL AFTER `menu_link`

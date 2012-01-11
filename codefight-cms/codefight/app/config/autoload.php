@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 /*
 | -------------------------------------------------------------------
 | AUTO-LOADER
@@ -37,7 +37,7 @@
 |
 */
 
-$autoload['packages'] = array(APPPATH.'third_party');
+$autoload['packages'] = array(APPPATH . 'third_party');
 
 
 /*
@@ -52,19 +52,20 @@ $autoload['packages'] = array(APPPATH.'third_party');
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 $autoload['libraries'] = array(
-						'database',
-						'cf_block_lib',
-						'session',
-						'user_agent',
-						'cf_login_lib',
-						'cf_asset_lib',
-						'cf_process_lib',
-						'cf_menu_lib',
-						'cf_simplexml_lib',
-						'MY_Language',
-						'security',
-						'admin/Cf_module_lib'
-					);
+    'database',
+    'session',
+    'cf_library',
+    'cf_block_lib',
+    'user_agent',
+    'cf_login_lib',
+    'cf_asset_lib',
+    'cf_process_lib',
+    'cf_menu_lib',
+    'cf_simplexml_lib',
+    'MY_Language',
+    'security',
+    'module/Cf_module_lib'
+);
 
 
 /*
@@ -121,7 +122,13 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('cf_data_model','cf_setting_model', 'language_model', 'cf_banner_model', 'cf_helper_model');
+$autoload['model'] = array(
+	'cf_data_model',
+	'cf_setting_model',
+	'language_model',
+	'cf_banner_model',
+	'cf_helper_model',
+    'module/cf_module_model');
 
 
 /* End of file autoload.php */

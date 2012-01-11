@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -43,7 +43,7 @@
 /*
  * TODO:: Generate automatically based on controllers
  */
- 
+
 $route['front_controllers_folder'] = "frontend";
 
 /* 
@@ -57,21 +57,16 @@ $route['front_controllers_folder'] = "frontend";
 $route['default_controller'] = $route['front_controllers_folder'] . "/page/page";
 
 
-
 /*
- * Route to Admin control panel
- */
+* Route to Admin control panel
+*/
 $route['admin'] = "admin/cp/cp";
 
 
-
-$route['admin'.'(/.*)?'] = 'admin$1';
-
+$route['admin' . '(/.*)?'] = 'admin$1';
 
 
-
-
-$route['(.*)?'] = $route['default_controller'].'/index/$1';
+$route['(.*)?'] = $route['default_controller'] . '/index/$1';
 $route['scaffolding_trigger'] = "";
 /*
 $route['blog/(.+)'] = "blog/blog/index/$1";

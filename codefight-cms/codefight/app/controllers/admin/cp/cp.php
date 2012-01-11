@@ -26,91 +26,91 @@
 /**
  * Admin Control Panel Main Page
  */
-class Cp extends MY_Controller {
+class Cp extends MY_Controller
+{
 
-	function __construct()
-	{
-		parent::MY_Controller();
-		error_reporting(0);
-	}
-	
+    function __construct()
+    {
+        parent::MY_Controller();
+    }
+
 
     /**
      * Control Panel Admin(Index) Page Function
      * Get Top Page Of The Website.
      */
-	function index()
-	{
-		$data = '';
-		
-		$this->load->model('cf_cp_model');
+    function index()
+    {
+        $data = '';
 
-		$assets = array();
-		
-		//load all required css
-		//if media type not defined, screen is default.
-		//$assets['css'] = array('admin','swiff','box','upload');
-		$assets['css'] = array(
-							'all' => array('admin','box', 'cp')
-						);
-		//load all required js
-		$assets['js'] = array('jquery');
-		
-		$this->cf_asset_lib->load($assets);
-		
-		$data['top_page'] = $this->cf_cp_model->get_top_page();
+        $this->load->model('cf_cp_model');
 
-		//---
-		$html_string = $this->load->view('admin/cp/cp_view', $data, true);//Get view data in place of sending to browser.
-		
-		$this->cf_process_lib->view($html_string);
-	}
-	
+        $assets = array();
+
+        //load all required css
+        //if media type not defined, screen is default.
+        //$assets['css'] = array('admin','swiff','box','upload');
+        $assets['css'] = array(
+            'all' => array('admin', 'box', 'cp')
+        );
+        //load all required js
+        $assets['js'] = array('jquery');
+
+        $this->cf_asset_lib->load($assets);
+
+        $data['top_page'] = $this->cf_cp_model->get_top_page();
+
+        //---
+        $html_string = $this->load->view('admin/cp/cp_view', $data, true); //Get view data in place of sending to browser.
+
+        $this->cf_process_lib->view($html_string);
+    }
+
 
     /**
      * Control Panel Admin/Update Page Function
      * Get Release Notes From Official Site Of Codefight CMS.
      */
-	function update()
-	{
-		$data = '';
-		
-		$assets = array();
-		
-		//load all required css
-		//if media type not defined, screen is default.
-		//$assets['css'] = array('admin','swiff','box','upload');
-		$assets['css'] = array(
-							'all' => array('admin','box', 'cp')
-						);
-		//load all required js
-		$assets['js'] = array('jquery');
-		
-		$this->cf_asset_lib->load($assets);
-		
-		$codefight = array();
-		if($xml = simplexml_load_file('http://codefight.org/feed/releases'))
-		{
-			$channel = ($xml->channel);
-			
-			foreach($channel as $v)
-			{
-				foreach($v->item as $w)
-				{
-					$codefight[] = $w;
-				}
-			}
-		}
-		
-		$data['codefight'] = $codefight;
-		
+    function update()
+    {
+        error_reporting(0);
+        $data = '';
 
-		//---
-		$html_string = $this->load->view('admin/cp/update_view', $data, true);//Get view data in place of sending to browser.
-		
-		$this->cf_process_lib->view($html_string);
-	
-	}
+        $assets = array();
+
+        //load all required css
+        //if media type not defined, screen is default.
+        //$assets['css'] = array('admin','swiff','box','upload');
+        $assets['css'] = array(
+            'all' => array('admin', 'box', 'cp')
+        );
+        //load all required js
+        $assets['js'] = array('jquery');
+
+        $this->cf_asset_lib->load($assets);
+
+        $codefight = array();
+        if ($xml = simplexml_load_file('http://codefight.org/feed/releases')) {
+            $channel = ($xml->channel);
+
+            foreach ($channel as $v)
+            {
+                foreach ($v->item as $w)
+                {
+                    $codefight[] = $w;
+                }
+            }
+        }
+
+        $data['codefight'] = $codefight;
+
+
+        //---
+        $html_string = $this->load->view('admin/cp/update_view', $data, true); //Get view data in place of sending to browser.
+
+        $this->cf_process_lib->view($html_string);
+
+    }
 }
 
 /* End of file cp.php */
