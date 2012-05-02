@@ -21,7 +21,7 @@
            value="<?php echo set_value('websites_url'); ?>" maxlength="255"/>
 
     <p class="clear">&nbsp;</p>
-    <label>&nbsp;</label><input name="create" type="submit" id="create" value="Create"/>&nbsp;<?php echo anchor('admin/setting/websites', __('BACK')); ?>
+    <label>&nbsp;</label><input class="btn btn-primary" name="create" type="submit" id="create" value="Create"/>&nbsp;<?php echo anchor('admin/setting/websites', __('BACK')); ?>
     <p class="clear">&nbsp;</p>
 </div>
 <?php echo form_close(); ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * This class crawls google and find out on which page a website is lisited, based on the keyword searched.
  *
@@ -119,15 +119,6 @@ class Keywordanalyzer extends MY_Controller
 
             $data['keywordanalyzer'] = $this->_initSpider();
         }
-
-        //load all required css
-        $assets['css'] = array(
-            'all' => array('page')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //main content block [content view]
         $data['content_block'] = 'keywordanalyzer';

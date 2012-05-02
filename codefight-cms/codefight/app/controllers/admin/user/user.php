@@ -51,19 +51,6 @@ class User extends MY_Controller
         {
             $data = '';
 
-            $assets = array();
-
-            //load all required css
-            //if media type not defined, screen is default.
-            //$assets['css'] = array('admin','swiff','box','upload');
-            $assets['css'] = array(
-                'all' => array('admin', 'user', 'box')
-            );
-            //load all required js
-            $assets['js'] = array();
-
-            $this->cf_asset_lib->load($assets);
-
             /*
                 * START: Pagination config and initialization
                 */
@@ -93,15 +80,16 @@ class User extends MY_Controller
         $this->load->library('form_validation');
 
         $val = array(
-            array('field' => 'active', 'label' => 'Status', 'rules' => 'trim|required|xss_clean'),
-            array('field' => 'email', 'label' => 'Email', 'rules' => 'trim|required|xss_clean|valid_email|callback__email_check'),
-            array('field' => 'password', 'label' => 'Password', 'rules' => 'trim|required|xss_clean|md5'),
-            array('field' => 'group_id', 'label' => 'Group', 'rules' => 'trim|required|xss_clean'),
-            array('field' => 'is_admin', 'label' => 'Is Admin', 'rules' => 'trim|required|xss_clean'),
-            array('field' => 'is_author', 'label' => 'Is Author', 'rules' => 'trim|required|xss_clean'),
-            array('field' => 'firstname', 'label' => 'First Name', 'rules' => 'trim|required|xss_clean'),
-            array('field' => 'lastname', 'label' => 'Last Name', 'rules' => 'trim|required|xss_clean'),
-            array('field' => 'profile_link', 'label' => 'Profile Link', 'rules' => 'trim|xss_clean')
+            array('field' => 'active', 'label' => 'Status', 'rules' => 'trim|required'),
+            array('field' => 'email', 'label' => 'Email', 'rules' => 'trim|required|valid_email|callback__email_check'),
+            array('field' => 'password', 'label' => 'Password', 'rules' => 'trim|required|md5'),
+            array('field' => 'group_id', 'label' => 'Group', 'rules' => 'trim|required'),
+            array('field' => 'is_admin', 'label' => 'Is Admin', 'rules' => 'trim|required'),
+            array('field' => 'is_author', 'label' => 'Is Author', 'rules' => 'trim|required'),
+            array('field' => 'firstname', 'label' => 'First Name', 'rules' => 'trim|required'),
+            array('field' => 'lastname', 'label' => 'Last Name', 'rules' => 'trim|required'),
+            array('field' => 'profile_link', 'label' => 'Profile Link', 'rules' => 'trim'),
+            array('field' => 'profile', 'label' => 'Profile', 'rules' => 'trim')
         );
 
         $this->form_validation->set_rules($val);
@@ -109,7 +97,7 @@ class User extends MY_Controller
         if ($this->form_validation->run() == FALSE) {
             if (!validation_errors() == '' && $this->input->post('create') == 'Create') {
                 $msg = array('error' => validation_errors());
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
 
         }
@@ -120,6 +108,7 @@ class User extends MY_Controller
             $password = set_value('password');
             $firstname = set_value('firstname');
             $lastname = set_value('lastname');
+            $profile = $this->input->post('profile');
             $profile_link = set_value('profile_link');
             $group_id = set_value('group_id');
             $is_admin = set_value('is_admin');
@@ -136,6 +125,7 @@ class User extends MY_Controller
                     'password' => $password,
                     'firstname' => $firstname,
                     'lastname' => $lastname,
+                    'profile' => $profile,
                     'profile_link' => $profile_link,
                     'group_id' => $group_id,
                     'is_admin' => $is_admin,
@@ -152,28 +142,15 @@ class User extends MY_Controller
                 if($save)
                 {
                     $msg = array('success' => '<p>New User <strong>' . $firstname . ' ' . $lastname . '</strong> Successfully Added.</p>');
-                    set_global_messages($msg, 'success');
+                    setMessages($msg, 'success');
                 }
             }
             else
             {
                 $msg = array('error' => '<p>User with email <strong>$email</strong> already exists!.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'user', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/user/user_create_view', $data, true); //Get view data in place of sending to browser.
@@ -193,7 +170,7 @@ class User extends MY_Controller
             $id_array = array();
 
             $msg = array('error' => '<p>You must select atleast one user to delete.</p>');
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
 
         !is_array($id_array) ? $id_array = array() : '';
@@ -205,12 +182,12 @@ class User extends MY_Controller
 
             if ($this->db->affected_rows()) {
                 $msg = array('success' => '<p>Selected user(s) deleted successfully.</p>');
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
             }
             else
             {
                 $msg = array('error' => '<p>Error! couldn\'t delete.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
 
@@ -234,7 +211,7 @@ class User extends MY_Controller
             else
             {
                 $msg = array('error' => '<p>You must select atleast one user to edit.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 unset($_POST);
                 $this->index();
@@ -263,6 +240,7 @@ class User extends MY_Controller
                 $_POST['user'][$row->user_id]['group_id'] = $row->group_id;
                 $_POST['user'][$row->user_id]['is_admin'] = $row->is_admin;
                 $_POST['user'][$row->user_id]['is_author'] = $row->is_author;
+                $_POST['user'][$row->user_id]['profile'] = $row->profile;
                 $_POST['user'][$row->user_id]['profile_link'] = $row->profile_link;
                 //$_POST['user'][$row->user_id]['password'] = $row->password;
             }
@@ -276,14 +254,15 @@ class User extends MY_Controller
                 //cleaning
                 $id = (int)preg_replace('/[^0-9]+/', '', $v['id']); //only intergers
                 $active = (int)preg_replace('/[^0-9]+/', '', $v['active']);
-                $email = xss_clean($v['email']);
-                $firstname = xss_clean($v['firstname']);
-                $lastname = xss_clean($v['lastname']);
-                $profile_link = xss_clean($v['profile_link']);
+                $email = ($v['email']);
+                $firstname = ($v['firstname']);
+                $lastname = ($v['lastname']);
+                $profile = ($v['profile']);
+                $profile_link = ($v['profile_link']);
                 $is_author = (int)preg_replace('/[^0-9]+/', '', $v['is_author']);
                 $is_admin = (int)preg_replace('/[^0-9]+/', '', $v['is_admin']);
                 $group_id = (int)preg_replace('/[^0-9]+/', '', $v['group_id']);
-                $password = xss_clean($v['password']);
+                $password = ($v['password']);
 
                 //clean the data to autofill in form
                 $_POST['user'][$id]['id'] = $id;
@@ -295,6 +274,7 @@ class User extends MY_Controller
                 $_POST['user'][$id]['is_author'] = $is_author;
                 $_POST['user'][$id]['group_id'] = $group_id;
                 $_POST['user'][$id]['password'] = $password;
+                $_POST['user'][$id]['profile'] = $profile;
                 $_POST['user'][$id]['profile_link'] = $profile_link;
 
                 //update database if set
@@ -306,17 +286,19 @@ class User extends MY_Controller
                     $_POST['firstname'] = $firstname;
                     $_POST['lastname'] = $lastname;
                     $_POST['password'] = $password;
+                    $_POST['profile'] = $profile;
                     $_POST['profile_link'] = $profile_link;
 
                     $val = array(
-                        array('field' => 'email', 'label' => 'Email', 'rules' => 'trim|required|xss_clean|valid_email'),
-                        array('field' => 'is_admin', 'label' => 'Is Admin', 'rules' => 'trim|required|xss_clean'),
-                        array('field' => 'is_author', 'label' => 'Is Author', 'rules' => 'trim|required|xss_clean'),
-                        array('field' => 'group_id', 'label' => 'Group', 'rules' => 'trim|required|xss_clean'),
-                        array('field' => 'password', 'label' => 'Password', 'rules' => 'trim|xss_clean|md5'),
-                        array('field' => 'firstname', 'label' => 'First Name', 'rules' => 'trim|required|xss_clean'),
-                        array('field' => 'lastname', 'label' => 'Last Name', 'rules' => 'trim|required|xss_clean'),
-                        array('field' => 'profile_link', 'label' => 'Profile Link', 'rules' => 'trim|xss_clean')
+                        array('field' => 'email', 'label' => 'Email', 'rules' => 'trim|required|valid_email'),
+                        array('field' => 'is_admin', 'label' => 'Is Admin', 'rules' => 'trim|required'),
+                        array('field' => 'is_author', 'label' => 'Is Author', 'rules' => 'trim|required'),
+                        array('field' => 'group_id', 'label' => 'Group', 'rules' => 'trim|required'),
+                        array('field' => 'password', 'label' => 'Password', 'rules' => 'trim|md5'),
+                        array('field' => 'firstname', 'label' => 'First Name', 'rules' => 'trim|required'),
+                        array('field' => 'lastname', 'label' => 'Last Name', 'rules' => 'trim|required'),
+                        array('field' => 'profile', 'label' => 'Profile', 'rules' => 'trim'),
+                        array('field' => 'profile_link', 'label' => 'Profile Link', 'rules' => 'trim')
                     );
 
                     $this->form_validation->set_rules($val);
@@ -324,7 +306,7 @@ class User extends MY_Controller
                     if ($this->form_validation->run() == FALSE) {
                         if (!validation_errors() == '' && $this->input->post('edit') == 'Update') {
                             $msg = array('error' => validation_errors());
-                            set_global_messages($msg, 'error');
+                            setMessages($msg, 'error');
                         }
                     }
                     else
@@ -335,6 +317,7 @@ class User extends MY_Controller
                             'user_id' => $id,
                             'firstname' => set_value('firstname'),
                             'lastname' => set_value('lastname'),
+                            'profile' => $profile,
                             'profile_link' => set_value('profile_link'),
                             'is_author' => set_value('is_author'),
                             'is_admin' => set_value('is_admin'),
@@ -353,31 +336,18 @@ class User extends MY_Controller
                         if($save)
                         {
                             $msg = array('success' => '<p>' . $success_count++ . ' Records Updated successfully.</p>');
-                            set_global_messages($msg, 'success', false);
+                            setMessages($msg, 'success', false);
                         }
                     }
                 }
                 else
                 {
                     $msg = array('error' => '<p>Required fields can not be empty!</p>');
-                    set_global_messages($msg, 'error');
+                    setMessages($msg, 'error');
                 }
             }
         }
         //END: validate data and update in database
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'user', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/user/user_edit_view', $data, true); //Get view data in place of sending to browser.

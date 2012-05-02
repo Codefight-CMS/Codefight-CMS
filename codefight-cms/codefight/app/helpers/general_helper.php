@@ -1,15 +1,17 @@
-<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
 /**
  * CodeFight
  *
  * An open source application
  *
  * @package        CodeFight
- * @author        CodeFight Dev Team
- * @copyright    Copyright (c) 2010, Codefight.org
+ * @author         CodeFight Dev Team
+ * @copyright      Copyright (c) 2010, Codefight.org
  * @license        Pending
- * @link        http://codefight.org
- * @since        Version 1.0
+ * @link           http://codefight.org
+ * @since          Version 1.0
  * @filesource
  */
 
@@ -19,35 +21,60 @@
  * Codefight General Helpers
  *
  * @package        CodeFight
- * @subpackage    Helpers
- * @category    Helpers
- * @author        CodeFight Dev Team
- * @link        Pending Doc Link
+ * @subpackage     Helpers
+ * @category       Helpers
+ * @author         CodeFight Dev Team
+ * @link           Pending Doc Link
  */
 
 // ------------------------------------------------------------------------
 
-/**
- * Get Global Messages
- *
- * @access    public
- * @param    void
- * @return    string
- */
-if (!function_exists('get_global_messages')) {
-    function get_global_messages()
+if (!function_exists('Library')) {
+    /**
+     * @param string $library
+     *
+     * @return mixed
+     */
+    function Library($library = 'codefight')
+    {
+        $MY_Library = new MY_Library();
+        return $MY_Library->Library($library);
+    }
+}
+
+if (!function_exists('Model')) {
+    /**
+     * @param string $model
+     *
+     * @return mixed
+     */
+    function Model($model = 'codefight')
+    {
+        $CI =& get_instance();
+        //$MY_Model = new MY_Model();
+        $CI->load->model('MY_Model');
+        return $CI->MY_Model->Model($model);
+        //return $MY_Model->Model($model);
+    }
+}
+
+if (!function_exists('getMessages')) {
+    /**
+     * @return string
+     */
+    function getMessages()
     {
         $str = '';
-        $CI =& get_instance();
+        $CI  =& get_instance();
 
-        $global_messages = (array)$CI->session->userdata('global_messages');
+        $globalMessages = (array)$CI->session->userdata('globalMessages');
 
         /*remove empty items*/
-        $global_messages = array_filter($global_messages);
+        $globalMessages = array_filter($globalMessages);
 
-        if (count($global_messages) > 0) {
-            foreach ($global_messages as $k => $v) {
-                echo '<div class="' . $k . '">';
+        if (count($globalMessages) > 0) {
+            foreach ($globalMessages as $k => $v) {
+                echo '<div class="alert alert-' . $k . '"><a class="close" data-dismiss="alert">×</a>';
 
                 foreach ((array)$v as $w) {
                     echo "$w\n";
@@ -57,47 +84,43 @@ if (!function_exists('get_global_messages')) {
             }
         }
 
-        $CI->session->unset_userdata('global_messages');
+        $CI->session->unset_userdata('globalMessages');
 
         return $str;
     }
 }
 
-
-/**
- * Set Global Messages
- *
- * @access    public
- * @param    array | String
- * @return    void
- */
-if (!function_exists('set_global_messages')) {
-    function set_global_messages($msg = '', $type = 'error', $is_multiple = true)
+if (!function_exists('setMessages')) {
+    /**
+     * @param string $msg
+     * @param string $type
+     * @param bool   $is_multiple
+     */
+    function setMessages($msg = '', $type = 'error', $is_multiple = true)
     {
         $CI =& get_instance();
 
-        $global_messages = (array)$CI->session->userdata('global_messages');
+        $globalMessages = (array)$CI->session->userdata('globalMessages');
 
         foreach ((array)$msg as $v) {
-            if ($is_multiple)
-                $global_messages[$type][] = (string)$v;
-            else
-                $global_messages[$type][0] = (string)$v;
+            if ($is_multiple) {
+                $globalMessages[$type][] = (string)$v;
+            } else {
+                $globalMessages[$type][0] = (string)$v;
+            }
+        }
+        if (isset($globalMessages[0])) {
+            unset($globalMessages[0]);
         }
 
-        $CI->session->set_userdata('global_messages', $global_messages);
+        $CI->session->set_userdata('globalMessages', $globalMessages);
     }
 }
 
-
-/**
- * Get Top Menu
- *
- * @access    public
- * @param    void
- * @return    string
- */
 if (!function_exists('get_top_menu')) {
+    /**
+     * @return string
+     */
     function get_top_menu()
     {
         $CI =& get_instance();
@@ -111,30 +134,33 @@ if (!function_exists('get_top_menu')) {
     }
 }
 
-
-/**
- * Get Page Url
- *
- * @access    public
- * @param    array
- * @return    string
- */
 if (!function_exists('get_page_url')) {
+    /**
+     * @param $data
+     *
+     * @return string
+     */
     function get_page_url($data)
     {
 
         $url = ''; //base_url();
-        $CI =& get_instance();
+        $CI  =& get_instance();
 
         $data = (array)$data;
-        if (!count($data)) return $url;
+        if (!count($data)) {
+            return $url;
+        }
 
-        if (empty($data['menu_id'])) $data['menu_id'] = 0;
+        if (empty($data['menu_id'])) {
+            $data['menu_id'] = 0;
+        }
 
         $menu_id = $CI->cf_helper_model->get_menu_link($data['menu_id'], $data['page_type']);
 
         if (!empty($data['page_type'])) {
-            if ($data['page_type'] == 'page') return $menu_id;
+            if ($data['page_type'] == 'page') {
+                return $menu_id;
+            }
 
             $url .= $data['page_type'] . '/'; //add page type as controller
         }
@@ -151,28 +177,27 @@ if (!function_exists('get_page_url')) {
           }
           */
 
-        if (!empty($data['page_id'])) $url .= $data['page_id'] . '/'; //add page id
+        if (!empty($data['page_id'])) {
+            $url .= $data['page_id'] . '/';
+        } //add page id
 
-        if (!empty($data['page_title'])) $url .= url_title($data['page_title']);
+        if (!empty($data['page_title'])) {
+            $url .= url_title($data['page_title']);
+        }
 
         return ($url);
     }
 }
 
-
-/**
- * Get Page Url
- *
- * @access    public
- * @param    void
- * @return    string
- */
 if (!function_exists('get_canonical_url')) {
+    /**
+     * @return mixed
+     */
     function get_canonical_url()
     {
         $url = current_url();
 
-        $CI =& get_instance();
+        $CI      =& get_instance();
         $page_id = (int)$CI->uri->segment(3);
         //echo $page_id;
 
@@ -182,15 +207,18 @@ if (!function_exists('get_canonical_url')) {
 
             $data = $CI->cf_blog_model->get_page_full($page_id);
 
-            if (isset($data['content'][0])) $url = site_url(get_page_url($data['content'][0]));
+            if (isset($data['content'][0])) {
+                $url = site_url(get_page_url($data['content'][0]));
+            }
         } else {
             $segments = $CI->uri->segment_array();
             //print_r($segments);
-            foreach ($segments as $k => $v)
-            {
+            foreach ($segments as $k => $v) {
                 //----
                 //$corrupted = substr($v, -5);
-                while (substr($v, -5) == '_html') $v = substr($v, 0, -5);
+                while (substr($v, -5) == '_html') {
+                    $v = substr($v, 0, -5);
+                }
 
                 $segments[$k] = $v;
             }
@@ -203,21 +231,29 @@ if (!function_exists('get_canonical_url')) {
     }
 }
 
-
 if (!function_exists('skin_url')) {
-    function skin_url($path='frontend', $file='')
+    /**
+     * @param string $path
+     * @param string $file
+     *
+     * @return string
+     */
+    function skin_url($path = 'frontend', $file = '')
     {
-        if (!defined('SKINPATH')) define('SKINPATH', (FCPATH));
+        if (!defined('SKINPATH')) {
+            define('SKINPATH', (FCPATH));
+        }
         $CI =& get_instance();
 
         $path = trim($path, '/');
         $file = trim($file, '/');
 
         $skin_url = $CI->config->item('skin_url');
-        if (empty($skin_url)) $skin_url = base_url();
+        if (empty($skin_url)) {
+            $skin_url = base_url();
+        }
 
-        switch($path)
-        {
+        switch ($path) {
             case 'global/images':
                 return $skin_url . 'skin/global/images/' . $file;
                 break;
@@ -225,7 +261,7 @@ if (!function_exists('skin_url')) {
                 return $skin_url . 'skin/global/' . $file;
                 break;
             case 'frontend':
-                return $skin_url . 'skin/frontend/' . $CI->cf_asset_lib->template . '/';
+                return $skin_url . 'skin/frontend/' . Library('asset')->template . '/';
                 break;
             default:
         }
@@ -233,24 +269,29 @@ if (!function_exists('skin_url')) {
     }
 }
 
-
 if (!function_exists('get_random_bg')) {
+    /**
+     * @return bool|string
+     */
     function get_random_bg()
     {
         $ret = array();
-        $CI =& get_instance();
+        $CI  =& get_instance();
 
-        if (!defined('SKINPATH')) define('SKINPATH', (FCPATH));
+        if (!defined('SKINPATH')) {
+            define('SKINPATH', (FCPATH));
+        }
 
-        $folder_path = 'skin/frontend/' . $CI->cf_asset_lib->template . 'images/bg/';
-        $dir = SKINPATH . $folder_path;
+        $folder_path = 'skin/frontend/' . Library('asset')->template . 'images/bg/';
+        $dir         = SKINPATH . $folder_path;
 
         $skin_url = $CI->config->item('skin_url');
-        if (empty($skin_url)) $skin_url = base_url();
+        if (empty($skin_url)) {
+            $skin_url = base_url();
+        }
 
         if ($handle = opendir($dir)) {
-            while (false !== ($file = readdir($handle)))
-            {
+            while (false !== ($file = readdir($handle))) {
                 if ($file != "." && $file != ".." && $file != 'Thumbs.db' && is_file($dir . $file)) {
                     $ret[$file] = $file;
                 }
@@ -263,14 +304,16 @@ if (!function_exists('get_random_bg')) {
 
             return $skin_url . $folder_path . $ret[$rand_key];
         }
-        else
-        {
+        else {
             return false;
         }
     }
 }
 
 if (!function_exists('latest_version')) {
+    /**
+     * @return string
+     */
     function latest_version()
     {
         error_reporting(0);
@@ -278,9 +321,9 @@ if (!function_exists('latest_version')) {
 
         $string = '';
 
-        $url = 'http://codefight.org/tools/version/' . preg_replace('/[^a-z0-9\-]+/i', '_', $_SERVER['HTTP_HOST']);
+        $url      = 'http://codefight.org/tools/version/' . preg_replace('/[^a-z0-9\-]+/i', '_', $_SERVER['HTTP_HOST']);
         $ver_file = FCPATH . "version.txt";
-        $fh = fopen($ver_file, 'r');
+        $fh       = fopen($ver_file, 'r');
         $ver_data = fgets($fh);
         fclose($fh);
 
@@ -294,22 +337,21 @@ if (!function_exists('latest_version')) {
 
             $ver_avail = preg_replace('/[^0-9\.]+/', '', $returnStr);
 
-            if (!empty($ver_avail) && $ver_avail > $ver_data) $string .= ' &nbsp; <span class="error">New version ' . $ver_avail . ' is available for <a target="_blank" href="http://codefight.org/">download</a></span>';
+            if (!empty($ver_avail) && $ver_avail > $ver_data) {
+                $string
+                    .= ' &nbsp; <span class="error">New version ' . $ver_avail
+                    . ' is available for <a target="_blank" href="http://codefight.org/">download</a></span>';
+            }
         }
 
         return $string;
     }
 }
 
-
-/**
- * Get Default Email Recipients
- *
- * @access    public
- * @param    void
- * @return    array
- */
 if (!function_exists('get_default_recipients')) {
+    /**
+     * @return array
+     */
     function get_default_recipients()
     {
         $CI =& get_instance();
@@ -326,27 +368,63 @@ if (!function_exists('get_default_recipients')) {
 }
 
 /**
- * Translate
+ * @param string $language_key : Text to translate
+ * @param bool   $return : default return, false to echo translated text
+ * @param string   $file : load translation file
  *
- * @access    public
- * @param    void
- * @return    array
+ * @return string
  */
 if (!function_exists('__')) {
-    function __($language_key = '')
+    function __($language_key = '', $return = true, $file = false)
     {
         $CI =& get_instance();
 
+        if ($file) {
+            $CI->lang->setFile($file);
+        }
+        $files = $CI->lang->getFile();
+
+        foreach($files as $file) {
+            if (!empty($file)) {
+                $filename = 'language' . DS . $CI->language . DS . "{$file}_lang.php";
+                $filename_path = str_replace(array('/','\\'), DS, FCPATH . APPPATH . $filename);
+                if (is_file($filename_path)) {
+                    $CI->lang->load($file, $CI->language);
+                } else {
+                    $msg = array('error' => "{$CI->language}/{$file}_lang.php not found!");
+                    setMessages($msg, 'error', false);
+                }
+            }
+        }
+
         $string = $CI->lang->line($language_key);
 
-        if ($string) {
-            return $string;
-        } else {
-            return $language_key;
+        if (!$string) {
+            $string = $language_key;
         }
+
+        if($return){
+            return $string;
+        }
+        echo $string;
+
+        return '';//for older versions.
     }
 }
 
+/**
+ * @param string $language_key : Text to translate
+ * @param bool   $return : default echo, true to return translated text
+ * @param string   $file : load translation file
+ *
+ * @return string
+ */
+if (!function_exists('___')) {
+    function ___($language_key = '', $return = false, $file = false)
+    {
+		return __($language_key, $return, $file);
+    }
+}
 
 /* End of file general_helper.php */
 /* Location: ./app/helpers/general_helper.php */

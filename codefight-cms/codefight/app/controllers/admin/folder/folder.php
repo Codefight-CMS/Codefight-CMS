@@ -68,19 +68,6 @@ class Folder extends MY_Controller
         $data = '';
         $data['head_includes'] = array('sortable.php');
 
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'file', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
-
         /*
            * START: Pagination config and initialization
            */
@@ -117,7 +104,7 @@ class Folder extends MY_Controller
             else
             {
                 $msg = array('error' => '<p>You must select atleast one folder to edit.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 unset($_POST);
                 $this->index();
@@ -221,7 +208,7 @@ class Folder extends MY_Controller
                     if ($this->form_validation->run() == FALSE) {
                         if (!validation_errors() == '' && $this->input->post('edit') == 'Update') {
                             $msg = array('error' => validation_errors());
-                            set_global_messages($msg, 'error');
+                            setMessages($msg, 'error');
                         }
                     }
                     else
@@ -247,12 +234,12 @@ class Folder extends MY_Controller
 
                         if ($update) {
                             $msg = array('success' => '<p>' . $success_count++ . ' Records Updated successfully.</p>');
-                            set_global_messages($msg, 'success', false);
+                            setMessages($msg, 'success', false);
                         }
                         else
                         {
                             $msg = array('error' => '<p>Could not update folder specified.</p>');
-                            set_global_messages($msg, 'error');
+                            setMessages($msg, 'error');
                         }
 
                     }
@@ -261,24 +248,11 @@ class Folder extends MY_Controller
                 else
                 {
                     $msg = array('error' => '<p>Required fields can not be empty!</p>');
-                    set_global_messages($msg, 'error');
+                    setMessages($msg, 'error');
                 }
             }
         }
         //END: validate data and update in database
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'file', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         $data['folder'] = $this->cf_file_model->get_active_folder();
 
@@ -330,7 +304,7 @@ class Folder extends MY_Controller
         if ($this->form_validation->run() == FALSE) {
             if (validation_errors() !== '' && $this->input->post('create') == 'Create') {
                 $msg = array('error' => validation_errors());
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
 
         }
@@ -361,27 +335,14 @@ class Folder extends MY_Controller
 
             if ($insert) {
                 $msg = array('success' => '<p>New Folder(s) Created.</p>');
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
             }
             else
             {
                 $msg = array('error' => '<p>Could not create folder specified.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'file', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         $data['folder'] = $this->cf_file_model->get_active_folder();
 
@@ -426,7 +387,7 @@ class Folder extends MY_Controller
 
         if (!$this->upload->do_upload($config['file_field'])) {
             $msg = array('error' => $this->upload->display_errors());
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
 
             return FALSE;
         }

@@ -1,4 +1,6 @@
-<?php  if (!defined('BASEPATH')) exit('No direct access allowed');
+<?php  if (!defined('BASEPATH')) {
+    exit('No direct access allowed');
+}
 
 /*
  * DEFFINE BELOW ITEMS FOR ASSETS MANAGEMENT
@@ -59,19 +61,22 @@ $config['cf']['js_css_dir'] 		= array(
  * Define css that need to be autoloaded in every page
  */
 $config['cf']['defaults']['css'] = array(
-    'all' => array('helper', 'header', 'menu', 'default', 'jquery.jdMenu', 'pagination', 'tag', 'footer', 'shThemeDefault', 'shCore')
+    'all' => array('bootstrap-responsive.min', 'bootstrap.min', 'codefight', 'shThemeDefault', 'shCore')
 );
 //'menuLeft'
 /*
  * Define js that need to be autoloaded in every page
  */
-$config['cf']['defaults']['js'] = array('jquery', 'interface', 'jquery.dimensions', 'jquery.positionBy', 'jquery.bgiframe', 'jquery.jdMenu', 'shCore', 'shBrushPhp', 'general');
+$config['cf']['defaults']['js'] = array('jquery', 'jquery-ui.min', 'bootstrap.min', 'bootstrap-alert', 'shCore', 'shBrushPhp', 'general');
 
 /*
  * Define disallowed words
  */
-$config['cf']['disallowed'] = array('nude', 'anal', 'nudity', 'nudist', 'naked', 'erotic', 'fetish', 'boob', 'damn', 'xxx', 'sucks', 'golly', 'phooey', 'fuck', 'dick', 'pussy', 'porn', 'sex', 'slut', 'cum', 'rape', 'camgirls', 'incest', 'exotic', 'hardcore', '(met art)', 'metart', 'cock', 'horny', 'tits', 'seducing', 'seduce', 'seduction', 'shit', 'filipina18', 'breast', 'penis');
+$config['cf']['disallowed'] = array('nude', 'anal', 'nudity', 'nudist', 'naked', 'erotic', 'fetish', 'boob', 'damn',
+                                    'xxx', 'sucks', 'golly', 'phooey', 'fuck', 'dick', 'pussy', 'porn', 'sex', 'slut',
+                                    'cum', 'rape', 'camgirls', 'incest', 'exotic', 'hardcore', '(met art)', 'metart',
+                                    'cock', 'horny', 'tits', 'seducing', 'seduce', 'seduction', 'shit', 'filipina18',
+                                    'breast', 'penis');
 
 /* End of file MY_config.php */
 /* Location: ./system/application/config/MY_config.php */
-?>

@@ -127,7 +127,7 @@ class Registration extends MY_Controller
 
                 //Set Success Message
                 $msg = array('login' => '<p>Registration Successful. You will be notified once your account is activated.</p>');
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
 
             }
             else
@@ -135,7 +135,7 @@ class Registration extends MY_Controller
 
                 //Set Error Message
                 $msg = array('login' => '<p>User with such email is already registered.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
             }
 
@@ -147,19 +147,11 @@ class Registration extends MY_Controller
 
                 //Set Error Message
                 $msg = array('login' => validation_errors());
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
             }
 
         }
-
-        //load all required css
-        $assets['css'] = array('page', 'login');
-
-        //load all required js
-        //$assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //main content block [content view]
         $data['content_block'] = 'registration/registration_view';
@@ -203,7 +195,7 @@ class Registration extends MY_Controller
 
             if (!validation_errors() == '') {
                 $msg = array('login' => validation_errors());
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
 
         }
@@ -219,26 +211,16 @@ class Registration extends MY_Controller
             if ($this->session->userdata('logged_in') == FALSE) {
                 // display login error
                 $msg = array('error' => '<p>Invalid Login Data, Please try again.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
             else
             {
                 // display login success message
                 $msg = array('success' => '<p>Login Successful.</p>');
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
             }
 
         }
-
-        $assets = array();
-
-        //load all required css
-        $assets['css'] = array('page', 'login');
-
-        //load all required js
-        //$assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //main content block [content view]
         $data['content_block'] = 'registration/login_view';
@@ -269,7 +251,7 @@ class Registration extends MY_Controller
 
         // display logout success message
         $msg = array('success' => '<p>Logout Successful.</p>');
-        set_global_messages($msg, 'success');
+        setMessages($msg, 'success');
 
         //Show login page again.
         $this->login();
@@ -337,7 +319,7 @@ class Registration extends MY_Controller
 
                 //Prepare Email Body
                 $emailBody = "
-				
+
 Hi " . $userData->firstname . " " . $userData->lastname . ",
 
 You or someone requested for a new password through forgotten password link at " . $this->setting->site_name . " and we have reset your password.
@@ -354,7 +336,7 @@ Your New Password is:
 
                     //Set Success Message
                     $msg = array('login' => '<p>New Password Sent Successfully.</p>');
-                    set_global_messages($msg, 'success');
+                    setMessages($msg, 'success');
 
                     $_POST = array();
 
@@ -365,7 +347,7 @@ Your New Password is:
                     //Set Error Message
                     //echo $this->email->print_debugger();
                     $msg = array('login' => '<p>System could not send password at this time, please try again later.</p>');
-                    set_global_messages($msg, 'error');
+                    setMessages($msg, 'error');
 
                 }
 
@@ -375,7 +357,7 @@ Your New Password is:
 
                 //Set Error Message
                 $msg = array('login' => '<p>Invalid Email.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
             }
         }
@@ -384,16 +366,9 @@ Your New Password is:
 
             //Set Error Message
             $msg = array('login' => validation_errors());
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
 
         }
-
-        //load all required css
-        $assets['css'] = array('page', 'login');
-        //load all required js
-        //$assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //main content block [content view]
         $data['content_block'] = 'registration/forgotten_password_view';

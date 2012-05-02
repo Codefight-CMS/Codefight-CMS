@@ -26,18 +26,29 @@
 /**
  * Admin Page Controller
  */
-class Page extends MY_Controller
-{
+class Page extends MY_Controller {
 
-    function __construct()
+    var $authors=array();
+
+    public function __construct()
     {
         parent::MY_Controller();
 
         $this->load->helper(array('form', 'text'));
-        $this->load->model(array('blog/cf_blog_model', 'cf_menu_model', 'websites/cf_websites_model'));
+        $this->load->model(array('user/cf_user_model', 'blog/cf_blog_model', 'cf_menu_model', 'websites/cf_websites_model'));
     }
 
-    function index()
+    public function get_authors()
+    {
+	if(!count($this->authors))
+	{
+		$this->authors = $this->cf_user_model->get_authors();
+	}
+
+	return $this->authors;
+    }
+
+    public function index()
     {
         if (isset($_POST['create'])) {
             $this->_create();
@@ -51,19 +62,6 @@ class Page extends MY_Controller
         else
         {
             $data = '';
-
-            $assets = array();
-
-            //load all required css
-            //if media type not defined, screen is default.
-            //$assets['css'] = array('admin','swiff','box','upload');
-            $assets['css'] = array(
-                'all' => array('admin', 'page', 'box', 'tablesorter')
-            );
-            //load all required js
-            $assets['js'] = array('jquery', 'jquery.metadata', 'jquery.tablesorter', 'jquery.tablesorter.pager');
-
-            $this->cf_asset_lib->load($assets);
 
             //load all required include files
             //$data['head_includes'] = array('sortable.php'); //include file's location is relative to header location
@@ -97,6 +95,7 @@ class Page extends MY_Controller
     function _create()
     {
         $data = '';
+	$data['authors'] = $this->get_authors();
 
         $this->load->library('form_validation');
 
@@ -107,6 +106,7 @@ class Page extends MY_Controller
             //array('field' => 'menu_id','label' => 'Menu','rules' => 'trim|required'),
             //array('field' => 'page_blurb_length','label' => 'Blurb length','rules' => 'trim'),
             array('field' => 'page_body', 'label' => 'Body', 'rules' => 'trim'),
+            array('field' => 'user_id', 'label' => 'Author', 'rules' => 'trim'),
             array('field' => 'page_author', 'label' => 'Author', 'rules' => 'trim'),
             array('field' => 'page_tag', 'label' => 'Tags', 'rules' => 'trim'),
             array('field' => 'page_date', 'label' => 'Date', 'rules' => 'trim'),
@@ -124,7 +124,7 @@ class Page extends MY_Controller
         if ($this->form_validation->run() == FALSE) {
             if (!validation_errors() == '' && $this->input->post('create') == 'Create') {
                 $msg = array('error' => validation_errors());
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
 
         }
@@ -140,6 +140,7 @@ class Page extends MY_Controller
             $page_blurb = '';
             $menu_id = ',' . implode(',', $_POST['menu_id']) . ',';
             $websites_id = ',' . implode(',', $_POST['websites_id']) . ',';
+            $user_id = set_value('user_id');
             $page_author = set_value('page_author');
             $page_tag = set_value('page_tag');
             $page_date = date('Y-m-d H:i:s', strtotime(set_value('page_date')));
@@ -173,6 +174,7 @@ class Page extends MY_Controller
                                            'page_body' => $page_body,
                                            'menu_id' => $menu_id,
                                            'websites_id' => $websites_id,
+                                           'user_id' => $user_id,
                                            'page_author' => $page_author,
                                            'page_tag' => $page_tag,
                                            'page_type' => $this->uri->segment(3, 'page'),
@@ -207,28 +209,15 @@ class Page extends MY_Controller
                 }
 
                 $msg = array('success' => "<p>New Page <strong> $page_title </strong> Successfully Added</p>");
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
 
             }
             else
             {
                 $msg = array('error' => "<p>SYSTEM ERROR! Could't add page. Please try again later.</p>");
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'page', 'box')
-        );
-        //load all required js
-        $assets['js'] = array('tiny_mce/tiny_mce');
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/' . $this->uri->segment(3, 'page') . '/page_create_view', $data, true); //Get view data in place of sending to browser.
@@ -247,7 +236,7 @@ class Page extends MY_Controller
         {
             $id_array = array();
             $msg = array('error' => "<p>You must select atleast one page to delete.</p>");
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
 
         !is_array($id_array) ? $id_array = array() : '';
@@ -276,7 +265,7 @@ class Page extends MY_Controller
             }
 
         }
-        if ($msg) set_global_messages($msg, $type);
+        if ($msg) setMessages($msg, $type);
 
         unset($_POST);
 
@@ -288,6 +277,8 @@ class Page extends MY_Controller
     {
 
         $data = '';
+	$data['authors'] = $this->get_authors();
+
         $id_array = array();
 
         if (!isset($_POST['page'])) {
@@ -297,7 +288,7 @@ class Page extends MY_Controller
             else
             {
                 $msg = array('error' => "<p>You must select atleast one page to edit</p>");
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 unset($_POST);
                 $this->index();
@@ -326,6 +317,7 @@ class Page extends MY_Controller
                 $_POST['page'][$row->page_id]['page_body'] = $row->page_body;
                 $_POST['page'][$row->page_id]['menu_id'] = $row->menu_id;
                 $_POST['page'][$row->page_id]['websites_id'] = $row->websites_id;
+                $_POST['page'][$row->page_id]['user_id'] = $row->user_id;
                 $_POST['page'][$row->page_id]['page_author'] = $row->page_author;
                 $_POST['page'][$row->page_id]['page_tag'] = $row->page_tag;
                 $_POST['page'][$row->page_id]['page_date'] = $row->page_date;
@@ -370,6 +362,7 @@ class Page extends MY_Controller
                 $page_blurb = '';
                 //$page_blurb_length = xss_clean($v['page_blurb_length']);
                 $page_body = $v['page_body'];
+                $user_id = $v['user_id'];
                 $page_author = $v['page_author'];
                 $page_tag = $v['page_tag'];
                 $page_date = date('Y-m-d H:i:s', strtotime($v['page_date']));
@@ -424,6 +417,7 @@ class Page extends MY_Controller
                 //$_POST['page'][$id]['page_blurb'] = $page_blurb;
                 //$_POST['page'][$id]['page_blurb_length'] = $page_blurb_length;
                 $_POST['page'][$id]['page_body'] = $page_body;
+                $_POST['page'][$id]['user_id'] = $user_id;
                 $_POST['page'][$id]['page_author'] = $page_author;
                 $_POST['page'][$id]['page_tag'] = $page_tag;
                 $_POST['page'][$id]['page_date'] = $page_date;
@@ -460,6 +454,7 @@ class Page extends MY_Controller
                                                    'page_blurb' => $page_blurb,
                                                    //'page_blurb_length' => $page_blurb_length,
                                                    'page_body' => $page_body,
+                                                   'user_id' => $user_id,
                                                    'page_author' => $page_author,
                                                    'page_tag' => $page_tag,
                                                    'page_date' => $page_date,
@@ -497,25 +492,11 @@ class Page extends MY_Controller
                 }
 
                 $msg = array('success' => "<p>Updated successfully.</p>");
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
 
             }
         }
         //END: validate data and update in database
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'page', 'box')
-        );
-        //load all required js
-        $assets['js'] = array('tiny_mce/tiny_mce');
-
-        $this->cf_asset_lib->load($assets);
-        //$data['page'] = $this->cf_blog_model->get_page();
 
         //---
         $html_string = $this->load->view('admin/' . $this->uri->segment(3, 'page') . '/page_edit_view', $data, true); //Get view data in place of sending to browser.

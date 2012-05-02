@@ -101,7 +101,7 @@ foreach ($folder as $v) {
 
     <p class="clear">&nbsp;</p>
 
-    <label>&nbsp;</label><input name="create" type="submit" id="create" value="Create"/>
+    <label>&nbsp;</label><input class="btn btn-primary" name="create" type="submit" id="create" value="Create"/>
     &nbsp;<?php echo anchor('admin/folder/manage-folder', __('BACK')); ?>
 
     <p class="clear">&nbsp;</p>

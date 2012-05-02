@@ -1,12 +1,9 @@
 <?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><?php 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en"><?php
 
 //Load Head Block
-$this->cf_block_lib->load('page_html/head');
-
-$this->cf_block_lib->load('includes/general_js'); ?>
+$this->cf_block_lib->load('page_html/head'); ?>
 
 <?php
 $bg_image = '';
@@ -37,10 +34,6 @@ if ($bg) {
 </div>
 <div class="siteContainer">
 <?php
-
-    //Load Downloads Block
-    $this->cf_block_lib->load('downloads');
-
     //Load Language Selection Block
     $this->cf_block_lib->load('languages');
 
@@ -131,7 +124,7 @@ if ($bg) {
                 $this->cf_block_lib->load('advertisements/banner_160x600'); ?>
 
                 <!-- h2>SPONSORED LINKS</h2><?php /*
-				
+
 				//Load Sponsored Links block
 				$this->cf_block_lib->load('menu/sponsored_links_vertical');*/?> -->
 

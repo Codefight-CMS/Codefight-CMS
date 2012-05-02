@@ -43,19 +43,6 @@ class Setting extends MY_Controller
 
         if ($this->input->post('submit')) $this->cf_setting_model->set_setting($_POST);
 
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'setting', 'box')
-        );
-        //load all required js
-        $assets['js'] = array('jquery', 'interface');
-
-        $this->cf_asset_lib->load($assets);
-
         $data['head_includes'] = array('sortable.php', 'setting.php');
         $data['setting'] = $this->cf_setting_model->get_setting();
         $data['templates'] = $this->cf_setting_model->get_templates();
@@ -77,18 +64,6 @@ class Setting extends MY_Controller
     {
         $data = '';
 
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'setting', 'box')
-        );
-        //load all required js
-        $assets['js'] = array('jquery');
-
-        $this->cf_asset_lib->load($assets);
         //get templates for user selection
         $data['templates'] = $this->cf_setting_model->get_templates();
 
@@ -104,7 +79,7 @@ class Setting extends MY_Controller
             }
 
             $msg = array('success' => "<p>Cache cleared.</p>");
-            set_global_messages($msg, 'success');
+            setMessages($msg, 'success');
         }
 
         if ($this->input->post('template')) {
@@ -112,7 +87,7 @@ class Setting extends MY_Controller
             $this->session->unset_userdata('template');
 
             $msg = array('success' => "<p>Template session refreshed.</p>");
-            set_global_messages($msg, 'success');
+            setMessages($msg, 'success');
         }
 
         //---
@@ -152,19 +127,6 @@ class Setting extends MY_Controller
         {
             $data = '';
 
-            $assets = array();
-
-            //load all required css
-            //if media type not defined, screen is default.
-            //$assets['css'] = array('admin','swiff','box','upload');
-            $assets['css'] = array(
-                'all' => array('admin', 'group', 'box')
-            );
-            //load all required js
-            $assets['js'] = array('jquery');
-
-            $this->cf_asset_lib->load($assets);
-
             $data['keys'] = $this->cf_setting_model->get_setting_keys();
 
             //---
@@ -190,19 +152,6 @@ class Setting extends MY_Controller
         else
         {
             $data = '';
-
-            $assets = array();
-
-            //load all required css
-            //if media type not defined, screen is default.
-            //$assets['css'] = array('admin','swiff','box','upload');
-            $assets['css'] = array(
-                'all' => array('admin', 'group', 'box')
-            );
-            //load all required js
-            $assets['js'] = array('jquery');
-
-            $this->cf_asset_lib->load($assets);
 
             $data['websites'] = $this->cf_websites_model->get_websites();
 
@@ -242,7 +191,7 @@ class Setting extends MY_Controller
         if ($this->form_validation->run() == FALSE) {
             if (!validation_errors() == '' && $this->input->post('create') == 'Create') {
                 $msg = array('error' => validation_errors());
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
 
         }
@@ -256,19 +205,6 @@ class Setting extends MY_Controller
 
             $this->cf_websites_model->save($sql);
         }
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/setting/websites_create_view', $data, true); //Get view data in place of sending to browser.
@@ -288,7 +224,7 @@ class Setting extends MY_Controller
             else
             {
                 $msg = array('error' => "<p>You must select atleast one website to edit.</p>");
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 unset($_POST);
                 $this->websites();
@@ -337,19 +273,6 @@ class Setting extends MY_Controller
         }
         //END: validate data and update in database
 
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
-
         //---
         $html_string = $this->load->view('admin/setting/websites_edit_view', $data, true); //Get view data in place of sending to browser.
 
@@ -366,7 +289,7 @@ class Setting extends MY_Controller
         else
         {
             $msg = array('error' => "<p>You must select atleast one website to delete.</p>");
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
 
         $this->cf_websites_model->delete($id_array);
@@ -411,7 +334,7 @@ class Setting extends MY_Controller
         if ($this->form_validation->run() == FALSE) {
             if (!validation_errors() == '' && $this->input->post('create') == 'Create') {
                 $msg = array('error' => validation_errors());
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
 
         }
@@ -433,27 +356,14 @@ class Setting extends MY_Controller
 
             if ($insert) {
                 $msg = array('success' => "<p>New Setting Key <strong>$setting_key</strong> Successfully Added.</p>");
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
             }
             else
             {
                 $msg = array('error' => "<p>Setting Key <strong>$setting_key</strong> already exists!</p>");
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/setting/key_create_view', $data, true); //Get view data in place of sending to browser.
@@ -473,7 +383,7 @@ class Setting extends MY_Controller
             $id_array = array();
 
             $msg = array('error' => "<p>You must select atleast one setting key to delete.</p>");
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
 
         !is_array($id_array) ? $id_array = array() : '';
@@ -494,12 +404,12 @@ class Setting extends MY_Controller
                 }
 
                 $msg = array('success' => "<p>Selected key(s) deleted successfully.</p>");
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
             }
             else
             {
                 $msg = array('error' => "<p>Error! couldn't delete.</p>");
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
 
@@ -521,7 +431,7 @@ class Setting extends MY_Controller
             else
             {
                 $msg = array('error' => "<p>You must select atleast one setting key to edit.</p>");
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 unset($_POST);
                 $this->keys();
@@ -585,23 +495,10 @@ class Setting extends MY_Controller
                 }
 
                 $msg = array('success' => "<p>Updated successfully.</p>");
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
             }
         }
         //END: validate data and update in database
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/setting/key_edit_view', $data, true); //Get view data in place of sending to browser.
@@ -614,19 +511,6 @@ class Setting extends MY_Controller
         $data = array();
 	$this->load->model(array('websites/cf_websites_model'));
 	$data['websites'] = $this->cf_websites_model->get_websites();
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/setting/sitemap_view', $data, true); //Get view data in place of sending to browser.

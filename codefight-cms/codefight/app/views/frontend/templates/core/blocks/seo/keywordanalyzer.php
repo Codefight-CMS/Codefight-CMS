@@ -4,7 +4,7 @@
 
     Website: <input type="text" name="website"/><br/>
 
-    <input type="submit"/>
+    <input class="btn btn-primary" type="submit"/>
 </form>
-<?php 
+<?php
 if (isset($keywordanalyzer)) print_r($keywordanalyzer); ?>

@@ -271,16 +271,6 @@ class Form extends MY_Controller
             $data['submitted'] = $submits;
             $data['gridTitle'] = $gridTitle;
 
-
-            //load all required css
-            $assets['css'] = array(
-                'all' => array('admin', 'group', 'box')
-            );
-            //load all required js
-            $assets['js'] = array('jquery');
-
-            $this->cf_asset_lib->load($assets);
-
             //---
             $html_string = $this->load->view("admin/form/form_submitted{$read}_view", $data, true); //Get view data in place of sending to browser.
 
@@ -302,15 +292,6 @@ class Form extends MY_Controller
         else
         {
             $data = '';
-
-            //load all required css
-            $assets['css'] = array(
-                'all' => array('admin', 'group', 'box')
-            );
-            //load all required js
-            $assets['js'] = array('jquery');
-
-            $this->cf_asset_lib->load($assets);
 
             $data['keys'] = $this->cf_form_model->get_form_item();
 
@@ -371,7 +352,7 @@ class Form extends MY_Controller
 
             if (!validation_errors() == '' && $this->input->post('create') == 'Create') {
                 $msg = array('error' => validation_errors());
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
         else
@@ -396,23 +377,14 @@ class Form extends MY_Controller
 
             if ($insert) {
                 $msg = array('success' => '<p>New Form Item <strong>' . $form_item_label . '</strong> Successfully Added.</p>');
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
             }
             else
             {
                 $msg = array('error' => '<p>Form Item <strong>' . $form_item_label . '</strong> already exists!</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
-
-        //load all required css
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array('jquery');
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/form/form_item_create_view', $data, true); //Get view data in place of sending to browser.
@@ -431,7 +403,7 @@ class Form extends MY_Controller
         {
             $id_array = array();
             $msg = array('error' => '<p>You must select atleast one item to delete.</p>');
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
 
         !is_array($id_array) ? $id_array = array() : '';
@@ -452,7 +424,7 @@ class Form extends MY_Controller
             }
         }
 
-        if ($msg) set_global_messages($msg, $type);
+        if ($msg) setMessages($msg, $type);
 
         unset($_POST);
 
@@ -472,7 +444,7 @@ class Form extends MY_Controller
             else
             {
                 $msg = array('error' => '<p>You must select atleast one item to edit.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 unset($_POST);
                 $this->item();
@@ -536,24 +508,11 @@ class Form extends MY_Controller
                 }
 
                 $msg = array('success' => '<p>Updated successfully.</p>');
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
 
             }
         }
         //END: validate data and update in database
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array('jquery');
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/form/form_item_edit_view', $data, true); //Get view data in place of sending to browser.
@@ -579,15 +538,6 @@ class Form extends MY_Controller
         else
         {
             $data = '';
-
-            //load all required css
-            $assets['css'] = array(
-                'all' => array('admin', 'group', 'box')
-            );
-            //load all required js
-            $assets['js'] = array('jquery');
-
-            $this->cf_asset_lib->load($assets);
 
             $data['keys'] = $this->cf_form_model->get_form_group();
 
@@ -627,7 +577,7 @@ class Form extends MY_Controller
         if ($this->form_validation->run() == FALSE) {
             if (!validation_errors() == '' && $this->input->post('create') == 'Create') {
                 $msg = array('error' => validation_errors());
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
         else
@@ -644,23 +594,14 @@ class Form extends MY_Controller
 
             if ($insert) {
                 $msg = array('success' => "<p>New Form Group <strong>$form_group_name</strong> Successfully Added.</p>");
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
             }
             else
             {
                 $msg = array('error' => "<p>Form Group Indetifier <strong>$form_group_identifier</strong> already exists!</p>");
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
-
-        //load all required css
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array('jquery');
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/form/form_group_create_view', $data, true); //Get view data in place of sending to browser.
@@ -679,7 +620,7 @@ class Form extends MY_Controller
         {
             $id_array = array();
             $msg = array('error' => '<p>You must select atleast one item to delete.</p>');
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
 
         !is_array($id_array) ? $id_array = array() : '';
@@ -691,12 +632,12 @@ class Form extends MY_Controller
             if ($this->db->delete('form_group', array('form_group_id' => $id))) {
                 $this->db->delete('form_item_to_group', array('form_group_id' => $id));
                 $msg = array('success' => '<p>Selected item(s) deleted successfully.</p>');
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
             }
             else
             {
                 $msg = array('error' => '<p>Error! couldn\'t delete.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
 
@@ -719,7 +660,7 @@ class Form extends MY_Controller
             else
             {
                 $msg = array('error' => '<p>You must select atleast one item to edit.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 unset($_POST);
                 $this->group();
@@ -775,24 +716,11 @@ class Form extends MY_Controller
 
                 //['update']: to avoid repeated success_message
                 $msg = array('success' => '<p>Updated successfully.</p>');
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
 
             }
         }
         //END: validate data and update in database
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array('jquery');
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/form/form_group_edit_view', $data, true); //Get view data in place of sending to browser.
@@ -813,7 +741,7 @@ class Form extends MY_Controller
             else
             {
                 $msg = array('error' => '<p>You must select atleast one item to edit.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 unset($_POST);
                 $this->group();
@@ -867,24 +795,11 @@ class Form extends MY_Controller
 
                 //['update']: to avoid repeated success_message
                 $msg = array('success' => '<p>Updated successfully.</p>');
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
 
             }
         }
         //END: validate data and update in database
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array('jquery');
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/form/form_group_item_manage_view', $data, true); //Get view data in place of sending to browser.

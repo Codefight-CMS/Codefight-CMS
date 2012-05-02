@@ -254,9 +254,10 @@ a.red:hover
 {
 	border:10px solid #fff;
 	border-top:none;
-	background:url("../images/type.png") repeat fixed left top transparent;
+	/*background:url("../images/type.png") repeat fixed left top transparent;*/
+	background: #fff;
 	display:block;
-	margin: 63px auto 0;
+	margin: 0 auto 0;
 	/*padding-bottom:20px;*/
 	width:960px;
 }

@@ -163,7 +163,7 @@ class Cf_setting_model extends MY_Model
         }
 
         $msg = array('success' => "<p>Setting Updated Successfully.</p>");
-        set_global_messages($msg, 'success');
+        setMessages($msg, 'success');
     }
 
     function set_setting_keys($val)
@@ -179,7 +179,7 @@ class Cf_setting_model extends MY_Model
         }
 
         $msg = array('success' => "<p>Setting Updated Successfully.</p>");
-        set_global_messages($msg, 'success');
+        setMessages($msg, 'success');
     }
 
     function get_setting_keys()

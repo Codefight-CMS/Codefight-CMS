@@ -26,7 +26,7 @@ class Cf_login_lib
 
                     $msg = array('login' => '<p>Some problem caused accessing this page. Please contact us regarding this issue.</p>');
 
-                    set_global_messages($msg, 'error');
+                    setMessages($msg, 'error');
 
                     redirect('registration/login');
                 }
@@ -35,7 +35,7 @@ class Cf_login_lib
             {
                 $CI->session->set_userdata('login_error', '1');
                 $msg = array('login' => '<p>You must have appropriate rights to access secure page.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 redirect('registration/login');
             }
@@ -44,7 +44,7 @@ class Cf_login_lib
 
             $CI->session->set_userdata('login_error', '1');
             $msg = array('login' => '<p>You must be logged in to access secure area.</p>');
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
 
             redirect('registration/login');
         }

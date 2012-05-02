@@ -62,7 +62,7 @@ foreach ($menu_array as $v)
     <p class="clear">&nbsp;</p>
 
     <div class="editSeparator">&nbsp;</div>
-    <label>&nbsp;</label><input name="create" type="submit" id="create" value="Create"/>&nbsp;<?php echo anchor('admin/menu/' . $this->uri->segment(3, ''), __('BACK')); ?>
+    <label>&nbsp;</label><input class="btn btn-primary" name="create" type="submit" id="create" value="Create"/>&nbsp;<?php echo anchor('admin/menu/' . $this->uri->segment(3, ''), __('BACK')); ?>
     <p class="clear">&nbsp;</p>
 </div>
 <?php echo form_close(); ?>

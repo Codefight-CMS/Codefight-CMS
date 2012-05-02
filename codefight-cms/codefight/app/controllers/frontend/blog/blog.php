@@ -10,7 +10,9 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to info@codefight.org so we can send you a copy immediately.
+ * to info
+ *
+ * @codefight   .org so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
@@ -28,6 +30,7 @@
  */
 class Blog extends MY_Controller
 {
+    var $meta = false;
 
     /**
      * Constructor method
@@ -43,9 +46,9 @@ class Blog extends MY_Controller
            | you can load the CI way as well though :)
            */
         $load = array(
-            'model' => 'blog/cf_blog_model + cf_menu_model',
+            'model'   => 'blog/cf_blog_model + cf_menu_model',
             'library' => 'cf_bbcode_lib + cf_form_lib',
-            'helper' => 'text + form'
+            'helper'  => 'text + form'
         );
 
         parent::MY_Controller($load);
@@ -75,8 +78,8 @@ class Blog extends MY_Controller
                 */
             //if(!$this->page_id) $this->page_id = 'home';
 
-            $config['base_url'] = base_url() . 'blog/' . $this->menu_id . '/' . $this->page_id . '/';
-            $config['total_rows'] = $this->cf_blog_model->get_blog_count($this->menu_id);
+            $config['base_url']    = base_url() . 'blog/' . $this->menu_id . '/' . $this->page_id . '/';
+            $config['total_rows']  = $this->cf_blog_model->get_blog_count($this->menu_id);
             $config['uri_segment'] = 4;
             //END: Pagination
 
@@ -84,7 +87,9 @@ class Blog extends MY_Controller
             $this->paginate($config);
 
             //Get page content for the selected menu item.
-            $data = $this->cf_blog_model->get_blog_contents($this->menu_id, $this->setting->pagination_per_page, $this->current_page);
+            $data = $this->cf_blog_model->get_blog_contents(
+                $this->menu_id, $this->setting->pagination_per_page, $this->current_page
+            );
 
             //get created page links from library -> MY_Controller (paginate_page)
             $data['pagination'] = $this->page_links;
@@ -107,13 +112,13 @@ class Blog extends MY_Controller
             $data['noindex'] = 'yes';
         }
 
-        //load all required css
-        $assets['css'] = array('page');
+        if (!empty($this->meta)) {
+            $data['meta'] = $this->meta;
+        }
 
-        //load all required js
-        //$assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
+        if (($cur_page = $this->pagination->getCurPage()) > 1) {
+            $data['meta']['title'] .= ' - ' . __('Page ') . __($cur_page);
+        }
 
         //main content block [content view]
         $data['content_block'] = 'page_html/blog_view';
@@ -139,13 +144,33 @@ class Blog extends MY_Controller
         $this->db->where('menu_link', $this->menu_link);
         $this->db->limit(1);
         $query = $this->db->get('menu');
-        $row = $query->result_array();
+        $row   = $query->result_array();
 
+        $this->menu_id = 0;
+        $meta['title'] = $meta['keywords'] = $meta['description'] = $this->menu_link . ' - Blog Category';
 
-        if (isset($row[0]['menu_id']))
-            $this->menu_id = $row[0]['menu_id'];
-        else
-            $this->menu_id = 0;
+        foreach ($row as $v)
+        {
+            $this->menu_id = $v['menu_id'];
+
+            if (!empty($v['menu_meta_title'])) {
+                $meta['title'] = $v['menu_meta_title'];
+            } else {
+                $meta['title'] = ucwords($v['menu_title']) . ' - ' . __('Category');
+            }
+            if (!empty($v['menu_meta_keywords'])) {
+                $meta['keywords'] = $v['menu_meta_keywords'];
+            } else {
+                $meta['keywords'] = preg_replace('/\s+|\s/', ',', ucwords($v['menu_title'])) . ',Blog,Category';
+            }
+            if (!empty($v['menu_meta_description'])) {
+                $meta['description'] = $v['menu_meta_description'];
+            } else {
+                $meta['description'] = ucwords($v['menu_title']) . ' - Category - Blog Posts';
+            }
+        }
+
+        $this->meta = $meta;
 
         $this->index();
     }
@@ -153,4 +178,3 @@ class Blog extends MY_Controller
 
 /* End of file blog.php */
 /* Location: ./app/frontend/controllers/blog/blog.php */
-?>

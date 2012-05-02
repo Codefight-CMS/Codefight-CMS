@@ -117,7 +117,7 @@ class Cf_menu_model extends MY_Model
 
         if ($count >= 1) {
             $msg = array('error' => '<p>Menu <strong>' . $_menu_data['menu_title'] . '</strong> already exists!</p>');
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
 
             return FALSE;
         }
@@ -138,7 +138,7 @@ class Cf_menu_model extends MY_Model
             $count = $this->db->count_all_results('menu');
             if ($count >= 1 && !preg_match('/javascript::void\(0\);/', $_menu_data['menu_link'])) {
                 $msg = array('error' => '<p>Menu Link <strong>' . $_menu_data['menu_link'] . '</strong> already exists!</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 return FALSE;
             }
@@ -150,7 +150,7 @@ class Cf_menu_model extends MY_Model
                 if ($action == 'update')
                     $msg = array('success' => '<p>Menu <strong>' . $_menu_data['menu_title'] . '</strong> Updated Successfully.</p>');
 
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
                 /*
                     $sql = array(
                             'menu_active' => $menu_active,

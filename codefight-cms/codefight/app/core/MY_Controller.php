@@ -18,23 +18,30 @@ class MY_Controller extends CI_Controller
     public $cfRedirect = false;
     public $cfQuery;
     public $cfSegments;
-    public $current_language = 'english';
+    public $current_language = 'english';//@todo::search and remove references.
+    public $language = 'english';
 
 
     /**
      * Catch all requests and redirect to method, if exits, if not, use default method.
+     *
      * @access public
+     *
      * @param string $method, The method to call
+     *
      * @return void
      */
     public function _remap($method)
     {
 
         //print_r(get_class_methods(get_class($this)));
-        if ($this->uri->segment(1, 0) != 'admin')
+        if ($this->uri->segment(1, 0) != 'admin') {
             $method = $this->uri->segment(2, 'index');
+        }
         elseif ($this->uri->segment(1, 0) == 'admin')
+        {
             $method = $this->uri->segment(3, 'index');
+        }
 
         $method = str_replace('-', '_', $method);
 
@@ -50,20 +57,20 @@ class MY_Controller extends CI_Controller
     public function _init()
     {
 
-        $this->cfModule = $this->uri->segment(1, 'page');
+        $this->cfModule          = $this->uri->segment(1, 'page');
         $this->cfAdminController = $this->uri->segment(2, '');
-        $this->cfAdminMethod = $this->uri->segment(3, '');
+        $this->cfAdminMethod     = $this->uri->segment(3, '');
         if (!in_array($this->cfModule, array('registration', 'skin', 'media', 'favicon.ico'))) {
             $this->session->set_userdata('history', uri_string());
         }
 
         if ($this->cfModule == 'admin' /*&& $this->cfAdminController != 'cf'*/) {
-            require_once APPPATH.DS.'core'.DS.'Admin_Controller.php';
+            require_once APPPATH . DS . 'core' . DS . 'Admin_Controller.php';
             $Admin_Controller = new Admin_Controller();
             //Check access rights
             //$this->cf_login_lib->check_login(array('1'));
         } else {
-            require_once APPPATH.DS.'core'.DS.'Front_Controller.php';
+            require_once APPPATH . DS . 'core' . DS . 'Front_Controller.php';
             $Front_Controller = new Front_Controller();
         }
     }
@@ -88,7 +95,9 @@ class MY_Controller extends CI_Controller
             $v_array = explode('+', $v);
 
             //now load each files
-            foreach ($v_array as $w) $this->load->$k(trim($w));
+            foreach ($v_array as $w) {
+                $this->load->$k(trim($w));
+            }
         }
 
         //Overwrite Language If Set.
@@ -106,18 +115,32 @@ class MY_Controller extends CI_Controller
         //On clicking menu link, show all page contents linked to that link
         //if second uri segment not found return 1 as default menu id
         $this->menu_id = $this->uri->segment(2, 0);
+        $this->menu_id = strtolower($this->menu_id);
+
         //There is some issue with last segment, which adds prefix.
-        if (substr($this->menu_id, -5, 5) == '_html') $this->menu_id = substr($this->menu_id, 0, -5);
+        while (substr($this->menu_id, -5, 5) == '_html') {
+            $this->menu_id = substr($this->menu_id, 0, -5);
+        }
 
         //On clicking more link of the page blurb show full text
         $this->page_id = $this->uri->segment(3, 0);
         //There is some issue with last segment, which adds prefix.
-        if (substr($this->page_id, -5, 5) == '_html') $this->page_id = substr($this->page_id, 0, -5);
+        if (substr($this->page_id, -5, 5) == '_html') {
+            $this->page_id = substr($this->page_id, 0, -5);
+        }
 
         //pagination
         $this->current_page = $this->uri->segment(4, 0);
         //There is some issue with last segment, which adds prefix.
-        if (substr($this->current_page, -5, 5) == '_html') $this->current_page = substr($this->current_page, 0, -5);
+        if (substr($this->current_page, -5, 5) == '_html') {
+            $this->current_page = substr($this->current_page, 0, -5);
+        }
+
+        if (!is_numeric($this->menu_id) && !in_array(strtolower($this->menu_id), array('c', 'tag', 'ajax'))) {
+            $this->menu_id = $this->cf_blog_model->getMenuId($this->menu_id);
+        } else if($this->menu_id > 0 && is_numeric($this->page_id) && $this->page_id > 0) {
+            $this->cf_blog_model->redirect_blog($this->page_id);
+        }
 
         //Start caching page
         //$this->output->cache(1440);
@@ -130,7 +153,7 @@ class MY_Controller extends CI_Controller
 
         $this->load->library('pagination');
 
-        $config['per_page'] = $this->setting->pagination_per_page;
+        $config['per_page']  = $this->setting->pagination_per_page;
         $config['num_links'] = $this->setting->pagination_page_links;
 
         $this->pagination->initialize($config);
@@ -152,10 +175,13 @@ class MY_Controller extends CI_Controller
         $this->load->vars($data);
 
         //Get data from view.
-        $template = "{$module}/templates/{$template}/{$master_page}";
+        $template    = "{$module}/templates/{$template}/{$master_page}";
         $html_string = $this->load->view($template, '', true);
 
-        if (isset($this->setting->display_view_path) && $this->setting->display_view_path == true) echo "<p>{$template}</p>";
+        if (isset($this->setting->display_view_path) && $this->setting->display_view_path == true
+        ) {
+            echo "<p>{$template}</p>";
+        }
         $this->cf_process_lib->view($html_string);
 
     }
@@ -166,8 +192,10 @@ class MY_Controller extends CI_Controller
 
         $language_path = realpath(APPPATH . 'language/' . $this->current_language) . DIRECTORY_SEPARATOR;
 
-        $preg_find = new preg_find();
-        $language_files = $preg_find->find('/^.*?\.php$/i', $language_path, PREG_FIND_RECURSIVE | PREG_FIND_SORTBASENAME);
+        $preg_find      = new preg_find();
+        $language_files = $preg_find->find(
+            '/^.*?\.php$/i', $language_path, PREG_FIND_RECURSIVE | PREG_FIND_SORTBASENAME
+        );
 
         foreach ((array)$language_files as $v)
         {
@@ -176,16 +204,18 @@ class MY_Controller extends CI_Controller
         }
     }
 
-    public function user($field=FALSE)
+    public function user($field = FALSE)
     {
         $data = $this->session->userdata('loggedData');
 
-        if($field)
-        {
-            if(isset($data[$field]))
+        if ($field) {
+            if (isset($data[$field])) {
                 return $data[$field];
+            }
             else
+            {
                 return 0;
+            }
         }
 
         return $data;

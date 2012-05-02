@@ -45,19 +45,6 @@ class Cp extends MY_Controller
 
         $this->load->model('cf_cp_model');
 
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'box', 'cp')
-        );
-        //load all required js
-        $assets['js'] = array('jquery');
-
-        $this->cf_asset_lib->load($assets);
-
         $data['top_page'] = $this->cf_cp_model->get_top_page();
 
         //---
@@ -75,19 +62,6 @@ class Cp extends MY_Controller
     {
         error_reporting(0);
         $data = '';
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'box', 'cp')
-        );
-        //load all required js
-        $assets['js'] = array('jquery');
-
-        $this->cf_asset_lib->load($assets);
 
         $codefight = array();
         if ($xml = simplexml_load_file('http://codefight.org/feed/releases')) {

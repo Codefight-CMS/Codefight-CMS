@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
 <!-- START:: Global Messages | General Helper -->
-<?php echo get_global_messages(); ?>
+<?php echo getMessages(); ?>
 <!-- END:: Global Messages -->
 
 <?php

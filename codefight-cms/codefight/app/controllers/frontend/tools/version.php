@@ -57,7 +57,7 @@ class Version extends MY_Controller
 
     public function index()
     {
-        echo '2.0.1.0';
+        echo '2.2.0.2';
     }
 }
 

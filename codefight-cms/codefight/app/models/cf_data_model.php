@@ -34,8 +34,9 @@ class Cf_data_model extends MY_Model
 
     function get_tag_cloud($type = false)
     {
-        if ($type)
+        if ($type) {
             $this->db->where('type', $type);
+        }
         $this->db->order_by('count', 'desc');
         $this->db->limit(20);
         if (defined('CFWEBSITEID')) {
@@ -68,24 +69,35 @@ class Cf_data_model extends MY_Model
     function tag_cloud_add($tag = '', $type = 'blog', $title = '', $websites_id)
     {
         if (!empty($tag)) {
-            if ($websites_id) foreach ((array)$websites_id as $w)
-            {
-                $this->db->where(array('tag' => $tag, 'type' => $type));
-                $this->db->where('websites_id', $w);
-                $count = $this->db->count_all_results('tag_cloud');
-
-                //if tag found increment count by 1 else insert as new
-                if ($count) {
-                    $this->db->set('count', 'count+1', FALSE);
-                    $this->db->where(array('tag' => $tag, 'type' => $type));
-                    $this->db->where('websites_id', $w);
-                    $this->db->update('tag_cloud');
-                    //$this->db->update('', array('count' => 'count+1'), );
-                }
-                else
+            if ($websites_id) {
+                foreach ((array)$websites_id as $w)
                 {
-                    $sql = array('tag' => $tag, 'type' => $type, 'title' => $title, 'websites_id' => $w);
-                    $this->db->insert('tag_cloud', $sql);
+                    $this->db->where(
+                        array('tag'  => $tag,
+                              'type' => $type)
+                    );
+                    $this->db->where('websites_id', $w);
+                    $count = $this->db->count_all_results('tag_cloud');
+
+                    //if tag found increment count by 1 else insert as new
+                    if ($count) {
+                        $this->db->set('count', 'count+1', FALSE);
+                        $this->db->where(
+                            array('tag'  => $tag,
+                                  'type' => $type)
+                        );
+                        $this->db->where('websites_id', $w);
+                        $this->db->update('tag_cloud');
+                        //$this->db->update('', array('count' => 'count+1'), );
+                    }
+                    else
+                    {
+                        $sql = array('tag'         => $tag,
+                                     'type'        => $type,
+                                     'title'       => $title,
+                                     'websites_id' => $w);
+                        $this->db->insert('tag_cloud', $sql);
+                    }
                 }
             }
         }
@@ -99,24 +111,37 @@ class Cf_data_model extends MY_Model
     function tag_cloud_delete($id = 0, $type = 'page', $websites_id)
     {
         if ($id) {
-            if ($websites_id) foreach ($websites_id as $w)
-            {
+            if (count($websites_id)) {
                 $query = $this->db->get_where('page_tag', array('page_id' => $id));
+
                 foreach ($query->result() as $row)
                 {
-                    $this->db->where(array('tag' => $row->tag, 'type' => $type, 'count >' => '0', 'websites_id' => $w));
+                    $this->db->where(
+                        array('tag'         => $row->tag,
+                              'type'        => $type,
+                              'count >'     => '0',
+                        )
+                    );
+                    $this->db->where_in('websites_id', $websites_id);
                     $count = $this->db->count_all_results('tag_cloud');
 
-                    //if tag found increment count by 1 else insert as new
+
+                    //if tag found decrement count by 1
                     if ($count) {
                         $this->db->set('count', 'count-1', FALSE);
-                        $this->db->where(array('tag' => $row->tag, 'type' => $type));
-                        $this->db->where('websites_id', $w);
+                        $this->db->where(
+                            array('tag'  => $row->tag,
+                                  'type' => $type)
+                        );
+                        $this->db->where_in('websites_id', $websites_id);
                         $this->db->update('tag_cloud');
+
                     }
                 }
                 $this->db->delete('page_tag', array('page_id' => $id));
-                $this->db->delete('tag_cloud', array('count' => '0'));
+
+                //$this->db->delete('tag_cloud', array('count' => '0'));
+
             }
         }
     }
@@ -126,7 +151,9 @@ class Cf_data_model extends MY_Model
       */
     function link_create($segments = array())
     {
-        if (!is_array($segments)) $segments = array($segments);
+        if (!is_array($segments)) {
+            $segments = array($segments);
+        }
 
         $link = '';
         foreach ($segments as $k => $v) {
@@ -156,7 +183,7 @@ class Cf_data_model extends MY_Model
         //the group user belong if the user is on the allowed group list
         if (!$access && $this->session->userdata('logged_in') == '1') {
             $loggedData = $this->session->userdata('loggedData');
-            $g_u = $loggedData['group_id'];
+            $g_u        = $loggedData['group_id'];
 
             if (in_array($g_u, $g)) {
                 $access = TRUE;
@@ -169,8 +196,34 @@ class Cf_data_model extends MY_Model
     /*
       * Create Author and Posted Date Block
       */
-    function author_date($page_author, $page_date, $show_author, $show_date)
+    function author_date($v = array())
     {
+        if (!is_array($v)) {
+            return;
+        }
+
+        $default     = array(
+            'page_author' => 'admin',
+            'page_date'   => date("d-m-Y", time()),
+            'show_author' => 0,
+            'show_date'   => 0,
+            'user_id'     => 0,
+        );
+        $v           = array_merge($default, $v);
+        $page_author = $v['page_author'];
+        $page_date   = $v['page_date'];
+        $show_author = $v['show_author'];
+        $show_date   = $v['show_date'];
+
+        $query = $this->db->where('user_id', $v['user_id'])->limit(1)->get('user');
+        $user  = $query->result_array();
+        $name  = '';
+        foreach ($user as $v)
+        {
+            $name        = '/' . trim(strtolower("{$v['firstname']}/{$v['lastname']}"), '/');
+            $page_author = "{$v['firstname']} {$v['lastname']}";
+        }
+
         $author_date = '';
         if ((!empty($page_author) && $show_author == '1') || $show_date == '1') {
             $author_date = '<div class="author_date">';
@@ -180,7 +233,9 @@ class Cf_data_model extends MY_Model
             }
 
             if (!empty($page_author) && $show_author == '1') {
-                $author_date .= '<span class="author">' . $page_author . '</span>';
+                $author_date
+                    .= '<span class="author"><a href="' . site_url("user/{$v['user_id']}{$name}") . '" rel="author">'
+                    . $page_author . '</a></span>';
             }
 
             $author_date .= '<p class="clear">&nbsp;</p></div>';
@@ -231,7 +286,9 @@ class Cf_data_model extends MY_Model
                 $ret[] = anchor("page/$v/" . url_title($title), $title, ' rel="category tag" title="' . $v . '"');
             }
             else
+            {
                 $ret[] = $this->post_category_title($v);
+            }
         }
 
         return implode(', ', $ret);
@@ -249,7 +306,7 @@ class Cf_data_model extends MY_Model
     //Return Menu|category title
     function post_category_title($id)
     {
-        $query = $this->db->get_where('menu', array('menu_id' => $id));
+        $query  = $this->db->get_where('menu', array('menu_id' => $id));
         $result = $query->result_array();
 
         return (isset($result[0]['menu_title'])) ? $result[0]['menu_title'] : '';
@@ -260,33 +317,43 @@ class Cf_data_model extends MY_Model
       */
     function page_tag($tag = '', $format = true)
     {
-        $page_tag = '';
+        $page_tag  = '';
         $tag_array = array();
         if (!empty($tag)) {
-            if ($format)
+            if ($format) {
                 $page_tag = '<div class="tag"><span class="title">TAGS:</span>';
+            }
 
             $page_tag_array = explode(',', $tag);
 
             $c_t = 1;
-            if (is_array($page_tag_array) && count($page_tag_array) > 0) foreach ($page_tag_array as $v_t) {
-                $tag_a_class = 'tag';
-                if ($c_t == count($page_tag_array)) $tag_a_class = 'tag tag_last';
+            if (is_array($page_tag_array) && count($page_tag_array) > 0) {
+                foreach ($page_tag_array as $v_t) {
+                    $tag_a_class = 'tag';
+                    if ($c_t == count($page_tag_array)) {
+                        $tag_a_class = 'tag tag_last';
+                    }
 
-                $tag_link = url_title($v_t);
+                    $tag_link = url_title($v_t);
 
-                if ($format)
-                    $page_tag .= anchor("blog/tag/$tag_link", trim($v_t), 'class="' . $tag_a_class . '"');
-                else
-                    $tag_array[] = anchor("blog/tag/$tag_link", trim($v_t), 'class="' . $tag_a_class . '"');
-                $c_t++;
+                    if ($format) {
+                        $page_tag .= anchor("blog/tag/$tag_link", trim($v_t), 'class="' . $tag_a_class . '"');
+                    }
+                    else
+                    {
+                        $tag_array[] = anchor("blog/tag/$tag_link", trim($v_t), 'class="' . $tag_a_class . '"');
+                    }
+                    $c_t++;
+                }
             }
 
-            if ($format)
+            if ($format) {
                 $page_tag .= '<p class="clear">&nbsp;</p></div><p class="clear">&nbsp;</p>';
+            }
         }
-        if ($format)
+        if ($format) {
             return $page_tag;
+        }
         else {
             $tag_array = array_filter($tag_array);
             return implode(', ', $tag_array);
@@ -298,7 +365,9 @@ class Cf_data_model extends MY_Model
       */
     function page_content($v = array(), $show_blurb = TRUE)
     {
-        if (!is_array($v)) return 0;
+        if (!is_array($v)) {
+            return 0;
+        }
 
         $page_content = '';
 
@@ -306,7 +375,9 @@ class Cf_data_model extends MY_Model
         $v['menu_id'] = array_filter($v['menu_id']);
         $v['menu_id'] = array_shift($v['menu_id']);
 
-        $link = $this->link_create(array(0 => $v['page_type'], 1 => $v['menu_id'], 3 => $v['page_id'], 4 => url_title($v['page_title'])));
+        $link = get_page_url(
+            $v
+        );
 
         if (!empty($v['page_blurb']) && $this->uri->segment(3, 0) != $v['page_id'] && $show_blurb === TRUE) {
             //If Page Blurb is defined then don't show body text but the blurb text
@@ -323,15 +394,15 @@ class Cf_data_model extends MY_Model
     /*
       * Create Welcome | Login/Logout Line Block
       */
-    function welcome_get($include_name=true, $params='')
+    function welcome_get($include_name = true, $params = '')
     {
         $ret = '';
         if ($this->session->userdata('logged_in') === '1') {
             $loggedData = $this->session->userdata('loggedData');
 
-            if($include_name)
-            {
-                $ret = $loggedData['firstname'] . ' ' . $loggedData['lastname'] . " ( '" . $loggedData['group_title'] . "' ) | " . anchor('registration/logout', __('Logout'), $params);
+            if ($include_name) {
+                $ret = $loggedData['firstname'] . ' ' . $loggedData['lastname'] . " ( '" . $loggedData['group_title']
+                    . "' ) | " . anchor('registration/logout', __('Logout'), $params);
             } else {
                 $ret = anchor('registration/logout', __('Logout'), $params);
             }
@@ -343,5 +414,3 @@ class Cf_data_model extends MY_Model
         return $ret;
     }
 }
-
-?>

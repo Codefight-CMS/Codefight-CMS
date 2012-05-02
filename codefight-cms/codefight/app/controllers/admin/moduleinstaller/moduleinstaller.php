@@ -52,18 +52,19 @@ class Moduleinstaller extends MY_Controller
 			$modules_db[$v['url']] = $v;
 			unset($modules_db[$k]);
 		}
-		
+
 		foreach($menu_item as $v)
 		{
 			$sql = array();
 			$key = 0;
-			
+
 			$sql[$key] = array(
 				'parent' => 'top',
 				'status' => 1,
 				'sort' => $sort++,
 				'url' => $v['url'],
 				'title' => $v['title'],
+				'is_menu' => $v['is_menu'],
 				'void' => $v['void'],
 				'menu' => serialize($v),
 				'child' => ''
@@ -79,6 +80,7 @@ class Moduleinstaller extends MY_Controller
 						'sort' => $sort++,
 						'url' => $v2['url'],
 						'title' => $v2['title'],
+						'is_menu' => $v2['is_menu'],
 						'void' => $v2['void'],
 						'child' => ''
 					);
@@ -93,6 +95,7 @@ class Moduleinstaller extends MY_Controller
 								'sort' => $sort++,
 								'url' => $v3['url'],
 								'title' => $v3['title'],
+								'is_menu' => $v3['is_menu'],
 								'void' => $v3['void'],
 								'child' => ''
 							);
@@ -102,7 +105,7 @@ class Moduleinstaller extends MY_Controller
 				}
 				$key++;
 			}
-			
+
 			foreach($sql as $k => $v)
 			{
 				if(isset($modules_db[$v['url']]))
@@ -116,18 +119,6 @@ class Moduleinstaller extends MY_Controller
 				$this->db->insert_batch('module', $sql);
 			}
 		}
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'box', 'cp')
-        );
-        //load all required js
-        $assets['js'] = array('jquery');
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/moduleinstaller/moduleinstaller_view', $data, true); //Get view data in place of sending to browser.

@@ -5,7 +5,7 @@
         <input type="hidden" name="cof" value="FORID:10"/>
         <input type="hidden" name="ie" value="UTF-8"/>
         <input type="text" name="q" size="22"/>
-        <input type="submit" name="sa" value="Search"/>
+        <input class="btn btn-primary" type="submit" name="sa" value="Search"/>
     </div>
 </form>
 

@@ -28,10 +28,10 @@
         <?php } ?>
     </ul>
     <p class="clear">&nbsp;</p>
-    <input name="delete" type="submit" id="delete" value="Delete Selected"/>
-    <input name="edit" type="submit" id="edit" value="Edit Selected"/>
-    <input name="create" type="submit" id="create" value="Add New Website"/>
-    <input name="reset" type="reset" id="reset" value="Reset"/>
+    <input class="btn btn-warning" name="delete" type="submit" id="delete" value="Delete Selected"/>
+    <input class="btn btn-primary" name="edit" type="submit" id="edit" value="Edit Selected"/>
+    <input class="btn btn-primary" name="create" type="submit" id="create" value="Add New Website"/>
+    <input class="btn btn-inverse" name="reset" type="reset" id="reset" value="Reset"/>
 
     <p class="clear">&nbsp;</p>
 

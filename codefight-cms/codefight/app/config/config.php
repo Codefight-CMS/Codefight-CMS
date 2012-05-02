@@ -266,14 +266,14 @@ $config['encryption_key'] = 's78d6f78sd6f8sd7zx6f8ds6f8s7d6fsd78';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name'] = 'codefight_' . (defined('ENVIRONMENT') ? ENVIRONMENT : '');
+$config['sess_cookie_name'] = 'cf';
 $config['sess_expiration'] = 7200;
-$config['sess_expire_on_close'] = TRUE;
+$config['sess_expire_on_close'] = FALSE;
 $config['sess_encrypt_cookie'] = FALSE;
 $config['sess_use_database'] = TRUE;
 $config['sess_table_name'] = 'cf_sessions';
 $config['sess_match_ip'] = FALSE;
-$config['sess_match_useragent'] = TRUE;
+$config['sess_match_useragent'] = FALSE;
 $config['sess_time_to_update'] = 300;
 
 /*

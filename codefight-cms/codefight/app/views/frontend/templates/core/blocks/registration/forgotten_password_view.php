@@ -29,7 +29,7 @@
 
                         <label><?php echo anchor('registration', 'Register'); ?></label>
 
-                        <input class="button" name="submit" type="submit" id="submit" value="Send Password"/>
+                        <input class="btn btn-primary" name="submit" type="submit" id="submit" value="Send Password"/>
 
                     </div>
 

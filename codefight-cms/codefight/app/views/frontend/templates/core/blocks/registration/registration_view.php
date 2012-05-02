@@ -43,7 +43,7 @@
 
                         <label><?php echo anchor('registration/login', 'Login'); ?></label>
 
-                        <input class="button" name="submit" type="submit" id="submit" value="Register"/>
+                        <input class="btn btn-primary" name="submit" type="submit" id="submit" value="Register"/>
 
                     </div>
 

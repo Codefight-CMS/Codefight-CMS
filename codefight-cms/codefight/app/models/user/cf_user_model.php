@@ -6,7 +6,22 @@ if (!defined('BASEPATH')) {
 
 class Cf_user_model extends MY_Model
 {
-    function get_user($per_page = 5, $page = 0)
+	private $_groups;
+	
+	public function get_groups()
+	{
+		if(count($this->_groups)) return $this->_groups;
+		
+		$result = $this->db->get('group')->result_array();
+		
+		foreach($result as $v)
+		{
+			$this->_groups[$v['group_id']] = $v;
+		}
+		return $this->_groups;
+	}
+	
+    public function get_user($per_page = 5, $page = 0)
     {
         $this->db->order_by('user_id');
         if ($per_page) $this->db->limit($per_page, $page);
@@ -17,11 +32,11 @@ class Cf_user_model extends MY_Model
         !is_array($result) ? $result = array() : '';
 
         //get group title
+	$groups = $this->get_groups();
+	
         foreach ($result as $k => $v) {
-            $qry = $this->db->get_where('group', array('group_id' => $v['group_id']));
-            $rslt = $qry->result_array();
-            if (isset($rslt[0]['group_title'])) {
-                $result[$k]['group_title'] = $rslt[0]['group_title'];
+            if (isset($groups[$v['group_id']]['group_title'])) {
+                $result[$k]['group_title'] = $groups[$v['group_id']]['group_title'];
             }
             else
             {
@@ -32,24 +47,36 @@ class Cf_user_model extends MY_Model
         return $result;
     }
 
-    function user_exists($email='')
+    public function get_user_by_id($id='')
+    {
+        $this->db->where('user_id', $id);
+        return $this->get_user(false);
+    }
+
+    public function user_exists($email='')
     {
         $this->db->where('email', $email);
         return $this->get_user(false);
     }
 
-    function get_active_user()
+    public function get_authors()
+    {
+        $this->db->where('is_author', '1');
+        return $this->get_active_user();
+    }
+
+    public function get_active_user()
     {
         $this->db->where('active', '1');
         return $this->get_user(false);
     }
 
-    function get_user_count()
+    public function get_user_count()
     {
         return $this->db->count_all_results('user');
     }
 
-    function insert($active, $email, $password, $firstname, $lastname, $group_id)
+    public function insert($active, $email, $password, $firstname, $lastname, $group_id)
     {
         $this->db->where('email', $email);
         $count = $this->db->count_all_results('user');

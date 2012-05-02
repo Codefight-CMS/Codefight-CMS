@@ -1,6 +1,7 @@
 <?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
 <?php echo '<' . '?xml version="1.0" encoding="utf-8"?' . '>' . "\n"; ?>
 <rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
      xmlns:admin="http://webns.net/mvcb/"
@@ -13,6 +14,7 @@
 
         <link><?php echo $feed_url; ?></link>
         <description><?php echo $page_description; ?></description>
+        <category>IT/Internet/Web development</category>
         <dc:language><?php echo $page_language; ?></dc:language>
         <dc:creator><?php echo $creator_email; ?></dc:creator>
 
@@ -22,6 +24,8 @@
         <?php
         foreach ($posts->result_array() as $entry)
         {
+            $categories = $this->cf_blog_model->getMenuLinks($entry['menu_id']);
+
             $link = site_url(get_page_url($entry));
             $description = nl2br(trim(str_replace('&nbsp;', ' ', strip_tags($entry['page_blurb'])))); //xml_convert
             ?>
@@ -35,6 +39,9 @@
                     <?php echo $description; ?>
                     ]]>
                 </description>
+                <?php foreach($categories as $c) { ?>
+                <category><?php echo $c ?></category>
+                <?php } ?>
                 <pubDate><?php echo date(DATE_RSS, strtotime($entry['page_date']));?></pubDate>
 
             </item>

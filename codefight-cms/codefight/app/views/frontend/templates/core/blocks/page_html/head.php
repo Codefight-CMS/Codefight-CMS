@@ -31,7 +31,7 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo site_url('feed'); ?>"/><?php
 
     //Get Assets (js|css)
-    $this->cf_asset_lib->get();
+    Library('asset')->get();
 
     //If head text variable is set, echo it.
     if (isset($head_text)) echo (string)$head_text;

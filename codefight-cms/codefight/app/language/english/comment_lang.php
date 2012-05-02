@@ -8,7 +8,7 @@ $lang['website'] = 'Website';
 $lang['url'] = 'URL';
 $lang['comment'] = 'Comment';
 $lang['spam_check'] = 'Enter Total';
-$lang['spam_question'] = '%s = ? | refresh';
+$lang['spam_question'] = '%s = ?';
 $lang['enable_js_to_comment'] = 'Javascript must be enabled to post comment!';
 $lang['processing_wait'] = 'Processing...Please Wait!';
 $lang['language_change_error'] = 'Could not change language at this time.';

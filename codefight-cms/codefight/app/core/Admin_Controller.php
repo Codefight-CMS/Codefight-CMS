@@ -5,6 +5,7 @@ class Admin_Controller {
     var $CI;
     var $redirect = 'registration/login';
 
+
 	public function __construct($params='')
 	{
         $this->CI = get_instance();
@@ -12,7 +13,7 @@ class Admin_Controller {
 		{
 			//display access error and exit
 			$msg = array('error' => '<p>You are not allowed to access this page.</p>');
-			set_global_messages($msg, 'error');
+			setMessages($msg, 'error');
             redirect($this->redirect);
 			exit;
 		}
@@ -34,6 +35,10 @@ class Admin_Controller {
 
         $page = trim($this->CI->cfAdminController . '/' . $this->CI->cfAdminMethod, '/');
 
+        $defaultToAll = array('sortdata/menu','form/ajax','file/file-search-form'); /*These pages can be accessed by all admins. @todo: better management*/
+
+        if(in_array($page, $defaultToAll)) return TRUE;;
+
         $can_access = $this->CI->cf_module_model->can_access($group_id, $page);
 
         if($can_access) return TRUE;
@@ -44,6 +49,10 @@ class Admin_Controller {
         {
             return FALSE;
         }
+		
+		$msg = array('error' => '<p>You need access to perform action on page <strong>'.$page.'</strong>. </p>');
+		setMessages($msg, 'error');
+
 
         redirect('admin/'.$default_landing);
 

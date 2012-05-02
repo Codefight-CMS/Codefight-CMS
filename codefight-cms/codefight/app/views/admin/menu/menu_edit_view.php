@@ -73,7 +73,7 @@ foreach ($menu_ary as $v) {
     <div class="editSeparator">&nbsp;</div>
 
     <?php } ?>
-    <label>&nbsp;</label><input name="edit" type="submit" id="edit" value="Update"/>&nbsp;<?php echo anchor('admin/menu/' . $this->uri->segment(3, ''), __('BACK')); ?>
+    <label>&nbsp;</label><input class="btn btn-primary" name="edit" type="submit" id="edit" value="Update"/>&nbsp;<?php echo anchor('admin/menu/' . $this->uri->segment(3, ''), __('BACK')); ?>
 
     <p class="clear">&nbsp;</p>
 </div>

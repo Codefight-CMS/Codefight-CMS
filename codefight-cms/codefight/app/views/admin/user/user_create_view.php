@@ -31,7 +31,7 @@ foreach ($g_rslt as $v) {
     <label><?php echo __('Is Author'); ?>:</label>
     <?php echo form_dropdown('is_author', $yes_no, set_value('is_author'), 'class="txtFld"'); ?>
     <p class="clear">&nbsp;</p>
-    
+
     <label><?php echo __('E-mail'); ?>:</label><input class="txtFld" name="email" type="text" id="email"
                                                      value="<?php echo set_value('email'); ?>"/>
 
@@ -47,13 +47,27 @@ foreach ($g_rslt as $v) {
                                                         value="<?php echo set_value('lastname'); ?>"/>
 
     <p class="clear">&nbsp;</p>
-    
+
+    <label><?php echo __('Profile Link'); ?>:</label><input class="txtFld" name="profile_link"
+                                                        type="text"
+                                                        id="profile_link"
+                                                        value="<?php echo set_value('profile_link'); ?>"/>
+
+
+    <p class="clear">&nbsp;</p>
+
     <label><?php echo __('Group'); ?>:</label>
     <?php echo form_dropdown('group_id', $options_group, set_value('group_id'), 'class="txtFld"'); ?>
 
     <p class="clear">&nbsp;</p>
+    <label><?php echo __('Profile'); ?>:</label>
+    <br/>
+    <textarea class="txtFld" name="profile" cols="80" rows="15"
+              id="profile"><?php echo form_prep(set_value('profile')); ?></textarea>
 
-    <label>&nbsp;</label><input name="create" type="submit" id="create" value="Create"/>
+	      <p class="clear">&nbsp;</p>
+
+    <label>&nbsp;</label><input class="btn btn-primary" name="create" type="submit" id="create" value="Create"/>
     &nbsp;<?php echo anchor('admin/user', __('BACK')); ?>
 
     <p class="clear">&nbsp;</p>

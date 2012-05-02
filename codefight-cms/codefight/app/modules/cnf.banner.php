@@ -9,18 +9,24 @@ $cnf['banner']['global'] = array(
 			'status' => 1,
 			'sort' => 100,
 			'title' => 'Banner',
-			'url' => 'banner',
+			//'url' => 'banner',
+            'void' => 1, /*1 = onclick="return false;"*/
 			'parent' => 'top',
 		);
 $cnf['banner']['admin'] = array(
 			'child' => array(
-					0 => array(
-						'url' => 'manage',
+					'banner/manage' => array(
+						'status' => 1,
 						'title' => 'Manage'
 						),
-					1 => array(
-						'url' => 'create',
+					'banner/create' => array(
+						'status' => 1,
 						'title' => 'Create New Banner'
+						),
+					'banner/status' => array(
+						'is_menu' => 0,
+						'status' => 1,
+						'title' => 'Change Banner Status'
 						),
 				)
 		);

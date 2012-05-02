@@ -97,7 +97,7 @@ class Cf_websites_model extends MY_Model
                 break;
         }
 
-        set_global_messages($msg, $type);
+        setMessages($msg, $type);
 
         return;
     }
@@ -106,7 +106,7 @@ class Cf_websites_model extends MY_Model
     {
         if (empty($id)) {
             $msg = array('error' => "<p>Error! ID is required.</p>");
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
 
             return;
         }
@@ -117,7 +117,7 @@ class Cf_websites_model extends MY_Model
         $this->db->delete('websites');
 
         $msg = array('success' => "<p>Deleted Successfully.</p>");
-        set_global_messages($msg, 'success');
+        setMessages($msg, 'success');
 
         return;
     }
@@ -142,12 +142,12 @@ class Cf_websites_model extends MY_Model
 
         if ($error) {
             $msg = array('error' => "<p>{$error} websites could not be deleted.</p>");
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
 
         if ($success) {
             $msg = array('success' => "<p>{$success} Websites Deleted Successfully.</p>");
-            set_global_messages($msg, 'success');
+            setMessages($msg, 'success');
         }
 
         return;

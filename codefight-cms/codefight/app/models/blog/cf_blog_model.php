@@ -27,18 +27,52 @@ class Cf_blog_model extends MY_Model
         return $default[$q];
     }
 
+    function get_tag_meta($keyword = 'blog', $id = 1)
+    {
+        $this->db->where('tag', $keyword)->where('websites_id', $id);
+        $query = $this->db->get('tag_cloud');
+        $row   = $query->result_array();
+
+        $data['title'] = $data['keywords'] = $data['description'] = $keyword . ' :: Tag';
+
+        foreach ($row as $v) {
+            if (!empty($v['meta_title'])) {
+                $data['title'] = $v['meta_title'];
+            } else {
+                $data['title'] = ucwords($v['title']) . ' :: ' . __('Tag');
+            }
+            if (!empty($v['meta_keyword'])) {
+                $data['keywords'] = $v['meta_keyword'];
+            } else {
+                $data['keywords'] = preg_replace('/\s+|\s/', ',', ucwords($v['title'])) . ',Blog,Tag';
+            }
+            if (!empty($v['meta_description'])) {
+                $data['description'] = $v['meta_description'];
+            } else {
+                $data['description'] = 'TAG: ' . ucwords($v['title']);
+            }
+        }
+        return $data;
+    }
+
     function get_setting_meta()
     {
         $this->db->where('websites_id', CFWEBSITEID);
         $query = $this->db->get('setting');
-        $row = $query->result_array();
+        $row   = $query->result_array();
 
         $data['title'] = $data['keywords'] = $data['description'] = '';
 
         foreach ($row as $v) {
-            if ($v['setting_key'] == 'meta_title') $data['title'] = $v['setting_value'];
-            if ($v['setting_key'] == 'meta_keyword') $data['keywords'] = $v['setting_value'];
-            if ($v['setting_key'] == 'meta_description') $data['description'] = $v['setting_value'];
+            if ($v['setting_key'] == 'meta_title') {
+                $data['title'] = $v['setting_value'];
+            }
+            if ($v['setting_key'] == 'meta_keyword') {
+                $data['keywords'] = $v['setting_value'];
+            }
+            if ($v['setting_key'] == 'meta_description') {
+                $data['description'] = $v['setting_value'];
+            }
         }
         return $data;
     }
@@ -118,17 +152,50 @@ class Cf_blog_model extends MY_Model
         $data = '';
         if (is_array($data1) && count($data1) > 0) {
 
-            $data['meta'] = $this->meta_fetch($data1[0]);
+            $data['meta']    = $this->meta_fetch($data1[0]);
             $data['content'] = $data1;
 
         }
         else
         {
-            $data['meta'] = $this->defaults();
+            $data['meta']    = $this->defaults();
             $data['content'] = array();
         }
 
         return $data;
+    }
+
+    function getMenuId($menu_link = '0')
+    {
+        $row = $this->db->select('menu_id')->where('menu_link', xss_clean($menu_link))->limit(1)->get('menu')
+            ->result_array();
+        if (isset($row[0]['menu_id'])) {
+            return $row[0]['menu_id'];
+        }
+        return FALSE;
+    }
+
+    function getMenuLinks($menu_ids = '')
+    {
+        $menu_ids = trim($menu_ids, ',');
+        $menu_ids = explode(',', $menu_ids);
+        if(empty($menu_ids)) return array();
+        $categories = array();
+
+        foreach($menu_ids as $v){
+            $categories[$v] = $this->getMenuLink($v);
+        }
+
+        return $categories;
+    }
+
+    function getMenuLink($menu_id = '0')
+    {
+        $row = $this->db->select('menu_link')->where('menu_id', (int)($menu_id))->limit(1)->get('menu')->result_array();
+        if (isset($row[0]['menu_link'])) {
+            return $row[0]['menu_link'];
+        }
+        return FALSE;
     }
 
     function redirect_blog($page_id = '0')
@@ -139,25 +206,31 @@ class Cf_blog_model extends MY_Model
             $this->db->order_by('page.page_id', 'desc');
             $this->db->limit(1);
 
-            $query = $this->db->get_where('page', array('page.page_id' => $page_id, 'page.page_active' => '1'));
-            $data = $query->result_array();
+            $query = $this->db->get_where(
+                'page', array('page.page_id'     => $page_id,
+                              'page.page_active' => '1')
+            );
+            $data  = $query->result_array();
 
-            if(isset($data[0]['websites_id']))
-            {
+            if (isset($data[0]['websites_id'])) {
                 $web_id = array_pop(explode(',', trim($data[0]['websites_id'], ',')));
-                if($web_id != CFWEBSITEID)
-                {
+                $link = get_page_url(
+                    $data[0]
+                );
+                if ($web_id != CFWEBSITEID) {
                     $this->load->model(array('websites/cf_websites_model'));
 
                     $website = $this->db->where('websites_id', $web_id)->get('websites')->row();
-                    if(isset($website->websites_url))
-                    {
+                    if (isset($website->websites_url)) {
                         $r_url = prep_url($website->websites_url);
-                        $r_url = trim($r_url, '/'). '/' . trim(uri_string(), '/');
+                        $r_url = trim($r_url, '/') . '/' . trim($link, '/');
 
                         redirect($r_url, 'refresh', 301);
                         die();
                     }
+                } else {
+                    redirect(site_url($link), 'refresh', 301);
+                    die();
                 }
             }
         }
@@ -174,7 +247,10 @@ class Cf_blog_model extends MY_Model
             $this->db->like('page.websites_id', ',' . CFWEBSITEID . ',');
         }
 
-        $query = $this->db->get_where('page', array('page.page_id' => $page_id, 'page.page_active' => '1'));
+        $query = $this->db->get_where(
+            'page', array('page.page_id'     => $page_id,
+                          'page.page_active' => '1')
+        );
         $data1 = $query->result_array();
 
         $data = '';
@@ -194,7 +270,7 @@ class Cf_blog_model extends MY_Model
         }
         else
         {
-            $data['meta'] = $this->defaults();
+            $data['meta']    = $this->defaults();
             $data['content'] = array();
         }
 
@@ -213,19 +289,22 @@ class Cf_blog_model extends MY_Model
             $this->db->like('page.websites_id', ',' . CFWEBSITEID . ',');
         }
 
-        $query = $this->db->get_where('page', array('page_tag.tag' => $tag, 'page.page_active' => '1'));
+        $query = $this->db->get_where(
+            'page', array('page_tag.tag'     => $tag,
+                          'page.page_active' => '1')
+        );
         $data1 = $query->result_array();
 
         $data = '';
         if (is_array($data1) && count($data1) > 0) {
 
-            $data['meta'] = $this->meta_fetch($data1[0]);
+            $data['meta']    = $this->meta_fetch($data1[0]);
             $data['content'] = $data1;
 
         }
         else
         {
-            $data['meta'] = $this->defaults();
+            $data['meta']    = $this->defaults();
             $data['content'] = array();
         }
 
@@ -240,7 +319,11 @@ class Cf_blog_model extends MY_Model
             $this->db->like('page.websites_id', ',' . CFWEBSITEID . ',');
         }
 
-        $this->db->where(array('page_tag.tag' => $tag, 'page.page_active' => '1', 'page.page_type' => $page_type));
+        $this->db->where(
+            array('page_tag.tag'     => $tag,
+                  'page.page_active' => '1',
+                  'page.page_type'   => $page_type)
+        );
         return $this->db->count_all_results('page');
     }
 
@@ -305,16 +388,28 @@ class Cf_blog_model extends MY_Model
     {
         $page_id = preg_replace('/[^0-9]+/', '', $page_id);
 
-        $query = $this->db->get_where('page_comment', array('page_id' => $page_id, 'page_comment_status' => '1'));
-        $q = $query->result_array();
+        $query = $this->db->get_where(
+            'page_comment', array('page_id'             => $page_id,
+                                  'page_comment_status' => '1')
+        );
+        $q     = $query->result_array();
 
         $c = '';
-        if (is_array($q) && count($q) > 0) foreach ($q as $v) {
-            $c .= "\n" . '<div class="comment"><a name="cmnt' . $v['page_comment_id'] . '"></a>';
-            $c .= "\n" . '<p class="comment"><img class="gravatar" src="http://www.gravatar.com/avatar/' . md5(strtolower(trim($v['email']))) . '?s=40&d=mm" />' . nl2br($v['comment']) . '</p>';
-            $c .= "\n" . '<p class="commenter"><a href="' . current_url() . '#cmnt' . $v['page_comment_id'] . '"><span> ' . date("d/m/y h:i:s", strtotime($v['time'])) . '</span></a><span>|</span>';
-            $c .= "\n" . '<a rel="external nofollow" href="' . prep_url($v['url']) . '#" target="_blank">' . $v['name'] . '</a></p>';
-            $c .= "\n" . '</div>';
+        if (is_array($q) && count($q) > 0) {
+            foreach ($q as $v) {
+                $c .= "\n" . '<div class="comment"><a name="cmnt' . $v['page_comment_id'] . '"></a>';
+                $c .= "\n" . '<p class="comment"><img class="gravatar" src="http://www.gravatar.com/avatar/' . md5(
+                    strtolower(trim($v['email']))
+                ) . '?s=40&d=mm" />' . nl2br($v['comment']) . '</p>';
+                $c
+                    .= "\n" . '<p class="commenter"><a href="' . current_url() . '#cmnt' . $v['page_comment_id']
+                    . '"><span> '
+                    . date("d/m/y h:i:s", strtotime($v['time'])) . '</span></a><span>|</span>';
+                $c .= "\n" . '<a rel="external nofollow" href="' . prep_url($v['url']) . '#" target="_blank">'
+                    . $v['name']
+                    . '</a></p>';
+                $c .= "\n" . '</div>';
+            }
         }
         echo $c;
     }
@@ -324,101 +419,118 @@ class Cf_blog_model extends MY_Model
 
         $_content = array();
 
-        if (isset($content) && is_array($content) && count($content) > 0) foreach ($content as $k => $v) {
-            //check access
-            $access = $this->cf_data_model->is_granted($v['group_id']);
+        if (isset($content) && is_array($content) && count($content) > 0) {
+            foreach ($content as $k => $v) {
+                //check access
+                $access = $this->cf_data_model->is_granted($v['group_id']);
 
-            //Get Author + Date Block
-            $author_date = $this->cf_data_model->author_date($v['page_author'], $v['page_date'], $v['show_author'], $v['show_date']);
-            //Get Tags Block
-            $page_tag = $this->cf_data_model->page_tag($v['page_tag']);
-            //Get Tags Block
-            $content_content = $this->cf_bbcode_lib->output($this->cf_data_model->page_content($v, $show_blurb));
-            //$page_content = $this->phpcolor->color_code($content_content);
-            $page_content = $content_content;
+                //Get Author + Date Block
+                $author_date = $this->cf_data_model->author_date($v);
+                //Get Tags Block
+                $page_tag = $this->cf_data_model->page_tag($v['page_tag']);
+                //Get Tags Block
+                $content_content = $this->cf_bbcode_lib->output($this->cf_data_model->page_content($v, $show_blurb));
+                //$page_content = $this->phpcolor->color_code($content_content);
+                $page_content = $content_content;
 
-            //Get the Year | Month | Day the post was posted
-            $_content[$k]['year'] = $this->cf_data_model->post_year($v['show_date'], $v['page_date']);
-            $_content[$k]['month'] = $this->cf_data_model->post_month($v['show_date'], $v['page_date']);
-            $_content[$k]['day'] = $this->cf_data_model->post_day($v['show_date'], $v['page_date']);
+                //Get the Year | Month | Day the post was posted
+                $_content[$k]['year']  = $this->cf_data_model->post_year($v['show_date'], $v['page_date']);
+                $_content[$k]['month'] = $this->cf_data_model->post_month($v['show_date'], $v['page_date']);
+                $_content[$k]['day']   = $this->cf_data_model->post_day($v['show_date'], $v['page_date']);
 
-            //check to see if there is a form
-            if (preg_match_all('#{{form (.+)}}#isU', $page_content, $identifier)) {
-                $form = $this->cf_form_lib->create($identifier, current_url());
-                if (isset($_POST['identifier'])) {
-                    $page_content .= '<script type="text/javascript">
+                //check to see if there is a form
+                if (preg_match_all('#{{form (.+)}}#isU', $page_content, $identifier)) {
+                    $form = $this->cf_form_lib->create($identifier, current_url());
+                    if (isset($_POST['identifier'])) {
+                        $page_content
+                            .= '<script type="text/javascript">
 					jQuery(document).ready(function(){check_form();});
-					
+
 					function check_form() {
 						jQuery.post(
 								\'form/ajax\',
 								{
 									';
-                    foreach ($_POST as $pk => $pv) {
-                        if (!is_array($_POST[$pk]))
-                            $page_content .= "{$pk}:document.getElementById(\"{$pk}\").value, \n";
-                        else {
-                            //print_r($_POST);
-                            foreach ($_POST[$pk] as $chk_k => $chk_v) {
-                                $page_content .= "'" . $pk . '[' . $chk_k . ']' . "'" . ':document.getElementById("' . $pk . '[' . $chk_k . ']").value, ' . "\n";
+                        foreach ($_POST as $pk => $pv) {
+                            if (!is_array($_POST[$pk])) {
+                                $page_content .= "{$pk}:document.getElementById(\"{$pk}\").value, \n";
+                            }
+                            else {
+                                //print_r($_POST);
+                                foreach ($_POST[$pk] as $chk_k => $chk_v) {
+                                    $page_content
+                                        .=
+                                        "'" . $pk . '[' . $chk_k . ']' . "'" . ':document.getElementById("' . $pk . '['
+                                            . $chk_k . ']").value, ' . "\n";
+                                }
                             }
                         }
-                    }
-                    $page_content .= ' },
+                        $page_content
+                            .= ' },
 								function(data){
 									jQuery(\'#message_' . $_POST['identifier'] . '\').html(data);
 								}
 							);
 					}
 					</script>';
+                    }
+
+                    //replace identifiers with form.
+                    foreach ($form as $f) {
+                        $page_content = preg_replace('#' . $f['block'] . '#isU', $f['form'], $page_content);
+                    }
                 }
 
-                //replace identifiers with form.
-                foreach ($form as $f) {
-                    $page_content = preg_replace('#' . $f['block'] . '#isU', $f['form'], $page_content);
+                //check to see if there is a form
+                if (preg_match_all('#{{banner (.+)}}#isU', $page_content, $identifier)) {
+                    $page_content = $this->cf_banner_model->parse($page_content, $identifier);
                 }
-            }
 
-            //check to see if there is a form
-            if (preg_match_all('#{{banner (.+)}}#isU', $page_content, $identifier)) {
-                $page_content = $this->cf_banner_model->parse($page_content, $identifier);
-            }
+                $_content[$k]['categories'] = $this->cf_data_model->post_category($v['menu_id'], true);
 
-            $_content[$k]['categories'] = $this->cf_data_model->post_category($v['menu_id'], true);
+                //$v['menu_id'] = explode(',',$v['menu_id']);
+                //$v['menu_id'] = array_filter($v['menu_id']);
+                //$v['menu_id'] = array_shift($v['menu_id']);
 
-            //$v['menu_id'] = explode(',',$v['menu_id']);
-            //$v['menu_id'] = array_filter($v['menu_id']);
-            //$v['menu_id'] = array_shift($v['menu_id']);
+                $link = get_page_url(
+                    $v
+                ); //$this->cf_data_model->link_create(array(0 => 'page', 1 => $v['menu_id'], 3 => $v['page_id'], 4 => $this->cf_data_model->link_clean($v['page_title'])));
 
-            $link = get_page_url($v); //$this->cf_data_model->link_create(array(0 => 'page', 1 => $v['menu_id'], 3 => $v['page_id'], 4 => $this->cf_data_model->link_clean($v['page_title'])));
+                //If the user has right to view this content...
+                if ($access) {
+                    //Show heading of the content, ...
+                    $_content[$k]['title']       = anchor($link, $v['page_title']);
+                    $_content[$k]['author_date'] = $author_date;
+                    $_content[$k]['content']     = $page_content;
+                    $_content[$k]['tag']         = $page_tag;
 
-            //If the user has right to view this content...
-            if ($access) {
-                //Show heading of the content, ...
-                $_content[$k]['title'] = anchor($link, $v['page_title']);
-                $_content[$k]['author_date'] = $author_date;
-                $_content[$k]['content'] = $page_content;
-                $_content[$k]['tag'] = $page_tag;
+                    if ($this->uri->segment(3, 0) == $v['page_id']) {
 
-                if ($this->uri->segment(3, 0) == $v['page_id']) {
-
-                    //add share button
-                    $_content[$k]['addthis'] = '<br /><!-- AddThis Button BEGIN --><script type="text/javascript">var addthis_pub="dbashyal";</script><a href="http://www.addthis.com/bookmark.php?v=20" onmouseover="return addthis_open(this, \'\', \'[URL]\', \'[TITLE]\')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/200/addthis_widget.js"></script><!-- AddThis Button END -->';
-                    $_content[$k]['sharethis'] = '
+                        //add share button
+                        $_content[$k]['addthis']
+                            = '<br /><!-- AddThis Button BEGIN --><script type="text/javascript">var addthis_pub="dbashyal";</script><a href="http://www.addthis.com/bookmark.php?v=20" onmouseover="return addthis_open(this, \'\', \'[URL]\', \'[TITLE]\')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/200/addthis_widget.js"></script><!-- AddThis Button END -->';
+                        $_content[$k]['sharethis']
+                            = '
 <div class="post_share social-media"><div class="large-buttons"><div class="wdt_button">
-<iframe id="tweet_frame_483679" name="tweet_frame_483679" allowtransparency="true" frameborder="0" role="presentation" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url=' . urlencode(site_url($link)) . '&amp;via=@codefight&amp;text=' . urlencode($v['page_title']) . '&amp;count=vertical" width="55" height="63"></iframe>
+<iframe id="tweet_frame_483679" name="tweet_frame_483679" allowtransparency="true" frameborder="0" role="presentation" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url='
+                            . urlencode(site_url($link)) . '&amp;via=@codefight&amp;text=' . urlencode($v['page_title'])
+                            . '&amp;count=vertical" width="55" height="63"></iframe>
 </div><div class="wdt_button wdt_fb"><fb:share-button href="' . site_url($link) . '" type="box_count"></fb:share-button></div><div class="wdt_button">
-<script src="http://www.stumbleupon.com/hostedbadge.php?s=5&ampr=' . urlencode(site_url($link)) . '&amp;title=' . urlencode($v['page_title']) . '"></script></div></div><div class="small-buttons" style="display:none"><div class="wdt_button_min">
-<iframe id="tweet_frame_483679" name="tweet_frame_483679" allowtransparency="true" frameborder="0" role="presentation" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url=' . urlencode(site_url($link)) . '&amp;via=@codefight&amp;text=' . urlencode($v['page_title']) . '&amp;count=horizontal" width="110" height="20"></iframe>
+<script src="http://www.stumbleupon.com/hostedbadge.php?s=5&ampr=' . urlencode(site_url($link)) . '&amp;title='
+                            . urlencode($v['page_title']) . '"></script></div></div><div class="small-buttons" style="display:none"><div class="wdt_button_min">
+<iframe id="tweet_frame_483679" name="tweet_frame_483679" allowtransparency="true" frameborder="0" role="presentation" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url='
+                            . urlencode(site_url($link)) . '&amp;via=@codefight&amp;text=' . urlencode($v['page_title'])
+                            . '&amp;count=horizontal" width="110" height="20"></iframe>
 </div><div class="wdt_button_min"><fb:share-button href="' . $link . '" type="button_count"></fb:share-button></div><div class="wdt_button_min">
-<script src="http://www.stumbleupon.com/hostedbadge.php?s=1&r=' . urlencode(site_url($link)) . '&amp;title=' . urlencode($v['page_title']) . '"></script></div><div class="wdt_button_min">
+<script src="http://www.stumbleupon.com/hostedbadge.php?s=1&r=' . urlencode(site_url($link)) . '&amp;title='
+                            . urlencode($v['page_title']) . '"></script></div><div class="wdt_button_min">
 <a class="chicklet" id="st_email_min" href="javascript:void(0);">email</a></div><div class="wdt_button_min"
 ><a class="chicklet" id="st_sharethis_min" href="javascript:void(0);">share</a>
 <script type="text/javascript">
 var shared_object = SHARETHIS.addEntry({title: "' . ($v['page_title']) . '",url: "' . site_url($link) . '"}, {button:false,onmouseover:false});
 shared_object.attachButton(document.getElementById(\'st_sharethis_min\'));
 shared_object.attachChicklet(\'email\', document.getElementById(\'st_email_min\'));
-</script> 
+</script>
 </div></div><div class="wdt_button"><a class="chicklet" id="st_email" href="javascript:void(0);">email</a></div><div class="wdt_button">
 <a class="chicklet" id="st_sharethis" href="javascript:void(0);">share</a>
 <script type="text/javascript">
@@ -426,27 +538,28 @@ var shared_object = SHARETHIS.addEntry({title: "' . ($v['page_title']) . '",url:
 shared_object.attachButton(document.getElementById(\'st_sharethis\'));shared_object.attachChicklet(\'email\', document.getElementById(\'st_email\'));
 </script></div></div>';
 
-                    if (isset($v['allow_comment']) && ($v['allow_comment'])) {
-                        $data['page_id'] = $v['page_id'];
-                        $data['link'] = $link;
-                        //include($template_path . '/blocks/comment.php');
-                        $this->lang->load('comment');
-                        $_content[$k]['comment'] = $this->cf_block_lib->load('comment', false, '.php', true);
+                        if (isset($v['allow_comment']) && ($v['allow_comment'])) {
+                            $data['page_id'] = $v['page_id'];
+                            $data['link']    = $link;
+                            //include($template_path . '/blocks/comment.php');
+                            $this->lang->load('comment');
+                            $_content[$k]['comment'] = $this->cf_block_lib->load('comment', false, '.php', true);
+                        }
                     }
+                } else {
+                    //Show heading of the content, ...
+                    $_content[$k]['title'] = $v['page_title'];
+                    $_content[$k]['author_date'] .= $author_date;
+
+                    //... but Display message to login
+                    $_content[$k]['content'] .= '<p class="error">You do not have access right to view this part of content, Please login.</p>';
+                    $_content[$k]['tag'] .= $page_tag;
                 }
-            } else {
-                //Show heading of the content, ...
-                $_content[$k]['title'] = $v['page_title'];
-                $_content[$k]['author_date'] .= $author_date;
 
-                //... but Display message to login
-                $_content[$k]['content'] .= '<p class="error">You do not have access right to view this part of content, Please login.</p>';
-                $_content[$k]['tag'] .= $page_tag;
+                //Count total comment
+                $_content[$k]['comment_count'] = $this->cf_data_model->post_comment_count($v['page_id']);
+
             }
-
-            //Count total comment
-            $_content[$k]['comment_count'] = $this->cf_data_model->post_comment_count($v['page_id']);
-
         } //END: Foreach
 
         return $_content;
@@ -480,7 +593,10 @@ shared_object.attachButton(document.getElementById(\'st_sharethis\'));shared_obj
         if ($count >= 1) {
             return false;
         } else {
-            $this->db->insert('page', array('page_title' => $title, 'page_description' => $description));
+            $this->db->insert(
+                'page', array('page_title'       => $title,
+                              'page_description' => $description)
+            );
             return true;
         }
     }
@@ -491,8 +607,13 @@ shared_object.attachButton(document.getElementById(\'st_sharethis\'));shared_obj
             if (defined('CFWEBSITEID')) {
                 $this->db->like('websites_id', ',' . CFWEBSITEID . ',');
             }
-            $this->db->where(array('page_active' => '1', 'page_type' => 'blog'));
-            if ($param > 0) $this->db->like('menu_id', ",$param,");
+            $this->db->where(
+                array('page_active' => '1',
+                      'page_type'   => 'blog')
+            );
+            if ($param > 0) {
+                $this->db->like('menu_id', ",$param,");
+            }
         }
         else
         {
@@ -500,5 +621,4 @@ shared_object.attachButton(document.getElementById(\'st_sharethis\'));shared_obj
         }
         return $this->db->count_all_results('page');
     }
-
 }

@@ -18,7 +18,7 @@
                                      id="form_group_send_to"><?php echo set_value('form_group_send_to'); ?></textarea><br/>
 
     <p class="clear">&nbsp;</p>
-    <label>&nbsp;</label><input name="create" type="submit" id="create"
+    <label>&nbsp;</label><input class="btn btn-primary" name="create" type="submit" id="create"
                                 value="Create"/>&nbsp;<?php echo anchor('admin/form/group', __('BACK')); ?>
     <p class="clear">&nbsp;</p>
 </div>

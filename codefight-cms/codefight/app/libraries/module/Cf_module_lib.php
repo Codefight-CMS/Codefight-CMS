@@ -38,6 +38,10 @@ class Cf_module_lib
                     {
                         $this->cnf[$k]['global']['parent'] = 'top';
                     }
+                    if(!isset($v['global']['is_menu']))
+                    {
+                        $this->cnf[$k]['global']['is_menu'] = 1;
+                    }
                     if(!isset($v['global']['void']))
                     {
                         $this->cnf[$k]['global']['void'] = 0;
@@ -59,6 +63,7 @@ class Cf_module_lib
         $nav = array();
         foreach($this->sort as $k => $v)
         {
+            $nav[$k]['is_menu'] = $this->cnf[$k]['global']['is_menu'];
             $nav[$k]['void'] = $this->cnf[$k]['global']['void'];
             $nav[$k]['url'] = $k;
             $nav[$k]['title'] = $this->cnf[$k]['global']['title'];
@@ -68,6 +73,7 @@ class Cf_module_lib
             {
                 foreach($this->parents[$k] as $pv)
                 {
+                    $nav[$k]['child'][$pv]['is_menu'] = $this->cnf[$pv]['global']['is_menu'];
                     $nav[$k]['child'][$pv]['void'] = $this->cnf[$pv]['global']['void'];
                     $nav[$k]['child'][$pv]['url'] = $pv;
                     $nav[$k]['child'][$pv]['title'] = $this->cnf[$pv]['global']['title'];
@@ -89,6 +95,11 @@ class Cf_module_lib
 									{
 										$cv['void'] = 0;
 									}
+                                    if(!isset($cv['is_menu']))
+									{
+										$cv['is_menu'] = 1;
+									}
+                                    $nav[$k]['child'][$pv]['child'][$ck]['is_menu'] = $cv['is_menu'];
                                     $nav[$k]['child'][$pv]['child'][$ck]['void'] = $cv['void'];
                                     $nav[$k]['child'][$pv]['child'][$ck]['url'] = $ck;
                                     $nav[$k]['child'][$pv]['child'][$ck]['title'] = $cv['title'];
@@ -108,10 +119,15 @@ class Cf_module_lib
                     {
                         continue;
                     }
+                    if(!isset($cv['is_menu']))
+					{
+						$cv['is_menu'] = 1;
+					}
                     if(!isset($cv['void']))
 					{
 						$cv['void'] = 0;
 					}
+					$nav[$k]['child'][$ck]['is_menu'] = $cv['is_menu'];
 					$nav[$k]['child'][$ck]['void'] = $cv['void'];
                     $nav[$k]['child'][$ck]['url'] = $ck;
                     $nav[$k]['child'][$ck]['title'] = $cv['title'];
@@ -130,10 +146,15 @@ class Cf_module_lib
                             {
                                 continue;
                             }
+							if(!isset($cv['is_menu']))
+							{
+								$cv['is_menu'] = 1;
+							}
 							if(!isset($cv['void']))
 							{
 								$cv['void'] = 0;
 							}
+                            $nav[$k]['child'][$ck]['is_menu'] = $cv['is_menu'];
                             $nav[$k]['child'][$ck]['void'] = $cv['void'];
                             $nav[$k]['child'][$ck]['url'] = $ck;
                             $nav[$k]['child'][$ck]['title'] = $cv['title'];

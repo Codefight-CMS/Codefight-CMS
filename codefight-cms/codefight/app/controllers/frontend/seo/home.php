@@ -84,19 +84,6 @@ class Home extends MY_Controller
             $data['pagination'] = $this->pagination->create_links();
         }
 
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'screen' => array('page')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
-
         //main content block [content view]
         $data['content_block'] = 'page_view';
 

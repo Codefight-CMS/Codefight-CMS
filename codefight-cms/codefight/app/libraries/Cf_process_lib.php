@@ -16,7 +16,7 @@ class Cf_process_lib
         $html_string = preg_replace('/\]\*\]/i', ']]', $html_string);
 
         //Do you want to minify your html
-        $html_tidy = $CI->cf_asset_lib->minify_html; //$CI->config->item('cf_minify_html');
+        $html_tidy = Library('asset')->minify_html; //$CI->config->item('cf_minify_html');
 
         if ($html_tidy == '1' && $minify_this_page == true) {
             $html_string = preg_replace('#>\s+?<#sU', '><', $html_string);

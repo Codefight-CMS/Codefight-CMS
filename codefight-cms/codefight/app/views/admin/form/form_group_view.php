@@ -26,11 +26,11 @@
         <?php } ?>
     </ul>
     <p class="clear">&nbsp;</p>
-    <input name="add_item" type="submit" id="add_item" value="Manage Group Items"/>
-    <input name="delete" type="submit" id="delete" value="Delete Selected"/>
-    <input name="edit" type="submit" id="edit" value="Edit Selected"/>
-    <input name="create" type="submit" id="create" value="Create New"/>
-    <input name="reset" type="reset" id="reset" value="Reset"/>
+    <input class="btn btn-primary" name="add_item" type="submit" id="add_item" value="Manage Group Items"/>
+    <input class="btn btn-danger" name="delete" type="submit" id="delete" value="Delete Selected"/>
+    <input class="btn btn-primary" name="edit" type="submit" id="edit" value="Edit Selected"/>
+    <input class="btn btn-primary" name="create" type="submit" id="create" value="Create New"/>
+    <input class="btn btn-inverse" name="reset" type="reset" id="reset" value="Reset"/>
 
     <p class="clear">&nbsp;</p>
 

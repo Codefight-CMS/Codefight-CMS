@@ -104,7 +104,7 @@ foreach ($folder as $v) {
 
     <p class="clear">&nbsp;</p>
 
-    <label>&nbsp;</label><input name="create" type="submit" id="create" value="Upload"/>
+    <label>&nbsp;</label><input class="btn btn-primary" name="create" type="submit" id="create" value="Upload"/>
     &nbsp;<?php echo anchor('admin/file/manage-file', __('BACK')); ?>
 
     <p class="clear">&nbsp;</p>

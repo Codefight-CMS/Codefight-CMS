@@ -52,13 +52,14 @@ $autoload['packages'] = array(APPPATH . 'third_party');
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 $autoload['libraries'] = array(
+    'MY_Library',
+    'pagination',
     'database',
     'session',
     'cf_library',
     'cf_block_lib',
     'user_agent',
     'cf_login_lib',
-    'cf_asset_lib',
     'cf_process_lib',
     'cf_menu_lib',
     'cf_simplexml_lib',
@@ -128,6 +129,8 @@ $autoload['model'] = array(
 	'language_model',
 	'cf_banner_model',
 	'cf_helper_model',
+	'user/cf_user_model',
+	'blog/cf_blog_model',
     'module/cf_module_model');
 
 

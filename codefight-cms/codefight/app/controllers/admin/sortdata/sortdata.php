@@ -44,6 +44,8 @@ class Sortdata extends MY_Controller
 
         for ($i = 0; $i < count($sortme); $i++)
         {
+            if(empty($sortme[$i])) continue;
+
             if ($this->db->update($table, array($table . '_sort' => $i), array($table . '_id' => $sortme[$i]))) echo "OK";
         }
 

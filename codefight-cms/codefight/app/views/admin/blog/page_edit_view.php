@@ -11,6 +11,12 @@ $menu_type = $this->uri->segment(3, 'blog');
 $menu_ary = $this->cf_menu_model->get_menu_array($menu_type);
 $websites_ary = $this->cf_websites_model->get_websites();
 
+$authors_list = array();
+foreach ($authors as $v)
+{
+    $authors_list[$v['user_id']] = $v['firstname'].' '.$v['lastname'] . ' ('.$v['email'].')';
+}
+
 $options_websites = array();
 foreach ($websites_ary as $v)
 {
@@ -31,7 +37,7 @@ foreach ($options_ary as $v) {
 }
 ?>
 
-<?php echo form_open('admin/page/' . $this->uri->segment(3, 'blog')); ?>
+<?php echo form_open(current_url()) ?>
 <?php if (isset($_POST['page'])) { ?>
 <div class="page_create">
     <?php foreach ($_POST['page'] as $k => $v) { ?>
@@ -93,12 +99,17 @@ foreach ($options_ary as $v) {
               id="page_<?php echo $k; ?>_page_body"><?php echo form_prep($v['page_body']); ?></textarea>
     <p class="clear">&nbsp;</p><br/>
 
-    <label><?php echo __('AUTHOR') ?>:</label><input class="txtFld" name="page[<?php echo $k; ?>][page_author]"
-                                                     type="text" id="page_<?php echo $k; ?>_page_author"
-                                                     value="<?php echo $v['page_author']; ?>"/>&nbsp;
-    &nbsp;<?php echo __('Show Author') ?>&nbsp;<input type="checkbox" value="1"<?php if ($v['show_author']) {
+        <label><?php echo __('Author') ?>:</label>
+        <?php echo form_dropdown('page[' . $k . '][user_id]', $authors_list, $v['user_id'], 'class="txtFld"'); ?>
+	&nbsp;&nbsp;<?php echo __('Show Author') ?>&nbsp;<input type="checkbox" value="1"<?php if ($v['show_author']) {
         echo ' checked="checked"';
     } ?> id="page[<?php echo $k; ?>][show_author]" name="page[<?php echo $k; ?>][show_author]"/>
+
+		<label style="display:none;"><?php echo __('AUTHOR') ?>:</label>
+		<input class="txtFld" name="page[<?php echo $k; ?>][page_author]"
+                                                     type="hidden" id="page_<?php echo $k; ?>_page_author"
+                                                     value="<?php echo $v['page_author']; ?>"/>
+
     <p class="clear">&nbsp;</p>
 
     <label><?php echo __('PUBLISHED DATE') ?>:</label><input class="txtFld" name="page[<?php echo $k; ?>][page_date]"
@@ -145,7 +156,7 @@ foreach ($options_ary as $v) {
     <div class="editSeparator">&nbsp;</div>
 
     <?php } ?>
-    <label>&nbsp;</label><input name="edit" type="submit" id="edit"
+    <label>&nbsp;</label><input class="btn btn-primary" name="edit" type="submit" id="edit"
                                 value="<?php echo __('Update') ?>"/>&nbsp;<?php echo anchor
 ('admin/page/blog', __('BACK')); ?>
 

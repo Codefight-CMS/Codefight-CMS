@@ -36,10 +36,10 @@
         <?php } ?>
     </ul>
     <p class="clear">&nbsp;</p>
-    <input name="delete" type="submit" id="delete" value="Delete Selected"/>
-    <input name="edit" type="submit" id="edit" value="Edit Selected"/>
-    <input name="create" type="submit" id="create" value="Create New User"/>
-    <input name="reset" type="reset" id="reset" value="Reset"/>
+    <input class="btn btn-danger" name="delete" type="submit" id="delete" value="Delete Selected"/>
+    <input class="btn btn-primary" name="edit" type="submit" id="edit" value="Edit Selected"/>
+    <input class="btn btn-primary" name="create" type="submit" id="create" value="Create New User"/>
+    <input class="btn btn-inverse" name="reset" type="reset" id="reset" value="Reset"/>
 
     <p class="clear">&nbsp;</p>
     <?php if (isset($pagination)) echo $pagination; ?>

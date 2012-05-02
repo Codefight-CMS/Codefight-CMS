@@ -68,13 +68,12 @@
 	display:block;
 	float:right;
 }
-#footer .footer_banner
-{
-	display:block;
-	margin:0 auto;
-	overflow:hidden;
-	width:728px;
-	height:90px;
+#footer .footer_banner {
+    display: block;
+    height: 110px;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 728px;
 }
 .copyright
 {

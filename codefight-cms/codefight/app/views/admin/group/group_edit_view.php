@@ -22,7 +22,7 @@
     <div class="editSeparator">&nbsp;</div>
 
     <?php } ?>
-    <label>&nbsp;</label><input name="edit" type="submit" id="edit"
+    <label>&nbsp;</label><input class="btn btn-primary" name="edit" type="submit" id="edit"
                                 value="Update"/>&nbsp;<?php echo anchor
 ('admin/group', __('BACK')); ?>
 

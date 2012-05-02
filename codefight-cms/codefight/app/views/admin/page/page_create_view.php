@@ -101,7 +101,8 @@ if (!isset($_POST['group_id']) || !is_array($_POST['group_id']) || count($_POST[
         &nbsp;<input type="checkbox" value="1"<?php if (set_value('show_author')) {
             echo ' checked="checked"';
         } ?> id="show_author" name="show_author"/>
-
+<input class="txtFld" name="user_id" type="hidden" id="user_id"
+                                                          value="<?php echo set_value('user_id'); ?>"/>
         <p class="clear">&nbsp;</p>
 
         <label><?php echo __('ALLOW COMMENTS'); ?>:</label><input type="checkbox"
@@ -142,7 +143,7 @@ if (!isset($_POST['group_id']) || !is_array($_POST['group_id']) || count($_POST[
 
     <p class="clear">&nbsp;</p>
 
-    <label>&nbsp;</label><input name="create" type="submit" id="create"
+    <label>&nbsp;</label><input class="btn btn-primary" name="create" type="submit" id="create"
                                 value="Create"/>&nbsp;<?php echo anchor('admin/page', __('BACK')); ?>
     <p class="clear">&nbsp;</p>
 </div>

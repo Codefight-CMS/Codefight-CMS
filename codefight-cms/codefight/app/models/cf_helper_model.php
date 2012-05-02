@@ -16,7 +16,7 @@ class Cf_helper_model extends MY_Model
 
         $id = $id[0];
 
-        if ($page_type != 'page') return $id;
+        //if ($page_type != 'page') return $id;
 
         $this->db->where('menu_id', $id);
         $query = $this->db->get('menu');

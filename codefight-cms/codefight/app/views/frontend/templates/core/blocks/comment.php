@@ -1,12 +1,5 @@
 <?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
 <script type="text/javascript">
-
-    jQuery(document).ready(
-            function() {
-                jQuery('#js_req').hide();
-            }
-    );
-
     function process_comment() {
         jQuery('#comment_new').html('<p class="red"><img alt="<?php echo lang('processing_wait');?>" src="<?php echo skin_url('global/images','ajax-loader.gif') ?>" border="0" width="128" height="15"/></p>');
         jQuery.post(
@@ -63,7 +56,7 @@
                                                              value="" maxlength="250"/>
     <br/>
     <label class="spam_question">
-        <img id="captcha" src="<?php echo base_url(); ?>tools/captcha/?<?php echo time(); ?>"
+        <img class="btn btn-warning" id="captcha" src="<?php echo base_url(); ?>tools/captcha/?<?php echo time(); ?>"
                                       alt=""
                                       border="0" onclick="jQuery('#captcha').attr('src', '<?php echo base_url(); ?>tools/captcha/?' + Math.floor(new Date().getTime() / 1000));"/>
     </label>
@@ -71,8 +64,8 @@
 
     <br/>
 
-    <input class="button" type="button" id="Btn" name="Btn" value="publish" onclick="process_comment();"/>
+    <input class="btn btn-primary" type="button" id="Btn" name="Btn" value="publish" onclick="process_comment();"/>
 
-    <div id="js_req" class="red"><?php echo lang('enable_js_to_comment'); ?></div>
+    <div id="js_req" class="alert alert-error"><?php echo lang('enable_js_to_comment'); ?></div>
     </form>
 </div>

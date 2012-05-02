@@ -17,6 +17,12 @@ foreach ($websites_ary as $v)
     if ($v['websites_status']) $options_websites[$v['websites_id']] = $v['websites_name'];
 }
 
+$authors_list = array();
+foreach ($authors as $v)
+{
+    $authors_list[$v['user_id']] = $v['firstname'].' '.$v['lastname'] . ' ('.$v['email'].')';
+}
+
 $options_menu = array();
 foreach ($menu_ary as $v)
 {
@@ -37,7 +43,7 @@ if (!isset($_POST['group_id']) || !is_array($_POST['group_id']) || count($_POST[
 }
 ?>
 
-<?php echo form_open('admin/page/' . $this->uri->segment(3, 'blog')); //TODO::current page ?>
+<?php echo form_open(current_url()) ?>
 <div class="page_create">
     <div class="left">
         <label><?php echo __('STATUS') ?>:</label>
@@ -87,12 +93,16 @@ if (!isset($_POST['group_id']) || !is_array($_POST['group_id']) || count($_POST[
 
     <p class="clear">&nbsp;</p><br/>
 
-    <label><?php echo __('AUTHOR') ?>:</label>
-    <input class="txtFld" name="page_author" type="text" id="page_author"
-           value="<?php echo set_value('page_author'); ?>"/>&nbsp;&nbsp;<?php echo __('Show Author') ?>&nbsp;<input
+        <label><?php echo __('Author') ?>:</label>
+        <?php echo form_dropdown('user_id', $authors_list, set_value('user_id'), 'class="txtFld"'); ?>
+	&nbsp;&nbsp;<?php echo __('Show Author') ?>&nbsp;<input
         type="checkbox" value="1"<?php if (set_value('show_author')) {
     echo ' checked="checked"';
 } ?> id="show_author" name="show_author"/>
+
+    <label style="display:none;"><?php echo __('AUTHOR') ?>:</label>
+    <input class="txtFld" name="page_author" type="hidden" id="page_author"
+           value="<?php echo set_value('page_author'); ?>"/>
 
     <p class="clear">&nbsp;</p>
 
@@ -141,7 +151,7 @@ if (!isset($_POST['group_id']) || !is_array($_POST['group_id']) || count($_POST[
 
     <p class="clear">&nbsp;</p>
 
-    <label>&nbsp;</label><input name="create" type="submit" id="create" value="Create"/>&nbsp;<?php echo anchor
+    <label>&nbsp;</label><input class="btn btn-primary" name="create" type="submit" id="create" value="Create"/>&nbsp;<?php echo anchor
 ('admin/page/blog', __('BACK')); ?>
     <p class="clear">&nbsp;</p>
 </div>

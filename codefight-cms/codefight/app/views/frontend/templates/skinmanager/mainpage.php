@@ -1,8 +1,8 @@
 <?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en"><?php
 
-<?php $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
+$this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 <body>
 
 <div class="siteContainer">

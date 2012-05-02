@@ -9,7 +9,7 @@
 	<select onchange="javascript:top.location.href='<?php echo base_url() ?>admin/group/permissions/id/'+this.value+'/';" name="group_id" id="group_id">
 		<option value="0"></option>
 		<?php foreach ($groups as $g) { ?>
-		<option value="<?php echo $g['group_id'];?>"<?php 
+		<option value="<?php echo $g['group_id'];?>"<?php
 				if ($group_id == $g['group_id'])
 				{
 					echo ' selected="selected"';
@@ -42,7 +42,7 @@
 			if(isset($permissions[$id])) echo ' checked="checked"';
 		?> name="permission[<?php echo $id ?>]" id="permission_<?php echo $id ?>">
 		<label for="permission[<?php echo $id ?>]"><?php echo $v['title'] ?></label>
-		<?php 
+		<?php
 		if(is_array($v['child']) && count($v['child']) > 0)
 		{
 			?>
@@ -59,7 +59,7 @@
 						if(isset($permissions[$id])) echo ' checked="checked"';
 					?> name="permission[<?php echo $id ?>]" id="permission_<?php echo $id ?>">
 					<label for="permission[<?php echo $id ?>]"><?php echo $v['title'] ?></label>
-					<?php 
+					<?php
 					if(isset($v['child']) && is_array($v['child']) && count($v['child']) > 0)
 					{
 						?>
@@ -106,8 +106,8 @@
 	</ul>
     </div>
     <p class="clear">&nbsp;</p>
-    <input name="update" type="submit" id="update" value="Update"/>
-    <input name="reset" type="reset" id="reset" value="Reset"/>
+    <input class="btn btn-primary" name="update" type="submit" id="update" value="Update"/>
+    <input class="btn btn-inverse" name="reset" type="reset" id="reset" value="Reset"/>
 
     <p class="clear">&nbsp;</p>
 

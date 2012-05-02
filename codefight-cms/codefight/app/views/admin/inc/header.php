@@ -13,8 +13,8 @@ if (!isset($head_includes) || !is_array($head_includes)) {
 }
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en">
 <head>
     <title><?php echo $meta['title'];?></title>
 
@@ -24,7 +24,7 @@ if (!isset($head_includes) || !is_array($head_includes)) {
     <meta name="description" content="<?php echo $meta['description'];?>"/>
     <meta name="keywords" content="<?php echo $meta['keywords'];?>"/>
 
-    <?php $this->cf_asset_lib->get(); //Load Assets (js|css) ?>
+    <?php Library('asset')->get(); //Load Assets (js|css) ?>
 
 <?php
     //Tiny MCE for wysiwyg editor | TODO:: Move to separate file
@@ -80,7 +80,7 @@ if (!isset($head_includes) || !is_array($head_includes)) {
 <body>
 
 <noscript>
-    <div id="js_disabled" class="error center"><strong><?php echo __('This site works better with javascript 
+    <div id="js_disabled" class="error center"><strong><?php echo __('This site works better with javascript
     enabled') ?></strong>.</div>
 </noscript>
 
@@ -105,10 +105,10 @@ if (!isset($head_includes) || !is_array($head_includes)) {
 
                 }
                 ?> |
-				
+
 			</span>
-			
-			<span class="siteInfo"><?php 
+
+			<span class="siteInfo"><?php
 
                 echo '<a href="' . base_url() . '">'.__('view site').'</a>'; ?>
                 | <?php $format = 'DATE_RFC822'; $time = time(); echo standard_date($format, $time); ?>
@@ -120,7 +120,7 @@ if (!isset($head_includes) || !is_array($head_includes)) {
     <div class="pageContainer">
 
         <!-- START:: Global Messages | General Helper -->
-        <?php echo get_global_messages(); ?>
+        <?php echo getMessages(); ?>
         <!-- END:: Global Messages -->
         <!-- START:: Top Menu | General Helper -->
         <?php echo get_top_menu(); ?>

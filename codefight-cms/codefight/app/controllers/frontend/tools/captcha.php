@@ -61,11 +61,12 @@ class Captcha extends MY_Controller
         $captcha = $this->cf_setting_model->security_question();
 
         // Create a 100*30 image
-        $im = imagecreate(180, 16);
+        $im = imagecreate(100, 16);
 
         // White background and blue text
         $bg = imagecolorallocate($im, 255, 255, 255);
-        $textcolor = imagecolorallocate($im, 0, 0, 0);
+        $bg = imagecolortransparent($im, $bg);
+        $textcolor = imagecolorallocate($im, 255, 255, 255);
 
         // Write the string at the top left
         imagestring($im, 5, 0, 0, $captcha, $textcolor); #here is my string $output

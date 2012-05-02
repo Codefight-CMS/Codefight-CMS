@@ -26,14 +26,14 @@
                     <p class="clear">&nbsp;</p>
 
                     <div class="forgot">
-
+                        <input class="btn btn-primary" name="submit" type="submit" id="submit" value="login"/>
+                        <p class="clear">&nbsp;</p>
                         <label><?php echo anchor('registration/forgotten-password', 'forgot password'); ?></label>
 
                         |
 
                         <label><?php echo anchor('registration', 'Register'); ?></label>
 
-                        <input class="button" name="submit" type="submit" id="submit" value="login"/>
 
                     </div>
 

@@ -15,53 +15,6 @@ $menu_item = $this->cf_module_lib->get_nav_from_db();
 //$test = $cache->_display(json_encode($menu_item), 'blahblah_id');
 //print_r($test);
 ?>
-<script type="text/javascript"> 
-jQuery(document).ready(function(){
-    jQuery("ul#main-nav li").find("ul").children(".current").parents('li').addClass('active');
-    jQuery("ul#main-nav li").hover(
-        function() {
-            $ul = jQuery(this).find("ul.child").css('overflow', 'visible');
-            $ul.stop()
-                    .slideDown('fast')
-                    .show()
-                    .parent()
-                    .addClass('over')
-                    //.css('overflow', 'visible')
-                    //.parent()
-                    //.find("ul.child:visible")
-                    //.not(this)
-                    //.hide()
-                    ;
-            $ul.find('li').hover(
-                    function()
-                    {
-                        $cul = jQuery(this).find("ul.grand-child").css('overflow', 'visible');
-                        $cul.not(':visible')
-                                .stop()
-                                .slideDown('fast')
-                                .show()
-                                //.css('overflow', 'visible')
-                                ;
-                    },
-                    function()
-                    {
-                        jQuery(this).find("ul.grand-child")
-                                .stop()
-                                .slideUp('fast');//.hide();
-                    }
-            );
-        },
-        function () {
-            $ul = jQuery(this).find("ul.child");
-            $ul.stop()
-                    .slideUp('fast')
-                    .parent()
-                    .removeClass('over');//.hide();
-            //$ul.css('overflow', 'visible');
-        }
-    );
-});
-</script>
 <style type="text/css">
 #top-menu-wrapper{background: #222;}
 ul#main-nav {
@@ -69,7 +22,7 @@ ul#main-nav {
 	padding: 0 20px;
 	margin: 0;
 	float: left;
-	min-width: 950px;
+	min-width: 908px;
 	background: #222;
 	font-size: 12px;
     z-index: 10;
@@ -150,6 +103,9 @@ $current_url = substr(trim(uri_string(), '/'), strlen($admin));
 
 foreach ($menu_item as $k => $v)
 {
+	if(isset($v['is_menu']) && (int)$v['is_menu'] < 1){
+		continue;
+	}
     $class = 'cf' . preg_replace('/[^a-z0-9]/isU', '-', $v['url']) . (($v['url'] == $current_url) ? ' current' : '');
 
     echo '<li class="'.$class.'">';
@@ -164,6 +120,9 @@ foreach ($menu_item as $k => $v)
         echo '<ul class="child">';
         foreach($v['child'] as $ck => $cv)
         {
+			if(isset($cv['is_menu']) && (int)$cv['is_menu'] < 1){
+				continue;
+			}
             $class = 'cf' . preg_replace('/[^a-z0-9]/isU', '-', $cv['url']) . (($cv['url'] == $current_url) ? '
             current' : '');
             echo '<li class="'.$class.'">';
@@ -178,6 +137,9 @@ foreach ($menu_item as $k => $v)
                 echo '<ul class="grand-child">';
                 foreach($cv['child'] as $gk => $gv)
                 {
+					if(isset($gv['is_menu']) && (int)$gv['is_menu'] < 1){
+						continue;
+					}
                     $class = 'cf' . preg_replace('/[^a-z0-9]/isU', '-', $gv['url']) . (($gv['url'] == $current_url) ? '
                     current' : '');
                     echo '<li class="'.$class.'">';

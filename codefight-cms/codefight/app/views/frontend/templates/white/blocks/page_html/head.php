@@ -5,8 +5,16 @@
 <?php $meta['keywords'] = $this->setting->meta_keyword; ?>
 <?php endif; ?>
 
-<head>
-    <title><?php echo $meta['title']; ?></title>
+<?php
+if(isset($this->setting->meta_suffix))
+	$meta_suffix = $this->setting->meta_suffix;
+else
+	$meta_suffix = ' - ' . strtolower($_SERVER['HTTP_HOST']);
+?>
+
+<head profile="http://gmpg.org/xfn/11">
+
+    <title><?php echo $meta['title'] . $meta_suffix; ?></title>
 
     <base href="<?php echo base_url(); ?>"/>
 
@@ -27,7 +35,7 @@
     <meta name="generator" content="Codefight CMS"/>
     <meta name="vendor" content="<?php echo $this->setting->site_name ?>"/>
     <meta name="Language" content="en"/>
-
+	<link href="https://plus.google.com/103583381097797606705" rel="publisher" />
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -37,9 +45,9 @@
 
 
     <?php
-	
+
     //Get Assets (js|css)
-    $this->cf_asset_lib->get();
+    Library('asset')->get();
 
     //If head text variable is set, echo it.
     if (isset($head_text)) echo (string)$head_text;

@@ -74,7 +74,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = dirname(__FILE__).'/app';
+	$application_folder = 'app';
 	
 /*
 |--------------------------------------------------------------------------

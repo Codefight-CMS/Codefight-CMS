@@ -41,10 +41,10 @@
         ?>
     </ul>
     <p class="clear">&nbsp;</p>
-    <input name="delete" type="submit" id="delete" value="Delete Selected"/>
-    <input name="unread" type="submit" id="unread" value="Mark as Unread"/>
-    <input name="read" type="submit" id="read" value="Mark as Read"/>
-    <input name="reset" type="reset" id="reset" value="Reset"/>
+    <input class="btn btn-danger" name="delete" type="submit" id="delete" value="Delete Selected"/>
+    <input class="btn btn-primary" name="unread" type="submit" id="unread" value="Mark as Unread"/>
+    <input class="btn btn-primary" name="read" type="submit" id="read" value="Mark as Read"/>
+    <input class="btn btn-inverse" name="reset" type="reset" id="reset" value="Reset"/>
 
     <p class="clear">&nbsp;</p>
 

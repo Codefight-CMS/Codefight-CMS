@@ -41,7 +41,7 @@
 												<label>Void: [0 || 1]</label>
 												<input id="void" name="void" type="text" value=""/>
 												<br>
-												<input type="button" value="generate" id="generateBtn">
+												<input type="btn btn-primary" value="generate" id="generateBtn">
 												</form>
 												<div id="spitCode">code:</div>
 <script type="text/javascript">

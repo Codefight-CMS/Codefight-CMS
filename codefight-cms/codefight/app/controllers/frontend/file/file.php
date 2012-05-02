@@ -83,14 +83,6 @@ class File extends MY_Controller
             $data['noindex'] = 'yes';
         }
 
-        //load all required css
-        $assets['css'] = array('page', 'file');
-
-        //load all required js
-        //$assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
-
         //main content block [content view]
         $data['content_block'] = 'page_html/page_view';
 

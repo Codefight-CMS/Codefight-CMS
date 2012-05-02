@@ -19,7 +19,7 @@
 
     <p class="clear">&nbsp;</p>
 
-    <label>&nbsp;</label><input name="submit" type="submit" id="submit" value="<?php echo __('trim'); ?>"/>&nbsp;
+    <label>&nbsp;</label><input class="btn btn-primary" name="submit" type="submit" id="submit" value="<?php echo __('trim'); ?>"/>&nbsp;
     <?php echo anchor('admin/trim/trim', __('BACK')); ?>
 
     <p class="clear">&nbsp;</p>

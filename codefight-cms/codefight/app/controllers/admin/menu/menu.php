@@ -53,19 +53,6 @@ class Menu extends MY_Controller
         {
             $data = '';
 
-            $assets = array();
-
-            //load all required css
-            //if media type not defined, screen is default.
-            //$assets['css'] = array('admin','swiff','box','upload');
-            $assets['css'] = array(
-                'all' => array('admin', 'menu', 'box')
-            );
-            //load all required js
-            $assets['js'] = array('jquery', 'interface');
-
-            $this->cf_asset_lib->load($assets);
-
             $data['head_includes'] = array('sortable.php');
             $data['menu'] = $this->cf_menu_lib->get(array('menu_type' => $this->uri->segment(3, 'page')), true);
 
@@ -96,7 +83,7 @@ class Menu extends MY_Controller
         if ($this->form_validation->run() == FALSE) {
             if (!validation_errors() == '' && $this->input->post('create') == 'Create') {
                 $msg = array('error' => validation_errors());
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
         else
@@ -143,29 +130,16 @@ class Menu extends MY_Controller
                {
                    //if menu insert successful
                    $msg = array('success' => '<p>New Menu <strong>' . $menu_title . '</strong> Successfully Added.</p>');
-                   set_global_messages($msg, 'success');
+                   setMessages($msg, 'success');
                }
                else
                {
                    //if menu insert unsuccessful
                    $msg = array('error' => "<p>Menu <strong>$menu_title</strong> already exists!</p>");
-                   set_global_messages($msg, 'error');
+                   setMessages($msg, 'error');
                }
                */
         }
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'menu', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         $data['menu_array'] = (array)$this->cf_menu_lib->get(array('menu_type' => $this->uri->segment(3, 'page')), true);
         $data['websites'] = $this->cf_websites_model->get_websites();
@@ -187,7 +161,7 @@ class Menu extends MY_Controller
         {
             $id_array = array();
             $msg = array('error' => '<p>You must select atleast one menu to delete.</p>');
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
 
         !is_array($id_array) ? $id_array = array() : '';
@@ -208,7 +182,7 @@ class Menu extends MY_Controller
             }
 
         }
-        if ($msg) set_global_messages($msg, $type);
+        if ($msg) setMessages($msg, $type);
 
         unset($_POST);
 
@@ -230,7 +204,7 @@ class Menu extends MY_Controller
             {
                 //$data['error_message']['select'] = "You must select atleast one menu to edit";
                 $msg = array('error' => '<p>You must select atleast one menu to edit.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 unset($_POST);
                 $this->index();
@@ -338,24 +312,11 @@ class Menu extends MY_Controller
                 //['update']: to avoid repeated success_message
                 /*
                     $msg = array('success' => '<p>Updated successfully.</p>');
-                    set_global_messages($msg, 'success');
+                    setMessages($msg, 'success');
                     */
             }
         }
         //END: validate data and update in database
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'menu', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $data['websites'] = $this->cf_websites_model->get_websites();

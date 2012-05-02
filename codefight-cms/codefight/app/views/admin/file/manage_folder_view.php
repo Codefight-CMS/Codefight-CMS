@@ -38,8 +38,8 @@
         <?php } ?>
     </ul>
     <p class="clear">&nbsp;</p>
-    <input name="create" type="submit" id="create" value="Create New Folder"/>
-    <input name="reset" type="reset" id="reset" value="Reset"/>
+    <input class="btn btn-primary" name="create" type="submit" id="create" value="Create New Folder"/>
+    <input class="btn btn-inverse" name="reset" type="reset" id="reset" value="Reset"/>
 
     <p class="clear">&nbsp;</p>
     <?php if (isset($pagination)) echo $pagination; ?>

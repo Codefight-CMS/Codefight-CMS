@@ -58,19 +58,6 @@ class Group extends MY_Controller
         {
             $data = '';
 
-            $assets = array();
-
-            //load all required css
-            //if media type not defined, screen is default.
-            //$assets['css'] = array('admin','swiff','box','upload');
-            $assets['css'] = array(
-                'all' => array('admin', 'group', 'box')
-            );
-            //load all required js
-            $assets['js'] = array('jquery', 'interface');
-
-            $this->cf_asset_lib->load($assets);
-
             $data['head_includes'] = array('sortable.php');
 
             /*
@@ -122,7 +109,7 @@ class Group extends MY_Controller
 
             if (!validation_errors() == '' && $this->input->post('create') == 'Create') {
                 $msg = array('error' => validation_errors());
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
         else
@@ -134,27 +121,14 @@ class Group extends MY_Controller
 
             if ($insert) {
                 $msg = array('success' => '<p>New Group <strong>' . $title . '</strong> Successfully Added.</p>');
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
             }
             else
             {
                 $msg = array('error' => '<p>Group <strong>' . $title . '</strong> already exists!.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/group/group_create_view', $data, true); //Get view data in place of sending to browser.
@@ -173,7 +147,7 @@ class Group extends MY_Controller
         {
             $id_array = array();
             $msg = array('error' => '<p>You must select atleast one group to delete.</p>');
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
 
         !is_array($id_array) ? $id_array = array() : '';
@@ -187,13 +161,13 @@ class Group extends MY_Controller
 
                 if (!$msg) {
                     $msg = array('success' => '<p>Selected group(s) deleted successfully.</p>');
-                    set_global_messages($msg, 'success');
+                    setMessages($msg, 'success');
                 }
             }
             else
             {
                 $msg = array('error' => '<p>Error! couldn\'t delete.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
             }
 
@@ -219,7 +193,7 @@ class Group extends MY_Controller
             else
             {
                 $msg = array('error' => '<p>You must select atleast one group to edit.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 unset($_POST);
                 $this->index();
@@ -271,25 +245,12 @@ class Group extends MY_Controller
 
                     if (!$msg) {
                         $msg = array('success' => '<p>Updated successfully.</p>');
-                        set_global_messages($msg, 'success');
+                        setMessages($msg, 'success');
                     }
                 }
             }
         }
         //END: validate data and update in database
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/group/group_edit_view', $data, true); //Get view data in place of sending to browser.

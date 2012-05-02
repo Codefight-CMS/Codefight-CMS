@@ -48,7 +48,7 @@
                                        id="form_item_parameters"><?php echo set_value('form_item_parameters'); ?></textarea><br/>
 
     <p class="clear">&nbsp;</p>
-    <label>&nbsp;</label><input name="create" type="submit" id="create"
+    <label>&nbsp;</label><input class="btn btn-primary" name="create" type="submit" id="create"
                                 value="Create"/>&nbsp;<?php echo anchor('admin/form/item', __('BACK')); ?>
     <p class="clear">&nbsp;</p>
 </div>

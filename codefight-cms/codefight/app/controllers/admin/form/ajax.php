@@ -39,13 +39,13 @@ class Ajax extends MY_Controller
     {
         echo '<ul id="sortme">';
 
-        $action = $_POST['action'];
-        $group_id = preg_replace('/[^0-9]+/', '', $_POST['group_id']);
-        $item_id = preg_replace('/[^0-9]+/', '', $_POST['item_id']);
-        $item_sort = preg_replace('/[^0-9]+/', '', $_POST['item_sort']);
-        $next_item_id = preg_replace('/[^0-9]+/', '', $_POST['next_item_id']);
-        $next_item_sort = preg_replace('/[^0-9]+/', '', $_POST['next_item_sort']);
-        $form_item_grid = preg_replace('/[^0-9]+/', '', $_POST['form_item_grid']);
+        $action = $this->input->post('action');
+        $group_id = $this->input->post('group_id');
+        $item_id = $this->input->post('item_id');
+        $item_sort = $this->input->post('item_sort');
+        $next_item_id = $this->input->post('next_item_id');
+        $next_item_sort = $this->input->post('next_item_sort');
+        $form_item_grid = $this->input->post('form_item_grid');
 
         switch ($action)
         {

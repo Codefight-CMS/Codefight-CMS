@@ -10,7 +10,8 @@
  * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to info@codefight.org so we can send you a copy immediately.
+ * to info
+ * @codefight   .org so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
@@ -43,9 +44,9 @@ class Tag extends MY_Controller
            | you can load the CI way as well though :)
            */
         $load = array(
-            'model' => 'blog/cf_blog_model + cf_menu_model',
+            'model'   => 'blog/cf_blog_model + cf_menu_model',
             'library' => 'cf_bbcode_lib + cf_form_lib',
-            'helper' => 'text + form'
+            'helper'  => 'text + form'
         );
 
         parent::MY_Controller($load);
@@ -56,7 +57,9 @@ class Tag extends MY_Controller
      * default method index
      *
      * @access public
+     *
      * @param string
+     *
      * @return void
      */
     public function index()
@@ -70,9 +73,11 @@ class Tag extends MY_Controller
         $keyword = $this->uri->segment(3, 'blog');
 
         //There is some issue with last segment, which adds prefix.
-        if (substr($keyword, -5, 5) == '_html') $keyword = substr($keyword, 0, -5);
+        if (substr($keyword, -5, 5) == '_html') {
+            $keyword = substr($keyword, 0, -5);
+        }
 
-        $config['base_url'] = rtrim(site_url(), '/') . 'blog/tag/' . $keyword . '/';
+        $config['base_url'] = base_url() . 'blog/tag/' . $keyword . '/';
 
         $config['total_rows'] = $this->cf_blog_model->get_tag_count($keyword);
         //echo $keyword;
@@ -86,7 +91,15 @@ class Tag extends MY_Controller
         $this->paginate($config);
 
         //Get page(?) content for the selected tag.
-        $data = $this->cf_blog_model->get_tag_contents($keyword, $this->setting->pagination_per_page, $this->current_page);
+        $data = $this->cf_blog_model->get_tag_contents(
+            $keyword, $this->setting->pagination_per_page, $this->current_page
+        );
+
+        $data['meta'] = $this->cf_blog_model->get_tag_meta($keyword, CFWEBSITEID);
+
+        if (($cur_page = $this->pagination->getCurPage()) > 1) {
+            $data['meta']['title'] .= ' - ' . __('Page ') . __($cur_page);
+        }
 
         //get created page links from library -> MY_Controller (paginate_page)
         $data['pagination'] = $this->page_links;
@@ -107,14 +120,6 @@ class Tag extends MY_Controller
             $data['noindex'] = 'yes';
         }
 
-        //load all required css
-        $assets['css'] = array('page');
-
-        //load all required js
-        //$assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
-
         //main content block [content view]
         $data['content_block'] = 'page_html/blog_view';
 
@@ -128,4 +133,3 @@ class Tag extends MY_Controller
 
 /* End of file tag.php */
 /* Location: ./app/frontend/controllers/blog/tag.php */
-?>

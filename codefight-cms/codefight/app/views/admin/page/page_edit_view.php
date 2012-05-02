@@ -110,7 +110,10 @@ foreach ($options_ary as $v) {
         &nbsp;<input type="checkbox" value="1"<?php if ($v['show_author']) {
             echo ' checked="checked"';
         } ?> id="page[<?php echo $k; ?>][show_author]" name="page[<?php echo $k; ?>][show_author]"/>
-
+<input class="txtFld" name="page[<?php echo $k; ?>][user_id]"
+                                                          type="hidden"
+                                                          id="page_<?php echo $k; ?>_user_id"
+                                                          value="<?php echo $v['user_id']; ?>"/>
         <p class="clear">&nbsp;</p>
 
         <label><?php echo __('ALLOW COMMENTS'); ?>:</label><input type="checkbox"
@@ -158,7 +161,7 @@ foreach ($options_ary as $v) {
     <?php } ?>
 
     <p class="clear">&nbsp;</p>
-    <label>&nbsp;</label><input name="edit" type="submit" id="edit" value="Update"/>&nbsp;<?php echo anchor('admin/page', __('BACK')); ?>
+    <label>&nbsp;</label><input class="btn btn-primary" name="edit" type="submit" id="edit" value="Update"/>&nbsp;<?php echo anchor('admin/page', __('BACK')); ?>
 
     <p class="clear">&nbsp;</p>
 </div>

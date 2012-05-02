@@ -29,3 +29,5 @@ $cnf['menu']['admin'] = array(
 				)
 		);
 $cnf['menu']['frontend'] = array();/*to be included in future releases*/
+
+//$cnf['assets']['js'][] = 'jquery.tablesorter';

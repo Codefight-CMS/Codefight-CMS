@@ -23,6 +23,7 @@ $cnf['page']['admin'] = array(
 						'title' => 'Blog Article'
 						),
 					'page/block' => array(
+                        'is_menu' => 0,
                         'status' => 1,
 						'title' => 'Static Blocks',
 						'void' => 1

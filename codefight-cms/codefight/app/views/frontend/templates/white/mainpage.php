@@ -1,14 +1,9 @@
 <?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:og="http://ogp.me/ns#"
-      xmlns:fb="https://www.facebook.com/2008/fbml"><?php
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en"><?php
 
 //Load Head Block
-$this->cf_block_lib->load('page_html/head');
-
-$this->cf_block_lib->load('includes/general_js'); ?>
+$this->cf_block_lib->load('page_html/head'); ?>
 <body>
 
 <noscript>
@@ -36,7 +31,7 @@ $this->cf_block_lib->load('includes/general_js'); ?>
                 if(jQuery('div#sharebox').length > 0)
                 {
                     jQuery('#sharebox').cfShare({
-                        shareClients:['facebook','facebooksend','twitter', 'googleplusone', 'linkedin','digg',
+                        shareClients:['facebook','facebooksend','twitter', 'googleplusone', 'reddit', 'linkedin','digg',
                             'addthis'],
                         addthisId:'dbashyal',
                         startTop : 94,
@@ -49,10 +44,6 @@ $this->cf_block_lib->load('includes/general_js'); ?>
         </div>
     </div>
 <?php
-
-    //Load Downloads Block
-    $this->cf_block_lib->load('downloads');
-
     //Load Language Selection Block
     $this->cf_block_lib->load('languages');
 

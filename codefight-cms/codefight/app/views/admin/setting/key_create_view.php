@@ -31,7 +31,7 @@
                                                                                                    value="<?php echo set_value('setting_option'); ?>"/><br/>
 
     <p class="clear">&nbsp;</p>
-    <label>&nbsp;</label><input name="create" type="submit" id="create" value="Create"/>&nbsp;<?php echo anchor('admin/setting/key', __('BACK')); ?>
+    <label>&nbsp;</label><input class="btn btn-primary" name="create" type="submit" id="create" value="Create"/>&nbsp;<?php echo anchor('admin/setting/key', __('BACK')); ?>
     <p class="clear">&nbsp;</p>
 </div>
 <?php echo form_close(); ?>

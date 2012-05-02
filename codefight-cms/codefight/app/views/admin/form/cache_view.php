@@ -24,7 +24,7 @@
         </li>
         <li>
             <label>&nbsp;</label>
-            <input name="submit" type="submit" id="submit" value="submit"/>
+            <input class="btn btn-primary" name="submit" type="submit" id="submit" value="submit"/>
         </li>
     </ul>
 </div>

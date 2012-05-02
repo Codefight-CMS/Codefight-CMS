@@ -3,7 +3,7 @@
 
 <h1><?php echo ucwords(preg_replace('/\-/', ' ', $this->uri->segment(2, __('comment'))));?></h1>
 
-<?php echo form_open('admin/comment/' . $this->uri->segment(2, '')); ?>
+<?php echo form_open(current_url()) ?>
 <div class="comment_grid">
 
     <ul id="sortme">
@@ -28,9 +28,9 @@
         <?php } ?>
     </ul>
     <p class="clear">&nbsp;</p>
-    <input name="delete" type="submit" id="delete" value="<?php echo __('Delete Selected') ?>"/>
-    <input name="approve" type="submit" id="approve" value="<?php echo __('Approve Selected') ?>"/>
-    <input name="reset" type="reset" id="reset" value="<?php echo __('Reset') ?>"/>
+    <input class="btn btn-danger" name="delete" type="submit" id="delete" value="<?php echo __('Delete Selected') ?>"/>
+    <input class="btn btn-primary" name="approve" type="submit" id="approve" value="<?php echo __('Approve Selected') ?>"/>
+    <input class="btn btn-inverse" name="reset" type="reset" id="reset" value="<?php echo __('Reset') ?>"/>
 
     <p class="clear">&nbsp;</p>
     <?php if (isset($pagination)) echo $pagination; ?>

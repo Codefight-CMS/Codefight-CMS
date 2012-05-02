@@ -3,7 +3,7 @@
 
 
 <div class="cp">
-<h2><?php echo __('Banner Manager') ?></h2>
+<h2><?php ___('Banner Manager') ?></h2>
 
 <div id="spiffycalendar" class="text"></div>
 
@@ -20,7 +20,7 @@
             <?php if ($form_action == 'update') echo '<input type="hidden" name="banner_id" id="banner_id" value="' . $bID . '" />'; ?>
             <table border="0" cellspacing="0" cellpadding="2">
                 <tr>
-                    <td class="main"><?php echo __('Banner Title') ?></td>
+                    <td class="main"><?php ___('Banner Title') ?></td>
                     <td class="main"><input type="text" name="banner_title" id="banner_title"
                                             value="<?php echo $banner['banner_title'];?>"/></td>
                 </tr>
@@ -28,7 +28,7 @@
                     <td colspan="2">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="main"><?php echo __('Banner URL') ?></td>
+                    <td class="main"><?php ___('Banner URL') ?></td>
                     <td class="main"><input type="text" name="banner_url" id="banner_url"
                                             value="<?php echo $banner['banner_url'];?>"/></td>
                 </tr>
@@ -36,13 +36,13 @@
                     <td colspan="2">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="main" valign="top"><?php echo __('Banner Image') ?></td>
+                    <td class="main" valign="top"><?php ___('Banner Image') ?></td>
                     <td class="main">
                         <input type="file" name="banner_image" id="banner_image"
                                value="<?php echo $banner['banner_title'];?>"/>
-                        , <?php echo __('or enter local file below'); ?>
+                        , <?php ___('or enter local file below'); ?>
                         <br>
-                        <?php echo __('media/upload/'); ?>
+                        <?php ___('media/upload/'); ?>
                         <input type="text" name="banner_image_local" id="banner_image_local" value=""/>
                     </td>
                 </tr>
@@ -50,9 +50,9 @@
                     <td colspan="2">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="main"><?php echo __('Image Target (Save To)'); ?>:</td>
+                    <td class="main"><?php ___('Image Target (Save To)'); ?>:</td>
                     <td class="main">
-                        <?php echo __('media/upload/'); ?>
+                        <?php ___('media/upload/'); ?>
                         <input type="text" name="banner_image_target" id="banner_image_target" value=""/>
                     </td>
                 </tr>
@@ -60,7 +60,7 @@
                     <td colspan="2">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td valign="top" class="main"><?php echo __('HTML Text'); ?>:</td>
+                    <td valign="top" class="main"><?php ___('HTML Text'); ?>:</td>
                     <td class="main">
                         <textarea name="banner_html_text"
                                   id="banner_html_text"><?php echo $banner['banner_html_text'];?></textarea>
@@ -71,13 +71,13 @@
                 </tr>
                 <tr>
                     <td class="main">
-                        <?php echo __('Scheduled At'); ?>:
+                        <?php ___('Scheduled At'); ?>:
                         <br>
-                        <small><!-- (dd/mm/yyyy) -->(<?php echo __('dd/mm/yyyy'); ?>)</small>
+                        <small><!-- (dd/mm/yyyy) -->(<?php ___('dd/mm/yyyy'); ?>)</small>
                     </td>
                     <td valign="top" class="main">
                         <input type="text" name="date_scheduled" id="date_scheduled" value=""/>
-                        <?php echo __('calendar'); ?>
+                        <?php ___('calendar'); ?>
                     </td>
                 </tr>
                 <tr>
@@ -85,25 +85,25 @@
                 </tr>
                 <tr>
                     <td valign="top" class="main">
-                        <?php echo __('Expires On'); ?>:
+                        <?php ___('Expires On'); ?>:
                         <br>
-                        <small><!-- (dd/mm/yyyy) -->(<?php echo __('dd/mm/yyyy'); ?>)</small>
+                        <small><!-- (dd/mm/yyyy) -->(<?php ___('dd/mm/yyyy'); ?>)</small>
                     </td>
                     <td class="main">
                         <input type="text" name="expire_date" id="expire_date" value=""/>
-                        <?php echo __('calendar'); ?>
+                        <?php ___('calendar'); ?>
                         <br>
-                        , <?php echo __('or at'); ?>
+                        , <?php ___('or at'); ?>
                         <br>
                         <input type="text" name="expire_impressions" id="expire_impressions"
                                value="<?php echo $banner['expire_impressions'];?>" maxlength="7" size="7"/>
-                        <?php echo __('impressions/views'); ?>
+                        <?php ___('impressions/views'); ?>
                         <br>
-                        , <?php echo __('or at'); ?>
+                        , <?php ___('or at'); ?>
                         <br>
                         <input type="text" name="expire_clicks" id="expire_clicks"
                                value="<?php echo $banner['expire_clicks'];?>" maxlength="7" size="7"/>
-                        <?php echo __('clicks'); ?>.
+                        <?php ___('clicks'); ?>.
                     </td>
                 </tr>
                 <tr>
@@ -114,35 +114,35 @@
                         <table border="0" width="100%" cellspacing="0" cellpadding="2">
                             <tr>
                                 <td class="main">
-                                    <b><?php echo __('Banner Notes'); ?>:</b>
+                                    <b><?php ___('Banner Notes'); ?>:</b>
                                     <ul>
-                                        <li><?php echo __('Use an image or HTML text for the banner - not both.'); ?></li>
-                                        <li><?php echo __('HTML Text has priority over an image.'); ?></li>
+                                        <li><?php ___('Use an image or HTML text for the banner - not both.'); ?></li>
+                                        <li><?php ___('HTML Text has priority over an image.'); ?></li>
                                     </ul>
                                     <br>
-                                    <b><?php echo __('Image Notes'); ?>:</b>
+                                    <b><?php ___('Image Notes'); ?>:</b>
                                     <ul>
-                                        <li><?php echo __('Uploading directories must have proper user (write) permissions setup!'); ?></li>
-                                        <li><?php echo __('Do not fill out the [Save To] field if you are not uploading an image to the webserver (ie, you are using a local (serverside) image).'); ?></li>
-                                        <li><?php echo __('The [Save To] field must be an existing directory with an ending slash (eg, banner/).'); ?></li>
+                                        <li><?php ___('Uploading directories must have proper user (write) permissions setup!'); ?></li>
+                                        <li><?php ___('Do not fill out the [Save To] field if you are not uploading an image to the webserver (ie, you are using a local (serverside) image).'); ?></li>
+                                        <li><?php ___('The [Save To] field must be an existing directory with an ending slash (eg, banner/).'); ?></li>
                                     </ul>
                                     <br>
-                                    <b><?php echo __('Expiry Notes'); ?>:</b>
+                                    <b><?php ___('Expiry Notes'); ?>:</b>
                                     <ul>
-                                        <li><?php echo __('Only one of the two fields should be submitted'); ?></li>
-                                        <li><?php echo __('If the banner is not to expire automatically, then leave these fields blank'); ?></li>
+                                        <li><?php ___('Only one of the two fields should be submitted'); ?></li>
+                                        <li><?php ___('If the banner is not to expire automatically, then leave these fields blank'); ?></li>
                                     </ul>
                                     <br>
-                                    <b><?php echo __('Schedule Notes'); ?>:</b>
+                                    <b><?php ___('Schedule Notes'); ?>:</b>
                                     <ul>
-                                        <li><?php echo __('If a schedule is set, the banner will be activated on that date.'); ?></li>
-                                        <li><?php echo __('All scheduled banner are marked as deactive until their date has arrived, to which they will then be marked active.'); ?></li>
+                                        <li><?php ___('If a schedule is set, the banner will be activated on that date.'); ?></li>
+                                        <li><?php ___('All scheduled banner are marked as deactive until their date has arrived, to which they will then be marked active.'); ?></li>
                                     </ul>
                                 </td>
                                 <td class="main" valign="top" nowrap>
-                                    <input name="submit" id="submit" type="submit"
+                                    <input class="btn btn-primary" name="submit" id="submit" type="submit"
                                            value="submit"/>
-                                    <a href="<?php echo site_url('admin/banner');?>"><?php echo __('cancel'); ?></a>
+                                    <a href="<?php echo site_url('admin/banner');?>"><?php ___('cancel'); ?></a>
                                 </td>
                             </tr>
                         </table>
@@ -163,16 +163,16 @@
                 <td valign="top">
                     <table border="1" width="100%" cellspacing="0" cellpadding="2">
                         <tr class="dataTableHeadingRow">
-                            <th class="dataTableHeadingContent"><?php echo __('Banner'); ?></th>
-                            <th class="dataTableHeadingContent"><?php echo __('INSERT TAG'); ?></th>
-                            <th class="dataTableHeadingContent"><?php echo __('Displays / Clicks'); ?></th>
-                            <th class="dataTableHeadingContent"><?php echo __('Status'); ?></th>
-                            <th class="dataTableHeadingContent"><?php echo __('Action'); ?></th>
+                            <th class="dataTableHeadingContent"><?php ___('Banner'); ?></th>
+                            <th class="dataTableHeadingContent"><?php ___('INSERT TAG'); ?></th>
+                            <th class="dataTableHeadingContent"><?php ___('Displays / Clicks'); ?></th>
+                            <th class="dataTableHeadingContent"><?php ___('Status'); ?></th>
+                            <th class="dataTableHeadingContent"><?php ___('Action'); ?></th>
                         </tr>
                         <?php
                         foreach ($banner as $k => $v) {
 
-                        $info = isset($v['info'][0]) ? $v['info'][0] : array('banner_shown' => 0, 
+                        $info = isset($v['info'][0]) ? $v['info'][0] : array('banner_shown' => 0,
                                                                              'banner_clicked' => 0);
 
                         $banner_shown = $info['banner_shown'];
@@ -186,15 +186,15 @@
                                 align="center"><?php echo $banner_shown . ' / ' . $banner_clicked; ?></td>
                             <td class="dataTableContent">
                                 <?php if ($v['status'] == '1') { ?>
-                                <a href="<?php echo site_url('admin/banner/status/' . $v['banner_id'] . '/0');?>"><?php echo __('Active'); ?></a>
+                                <a href="<?php echo site_url('admin/banner/status/' . $v['banner_id'] . '/0');?>"><?php ___('Active'); ?></a>
                                 <?php } else { ?>
-                                <a href="<?php echo site_url('admin/banner/status/' . $v['banner_id'] . '/1');?>"><?php echo __('InActive'); ?></a>
+                                <a href="<?php echo site_url('admin/banner/status/' . $v['banner_id'] . '/1');?>"><?php ___('InActive'); ?></a>
                                 <?php }?>
                             </td>
                             <td class="dataTableContent">
-                                <a href="<?php echo site_url('admin/banner/create/' . $v['banner_id']);?>"><?php echo __('Edit'); ?></a>
+                                <a href="<?php echo site_url('admin/banner/create/' . $v['banner_id']);?>"><?php ___('Edit'); ?></a>
                                 |
-                                <a href="<?php echo site_url('admin/banner/delete/' . $v['banner_id']);?>"><?php echo __('Delete'); ?></a>
+                                <a href="<?php echo site_url('admin/banner/delete/' . $v['banner_id']);?>"><?php ___('Delete'); ?></a>
                             </td>
                         </tr>
                         <?php

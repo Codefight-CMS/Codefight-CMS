@@ -50,20 +50,6 @@ class Comment extends MY_Controller
             $data = $this->_approve();
         }
 
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'comment', 'box')
-        );
-        //load all required js
-        $assets['js'] = array('jquery');
-
-        $this->cf_asset_lib->load($assets);
-
         /*
            * START: Pagination config and initialization
            */
@@ -110,7 +96,7 @@ class Comment extends MY_Controller
             $id_array = array();
 
             $msg = array('error' => "<p>You must select atleast one comment to delete.</p>");
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
 
         !is_array($id_array) ? $id_array = array() : '';
@@ -131,7 +117,7 @@ class Comment extends MY_Controller
             }
 
         }
-        if ($msg) set_global_messages($msg, $type);
+        if ($msg) setMessages($msg, $type);
 
         redirect(current_url());
     }
@@ -148,7 +134,7 @@ class Comment extends MY_Controller
             $id_array = array();
 
             $msg = array('error' => "<p>You must select atleast one comment to approve.</p>");
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
 
         !is_array($id_array) ? $id_array = array() : '';
@@ -170,7 +156,7 @@ class Comment extends MY_Controller
             }
 
         }
-        if ($msg) set_global_messages($msg, $type);
+        if ($msg) setMessages($msg, $type);
 
         return $data;
     }

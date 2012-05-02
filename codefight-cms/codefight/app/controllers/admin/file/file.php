@@ -66,19 +66,6 @@ class File extends MY_Controller
 
         $data = '';
 
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'file', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
-
         /*
            * START: Pagination config and initialization
            */
@@ -129,19 +116,6 @@ class File extends MY_Controller
 
         $data = '';
 
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'file', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
-
         /*
            * START: Pagination config and initialization
            */
@@ -182,7 +156,7 @@ class File extends MY_Controller
             $id_array = array();
 
             $msg = array('error' => '<p>You must select atleast one file to delete.</p>');
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
 
         !is_array($id_array) ? $id_array = array() : '';
@@ -197,12 +171,12 @@ class File extends MY_Controller
                 //if(is_file())
 
                 $msg = array('success' => '<p>Selected file(s) deleted successfully.</p>');
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
             }
             else
             {
                 $msg = array('error' => '<p>Error! couldn\'t delete.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
 
@@ -232,7 +206,7 @@ class File extends MY_Controller
 
         if (!$this->upload->do_upload($config['file_field'])) {
             $msg = array('error' => $this->upload->display_errors());
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
 
             return FALSE;
         }
@@ -283,7 +257,7 @@ class File extends MY_Controller
         if ($this->form_validation->run() == FALSE) {
             if (validation_errors() !== '' && $this->input->post('create') == 'Upload') {
                 $msg = array('error' => validation_errors());
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
 
         }
@@ -301,7 +275,7 @@ class File extends MY_Controller
 
             if (!$config['upload_path']) {
                 $msg = array('error' => '<p>Upload Path Not Found.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
             else
             {
@@ -321,29 +295,16 @@ class File extends MY_Controller
 
                     if ($insert) {
                         $msg = array('success' => '<p>New file successfully uploaded</p>');
-                        set_global_messages($msg, 'success');
+                        setMessages($msg, 'success');
                     }
                     else
                     {
                         $msg = array('error' => '<p>Could not upload file.</p>');
-                        set_global_messages($msg, 'error');
+                        setMessages($msg, 'error');
                     }
                 }
             }
         }
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'file', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/file/upload_file_view', $data, TRUE); //Get view data in place of sending to browser.
@@ -366,7 +327,7 @@ class File extends MY_Controller
             else
             {
                 $msg = array('error' => '<p>You must select atleast one file to edit.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
 
                 unset($_POST);
                 $this->index();
@@ -464,7 +425,7 @@ class File extends MY_Controller
                     if ($this->form_validation->run() == FALSE) {
                         if (!validation_errors() == '' && $this->input->post('edit') == 'Update') {
                             $msg = array('error' => validation_errors());
-                            set_global_messages($msg, 'error');
+                            setMessages($msg, 'error');
                         }
                     }
                     else
@@ -484,12 +445,12 @@ class File extends MY_Controller
 
                         if ($update) {
                             $msg = array('success' => '<p>' . $success_count++ . ' Records Updated successfully.</p>');
-                            set_global_messages($msg, 'success', false);
+                            setMessages($msg, 'success', false);
                         }
                         else
                         {
                             $msg = array('error' => '<p>Could not update files specified.</p>');
-                            set_global_messages($msg, 'error');
+                            setMessages($msg, 'error');
                         }
 
                     }
@@ -498,24 +459,11 @@ class File extends MY_Controller
                 else
                 {
                     $msg = array('error' => '<p>Required fields can not be empty!</p>');
-                    set_global_messages($msg, 'error');
+                    setMessages($msg, 'error');
                 }
             }
         }
         //END: validate data and update in database
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'file', 'box')
-        );
-        //load all required js
-        $assets['js'] = array();
-
-        $this->cf_asset_lib->load($assets);
 
         //---
         $html_string = $this->load->view('admin/file/file_edit_view', $data, true); //Get view data in place of sending to browser.

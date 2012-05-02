@@ -130,7 +130,10 @@ class Ajax extends MY_Controller
                     $this->form_validation->set_rules('page_url', lang('page_url'), 'xss_clean|trim');
 
                     if ($this->form_validation->run() == FALSE) {
-                        echo '<div class="error">' . validation_errors() . '</div>';
+                        echo '<div class="alert alert-error"><a class="close" data-dismiss="alert" href="'.current_url().'#">&times;</a>' . validation_errors() . '</div>';
+                        if(form_error('spam')){
+                            echo '<script>jQuery(\'#captcha\').attr(\'src\', \''.base_url().'tools/captcha/?\' + Math.floor(new Date().getTime() / 1000));</script>';
+                        }
                     }
                     else
                     {
@@ -209,7 +212,7 @@ class Ajax extends MY_Controller
         }
         else
         {
-            $this->form_validation->set_message('_captcha_check', '%s is not correct value at spam check field.');
+            $this->form_validation->set_message('_captcha_check', '%s is not correct or expired. Please refresh at spam check section.');
             return FALSE;
         }
     }

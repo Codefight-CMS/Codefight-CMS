@@ -276,7 +276,7 @@ class MY_Router extends CI_Router
                         $file = str_replace(EXT, '', $file);
                         $module_rotes[0][$file . '(/.*)?'] = $file . '/index$1';
                     }
-                    elseif ((is_dir($dir2 = $dir . $file . '/')) && $file != "_notes")
+                    elseif (!in_array($file, array('index.html','_notes')) && (is_dir($dir2 = $dir . $file . '/')))
                     {
                         if ($handle2 = opendir($dir2)) {
                             while (false !== ($file2 = readdir($handle2)))
@@ -286,7 +286,7 @@ class MY_Router extends CI_Router
                                         $file2 = str_replace(EXT, '', $file2);
                                         $module_rotes[1][$file . '/' . $file2 . '(/.*)?'] = $file . '/' . $file2 . '/index$1';
                                     }
-                                    elseif ((is_dir($dir3 = $dir2 . $file2 . '/')) && $file2 != "_notes")
+                                    elseif (!in_array($file2, array('index.html','_notes')) && (is_dir($dir3 = $dir2 . $file2 . '/')))
                                     {
 
                                         /*

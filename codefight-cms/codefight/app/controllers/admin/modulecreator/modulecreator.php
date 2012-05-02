@@ -43,19 +43,6 @@ class Modulecreator extends MY_Controller
     {
         $data = '';
 
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'box', 'cp')
-        );
-        //load all required js
-        $assets['js'] = array('jquery');
-
-        $this->cf_asset_lib->load($assets);
-
         //---
         $html_string = $this->load->view('admin/modulecreator/modulecreator_view', $data, true); //Get view data in place of sending to browser.
 

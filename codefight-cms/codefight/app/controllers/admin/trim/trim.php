@@ -56,7 +56,7 @@ class Trim extends MY_Controller
             //check if the client's IP is allowed to trim
             if ($_SERVER['REMOTE_ADDR'] != $this->config->item('limit_to_ip')) {
                 $msg = array('error' => '<p>You are not allowed to trim URLs with this service.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
                 $error = TRUE;
             }
 
@@ -69,7 +69,7 @@ class Trim extends MY_Controller
                 $response = curl_exec($ch);
                 if (curl_getinfo($ch, CURLINFO_HTTP_CODE) == '404') {
                     $msg = array('error' => '<p>That is not a valid URL.</p>');
-                    set_global_messages($msg, 'error');
+                    setMessages($msg, 'error');
                     $error = TRUE;
                 }
                 curl_close($ch);
@@ -101,25 +101,12 @@ class Trim extends MY_Controller
                 $data['url'] = $url_to_trim;
 
                 $msg = array('success' => '<p>URL successfully Trimed.</p>');
-                set_global_messages($msg, 'success');
+                setMessages($msg, 'success');
             }
         } elseif (isset($_POST['longurl'])) {
             $msg = array('error' => '<p>Not a valid URL.</p>');
-            set_global_messages($msg, 'error');
+            setMessages($msg, 'error');
         }
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'all' => array('admin', 'group', 'box')
-        );
-        //load all required js
-        $assets['js'] = array('jquery', 'interface');
-
-        $this->cf_asset_lib->load($assets);
 
         $html_string = $this->load->view('admin/trim/trim_view', $data, true); //Get view data in place of sending to browser.
 

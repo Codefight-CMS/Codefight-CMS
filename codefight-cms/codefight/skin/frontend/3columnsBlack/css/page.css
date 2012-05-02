@@ -35,6 +35,13 @@
 	margin:0 10px 30px;
 	padding:0 15px;
 }
+.siteContainer .pageContainer .contents .content ol {
+    display: block;
+    list-style: decimal outside none;
+    margin: 0 0 0 20px;
+    padding: 0 0 0 0;
+}
+.siteContainer .pageContainer .contents .content ol li{display: list-item;}
 .siteContainer .pageContainer .contents a
 {
 	color:#333;
@@ -43,6 +50,10 @@
 .siteContainer .pageContainer .contents a:hover
 {
 	color:#90D47E;
+}
+.siteContainer .pageContainer .contents a.rel-author:hover
+{
+	color:#000;
 }
 .siteContainer .pageContainer .contents .no_access
 {

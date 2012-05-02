@@ -1,3 +1,5 @@
+	DirectoryIndex index.php index.html
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
 	
@@ -5,11 +7,17 @@
 	Options -Indexes
 	
 	#RewriteBase /codefight_141/
-	#RewriteCond %{HTTP_HOST} !^nplab.codefight.org [NC] 
-	#RewriteRule ^(.*)$ http://nplab.codefight.org/$1 [L,R=301]
 	
+	RewriteCond %{HTTP_HOST} !^nplab.codefight.org [NC] 
+	RewriteRule ^(.*)$ http://nplab.codefight.org/$1 [L,R=301]
+	
+	RewriteRule ^(home(\.html)?)$ http://nplab.codefight.org/ [L,R=301]
+	
+	RewriteCond %{THE_REQUEST} \/index\.(php|html)\ HTTP [NC]
+	RewriteRule (.*)index\.(php|html)$ /$1 [R=301,L]
+
 	RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php/$1 [L]
+    RewriteRule ^(.*)$ index.php?/$1 [L]
 
 </IfModule>

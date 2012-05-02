@@ -37,7 +37,7 @@ class Permissions extends MY_Controller
         $this->load->model('groups/cf_permission_model');
 
 		$id = $this->uri->segment(5, 0);
-		
+
 		if(!isset($_POST['group_id']) && $id)
 		{
 			$_POST['group_id'] = (int)$id;
@@ -63,17 +63,6 @@ class Permissions extends MY_Controller
 		}
 
 		$data['permissions'] = $this->cf_permission_model->get_group_permission($group_id);
-
-		$assets = array();
-
-		//load all required css
-		//if media type not defined, screen is default.
-		//$assets['css'] = array('admin','swiff','box','upload');
-		$assets['css'] = array(
-			'all' => array('admin', 'permission', 'box')
-		);
-
-		$this->cf_asset_lib->load($assets);
 
 		//---
 		$html_string = $this->load->view('admin/group/permission_view', $data, true); //Get view data in place of sending to browser.

@@ -56,7 +56,7 @@ class Banner extends MY_Controller
                     // display login error
                     //$data['error_message'][] = 'Folder "' . dirname(FCPATH) . '/media/graph" must be writeable.';
                     $msg = array('error' => '<p>Folder ' . FCPATH . 'media'.DS.'graph must be writeable.</p>');
-                    set_global_messages($msg, 'error');
+                    setMessages($msg, 'error');
                 }
 
             }
@@ -65,7 +65,7 @@ class Banner extends MY_Controller
                 // display login error
                 //$data['error_message'][] = 'Folder "' . dirname(FCPATH) . '/media/graph" does not exists.';
                 $msg = array('error' => "<p>Folder " . FCPATH . 'media'.DS.'graph does not exists.</p>');
-                set_global_messages($msg, 'error');
+                setMessages($msg, 'error');
             }
         }
 
@@ -79,20 +79,6 @@ class Banner extends MY_Controller
             $info_query = $this->db->query("select sum(banner_shown) as banner_shown, sum(banner_clicked) as banner_clicked from cf_banner_history where banner_id = '" . (int)$v['banner_id'] . "'");
             $data['banner'][$k]['info'] = $info_query->result_array();
         }
-
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'screen' => array('admin', 'swiff', 'box', 'upload'),
-            'print' => array('admin')
-        );
-        //load all required js
-        //$assets['js'] = array('mootools-1.2.1-core','Swiff.Uploader','Fx.ProgressBar','FancyUpload2');
-
-        $this->cf_asset_lib->load($assets);
 
         $this->load->view('admin/banner/banner_view', $data);
     }
@@ -199,30 +185,17 @@ class Banner extends MY_Controller
             if ($banner_id) redirect('admin/banner');
         }
 
-        $assets = array();
-
-        //load all required css
-        //if media type not defined, screen is default.
-        //$assets['css'] = array('admin','swiff','box','upload');
-        $assets['css'] = array(
-            'screen' => array('admin', 'swiff', 'box', 'upload'),
-            'print' => array('admin')
-        );
-        //load all required js
-        //$assets['js'] = array('mootools-1.2.1-core','Swiff.Uploader','Fx.ProgressBar','FancyUpload2');
-
-        $this->cf_asset_lib->load($assets);
-
         $this->load->view('admin/banner/banner_view', $data);
     }
 
     function status()
     {
-        //
-        if ($this->uri->segment(3, 0)) {
-            $this->db->where('banner_id', (int)$this->uri->segment(3, 0));
-            $this->db->set('status', (int)$this->uri->segment(5, 0));
-            $this->db->update('banner');
+        if ($this->uri->segment(4, 0)) {
+            $this
+				->db
+				->where('banner_id', (int)$this->uri->segment(4, 0))
+				->set('status', (int)$this->uri->segment(5, 0))
+				->update('banner');
         }
         redirect('admin/banner');
     }
