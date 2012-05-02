@@ -1,0 +1,25 @@
+p{margin: 0;}
+.footer {
+}
+
+.body .content .main {
+    margin: 0;
+}
+
+table#listings {
+    width: auto;
+}
+
+.pagination strong {
+    float: left;
+    padding: 0 14px;
+    line-height: 34px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-right-width: 0;
+    margin: 0;
+}
+
+.pagination .pagelist a, .pagination .pagelist strong {
+    margin: 0;
+}
