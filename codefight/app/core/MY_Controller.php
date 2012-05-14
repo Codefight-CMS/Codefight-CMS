@@ -8,6 +8,7 @@
 class MY_Controller extends CI_Controller
 {
 
+    private $_data = array();
     public $menu_id;
     public $page_id;
     public $menu_link;
@@ -171,6 +172,9 @@ class MY_Controller extends CI_Controller
         //Get template
         $template = $this->cf_setting_model->selected_template();
 
+        //Get Body Id
+        $data['bodyId'] = $this->getBodyId();
+
         //load vars | so it can be retrived at view as variable
         $this->load->vars($data);
 
@@ -219,6 +223,47 @@ class MY_Controller extends CI_Controller
         }
 
         return $data;
+    }
+
+    public function setBodyId(){
+        $this->setData('body-id','codefight-body');
+    }
+
+    public function getBodyId(){
+        $id = $this->getData('body-id');
+
+        if(!empty($id)){
+            return 'cf-'.preg_replace('/[^a-z0-9_\-\]/iSu', '', $id);
+        }
+        return 'codefight-body-id';
+    }
+
+    public function setData($key=false, $val=false, $merge=true){
+        if(!empty($key)) {
+            if(is_array($val) && $merge){
+                $_val = (array)$this->getData($key);
+                $val = array_merge($val, $_val);
+            }
+            $this->_data[$key] = $val;
+        }
+        return $this;
+    }
+
+    public function unsetData($key=false){
+        if(!empty($key) && isset($this->_data[$key])){
+            unset($this->_data[$key]);
+        }
+        return $this;
+    }
+
+    public function getData($key=false){
+        if(empty($key)) {
+            return $this->_data;
+        }
+        if(isset($this->_data[$key])){
+            return $this->_data[$key];
+        }
+        return array();
     }
 }
 

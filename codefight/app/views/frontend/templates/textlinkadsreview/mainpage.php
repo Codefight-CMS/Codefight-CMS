@@ -5,7 +5,7 @@
 //Load Head Block
 $this->cf_block_lib->load('page_html/head'); ?>
 
-<body>
+<body class="codefight-body">
 <div class="wrapper">
     <div class="inner-wrapper"><?php
             //Load message block

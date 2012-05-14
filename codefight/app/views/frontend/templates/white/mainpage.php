@@ -4,7 +4,7 @@
 
 //Load Head Block
 $this->cf_block_lib->load('page_html/head'); ?>
-<body>
+<body class="codefight-body" id="<?php echo $bodyId; ?>">
 
 <noscript>
     <div id="js_disabled" class="error center"><strong>This site works better with javascript enabled</strong>.</div>

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en"><?php
 
 $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
-<body>
+<body class="codefight-body">
 
 <div class="siteContainer">
 

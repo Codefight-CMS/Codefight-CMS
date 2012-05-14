@@ -12,7 +12,7 @@ if ($bg) {
     $bg_image = "background-image:url('{$bg}')";
 }
 ?>
-<body style="<?php echo $bg_image; ?>">
+<body class="codefight-body" style="<?php echo $bg_image; ?>">
 
 <noscript>
     <div id="js_disabled" class="error center"><strong>This site works better with javascript enabled</strong>.</div>
