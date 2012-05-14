@@ -1,0 +1,63 @@
+/*
+ * CSS Document
+ * box.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+
+.pageContent {
+	display:block;
+	float:left;
+	margin:0 0 50px 10px;
+	width:98%;
+	}
+.pageContent .box_mid_left {
+	background:url(../images/box_mid_left.jpg) repeat-y left top;
+	display:block;
+	}
+.pageContent .box_mid_right {
+	background:url(../images/box_mid_right.jpg) repeat-y right top;
+	display:block;
+	}
+.pageContent .box_bottom_mid {
+	background:url(../images/box_bottom_mid.jpg) repeat-x left bottom;
+	display:block;
+	}
+.pageContent .box_bottom_left {
+	background:url(../images/box_bottom_left.jpg) no-repeat left bottom;
+	display:block;
+	}
+.pageContent .box_bottom_right {
+	background:url(../images/box_bottom_right.jpg) no-repeat right bottom;
+	display:block;
+	}
+.pageContent .box_top_mid {
+	background:url(../images/box_top_mid.jpg) repeat-x left top;
+	display:block;
+	}
+.pageContent .box_top_left {
+	background:url(../images/box_top_left.jpg) no-repeat left top;
+	display:block;
+	}
+.pageContent .box_top_right {
+	background:url(../images/box_top_right.jpg) no-repeat right top;
+	display:block;
+	}
+.box_content {
+	display:block;
+	padding:20px;
+	}
+.box_content h1 {
+	margin-bottom:20px;
+	}
+
+
+
+
+
+
+
+
+
+
+

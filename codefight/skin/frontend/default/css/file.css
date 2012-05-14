@@ -1,0 +1,58 @@
+.siteContainer .pageContainer .contents ol.user_folders{}
+.siteContainer .pageContainer .contents ol.user_folders li{
+	color:#666;
+	float:left;
+	height:160px;
+	margin:0 15px 15px 0 !important;
+	overflow:hidden;
+	width:148px;
+}
+.siteContainer .pageContainer .contents ol.user_folders li.last{margin-right:0 !important;}
+.siteContainer .pageContainer .contents ol.user_folders li:hover{color:#1E313C;}
+.siteContainer .pageContainer .contents ol.user_folders li div.folder_name{display:block;text-align:center;}
+.siteContainer .pageContainer .contents ol.user_folders li div.folder_name a{
+	border:1px solid #DDDDDD;
+	color:#1E313C;
+	display:table-cell;
+	height:142px;
+	text-align:center;
+	vertical-align:middle;
+	width:144px;
+}
+.siteContainer .pageContainer .contents ol.user_folders li div.folder_name a:hover{color:#666;border:1px solid #bbb;}
+.siteContainer .pageContainer .contents ol.user_folders li div.folder_name a span{}
+.siteContainer .pageContainer .contents ol.user_folders li div.folder_name a img{}
+.siteContainer .pageContainer .contents ol.user_folders li span.folder_name_block{
+	clear:both;
+	display:block;
+	font-size:9px;
+	margin:2px 0 0;
+	text-align:center;
+}
+
+
+.breadcrumb {padding:5px;}
+
+
+.siteContainer .pageContainer .contents ol.user_files {
+	clear:both;
+	color:#666666;
+	display:block;
+	list-style:lower-alpha !important;
+	margin:0 0 10px;
+	padding:0;
+}
+.siteContainer .pageContainer .contents ol.user_files li {
+	border:1px solid #EEEEEE;
+	display:block;
+	margin:0 0 15px;
+	padding:5px;
+}
+.siteContainer .pageContainer .contents ol.user_files li a{color:#0079C0;}
+.siteContainer .pageContainer .contents ol.user_files li a:hover{color:#00619A;}
+ol.user_files div.file_title {
+	background:#ddd;
+	color:#333333;
+	display:block;
+	padding:5px;
+}

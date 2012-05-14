@@ -1,0 +1,54 @@
+/*
+ * CSS Document
+ * page.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+.comment_holder #comment {
+	display:block;
+	}
+.comment_holder #comment div.comment {
+	background:#FFFFFF url(../images/admin-bg.gif) repeat-x left top;
+	display:block;
+	margin-top:15px;
+	}
+.comment_holder #comment p.comment {
+	display:block;
+	margin:0;
+	padding:4px 10px;
+	}
+.comment_holder #comment p.commenter {
+	border-top:1px solid #FFFFFF;
+	color:#777777;
+	display:block;
+	height:22px;
+	margin:0;
+	overflow:hidden;
+	text-align:right;
+	}
+.comment_holder #comment p.commenter a {
+	color:#777777;
+	display:block;
+	float:right;
+	padding-right:6px;
+	}
+.comment_holder #comment p.commenter a:hover {
+	color:#000;
+	text-decoration:underline;
+	}
+.comment_holder #comment p.commenter span {
+	display:block;
+	float:right;
+	padding:0 5px;
+	}
+
+img.gravatar {
+	float:left;
+	margin:0 10px 5px 0;
+}
+
+
+
+
+
+

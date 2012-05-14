@@ -1,0 +1,47 @@
+/*
+ * CSS Document
+ * setting.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+.setting {
+	display:block;
+	margin:0 auto;
+	padding-top:15px;
+	width:100%;
+	}
+.setting ul {
+	list-style:none;
+	list-style-position:outside;
+	}
+.setting ul li {
+	background-color:#F3F3F3;
+	border-bottom:1px solid #DEDEDE;
+	clear:both;
+	margin-bottom:5px;
+	padding:10px;
+	}
+.setting ul li label {
+	display:block;
+	float:left;
+	font-weight:bold;
+	width:350px;
+	}
+.setting ul li select {
+	background-color:#FFFFFF !important;
+	border:1px solid #CCCCCC;
+	display:block;
+	padding:6px;
+	width:190px;
+	}
+.setting ul li label.lblInner {
+	padding:0 5px 0 0;
+	width:auto;
+	}
+
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,19 @@
+User-Agent: *
+Disallow: /admin/
+Disallow: /cms/
+Disallow: /download/
+Disallow: /upload/
+Disallow: /temp/
+Disallow: /tmp/
+Disallow: /assets/
+Disallow: /cache/
+Disallow: /templates/
+Disallow: /urchin/
+Disallow: /font/
+Disallow: /install/
+Disallow: /registration/
+Disallow: /CI/
+#Disallow: /demo/
+
+#Block out things that are secure or login oriented
+Disallow: /registration.html

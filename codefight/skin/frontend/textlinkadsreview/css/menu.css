@@ -1,0 +1,8 @@
+.nav{background-color:#2884F4;border:1px solid #FFFFFF;left:10px;position:absolute;top:110px;width:960px;z-index:2;}
+.nav .menu{margin:10px;}
+.nav .menu ul{}
+.nav .menu ul li{border-radius: 15px;-moz-border-radius: 15px;-webkit-border-radius: 15px;border:1px solid #2884F4;display:inline;margin:0 10px 0 0;padding:1px 10px;}
+.nav .menu ul li a:link, .nav .menu ul li a:visited{color:#000000;font-size:116.7%;text-decoration:none;}
+.nav .menu ul li:hover{border: 1px solid #fff;border-radius: 15px;-moz-border-radius: 15px;-webkit-border-radius: 15px;background: #021677;}
+.nav .menu ul li:hover a:link, .nav .menu ul li:hover a:visited{color: #ffffff;}
+.nav .search-field{position:absolute;right:20px;top:10px;}

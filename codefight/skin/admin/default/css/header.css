@@ -1,0 +1,42 @@
+/*
+ * CSS Document
+ * header.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+
+.siteContainer div.header {
+	background:#5690C0;
+	color:#AEE474;
+	display:block;
+	height:41px;
+	overflow:hidden;
+	}
+.siteContainer .header .logo {
+	display:block;
+	float:left;
+	margin:2px 0 0;
+	padding:5px;
+	}
+.siteContainer .header .logo a {
+	color:#FFFFFF;
+	display:block;
+	font-size:20px;
+	}
+.siteContainer .header .userLogged {
+	color:#FFFFFF;
+	font-size:12px;
+	font-weight:bold;
+	padding:10px;
+	text-align:right;
+	}
+.siteContainer .header .userLogged a {
+	color:#AEE474;
+	font-size:12px;
+	font-weight:bold;
+	text-align:right;
+	}
+.siteContainer .header .userLogged a:hover {
+	color:#ffffff;
+	text-decoration:underline;
+	}
