@@ -35,7 +35,7 @@ $this->cf_block_lib->load('page_html/head'); ?>
                             'addthis'],
                         addthisId:'dbashyal',
                         startTop : 94,
-                        animate : false,
+                        animate : true,
                         fromPosition:'top'
                     });
                 }

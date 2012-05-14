@@ -95,13 +95,13 @@ class MY_Library
 
 		if(!strpos($library, '/'))
         {
-            $library_name = $this->prefix.$library.strtolower($this->suffix);
+            $library_name = $this->prefix.$library.$this->suffix;
             $library_class = $this->prefix.ucfirst($library).($this->suffix);
             $library_file = $library.'/'.$library_name;
         } else {
             $library = explode('/', $library);
 
-            $library_name = $this->prefix.ucfirst($library[0]).'_'.ucfirst($library[1]).strtolower($this->suffix);
+            $library_name = $this->prefix.ucfirst($library[0]).'_'.ucfirst($library[1]).$this->suffix;
             $library_class = $this->prefix.ucfirst($library[0]).'_'.ucfirst($library[1]).$this->suffix;
             $library_file = "{$library[0]}/{$library_name}";
         }

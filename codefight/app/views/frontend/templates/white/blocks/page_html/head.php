@@ -58,6 +58,6 @@ else
     //Load Google Analytics
     $this->cf_block_lib->load('seo/google_analytics'); ?>
 
-    <script type="text/javascript" src="<?php echo skin_url('global') ?>js/share.mini.js"></script>
+    <script type="text/javascript" src="<?php echo skin_url('global') ?>js/cfShare.js"></script>
 
 </head>
