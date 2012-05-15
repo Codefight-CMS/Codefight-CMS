@@ -142,7 +142,7 @@ li {
 	border-bottom:1px solid #CCCCCC;
 	padding:4px;
 }
-.even { 
+.even {
 	background-color:#f3f3f3;
 	border-bottom:1px solid #CCCCCC;
 	padding:4px;
@@ -162,7 +162,7 @@ li {
 .siteContainer .pageContainer .cp_box_2 h2 {
 	margin:0 0 35px;
 	}
-	
+
 .pageContent {
 	display:block;
 	float:left;
@@ -244,58 +244,6 @@ li {
 	color:#ffffff;
 	text-decoration:underline;
 	}
-	
-.login {
-	display:block;
-	margin:0 auto;
-	padding-top:50px;
-	width:100%;
-}
-.loginBg {
-	background:url(../images/admin-login-side.png) left top repeat-y;
-        display:block;
-        padding:20px 30px;
-        width:324px;
-}
-.loginBgBottom {
-	background:url(../images/admin-login-bot.png) left bottom no-repeat;
-        display:block;
-        margin:0 auto;
-	padding:0 0 24px 0;
-	width:384px;
-}
-.loginBgTop {
-        display:block;
-}
-.loginBgTop h2 {
-	background:url(../images/admin-login-top.png) left top no-repeat;
-        display:block;
-	margin:0;
-        padding:26px 20px 16px;
-        width:344px;
-}
-.login label.txtFld {
-	display:block;
-	float:left;
-	font-weight:bold;
-	padding-top:17px;
-	width:100px;
-}
-.login input.txtFld {
-	background-color:#FFFFFF !important;
-	border:1px solid #EEEEEE;
-	display:block;
-	float:left;
-	margin:12px 0pt;
-	padding:4px;
-	width:206px;
-}
-.forgot {
-	display:block;
-	padding:1px 7px 3px 4px;
-	text-align:right;
-}
-
 .menu {
 	display:block;
 	margin:0 auto;
@@ -343,13 +291,13 @@ li {
 .menu_grid .menu_grid_heading_description {
 	padding:0 6px;
 	}
-	
+
 .menu_create label {
 	display:block;
 	float:left;
 	width:90px;
 	}
-	
+
 .menu_create .txtFld {
 	background-color:#fff !important;
 	border:1px solid #CCCCCC;
@@ -377,7 +325,7 @@ span.display_level3 {
 	font-weight:bold;
 	padding-left:44px;
 	}
-	
+
 .page {
 	display:block;
 	margin:0 auto;
@@ -444,13 +392,13 @@ span.display_level3 {
 	padding:0 6px 5px 80px;
 	width:90%;
 	}
-	
+
 .page_create label {
 	display:block;
 	float:left;
 	width:130px;;
 	}
-	
+
 .page_create .txtFld {
 	background-color:#fff !important;
 	border:1px solid #CCCCCC;
@@ -556,7 +504,7 @@ span.display_level3 {
 	}
 .messageRead{}
 .messageUnread{background:#FFEE99;}
-.permission_grid ul li.last {border:none;}	
+.permission_grid ul li.last {border:none;}
 
 .setting {
 	display:block;
@@ -581,6 +529,7 @@ span.display_level3 {
 	font-weight:bold;
 	width:350px;
 	}
+label input,
 label.lblInner input {
 	display:inline;
 }
@@ -762,13 +711,13 @@ background-color: #8dbdd8;
 	padding:0 6px 5px 80px;
 	width:90%;
 	}
-	
+
 .comment_create label {
 	display:block;
 	float:left;
 	width:130px;;
 	}
-	
+
 .comment_create .txtFld {
 	background-color:#fff !important;
 	border:1px solid #CCCCCC;
@@ -841,13 +790,13 @@ background-color: #8dbdd8;
 	padding:0 6px;
 	width:160px;
 	}
-	
+
 .file_create label {
 	display:block;
 	float:left;
 	width:90px;
 	}
-	
+
 .file_create .txtFld {
 	background-color:#fff !important;
 	border:1px solid #CCCCCC;
@@ -921,12 +870,12 @@ form#file_search_form input#search{}
 	padding:0 6px;
 	width:476px;
 	}
-	
+
 .group_create label {
 	display:block;
 	float:left;
 	width:90px;
-	}	
+	}
 .group_create .txtFld {
 	background-color:#fff !important;
 	border:1px solid #CCCCCC;

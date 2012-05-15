@@ -93,10 +93,11 @@ foreach ($options_ary as $v) {
         <p class="clear">&nbsp;</p>
     </div>
     <p class="clear">&nbsp;</p>
+
     <label><?php echo __('DESCRIPTION') ?>:</label>
-    <br/>
-    <textarea class="txtFld" name="page[<?php echo $k; ?>][page_body]" cols="80" rows="15"
-              id="page_<?php echo $k; ?>_page_body"><?php echo form_prep($v['page_body']); ?></textarea>
+    <p class="clear">&nbsp;</p>
+    <textarea class="txtFld" name="page[<?php echo $k; ?>][page_body]" cols="180" rows="15" id="page_<?php echo $k; ?>_page_body"><?php echo form_prep($v['page_body']); ?></textarea>
+
     <p class="clear">&nbsp;</p><br/>
 
         <label><?php echo __('Author') ?>:</label>
