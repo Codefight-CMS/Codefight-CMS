@@ -111,9 +111,9 @@ class Tag extends MY_Controller
            | models/cf_data_model.php
            | libraries/cf_block_lib.php
            */
-        //if(isset($data['content'])) $data['content'] = $this->cf_blog_model->parse_content($data['content']);
+        //if(isset($data['content'])) $data['content'] = $this->cf_blog_model->parseContent($data['content']);
         if (isset($data['content']) && count((array)$data['content']) > 0) {
-            $data['content'] = $this->cf_blog_model->parse_content($data['content']);
+            $data['content'] = $this->cf_blog_model->parseContent($data['content']);
         } else {
             header("HTTP/1.0 404 Not Found");
             //if content not found | Set meta to noindex, nofollow to save your website value to search engines.

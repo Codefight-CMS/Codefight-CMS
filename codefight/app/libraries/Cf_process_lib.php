@@ -40,7 +40,11 @@ class Cf_process_lib
                         if(empty($url) && !empty($title)){
                             $url = site_url('blog/tag/'.url_title(strtolower($title)));
                         }
-                        $tagReplace = '<a href="'. $url .'"'. $attr .'>' . $title . '</a>';
+                        if(empty($title)){
+                            $tagReplace = $url;
+                        }else{
+                            $tagReplace = '<a href="'. $url .'"'. $attr .'>' . $title . '</a>';
+                        }
                         $html_string = str_replace($tagCode, $tagReplace, $html_string);
                     }
                 }

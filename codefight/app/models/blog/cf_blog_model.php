@@ -414,9 +414,8 @@ class Cf_blog_model extends MY_Model
         echo $c;
     }
 
-    function parse_content($content = array(), $show_blurb = TRUE)
+    function parseContent($content = array(), $show_blurb = TRUE)
     {
-
         $_content = array();
 
         if (isset($content) && is_array($content) && count($content) > 0) {
@@ -499,7 +498,8 @@ class Cf_blog_model extends MY_Model
                 //If the user has right to view this content...
                 if ($access) {
                     //Show heading of the content, ...
-                    $_content[$k]['title']       = anchor($link, $v['page_title']);
+                    $_content[$k]['title']       = $v['page_title'];
+                    $_content[$k]['title-link']  = anchor($link, $v['page_title']);
                     $_content[$k]['author_date'] = $author_date;
                     $_content[$k]['content']     = $page_content;
                     $_content[$k]['tag']         = $page_tag;

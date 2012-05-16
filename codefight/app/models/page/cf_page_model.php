@@ -58,7 +58,7 @@ class Cf_page_model extends MY_Model
         return $data;
     }
 
-    function parse_content($content = array(), $show_blurb = TRUE)
+    function parseContent($content = array(), $show_blurb = TRUE)
     {
 
         $_content = array();
@@ -87,7 +87,7 @@ class Cf_page_model extends MY_Model
                 if (isset($_POST['identifier'])) {
                     $page_content .= '<script type="text/javascript">
 					jQuery(document).ready(function(){check_form();});
-					
+
 					function check_form() {
 						jQuery.post(
 								\'form/ajax\',

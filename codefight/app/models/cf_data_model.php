@@ -234,7 +234,7 @@ class Cf_data_model extends MY_Model
 
             if (!empty($page_author) && $show_author == '1') {
                 $author_date
-                    .= '<span class="author"><a href="' . site_url("user/{$v['user_id']}{$name}") . '" rel="author">'
+                    .= '<span class="author"><a href="' . site_url("user/{$v['user_id']}{$name}") . '" rel="author vcard">'
                     . $page_author . '</a></span>';
             }
 
@@ -283,7 +283,8 @@ class Cf_data_model extends MY_Model
         foreach ($ids as $v) {
             if ($make_link) {
                 $title = $this->post_category_title($v);
-                $ret[] = anchor("page/$v/" . url_title($title), $title, ' rel="category tag" title="' . $v . '"');
+                $url = "blog/c/" . url_title(strtolower(trim($title)));
+                $ret[] = anchor($url, $title, ' rel="category tag" title="'.__('View all posts in') . ' ' . $title . '"');
             }
             else
             {

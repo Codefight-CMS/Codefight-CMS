@@ -103,7 +103,7 @@ class Blog extends MY_Controller
            | libraries/cf_block_lib.php
            */
         if (isset($data['content']) && count((array)$data['content']) > 0) {
-            $data['content'] = $this->cf_blog_model->parse_content($data['content']);
+            $data['content'] = $this->cf_blog_model->parseContent($data['content']);
         } else {
             $this->cf_blog_model->redirect_blog($this->page_id);
 

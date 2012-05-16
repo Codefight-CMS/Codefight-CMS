@@ -74,7 +74,7 @@ class File extends MY_Controller
            */
         if (isset($data['content']) && count((array)$data['content']) > 0) {
             //For static page, display full content by passing 2nd param as false.
-            $data['content'] = $this->cf_page_model->parse_content($data['content'], FALSE);
+            $data['content'] = $this->cf_page_model->parseContent($data['content'], FALSE);
             $data['content'] = $this->cf_file_model->process($data['content']);
         }
         else
