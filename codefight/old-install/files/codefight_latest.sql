@@ -1,15 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.3.9
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2012 at 12:29 PM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Generation Time: May 16, 2012 at 02:15 PM
+-- Server version: 5.5.8
+-- PHP Version: 5.3.5
 
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 --
 -- Database: `codefight`
@@ -21,6 +20,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `cf_banner`
 --
 
+DROP TABLE IF EXISTS `cf_banner`;
 CREATE TABLE IF NOT EXISTS `cf_banner` (
   `banner_id` int(11) NOT NULL AUTO_INCREMENT,
   `banner_title` varchar(64) NOT NULL DEFAULT '',
@@ -36,14 +36,12 @@ CREATE TABLE IF NOT EXISTS `cf_banner` (
   `date_status_change` datetime DEFAULT NULL,
   `status` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`banner_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `cf_banner`
 --
 
-INSERT INTO `cf_banner` (`banner_id`, `banner_title`, `banner_url`, `banner_image`, `banner_group`, `banner_html_text`, `expire_impressions`, `expire_clicks`, `expire_date`, `date_scheduled`, `date_added`, `date_status_change`, `status`) VALUES
-(1, 'My Banner one', '', '', '', '<a href="http://codefight.org/">Support Codefight CMS</a>', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -51,6 +49,7 @@ INSERT INTO `cf_banner` (`banner_id`, `banner_title`, `banner_url`, `banner_imag
 -- Table structure for table `cf_banner_history`
 --
 
+DROP TABLE IF EXISTS `cf_banner_history`;
 CREATE TABLE IF NOT EXISTS `cf_banner_history` (
   `banner_history_id` int(11) NOT NULL AUTO_INCREMENT,
   `banner_id` int(11) NOT NULL DEFAULT '0',
@@ -60,12 +59,18 @@ CREATE TABLE IF NOT EXISTS `cf_banner_history` (
   PRIMARY KEY (`banner_history_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `cf_banner_history`
+--
+
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `cf_file`
 --
 
+DROP TABLE IF EXISTS `cf_file`;
 CREATE TABLE IF NOT EXISTS `cf_file` (
   `file_id` int(11) NOT NULL AUTO_INCREMENT,
   `file_title` varchar(255) DEFAULT NULL,
@@ -92,10 +97,10 @@ CREATE TABLE IF NOT EXISTS `cf_file` (
 --
 
 INSERT INTO `cf_file` (`file_id`, `file_title`, `file_description`, `folder_id`, `file_name`, `file_path`, `file_type`, `file_ext`, `file_size`, `is_image`, `image_width`, `image_height`, `file_access`, `file_access_members`, `file_status`, `file_publish_date`, `file_expire_date`) VALUES
-(11, 'Software Box', 'Codefight software package box', 2, 'Codefight-CMS-A-Codeigniter-CMS.jpg', 'media/gallery/', 'image/jpeg', '.jpg', '191.14', 1, 716, 762, 'public', NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(10, 'Screenshot', 'This is a screenshot image file.', 2, 'codefight-1.2_.0_.png', 'media/gallery/', 'image/png', '.png', '13.76', 1, 720, 285, 'public', NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(12, 'Codefight CMS 2.0 Youtube video', 'Codefight cms preview', 1, 'codefight-cms-2-0-preview.png', 'media/', 'image/png', '.png', '59.80', 1, 500, 296, 'public', NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(13, 'Penguins', 'Penguins sample image', 1, 'Penguins.jpg', 'media/', 'image/jpeg', '.jpg', '759.60', 1, 1024, 768, 'all', NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(11, 'Software Box', 'Codefight software package box', 2, 'Codefight-CMS-A-Codeigniter-CMS.jpg', 'media/gallery/', 'image/jpeg', '.jpg', 191.14, 1, 716, 762, 'public', NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 'Screenshot', 'This is a screenshot image file.', 2, 'codefight-1.2_.0_.png', 'media/gallery/', 'image/png', '.png', 13.76, 1, 720, 285, 'public', NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, 'Codefight CMS 2.0 Youtube video', 'Codefight cms preview', 1, 'codefight-cms-2-0-preview.png', 'media/', 'image/png', '.png', 59.80, 1, 500, 296, 'public', NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, 'Penguins', 'Penguins sample image', 1, 'Penguins.jpg', 'media/', 'image/jpeg', '.jpg', 759.60, 1, 1024, 768, 'all', NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -103,6 +108,7 @@ INSERT INTO `cf_file` (`file_id`, `file_title`, `file_description`, `folder_id`,
 -- Table structure for table `cf_folder`
 --
 
+DROP TABLE IF EXISTS `cf_folder`;
 CREATE TABLE IF NOT EXISTS `cf_folder` (
   `folder_id` int(11) NOT NULL AUTO_INCREMENT,
   `folder_parent_id` int(11) NOT NULL DEFAULT '0',
@@ -132,6 +138,7 @@ INSERT INTO `cf_folder` (`folder_id`, `folder_parent_id`, `folder_path`, `folder
 -- Table structure for table `cf_form_data_int`
 --
 
+DROP TABLE IF EXISTS `cf_form_data_int`;
 CREATE TABLE IF NOT EXISTS `cf_form_data_int` (
   `form_submitted_id` int(11) NOT NULL,
   `form_item_id` int(11) NOT NULL,
@@ -139,12 +146,18 @@ CREATE TABLE IF NOT EXISTS `cf_form_data_int` (
   KEY `form_submitted_id` (`form_submitted_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `cf_form_data_int`
+--
+
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `cf_form_data_text`
 --
 
+DROP TABLE IF EXISTS `cf_form_data_text`;
 CREATE TABLE IF NOT EXISTS `cf_form_data_text` (
   `form_submitted_id` int(11) NOT NULL,
   `form_item_id` int(11) NOT NULL,
@@ -166,6 +179,7 @@ INSERT INTO `cf_form_data_text` (`form_submitted_id`, `form_item_id`, `form_item
 -- Table structure for table `cf_form_data_varchar`
 --
 
+DROP TABLE IF EXISTS `cf_form_data_varchar`;
 CREATE TABLE IF NOT EXISTS `cf_form_data_varchar` (
   `form_submitted_id` int(11) NOT NULL,
   `form_item_id` int(11) NOT NULL,
@@ -191,6 +205,7 @@ INSERT INTO `cf_form_data_varchar` (`form_submitted_id`, `form_item_id`, `form_i
 -- Table structure for table `cf_form_group`
 --
 
+DROP TABLE IF EXISTS `cf_form_group`;
 CREATE TABLE IF NOT EXISTS `cf_form_group` (
   `form_group_id` int(11) NOT NULL AUTO_INCREMENT,
   `form_group_name` varchar(25) DEFAULT NULL,
@@ -212,6 +227,7 @@ INSERT INTO `cf_form_group` (`form_group_id`, `form_group_name`, `form_group_ide
 -- Table structure for table `cf_form_item`
 --
 
+DROP TABLE IF EXISTS `cf_form_item`;
 CREATE TABLE IF NOT EXISTS `cf_form_item` (
   `form_item_id` int(11) NOT NULL AUTO_INCREMENT,
   `form_item_name` varchar(50) NOT NULL,
@@ -232,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `cf_form_item` (
 INSERT INTO `cf_form_item` (`form_item_id`, `form_item_name`, `form_item_label`, `form_item_input_type`, `form_item_validations`, `form_item_default_value`, `form_item_parameters`, `form_item_data_type`, `form_item_grid`) VALUES
 (13, 'name', 'Your Name', 'textbox', 'trim|xss_clean', '', 'class="txtFld"', 'varchar', 1),
 (14, 'contact_email', 'Contact Email', 'textbox', 'trim|required|valid_email', '', 'class="txtFld"', 'varchar', 1),
-(15, 'submit', 'Submit', 'submit', '', '', '', 'varchar', 0),
+(15, 'submit', 'Submit', 'submit', '', '', ' class="btn btn-primary"', 'varchar', 0),
 (16, 'message', 'Your Message', 'textarea', 'trim|required', '', 'class="txtFld"', 'text', 0),
 (17, 'gender', 'Gender', 'radio', '', 'm=Male|f=Female', '', 'varchar', 1),
 (18, 'newsletters_options[]', 'Select newsletters you would like to subscribe', 'checkbox', '', '1=maths|2=computer|3=science', '', 'varchar', 0),
@@ -246,6 +262,7 @@ INSERT INTO `cf_form_item` (`form_item_id`, `form_item_name`, `form_item_label`,
 -- Table structure for table `cf_form_item_to_group`
 --
 
+DROP TABLE IF EXISTS `cf_form_item_to_group`;
 CREATE TABLE IF NOT EXISTS `cf_form_item_to_group` (
   `form_group_id` int(11) NOT NULL,
   `form_item_id` int(11) NOT NULL,
@@ -259,12 +276,12 @@ CREATE TABLE IF NOT EXISTS `cf_form_item_to_group` (
 --
 
 INSERT INTO `cf_form_item_to_group` (`form_group_id`, `form_item_id`, `form_item_sort`, `form_item_grid`) VALUES
-(4, 14, 2, 1),
+(4, 14, 3, 1),
 (4, 13, 1, 1),
 (4, 15, 8, 0),
 (4, 16, 6, 0),
 (4, 21, 7, 0),
-(4, 22, 3, 0);
+(4, 22, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -272,6 +289,7 @@ INSERT INTO `cf_form_item_to_group` (`form_group_id`, `form_item_id`, `form_item
 -- Table structure for table `cf_form_submitted`
 --
 
+DROP TABLE IF EXISTS `cf_form_submitted`;
 CREATE TABLE IF NOT EXISTS `cf_form_submitted` (
   `form_submitted_id` int(11) NOT NULL AUTO_INCREMENT,
   `form_group_id` int(11) NOT NULL,
@@ -294,6 +312,7 @@ INSERT INTO `cf_form_submitted` (`form_submitted_id`, `form_group_id`, `form_sta
 -- Table structure for table `cf_group`
 --
 
+DROP TABLE IF EXISTS `cf_group`;
 CREATE TABLE IF NOT EXISTS `cf_group` (
   `group_id` int(11) NOT NULL AUTO_INCREMENT,
   `group_title` varchar(255) NOT NULL,
@@ -320,6 +339,7 @@ INSERT INTO `cf_group` (`group_id`, `group_title`, `group_description`, `group_s
 -- Table structure for table `cf_group_permission`
 --
 
+DROP TABLE IF EXISTS `cf_group_permission`;
 CREATE TABLE IF NOT EXISTS `cf_group_permission` (
   `group_id` int(11) NOT NULL,
   `module_id` int(11) NOT NULL
@@ -370,9 +390,6 @@ INSERT INTO `cf_group_permission` (`group_id`, `module_id`) VALUES
 (1, 34),
 (1, 35),
 (1, 8),
-(1, 46),
-(1, 47),
-(1, 48),
 (1, 9),
 (1, 36),
 (1, 37),
@@ -388,9 +405,32 @@ INSERT INTO `cf_group_permission` (`group_id`, `module_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cf_installs`
+--
+
+DROP TABLE IF EXISTS `cf_installs`;
+CREATE TABLE IF NOT EXISTS `cf_installs` (
+  `installs_id` int(11) NOT NULL AUTO_INCREMENT,
+  `website` varchar(255) DEFAULT NULL,
+  `count` int(11) NOT NULL DEFAULT '0',
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`installs_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `cf_installs`
+--
+
+INSERT INTO `cf_installs` (`installs_id`, `website`, `count`, `date`) VALUES
+(1, 'tools/version', 1, '2012-03-28 15:59:40');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cf_menu`
 --
 
+DROP TABLE IF EXISTS `cf_menu`;
 CREATE TABLE IF NOT EXISTS `cf_menu` (
   `menu_id` int(11) NOT NULL AUTO_INCREMENT,
   `menu_active` int(1) NOT NULL DEFAULT '0',
@@ -420,27 +460,27 @@ INSERT INTO `cf_menu` (`menu_id`, `menu_active`, `menu_parent_id`, `menu_link`, 
 (75, 1, 0, 'home', NULL, 'Home', 'page', '', '', '', 0, ',1,2,3,4,'),
 (88, 1, 0, 'jobs', '', 'JOBS', 'blog', '', '', '', 20, ',4,'),
 (69, 1, 0, 'http://zoosper.com', NULL, 'zoosper', 'sponsored-links', '', '', '', 0, ',1,2,3,'),
-(70, 1, 0, 'http://codefight.org/', NULL, 'Codefight CMS', 'blog-roll', '', '', '', 0, ',2,3,4,'),
+(70, 1, 0, 'http://codefight.org/', '', 'Codefight CMS', 'blog-roll', '', '', '', 0, ',1,'),
 (80, 1, 0, 'blog', NULL, 'Blog', 'page', '', '', '', 3, ',1,2,3,4,'),
-(81, 1, 0, 'download-latest-codefight-cms', '', 'Downloads', 'page', '', '', '', 2, ',1,3,'),
+(81, 1, 0, 'download-latest-codefight-cms', '', 'Downloads', 'page', '', '', '', 1, ',1,3,'),
 (82, 1, 0, 'about-us', NULL, 'About Us', 'page', '', '', '', 5, ',2,3,4,'),
 (83, 1, 0, 'contact-us', NULL, 'Contact Us', 'page', '', '', '', 6, ',1,2,3,4,'),
-(84, 1, 0, 'http://www.tenthweb.com/forums/viewforum.php?title=codefight.org&f=49', NULL, 'Forum', 'page', '', '', '', 1, ',1,3,'),
+(84, 1, 0, 'http://www.tenthweb.com/forums/viewforum.php?title=codefight.org&f=49', NULL, 'Forum', 'page', '', '', '', 2, ',1,3,'),
 (109, 1, 0, 'advertising', NULL, 'Advertising', 'blog', '', '', '', 1, ',2,'),
 (85, 1, 0, 'search', NULL, 'Search', 'page', '', '', '', 9, ',2,3,4,'),
 (89, 1, 0, 'web-resources', '', 'Web Resources', 'blog', '', '', '', 11, ',4,'),
 (90, 1, 0, 'codeigniter', '', 'Codeigniter', 'blog', '', '', '', 13, ',1,'),
 (91, 1, 0, 'zend', '', 'Zend', 'blog', '', '', '', 12, ',4,'),
 (92, 1, 0, 'magento', '', 'Magento', 'blog', '', '', '', 14, ',4,'),
-(93, 1, 0, 'diary', '', 'Diary', 'blog', '', '', '', 15, ',4,'),
+(93, 1, 0, 'diary', '', 'Diary', 'blog', '', '', '', 15, ',1,4,'),
 (94, 1, 0, 'nepal', '', 'Nepal', 'blog', '', '', '', 16, ',1,'),
 (95, 1, 0, 'australia', '', 'Australia', 'blog', '', '', '', 17, ',4,'),
 (96, 1, 0, 'guest-articles', '', 'Guest Articles', 'blog', '', '', '', 18, ',4,'),
 (97, 1, 0, 'tips', '', 'Tips', 'blog', '', '', '', 19, ',4,'),
-(98, 1, 0, 'http://www.shiflett.org/', NULL, 'Chris Shiflett', 'blog-roll', '', '', '', 1, ',1,'),
-(99, 1, 0, 'http://www.derekallard.com/', NULL, 'Derek Allard', 'blog-roll', '', '', '', 3, ',1,'),
-(100, 1, 0, 'http://www.haughin.com/', NULL, 'Elliot Haughin', 'blog-roll', '', '', '', 2, ',1,'),
-(101, 1, 0, 'http://www.michaelwales.com/', NULL, 'Michael Wales', 'blog-roll', '', '', '', 4, ',1,'),
+(98, 1, 0, 'http://learntipsandtricks.com/blog', '', 'Tips & Tricks', 'blog-roll', '', '', '', 1, ',1,'),
+(99, 1, 0, 'http://sponsormeclub.org/', '', 'sponsorMEclub', 'blog-roll', '', '', '', 3, ',1,'),
+(100, 1, 0, 'http://houseforlove.com/blog/tag/story', '', 'Lost Soul', 'blog-roll', '', '', '', 2, ',1,'),
+(101, 1, 0, 'http://sketchawebsite.com/', '', 'HTML5 Templates', 'blog-roll', '', '', '', 4, ',1,'),
 (102, 0, 0, 'http://forums.zoosper.com/', NULL, 'Forums', 'sponsored-links', '', '', '', 0, ',1,'),
 (103, 1, 0, 'http://astore.zoosper.com/node/22/cat/Books', NULL, 'Zoosper Shopping Centre', 'sponsored-links', '', '', '', 0, ',1,'),
 (104, 1, 0, 'http://www.clixGalore.com/PSale.aspx?BID=528&amp;AfID=86513&amp;AdID=26', NULL, 'Earn Commission For Life', 'sponsored-links', '', '', '', 0, ',1,'),
@@ -451,7 +491,7 @@ INSERT INTO `cf_menu` (`menu_id`, `menu_active`, `menu_parent_id`, `menu_link`, 
 (110, 1, 0, 'affiliate-marketing', NULL, 'Affiliate Marketing', 'blog', '', '', '', 2, ',2,'),
 (111, 1, 0, 'google-page-rank', NULL, 'Google Page Rank', 'blog', '', '', '', 5, ',2,'),
 (112, 1, 0, 'search-engine-optimization', NULL, 'Search Engine Optimization', 'blog', '', '', '', 6, ',2,'),
-(113, 1, 0, 'http://astore.zoosper.com/search?node=22&keywords=money&x=12&y=11&preview=', NULL, 'Make Easy Money - Books', 'blog-roll', '', '', '', 0, ',2,'),
+(113, 1, 0, 'http://astore.zoosper.org/search?node=22&keywords=codeigniter&x=0&y=0&preview=', '', 'Books', 'blog-roll', '', '', '', 0, ',1,'),
 (114, 1, 0, 'alexa', NULL, 'Alexa', 'blog', '', '', '', 3, ',2,'),
 (115, 1, 0, 'social-media', NULL, 'Social Media', 'blog', '', '', '', 7, ',2,'),
 (116, 1, 0, 'facebook', NULL, 'Facebook', 'blog', '', '', '', 4, ',2,'),
@@ -466,6 +506,7 @@ INSERT INTO `cf_menu` (`menu_id`, `menu_active`, `menu_parent_id`, `menu_link`, 
 -- Table structure for table `cf_module`
 --
 
+DROP TABLE IF EXISTS `cf_module`;
 CREATE TABLE IF NOT EXISTS `cf_module` (
   `module_id` int(11) NOT NULL AUTO_INCREMENT,
   `parent` varchar(255) NOT NULL,
@@ -476,63 +517,59 @@ CREATE TABLE IF NOT EXISTS `cf_module` (
   `void` int(11) NOT NULL DEFAULT '0',
   `menu` text NOT NULL,
   `child` text NOT NULL,
-  `is_menu` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`module_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
 
 --
 -- Dumping data for table `cf_module`
 --
 
-INSERT INTO `cf_module` (`module_id`, `parent`, `status`, `sort`, `url`, `title`, `void`, `menu`, `child`, `is_menu`) VALUES
-(1, 'top', 1, 1, 'cp', 'Admin', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:2:"cp";s:5:"title";s:5:"Admin";s:5:"child";a:2:{s:5:"cp/cp";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:5:"cp/cp";s:5:"title";s:4:"Home";}s:9:"cp/update";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"cp/update";s:5:"title";s:17:"Codefight Updates";}}}', 'a:2:{i:0;s:5:"cp/cp";i:1;s:9:"cp/update";}', 1),
-(2, 'top', 1, 4, 'menu', 'Menu', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:4:"menu";s:5:"title";s:4:"Menu";s:5:"child";a:6:{s:9:"menu/page";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"menu/page";s:5:"title";s:10:"Page Links";}s:9:"menu/blog";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"menu/blog";s:5:"title";s:15:"Blog Categories";}s:14:"menu/blog-roll";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:14:"menu/blog-roll";s:5:"title";s:9:"Blog Roll";}s:16:"menu/classifieds";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:16:"menu/classifieds";s:5:"title";s:21:"Classified Categories";}s:20:"menu/favourite-links";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:20:"menu/favourite-links";s:5:"title";s:15:"Favourite Links";}s:20:"menu/sponsored-links";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:20:"menu/sponsored-links";s:5:"title";s:15:"Sponsored Links";}}}', 'a:6:{i:0;s:9:"menu/page";i:1;s:9:"menu/blog";i:2;s:14:"menu/blog-roll";i:3;s:16:"menu/classifieds";i:4;s:20:"menu/favourite-links";i:5;s:20:"menu/sponsored-links";}', 1),
-(3, 'top', 1, 11, 'user', 'User', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:4:"user";s:5:"title";s:4:"User";s:5:"child";a:3:{s:10:"user/index";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:10:"user/index";s:5:"title";s:5:"Users";}s:5:"group";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:5:"group";s:5:"title";s:6:"Groups";}s:17:"group/permissions";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:17:"group/permissions";s:5:"title";s:17:"Group Permissions";}}}', 'a:3:{i:0;s:10:"user/index";i:1;s:5:"group";i:2;s:17:"group/permissions";}', 1),
-(4, 'top', 1, 15, 'form', 'Form', 0, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:4:"form";s:5:"title";s:4:"Form";s:5:"child";a:3:{s:9:"form/item";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"form/item";s:5:"title";s:5:"Items";}s:10:"form/group";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:10:"form/group";s:5:"title";s:5:"Group";}s:14:"menu/submitted";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:14:"menu/submitted";s:5:"title";s:9:"Submitted";}}}', 'a:3:{i:0;s:9:"form/item";i:1;s:10:"form/group";i:2;s:14:"menu/submitted";}', 1),
-(5, 'top', 1, 19, 'page', 'CMS', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:4:"page";s:5:"title";s:3:"CMS";s:5:"child";a:3:{s:9:"page/page";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"page/page";s:5:"title";s:11:"Static Page";}s:9:"page/blog";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"page/blog";s:5:"title";s:12:"Blog Article";}s:10:"page/block";a:4:{s:7:"is_menu";i:0;s:4:"void";i:1;s:3:"url";s:10:"page/block";s:5:"title";s:13:"Static Blocks";}}}', 'a:3:{i:0;s:9:"page/page";i:1;s:9:"page/blog";i:2;s:10:"page/block";}', 1),
-(6, 'top', 1, 23, 'comment', 'Comments', 0, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:7:"comment";s:5:"title";s:8:"Comments";s:5:"child";a:2:{s:23:"comment/pending-comment";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:23:"comment/pending-comment";s:5:"title";s:16:"Pending Comments";}s:24:"comment/approved-comment";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:24:"comment/approved-comment";s:5:"title";s:17:"Approved Comments";}}}', 'a:2:{i:0;s:23:"comment/pending-comment";i:1;s:24:"comment/approved-comment";}', 1),
-(7, 'top', 1, 26, 'media', 'Media', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:5:"media";s:5:"title";s:5:"Media";s:5:"child";a:2:{s:4:"file";a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:4:"file";s:5:"title";s:12:"File Manager";s:5:"child";a:2:{s:16:"file/manage-file";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:16:"file/manage-file";s:5:"title";s:12:"Manage Files";}s:16:"file/upload-file";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:16:"file/upload-file";s:5:"title";s:11:"Upload File";}}}s:6:"folder";a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:6:"folder";s:5:"title";s:14:"Folder Manager";s:5:"child";a:2:{s:20:"folder/manage-folder";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:20:"folder/manage-folder";s:5:"title";s:14:"Manage Folders";}s:20:"folder/create-folder";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:20:"folder/create-folder";s:5:"title";s:13:"Create Folder";}}}}}', 'a:2:{i:0;s:4:"file";i:1;s:6:"folder";}', 1),
-(8, 'top', 1, 33, 'banner', 'Banner', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:6:"banner";s:5:"title";s:6:"Banner";s:5:"child";a:3:{s:13:"banner/manage";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:13:"banner/manage";s:5:"title";s:6:"Manage";}s:13:"banner/create";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:13:"banner/create";s:5:"title";s:17:"Create New Banner";}s:13:"banner/status";a:4:{s:7:"is_menu";i:0;s:4:"void";i:0;s:3:"url";s:13:"banner/status";s:5:"title";s:20:"Change Banner Status";}}}', 'a:3:{i:0;s:13:"banner/manage";i:1;s:13:"banner/create";i:2;s:13:"banner/status";}', 1),
-(9, 'top', 1, 37, 'tools', 'Tools', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:5:"tools";s:5:"title";s:5:"Tools";s:5:"child";a:4:{s:13:"modulecreator";a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:13:"modulecreator";s:5:"title";s:6:"Module";s:5:"child";a:2:{s:20:"modulecreator/create";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:20:"modulecreator/create";s:5:"title";s:6:"Create";}s:15:"moduleinstaller";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:15:"moduleinstaller";s:5:"title";s:7:"Install";}}}s:13:"setting/cache";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:13:"setting/cache";s:5:"title";s:11:"Clear Cache";}s:15:"setting/sitemap";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:15:"setting/sitemap";s:5:"title";s:16:"Generate Sitemap";}s:4:"trim";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:4:"trim";s:5:"title";s:11:"Shorten URL";}}}', 'a:4:{i:0;s:13:"modulecreator";i:1;s:13:"setting/cache";i:2;s:15:"setting/sitemap";i:3;s:4:"trim";}', 1),
-(10, 'top', 1, 44, 'setting', 'Settings', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:7:"setting";s:5:"title";s:8:"Settings";s:5:"child";a:3:{s:12:"setting/site";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:12:"setting/site";s:5:"title";s:8:"Defaults";}s:16:"setting/websites";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:16:"setting/websites";s:5:"title";s:8:"Websites";}s:12:"setting/keys";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:12:"setting/keys";s:5:"title";s:4:"Keys";}}}', 'a:3:{i:0;s:12:"setting/site";i:1;s:16:"setting/websites";i:2;s:12:"setting/keys";}', 1),
-(11, 'cp', 1, 2, 'cp/cp', 'Home', 0, '', '', 1),
-(12, 'cp', 1, 3, 'cp/update', 'Codefight Updates', 0, '', '', 1),
-(13, 'menu', 1, 5, 'menu/page', 'Page Links', 0, '', '', 1),
-(14, 'menu', 1, 6, 'menu/blog', 'Blog Categories', 0, '', '', 1),
-(15, 'menu', 1, 7, 'menu/blog-roll', 'Blog Roll', 0, '', '', 1),
-(16, 'menu', 1, 8, 'menu/classifieds', 'Classified Categories', 0, '', '', 1),
-(17, 'menu', 1, 9, 'menu/favourite-links', 'Favourite Links', 0, '', '', 1),
-(18, 'menu', 1, 10, 'menu/sponsored-links', 'Sponsored Links', 0, '', '', 1),
-(19, 'user', 1, 12, 'user/user', 'Users', 0, '', '', 1),
-(20, 'user', 1, 13, 'group', 'Groups', 0, '', '', 1),
-(21, 'user', 1, 14, 'group/permissions', 'Group Permissions', 0, '', '', 1),
-(22, 'form', 1, 16, 'form/item', 'Items', 0, '', '', 1),
-(23, 'form', 1, 17, 'form/group', 'Group', 0, '', '', 1),
-(24, 'form', 1, 18, 'menu/submitted', 'Submitted', 0, '', '', 1),
-(25, 'page', 1, 20, 'page/page', 'Static Page', 0, '', '', 1),
-(26, 'page', 1, 21, 'page/blog', 'Blog Article', 0, '', '', 1),
-(27, 'page', 1, 22, 'page/block', 'Static Blocks', 1, '', '', 0),
-(28, 'comment', 1, 24, 'comment/pending-comment', 'Pending Comments', 0, '', '', 1),
-(29, 'comment', 1, 25, 'comment/approved-comment', 'Approved Comments', 0, '', '', 1),
-(30, 'media', 1, 27, 'file', 'File Manager', 1, '', 'a:2:{i:0;s:16:"file/manage-file";i:1;s:16:"file/upload-file";}', 1),
-(31, 'file', 1, 28, 'file/manage-file', 'Manage Files', 0, '', '', 1),
-(32, 'file', 1, 29, 'file/upload-file', 'Upload File', 0, '', '', 1),
-(33, 'media', 1, 30, 'folder', 'Folder Manager', 1, '', 'a:2:{i:0;s:20:"folder/manage-folder";i:1;s:20:"folder/create-folder";}', 1),
-(34, 'folder', 1, 31, 'folder/manage-folder', 'Manage Folders', 0, '', '', 1),
-(35, 'folder', 1, 32, 'folder/create-folder', 'Create Folder', 0, '', '', 1),
-(36, 'tools', 1, 38, 'modulecreator', 'Module', 1, '', 'a:2:{i:0;s:20:"modulecreator/create";i:1;s:15:"moduleinstaller";}', 1),
-(37, 'modulecreator', 1, 39, 'modulecreator/create', 'Create', 0, '', '', 1),
-(38, 'modulecreator', 1, 40, 'moduleinstaller', 'Install', 0, '', '', 1),
-(39, 'tools', 1, 41, 'setting/cache', 'Clear Cache', 0, '', '', 1),
-(40, 'tools', 1, 42, 'setting/sitemap', 'Generate Sitemap', 0, '', '', 1),
-(41, 'tools', 1, 43, 'trim', 'Shorten URL', 0, '', '', 1),
-(42, 'setting', 1, 45, 'setting/site', 'Defaults', 0, '', '', 1),
-(43, 'setting', 1, 46, 'setting/websites', 'Websites', 0, '', '', 1),
-(44, 'setting', 1, 47, 'setting/keys', 'Keys', 0, '', '', 1),
-(45, 'user', 1, 12, 'user/index', 'Users', 0, '', '', 1),
-(46, 'banner', 1, 34, 'banner/manage', 'Manage', 0, '', '', 1),
-(47, 'banner', 1, 35, 'banner/create', 'Create New Banner', 0, '', '', 1),
-(48, 'banner', 1, 36, 'banner/status', 'Change Banner Status', 0, '', '', 0);
+INSERT INTO `cf_module` (`module_id`, `parent`, `status`, `sort`, `url`, `title`, `void`, `menu`, `child`) VALUES
+(1, 'top', 1, 1, 'cp', 'Admin', 1, 'a:4:{s:4:"void";i:1;s:3:"url";s:2:"cp";s:5:"title";s:5:"Admin";s:5:"child";a:2:{s:5:"cp/cp";a:3:{s:4:"void";i:0;s:3:"url";s:5:"cp/cp";s:5:"title";s:4:"Home";}s:9:"cp/update";a:3:{s:4:"void";i:0;s:3:"url";s:9:"cp/update";s:5:"title";s:17:"Codefight Updates";}}}', 'a:2:{i:0;s:5:"cp/cp";i:1;s:9:"cp/update";}'),
+(2, 'top', 1, 4, 'menu', 'Menu', 1, 'a:4:{s:4:"void";i:1;s:3:"url";s:4:"menu";s:5:"title";s:4:"Menu";s:5:"child";a:6:{s:9:"menu/page";a:3:{s:4:"void";i:0;s:3:"url";s:9:"menu/page";s:5:"title";s:10:"Page Links";}s:9:"menu/blog";a:3:{s:4:"void";i:0;s:3:"url";s:9:"menu/blog";s:5:"title";s:15:"Blog Categories";}s:14:"menu/blog-roll";a:3:{s:4:"void";i:0;s:3:"url";s:14:"menu/blog-roll";s:5:"title";s:9:"Blog Roll";}s:16:"menu/classifieds";a:3:{s:4:"void";i:0;s:3:"url";s:16:"menu/classifieds";s:5:"title";s:21:"Classified Categories";}s:20:"menu/favourite-links";a:3:{s:4:"void";i:0;s:3:"url";s:20:"menu/favourite-links";s:5:"title";s:15:"Favourite Links";}s:20:"menu/sponsored-links";a:3:{s:4:"void";i:0;s:3:"url";s:20:"menu/sponsored-links";s:5:"title";s:15:"Sponsored Links";}}}', 'a:6:{i:0;s:9:"menu/page";i:1;s:9:"menu/blog";i:2;s:14:"menu/blog-roll";i:3;s:16:"menu/classifieds";i:4;s:20:"menu/favourite-links";i:5;s:20:"menu/sponsored-links";}'),
+(3, 'top', 1, 11, 'user', 'User', 1, 'a:4:{s:4:"void";i:1;s:3:"url";s:4:"user";s:5:"title";s:4:"User";s:5:"child";a:3:{s:10:"user/index";a:3:{s:4:"void";i:0;s:3:"url";s:10:"user/index";s:5:"title";s:5:"Users";}s:5:"group";a:3:{s:4:"void";i:0;s:3:"url";s:5:"group";s:5:"title";s:6:"Groups";}s:17:"group/permissions";a:3:{s:4:"void";i:0;s:3:"url";s:17:"group/permissions";s:5:"title";s:17:"Group Permissions";}}}', 'a:3:{i:0;s:10:"user/index";i:1;s:5:"group";i:2;s:17:"group/permissions";}'),
+(4, 'top', 1, 15, 'form', 'Form', 0, 'a:4:{s:4:"void";i:0;s:3:"url";s:4:"form";s:5:"title";s:4:"Form";s:5:"child";a:3:{s:9:"form/item";a:3:{s:4:"void";i:0;s:3:"url";s:9:"form/item";s:5:"title";s:5:"Items";}s:10:"form/group";a:3:{s:4:"void";i:0;s:3:"url";s:10:"form/group";s:5:"title";s:5:"Group";}s:14:"menu/submitted";a:3:{s:4:"void";i:0;s:3:"url";s:14:"menu/submitted";s:5:"title";s:9:"Submitted";}}}', 'a:3:{i:0;s:9:"form/item";i:1;s:10:"form/group";i:2;s:14:"menu/submitted";}'),
+(5, 'top', 1, 19, 'page', 'CMS', 1, 'a:4:{s:4:"void";i:1;s:3:"url";s:4:"page";s:5:"title";s:3:"CMS";s:5:"child";a:3:{s:9:"page/page";a:3:{s:4:"void";i:0;s:3:"url";s:9:"page/page";s:5:"title";s:11:"Static Page";}s:9:"page/blog";a:3:{s:4:"void";i:0;s:3:"url";s:9:"page/blog";s:5:"title";s:12:"Blog Article";}s:10:"page/block";a:3:{s:4:"void";i:1;s:3:"url";s:10:"page/block";s:5:"title";s:13:"Static Blocks";}}}', 'a:3:{i:0;s:9:"page/page";i:1;s:9:"page/blog";i:2;s:10:"page/block";}'),
+(6, 'top', 1, 23, 'comment', 'Comments', 0, 'a:4:{s:4:"void";i:0;s:3:"url";s:7:"comment";s:5:"title";s:8:"Comments";s:5:"child";a:2:{s:23:"comment/pending-comment";a:3:{s:4:"void";i:0;s:3:"url";s:23:"comment/pending-comment";s:5:"title";s:16:"Pending Comments";}s:24:"comment/approved-comment";a:3:{s:4:"void";i:0;s:3:"url";s:24:"comment/approved-comment";s:5:"title";s:17:"Approved Comments";}}}', 'a:2:{i:0;s:23:"comment/pending-comment";i:1;s:24:"comment/approved-comment";}'),
+(7, 'top', 1, 26, 'media', 'Media', 1, 'a:4:{s:4:"void";i:1;s:3:"url";s:5:"media";s:5:"title";s:5:"Media";s:5:"child";a:2:{s:4:"file";a:4:{s:4:"void";i:1;s:3:"url";s:4:"file";s:5:"title";s:12:"File Manager";s:5:"child";a:2:{s:16:"file/manage-file";a:3:{s:4:"void";i:0;s:3:"url";s:16:"file/manage-file";s:5:"title";s:12:"Manage Files";}s:16:"file/upload-file";a:3:{s:4:"void";i:0;s:3:"url";s:16:"file/upload-file";s:5:"title";s:11:"Upload File";}}}s:6:"folder";a:4:{s:4:"void";i:1;s:3:"url";s:6:"folder";s:5:"title";s:14:"Folder Manager";s:5:"child";a:2:{s:20:"folder/manage-folder";a:3:{s:4:"void";i:0;s:3:"url";s:20:"folder/manage-folder";s:5:"title";s:14:"Manage Folders";}s:20:"folder/create-folder";a:3:{s:4:"void";i:0;s:3:"url";s:20:"folder/create-folder";s:5:"title";s:13:"Create Folder";}}}}}', 'a:2:{i:0;s:4:"file";i:1;s:6:"folder";}'),
+(8, 'top', 1, 33, 'banner', 'Banner', 0, 'a:4:{s:4:"void";i:0;s:3:"url";s:6:"banner";s:5:"title";s:6:"Banner";s:5:"child";a:0:{}}', ''),
+(9, 'top', 1, 34, 'tools', 'Tools', 1, 'a:4:{s:4:"void";i:1;s:3:"url";s:5:"tools";s:5:"title";s:5:"Tools";s:5:"child";a:4:{s:13:"modulecreator";a:4:{s:4:"void";i:1;s:3:"url";s:13:"modulecreator";s:5:"title";s:6:"Module";s:5:"child";a:2:{s:20:"modulecreator/create";a:3:{s:4:"void";i:0;s:3:"url";s:20:"modulecreator/create";s:5:"title";s:6:"Create";}s:15:"moduleinstaller";a:3:{s:4:"void";i:0;s:3:"url";s:15:"moduleinstaller";s:5:"title";s:7:"Install";}}}s:13:"setting/cache";a:3:{s:4:"void";i:0;s:3:"url";s:13:"setting/cache";s:5:"title";s:11:"Clear Cache";}s:15:"setting/sitemap";a:3:{s:4:"void";i:0;s:3:"url";s:15:"setting/sitemap";s:5:"title";s:16:"Generate Sitemap";}s:4:"trim";a:3:{s:4:"void";i:0;s:3:"url";s:4:"trim";s:5:"title";s:11:"Shorten URL";}}}', 'a:4:{i:0;s:13:"modulecreator";i:1;s:13:"setting/cache";i:2;s:15:"setting/sitemap";i:3;s:4:"trim";}'),
+(10, 'top', 1, 41, 'setting', 'Settings', 1, 'a:4:{s:4:"void";i:1;s:3:"url";s:7:"setting";s:5:"title";s:8:"Settings";s:5:"child";a:3:{s:12:"setting/site";a:3:{s:4:"void";i:0;s:3:"url";s:12:"setting/site";s:5:"title";s:8:"Defaults";}s:16:"setting/websites";a:3:{s:4:"void";i:0;s:3:"url";s:16:"setting/websites";s:5:"title";s:8:"Websites";}s:12:"setting/keys";a:3:{s:4:"void";i:0;s:3:"url";s:12:"setting/keys";s:5:"title";s:4:"Keys";}}}', 'a:3:{i:0;s:12:"setting/site";i:1;s:16:"setting/websites";i:2;s:12:"setting/keys";}'),
+(11, 'cp', 1, 2, 'cp/cp', 'Home', 0, '', ''),
+(12, 'cp', 1, 3, 'cp/update', 'Codefight Updates', 0, '', ''),
+(13, 'menu', 1, 5, 'menu/page', 'Page Links', 0, '', ''),
+(14, 'menu', 1, 6, 'menu/blog', 'Blog Categories', 0, '', ''),
+(15, 'menu', 1, 7, 'menu/blog-roll', 'Blog Roll', 0, '', ''),
+(16, 'menu', 1, 8, 'menu/classifieds', 'Classified Categories', 0, '', ''),
+(17, 'menu', 1, 9, 'menu/favourite-links', 'Favourite Links', 0, '', ''),
+(18, 'menu', 1, 10, 'menu/sponsored-links', 'Sponsored Links', 0, '', ''),
+(19, 'user', 1, 12, 'user/user', 'Users', 0, '', ''),
+(20, 'user', 1, 13, 'group', 'Groups', 0, '', ''),
+(21, 'user', 1, 14, 'group/permissions', 'Group Permissions', 0, '', ''),
+(22, 'form', 1, 16, 'form/item', 'Items', 0, '', ''),
+(23, 'form', 1, 17, 'form/group', 'Group', 0, '', ''),
+(24, 'form', 1, 18, 'menu/submitted', 'Submitted', 0, '', ''),
+(25, 'page', 1, 20, 'page/page', 'Static Page', 0, '', ''),
+(26, 'page', 1, 21, 'page/blog', 'Blog Article', 0, '', ''),
+(27, 'page', 1, 22, 'page/block', 'Static Blocks', 1, '', ''),
+(28, 'comment', 1, 24, 'comment/pending-comment', 'Pending Comments', 0, '', ''),
+(29, 'comment', 1, 25, 'comment/approved-comment', 'Approved Comments', 0, '', ''),
+(30, 'media', 1, 27, 'file', 'File Manager', 1, '', 'a:2:{i:0;s:16:"file/manage-file";i:1;s:16:"file/upload-file";}'),
+(31, 'file', 1, 28, 'file/manage-file', 'Manage Files', 0, '', ''),
+(32, 'file', 1, 29, 'file/upload-file', 'Upload File', 0, '', ''),
+(33, 'media', 1, 30, 'folder', 'Folder Manager', 1, '', 'a:2:{i:0;s:20:"folder/manage-folder";i:1;s:20:"folder/create-folder";}'),
+(34, 'folder', 1, 31, 'folder/manage-folder', 'Manage Folders', 0, '', ''),
+(35, 'folder', 1, 32, 'folder/create-folder', 'Create Folder', 0, '', ''),
+(36, 'tools', 1, 35, 'modulecreator', 'Module', 1, '', 'a:2:{i:0;s:20:"modulecreator/create";i:1;s:15:"moduleinstaller";}'),
+(37, 'modulecreator', 1, 36, 'modulecreator/create', 'Create', 0, '', ''),
+(38, 'modulecreator', 1, 37, 'moduleinstaller', 'Install', 0, '', ''),
+(39, 'tools', 1, 38, 'setting/cache', 'Clear Cache', 0, '', ''),
+(40, 'tools', 1, 39, 'setting/sitemap', 'Generate Sitemap', 0, '', ''),
+(41, 'tools', 1, 40, 'trim', 'Shorten URL', 0, '', ''),
+(42, 'setting', 1, 42, 'setting/site', 'Defaults', 0, '', ''),
+(43, 'setting', 1, 43, 'setting/websites', 'Websites', 0, '', ''),
+(44, 'setting', 1, 44, 'setting/keys', 'Keys', 0, '', ''),
+(45, 'user', 1, 12, 'user/index', 'Users', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -540,6 +577,7 @@ INSERT INTO `cf_module` (`module_id`, `parent`, `status`, `sort`, `url`, `title`
 -- Table structure for table `cf_page`
 --
 
+DROP TABLE IF EXISTS `cf_page`;
 CREATE TABLE IF NOT EXISTS `cf_page` (
   `page_id` int(11) NOT NULL AUTO_INCREMENT,
   `page_active` int(1) NOT NULL DEFAULT '0',
@@ -575,20 +613,20 @@ CREATE TABLE IF NOT EXISTS `cf_page` (
 --
 
 INSERT INTO `cf_page` (`page_id`, `page_active`, `page_code`, `page_title`, `page_blurb`, `page_blurb_length`, `page_body`, `menu_id`, `websites_id`, `page_author`, `user_id`, `show_author`, `page_date`, `page_date_modified`, `show_date`, `page_tag`, `allow_comment`, `page_type`, `page_view`, `page_meta_title`, `page_meta_keywords`, `page_meta_description`, `page_sort`) VALUES
-(19, 1, NULL, 'How much it costs to call directly to heaven from Nepal?', '<p>An American   decided to write a book about famous churches around the World. So he bought   a plane ticket and took a trip to China   . On his first day he was inside a church taking photographs when   he Noticed a golden telephone mounted on the wall with a sign that   read "$10,000 per call". The American, being intrigued, asked a priest who   was strolling by what?The telephone was used for. The priest replied   that it was a direct line to heaven and that for $10,000 you could talk to   God.</p>\r\n<p>The American thanked the priest and went along his way.?</p>\r\n<p>Next   stop was in Japan .   There, at a very large cathedral, he saw the Same golden telephone with the same   sign under it.</p>\r\n<p>', 0, '<p>An American   decided to write a book about famous churches around the World. So he bought   a plane ticket and took a trip to China   . On his first day he was inside a church taking photographs when   he Noticed a golden telephone mounted on the wall with a sign that   read "$10,000 per call". The American, being intrigued, asked a priest who   was strolling by what?The telephone was used for. The priest replied   that it was a direct line to heaven and that for $10,000 you could talk to   God.</p>\r\n<p>The American thanked the priest and went along his way.?</p>\r\n<p>Next   stop was in Japan .   There, at a very large cathedral, he saw the Same golden telephone with the same   sign under it.</p>\r\n<p><!-- pagebreak --></p>\r\n<p>He wondered if this was the same kind of telephone he saw   in China   and He asked a nearby nun what its purpose was.</p>\r\n<p>She told him that it was   a direct line to heaven and that for $10,000 He Could talk to   God.?</p>\r\n<p>"O.K., thank you," said the American.?He then traveled to   Pakistan ,   Srilanka ,   Russia ,   Germany   and France.</p>\r\n<p>In every church he saw the same golden telephone with the same   "$10,000 Per call" sign under it.?The American, upon leaving   Vermont   decided to travel to up to?Nepal   to See if?Nepalese had the same phone.</p>\r\n<p>He?arrived in?Nepal ,   and again, in the first church he entered, there Was the same golden   telephone, but this s time the sign under it read "One Rupee per   call."</p>\r\n<p>The American was surprised so he asked the priest about the   sign. "Father, I''ve traveled all over World and I''ve seen this same   golden Telephone in many churches. I''m told that it is a direct line   to?Heaven, But in rest of the world price was $10,000 per call.</p>\r\n<p>Why   is it so cheap here?"</p>\r\n<p>Readers, it is your turn........ Think ....before   you scroll down...</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>The priest smiled and answered, "You''re   in?Nepal   now, Son -?it''s a Local Call?". This is the only heaven on the   Earth.?</p>\r\n<p>KEEP SMILING</p>\r\n<p>If you are proud to be ?Nepalese, pass this   on!!!</p>', ',93,94,', ',1,2,4,', 'Got this in email as forward from Aneeta Gurung', 11, 1, '2009-04-12 09:16:58', NULL, 1, 'Nepal,Nepali,Proud to be nepalese,email forward', 1, 'blog', 926, 'How much it costs to call directly to heaven from Nepal?', 'Nepal,Nepali,Proud to be nepalese,email forward', '', 0),
-(37, 1, NULL, 'Kushal''s First Youtube Video', '<p>{{banner 2}}</p>\r\n<p>Hey! Its me Kushal Bashyal. I am 5months and 3weeks old today. I am very happy today and trying to jump. Wanna watch me jump. So, what you think? My grand mom is trying to hold me but she is very tired but i am enjoying a lot and jumping and jumping and making everyone happy. Hope you like it. Hi nanu sis, saru &amp; yeshu aunt this is for you to see me. And, everyone else as well :)</p>\r\n<p>{{banner 2}}</p>\r\n<div style="margin: 0pt auto; width: 480px; height: 385px; display: block;">\r\n<object width="480" height="385" data="http://www.youtube.com/v/eJA-LeXnqgc&amp;hl=en_US&amp;fs=1&amp;rel=0&amp;color1=0x234900&amp;color2=0x4e9e00" type="application/x-shockwave-flash">\r\n<param name="allowFullScreen" value="true" />\r\n<param name="allowscriptaccess" value="always" />\r\n<param name="src" value="http://www.youtube.com/v/eJA-LeXnqgc&amp;hl=en_US&amp;fs=1&amp;rel=0&amp;color1=0x234900&amp;color2=0x4e9e00" />\r\n<param name="allowfullscreen" value="true" />\r\n</object>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>{{banner 2}}</p>', 0, '<p>{{banner 2}}</p>\r\n<p>Hey! Its me Kushal Bashyal. I am 5months and 3weeks old today. I am very happy today and trying to jump. Wanna watch me jump. So, what you think? My grand mom is trying to hold me but she is very tired but i am enjoying a lot and jumping and jumping and making everyone happy. Hope you like it. Hi nanu sis, saru &amp; yeshu aunt this is for you to see me. And, everyone else as well :)</p>\r\n<p>{{banner 2}}</p>\r\n<div style="margin: 0pt auto; width: 480px; height: 385px; display: block;">\r\n<object width="480" height="385" data="http://www.youtube.com/v/eJA-LeXnqgc&amp;hl=en_US&amp;fs=1&amp;rel=0&amp;color1=0x234900&amp;color2=0x4e9e00" type="application/x-shockwave-flash">\r\n<param name="allowFullScreen" value="true" />\r\n<param name="allowscriptaccess" value="always" />\r\n<param name="src" value="http://www.youtube.com/v/eJA-LeXnqgc&amp;hl=en_US&amp;fs=1&amp;rel=0&amp;color1=0x234900&amp;color2=0x4e9e00" />\r\n<param name="allowfullscreen" value="true" />\r\n</object>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>{{banner 2}}</p>', ',93,', ',1,2,4,', 'Damodar Bashyal', 11, 1, '2009-06-05 19:45:32', NULL, 1, 'Kushal Bashyal, Baby, Baby Jumping,Happy Baby', 1, 'blog', 973, 'Cute Little Happy Baby Jumping - codefight.org', 'Kushal Bashyal, Baby, Baby Jumping,Happy Baby', 'This is kushal 5months, happy and jumping with the help of grandmom', 0),
-(54, 1, NULL, 'Canonical Page For All Pages That Have No Content', '<p>Blank.</p>\n<p>This is parked page for seo stuff. Inplace of meta nofollow probably i''ll use this page as canonical page.</p>', 0, '<p>Blank.</p>\n<p>This is parked page for seo stuff. Inplace of meta nofollow probably i''ll use this page as canonical page.</p>', ',0,', ',0,', 'Damodar Bashyal', 0, 1, '2010-04-16 12:32:00', NULL, 1, '', 1, 'page', 2684, 'Replacement page for meta noindex, nofollow | codefight .org', 'meta,noindex,nofollow,search,engine,page,rank', 'Remove your less value pages from search index to give more priority to main pages.', 0),
-(67, 1, NULL, 'Contact Us', '<p>Please fill the form below to contact us.</p>\n<p>{{form contact_us}}</p>', 0, '<p>Please fill the form below to contact us.</p>\n<p>{{form contact_us}}</p>', ',83,', ',1,2,3,', '', 0, 0, '2010-10-31 13:00:00', NULL, 0, '', 0, 'page', 4, 'Contact Us', 'contact us,codefight cms,text link ads review,zoosper', 'Contact us for any enquiry regarding our websites.', 0),
-(68, 1, NULL, 'Privacy Policy', '<p>We don''t sell your details. We don''t use your data to spam or for any other reason.</p>', 0, '<p>We don''t sell your details. We don''t use your data to spam or for any other reason.</p>', ',71,', ',2,3,', '', 0, 0, '2010-01-19 13:00:00', NULL, 0, '', 0, 'page', 0, 'Privacy Policy - codefight.org', 'privacy, policy, codefight, cms, open, source, content, management, system', 'we don''t sell your details. Codefight is a free content management system.', 0),
-(69, 1, NULL, 'Google made it easy to search our sites.', '<p>Please enter the word you are looking for</p>\n<div class="google_custom_search_engine">\n<div id="cse" style="width: 100%;">Loading</div>\n<script src="http://www.google.com/jsapi" type="text/javascript"></script>\n<script type="text/javascript"><!--\n   google.load(''search'', ''1'');\n   google.setOnLoadCallback(function(){\n      new google.search.CustomSearchControl(''010442767483169701592:ibrawdecaa8'').draw(''cse'');\n   }, true);\n// --></script>\n</div>', 0, '<p>Please enter the word you are looking for</p>\n<div class="google_custom_search_engine">\n<div id="cse" style="width: 100%;">Loading</div>\n<script src="http://www.google.com/jsapi" type="text/javascript"></script>\n<script type="text/javascript"><!--\n   google.load(''search'', ''1'');\n   google.setOnLoadCallback(function(){\n      new google.search.CustomSearchControl(''010442767483169701592:ibrawdecaa8'').draw(''cse'');\n   }, true);\n// --></script>\n</div>', ',85,', ',1,2,3,', '', 0, 0, '2010-11-14 13:00:00', NULL, 0, '', 0, 'page', 9, 'Google made it easy to search our sites - codefight.org', 'google,search,made,easy,with,site search,codefight,tenthweb', 'Please enter the word you are looking for in our sites codefight and tenthweb.', 0),
-(70, 1, NULL, 'Codefight CMS', '<h1>Codefight CMS - A light weight Codeigniter php framework cms.</h1>\r\n<div style="display:block;float:right;margin:0 0 15px;"><a title="Codefight - simple php cms using codeigniter" rel="nofollow external" href="http://cmsigniter.com/download-codefight-cms" target="_blank"><img src="http://skin.zoosper.com/media/upload/Codefight-CMS-Sfotware-md.png" border="0" alt="Download Latest SEO Friendly Codefight BLOG CMS" /></a></div>\r\n<p>Codefight CMS is based on CodeIgniter - Open source PHP web application framework, which is very easy to learn.</p>\r\n<p>The latest version will have a multiple website manager. The new version is almost ready and is in staging for testing purpose before its official release.</p>\r\n<p>If you would like to get informed about the latest releases and news please do subscribe to our feed.</p>\r\n<p>Since Codefight CMS is available for use free of charge, I would appreciate and welcome any feedback, contributions to the code and help translating language files into your language.&nbsp;&nbsp;&nbsp;</p>\r\n<p>You can use this CMS in any way you want: You can modify it as you like and use commercially for free.</p>\r\n<p>&nbsp;</p>\r\n<p><a class="download-button" href="http://codefight.org/">Download</a></p>\r\n<p>&nbsp;</p>\r\n<p><a href="http://videos.tenthweb.com/index/watch/yt/KnVsHoA6YB4/?t=codefight+CMS+2.0+preview"><img title="codefight CMS preview video on youtube." src="http://skin.zoosper.com/media/codefight-cms-2-0-preview.png" alt="Codefight CMS 2.0 preview" /></a></p>\r\n<h6>Codefight CMS 2.0, a multiple website management software, based on codeigniter 2.0 php framework.<br /></h6>', 0, '<h1>Codefight CMS - A light weight Codeigniter php framework cms.</h1>\r\n<div style="display:block;float:right;margin:0 0 15px;"><a title="Codefight - simple php cms using codeigniter" rel="nofollow external" href="http://cmsigniter.com/download-codefight-cms" target="_blank"><img src="http://skin.zoosper.com/media/upload/Codefight-CMS-Sfotware-md.png" border="0" alt="Download Latest SEO Friendly Codefight BLOG CMS" /></a></div>\r\n<p>Codefight CMS is based on CodeIgniter - Open source PHP web application framework, which is very easy to learn.</p>\r\n<p>The latest version will have a multiple website manager. The new version is almost ready and is in staging for testing purpose before its official release.</p>\r\n<p>If you would like to get informed about the latest releases and news please do subscribe to our feed.</p>\r\n<p>Since Codefight CMS is available for use free of charge, I would appreciate and welcome any feedback, contributions to the code and help translating language files into your language.&nbsp;&nbsp;&nbsp;</p>\r\n<p>You can use this CMS in any way you want: You can modify it as you like and use commercially for free.</p>\r\n<p>&nbsp;</p>\r\n<p><a class="download-button" href="http://codefight.org/">Download</a></p>\r\n<p>&nbsp;</p>\r\n<p><a href="http://videos.tenthweb.com/index/watch/yt/KnVsHoA6YB4/?t=codefight+CMS+2.0+preview"><img title="codefight CMS preview video on youtube." src="http://skin.zoosper.com/media/codefight-cms-2-0-preview.png" alt="Codefight CMS 2.0 preview" /></a></p>\r\n<h6>Codefight CMS 2.0, a multiple website management software, based on codeigniter 2.0 php framework.<br /></h6>', ',75,', ',1,', '', 0, 0, '2010-12-19 13:00:00', NULL, 0, '', 0, 'page', 4, 'Codefight CMS - Codeigniter Multiple Website Manager', 'Codeigniter,cms,codefight,website,manager,php,multiple,website', 'Codefight CMS is based on CodeIgniter - Open source PHP web application framework, which is very easy to learn.', 0),
-(71, 1, NULL, 'Codefight PHP Content Management System (CMS)', '<p>\n<script src="/skin/frontend/default/js/prototype.js" type="text/javascript"></script>\n<script src="/skin/frontend/default/js/scriptaculous.js?load=effects,builder" type="text/javascript"></script>\n<script src="/skin/frontend/default/js/lightbox.js" type="text/javascript"></script>\n</p>\n<h1>Codefight PHP Content Management System (CMS)</h1>\n<div class="banner"><span class="download_link"><a href="http://code.google.com/p/cmsdamu/downloads/list">Download Pre-release Code</a>\n<script src="http://ohloh.net/p/318042/widgets/project_thin_badge.js" type="text/javascript"></script>\n</span><a title="Make money online from sponsored tweets. Its that easy to make money online working from home." href="http://bit.ly/3qzpDq" target="_blank">Today''s Preview Brought To You By Sponsored Tweets.</a></div>\n<p>This is only screenshot Preview of Codefight Content Management System (CMS) which is built with the help of <a title="CodeIgniter - Open source PHP web application framework" href="http://codeigniter.com">codeigniter</a> php framework</p>\n<p>This is still under development. So far the below items from screen shot are completed. If you want to give suggestions and feedbacks, you can do so at our forum <a title="Tenthweb is a place to express your opinions and ask questions on our very own forum." href="http://tenthweb.com/forums/viewforum.php?f=49">tenthweb.com</a></p>\n<p>For backend demo visit:<a title="content management system built with php framework codeigniter - demo (codefight)" href="http://codefight.org/demo/admin.html" target="_blank">http://codefight.org/demo/admin.html</a> <br /> For frontend demo visit: <a href="http://codefight.org/demo/home.html" target="_blank">http://codefight.org/demo/home.html</a> <br /> To download code visit: <a href="http://code.google.com/p/cmsdamu/downloads/list" target="_blank">http://code.google.com/p/cmsdamu/downloads/list</a> <br /> <br /> [please leave a comment in our forum.]</p>\n<p class="notice"><strong>Update: 13.03.2009</strong><br /> Codefight homepage is now powered by codefight cms</p>\n<p><em><strong>This screenshot is outdated. Demo is newer than screenshot. Download can be newer than demo.</strong></em></p>\n<table style="width: 780px;" border="0" cellspacing="10" cellpadding="4" align="center">\n<tbody>\n<tr>\n<td width="260" align="left" valign="top"><a title="Login Form" rel="lightbox[codefight]" href="/media/upload/screenshots/login.jpg"><img src="/media/upload/screenshots/login_thumb.jpg" alt="login thumb" width="250" height="108" /></a></td>\n<td width="260" align="left" valign="top"><a title="Welcome Page After Login" rel="lightbox[codefight]" href="/media/upload/screenshots/welcome.jpg"><img src="/media/upload/screenshots/welcome_thumb.jpg" alt="welcome thumb" width="250" height="88" /></a></td>\n</tr>\n<tr>\n<td width="260" align="left" valign="top"><a title="Groups View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/groups_view.jpg"><img src="/media/upload/screenshots/groups_view_thumb.jpg" alt="groups view thumb" width="250" height="155" /></a></td>\n<td align="left" valign="top"><a title="Groups Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/group_edit.jpg"><img src="/media/upload/screenshots/group_edit_thumb.jpg" alt="group edit thumb" width="250" height="175" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Groups Create" rel="lightbox[codefight]" href="/media/upload/screenshots/group_create.jpg"><img src="/media/upload/screenshots/group_create_thumb.jpg" alt="group create thumb" width="250" height="107" /></a></td>\n<td align="left" valign="top"><a title="Users View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/users.jpg"><img src="/media/upload/screenshots/users_thumb.jpg" alt="users thumb" width="250" height="74" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Users Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/users_edit.jpg"><img src="/media/upload/screenshots/users_edit_thumb.jpg" alt="users edit thumb" width="250" height="163" /></a></td>\n<td align="left" valign="top"><a title="Menu View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/menus.jpg"><img src="/media/upload/screenshots/menus_thumb.jpg" alt="menus thumb" width="250" height="191" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Menu Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/menus_edit.jpg"><img src="/media/upload/screenshots/menus_edit_thumb.jpg" alt="menus edit thumb" width="250" height="180" /></a></td>\n<td align="left" valign="top"><a title="Pages View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/pages.jpg"><img src="/media/upload/screenshots/pages_thumb.jpg" alt="pages thumb" width="250" height="158" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Pages Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/pages_edit.jpg"><img src="/media/upload/screenshots/pages_edit_thumb.jpg" alt="pages edit thumb" width="250" height="204" /></a></td>\n<td>&nbsp;</td>\n</tr>\n</tbody>\n</table>', 0, '<p>\n<script src="/skin/frontend/default/js/prototype.js" type="text/javascript"></script>\n<script src="/skin/frontend/default/js/scriptaculous.js?load=effects,builder" type="text/javascript"></script>\n<script src="/skin/frontend/default/js/lightbox.js" type="text/javascript"></script>\n</p>\n<h1>Codefight PHP Content Management System (CMS)</h1>\n<div class="banner"><span class="download_link"><a href="http://code.google.com/p/cmsdamu/downloads/list">Download Pre-release Code</a>\n<script src="http://ohloh.net/p/318042/widgets/project_thin_badge.js" type="text/javascript"></script>\n</span><a title="Make money online from sponsored tweets. Its that easy to make money online working from home." href="http://bit.ly/3qzpDq" target="_blank">Today''s Preview Brought To You By Sponsored Tweets.</a></div>\n<p>This is only screenshot Preview of Codefight Content Management System (CMS) which is built with the help of <a title="CodeIgniter - Open source PHP web application framework" href="http://codeigniter.com">codeigniter</a> php framework</p>\n<p>This is still under development. So far the below items from screen shot are completed. If you want to give suggestions and feedbacks, you can do so at our forum <a title="Tenthweb is a place to express your opinions and ask questions on our very own forum." href="http://tenthweb.com/forums/viewforum.php?f=49">tenthweb.com</a></p>\n<p>For backend demo visit:<a title="content management system built with php framework codeigniter - demo (codefight)" href="http://codefight.org/demo/admin.html" target="_blank">http://codefight.org/demo/admin.html</a> <br /> For frontend demo visit: <a href="http://codefight.org/demo/home.html" target="_blank">http://codefight.org/demo/home.html</a> <br /> To download code visit: <a href="http://code.google.com/p/cmsdamu/downloads/list" target="_blank">http://code.google.com/p/cmsdamu/downloads/list</a> <br /> <br /> [please leave a comment in our forum.]</p>\n<p class="notice"><strong>Update: 13.03.2009</strong><br /> Codefight homepage is now powered by codefight cms</p>\n<p><em><strong>This screenshot is outdated. Demo is newer than screenshot. Download can be newer than demo.</strong></em></p>\n<table style="width: 780px;" border="0" cellspacing="10" cellpadding="4" align="center">\n<tbody>\n<tr>\n<td width="260" align="left" valign="top"><a title="Login Form" rel="lightbox[codefight]" href="/media/upload/screenshots/login.jpg"><img src="/media/upload/screenshots/login_thumb.jpg" alt="login thumb" width="250" height="108" /></a></td>\n<td width="260" align="left" valign="top"><a title="Welcome Page After Login" rel="lightbox[codefight]" href="/media/upload/screenshots/welcome.jpg"><img src="/media/upload/screenshots/welcome_thumb.jpg" alt="welcome thumb" width="250" height="88" /></a></td>\n</tr>\n<tr>\n<td width="260" align="left" valign="top"><a title="Groups View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/groups_view.jpg"><img src="/media/upload/screenshots/groups_view_thumb.jpg" alt="groups view thumb" width="250" height="155" /></a></td>\n<td align="left" valign="top"><a title="Groups Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/group_edit.jpg"><img src="/media/upload/screenshots/group_edit_thumb.jpg" alt="group edit thumb" width="250" height="175" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Groups Create" rel="lightbox[codefight]" href="/media/upload/screenshots/group_create.jpg"><img src="/media/upload/screenshots/group_create_thumb.jpg" alt="group create thumb" width="250" height="107" /></a></td>\n<td align="left" valign="top"><a title="Users View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/users.jpg"><img src="/media/upload/screenshots/users_thumb.jpg" alt="users thumb" width="250" height="74" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Users Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/users_edit.jpg"><img src="/media/upload/screenshots/users_edit_thumb.jpg" alt="users edit thumb" width="250" height="163" /></a></td>\n<td align="left" valign="top"><a title="Menu View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/menus.jpg"><img src="/media/upload/screenshots/menus_thumb.jpg" alt="menus thumb" width="250" height="191" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Menu Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/menus_edit.jpg"><img src="/media/upload/screenshots/menus_edit_thumb.jpg" alt="menus edit thumb" width="250" height="180" /></a></td>\n<td align="left" valign="top"><a title="Pages View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/pages.jpg"><img src="/media/upload/screenshots/pages_thumb.jpg" alt="pages thumb" width="250" height="158" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Pages Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/pages_edit.jpg"><img src="/media/upload/screenshots/pages_edit_thumb.jpg" alt="pages edit thumb" width="250" height="204" /></a></td>\n<td>&nbsp;</td>\n</tr>\n</tbody>\n</table>', ',72,', ',1,', '', 0, 0, '2010-12-31 13:00:00', NULL, 0, '', 0, 'page', 104, 'Codefight PHP Content Management System &#40;CMS&#41; Preview', 'codefight,cms,demo,preview,codeigniter,2.0,multiple,website,manager', 'This is only screenshot Preview of Codefight Content Management System &#40;CMS&#41; which is built with the help of codeigniter php framework', 0),
-(72, 1, NULL, 'About Us', '<p>We are a collection of professionals focused on the benefits of text link ads.&nbsp;    Our goal is to build a long-standing, comprehensive review website of internet    marketers and affiliate marketers. Differing from most websites, we aim to develop    relationships, observe the internet atmosphere, and report our observations    and experiences to you, the consumer.&nbsp; We want you to benefit from our    observations, reports, and informational blogs for years to come, so we will    work hard to cement our professional review site in the industry.</p>\r\n<p>Yes, we love to hear constructive feedbacks from our visitors, guests and members.</p>\r\n<p>Yes, we read every comment.&nbsp; We enjoy reading and manually approving each    comment -- you are heard and don''t go unnoticed.</p>\r\n<p>We will try to scrub all the details before publishing, and we would love to    hear if we miss any spots.</p>\r\n<p>Thank you for your assistance and continued membership.</p>\r\n<p>Kind regards,</p>\r\n<p>TextLinkAdsReview.com</p>', 0, '<p>We are a collection of professionals focused on the benefits of text link ads.&nbsp;    Our goal is to build a long-standing, comprehensive review website of internet    marketers and affiliate marketers. Differing from most websites, we aim to develop    relationships, observe the internet atmosphere, and report our observations    and experiences to you, the consumer.&nbsp; We want you to benefit from our    observations, reports, and informational blogs for years to come, so we will    work hard to cement our professional review site in the industry.</p>\r\n<p>Yes, we love to hear constructive feedbacks from our visitors, guests and members.</p>\r\n<p>Yes, we read every comment.&nbsp; We enjoy reading and manually approving each    comment -- you are heard and don''t go unnoticed.</p>\r\n<p>We will try to scrub all the details before publishing, and we would love to    hear if we miss any spots.</p>\r\n<p>Thank you for your assistance and continued membership.</p>\r\n<p>Kind regards,</p>\r\n<p>TextLinkAdsReview.com</p>', ',82,', ',1,2,', '', 0, 0, '2010-01-19 13:00:00', NULL, 0, '', 0, 'page', 1, 'About Us - Text Link Ads Review', 'about us, text link ads review,about text link ads review, about TLAr', 'Our goal is to build a long-standing, comprehensive review website of internet marketers and affiliate marketers.', 0),
-(73, 1, NULL, 'Search Text Link Ads Review', '<form action="http://textlinkadsreview.com/search/">\r\n<div><input name="cx" type="hidden" value="partner-pub-9567128729272204:5rf39g-1qd8" /> <input name="cof" type="hidden" value="FORID:11" /> <input name="ie" type="hidden" value="ISO-8859-1" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" /></div>\r\n</form>\r\n<p>\r\n<script src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en" type="text/javascript"></script>\r\n</p>\r\n<p>&nbsp;</p>\r\n<p>\r\n<script type="text/javascript"><!--\r\n  var googleSearchIframeName = "cse-search-results";\r\n  var googleSearchFormName = "cse-search-box";\r\n  var googleSearchFrameWidth = 795;\r\n  var googleSearchDomain = "www.google.com";\r\n  var googleSearchPath = "/cse";\r\n// --></script>\r\n<script src="http://www.google.com/afsonline/show_afs_search.js" type="text/javascript"></script>\r\n</p>', 0, '<form action="http://textlinkadsreview.com/search/">\r\n<div><input name="cx" type="hidden" value="partner-pub-9567128729272204:5rf39g-1qd8" /> <input name="cof" type="hidden" value="FORID:11" /> <input name="ie" type="hidden" value="ISO-8859-1" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" /></div>\r\n</form>\r\n<p>\r\n<script src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en" type="text/javascript"></script>\r\n</p>\r\n<p>&nbsp;</p>\r\n<p>\r\n<script type="text/javascript"><!--\r\n  var googleSearchIframeName = "cse-search-results";\r\n  var googleSearchFormName = "cse-search-box";\r\n  var googleSearchFrameWidth = 795;\r\n  var googleSearchDomain = "www.google.com";\r\n  var googleSearchPath = "/cse";\r\n// --></script>\r\n<script src="http://www.google.com/afsonline/show_afs_search.js" type="text/javascript"></script>\r\n</p>', ',0,', ',0,', '', 0, 0, '2010-01-20 13:00:00', NULL, 0, '', 0, 'page', 0, 'Search Text Link Ads Review - TextLinkAdsReview.com', 'Google,Search, text link ads review,search text link ads review, search TLAr', 'Google Search for Text Link Ads Review.', 0),
-(74, 1, NULL, 'Online Advertising | Text Link Ads | Banner Ads', '<p>Text link advertising is currently one of the most popular methods of internet    marketing. Here at TextLinkAdsReview.com, we realize the importance of text    link advertising in our modern marketing world, so we will write reviews on    different text link advertisement options. Whether you want to sell text link    ads or you want to buy text link ads, we have listed and reviewed many different    text link agencies on our website, and we are continuously working to review    more advertising options for your business.</p>\n<p>We realize there are many advertising companies and text link brokers available    to you, and only TextLinkAdsReview.com will review these many companies and    offer information to help you find the best marketing agency for your business.    These agencies charge a miniscule commission to find your ideal advertising    fit, but the advertising will help you increase your Google page rank slowly    by time.</p>\n<p>Text link ads are very positive for your business.&nbsp; They boost your SEO    (Search Engine Optimization) rating, and they are often better than pay-per-click    (PPC) advertising. PPC advertising can often lead to revenue-sharing clicking    - when a website that shares revenues with yours influences friends or family    to click your banner to decrease your revenue (and increase their own).&nbsp;    Also, because visitors trust text link ads more than flashy banners, visitors    are more apt to click text link ads.&nbsp; Viewed as a recommendation from the    site owner, a text link ad draws more traffic to your site.&nbsp; As for those    who own well-established, high-traffic sites, you can sell space on your site    to text link advertisers. Whether you would like to purchase text link space    or you would like to rent space on your site, the text link advertising business    is a win-win:&nbsp; You could either receive higher potential buyer traffic    for a flat fee, or you could receive residual income -- monthly rental income    that your don''t have to work for.</p>\n<p>There are numerous top advertising agencies who offer online and offline advertising    options, and our aim is to include most of them in our reviews. So keep in touch    with our blog posts and subscribe to our RSS.</p>\n<p>-TextLinkAdsReview.com</p>', 0, '<p>Text link advertising is currently one of the most popular methods of internet    marketing. Here at TextLinkAdsReview.com, we realize the importance of text    link advertising in our modern marketing world, so we will write reviews on    different text link advertisement options. Whether you want to sell text link    ads or you want to buy text link ads, we have listed and reviewed many different    text link agencies on our website, and we are continuously working to review    more advertising options for your business.</p>\n<p>We realize there are many advertising companies and text link brokers available    to you, and only TextLinkAdsReview.com will review these many companies and    offer information to help you find the best marketing agency for your business.    These agencies charge a miniscule commission to find your ideal advertising    fit, but the advertising will help you increase your Google page rank slowly    by time.</p>\n<p>Text link ads are very positive for your business.&nbsp; They boost your SEO    (Search Engine Optimization) rating, and they are often better than pay-per-click    (PPC) advertising. PPC advertising can often lead to revenue-sharing clicking    - when a website that shares revenues with yours influences friends or family    to click your banner to decrease your revenue (and increase their own).&nbsp;    Also, because visitors trust text link ads more than flashy banners, visitors    are more apt to click text link ads.&nbsp; Viewed as a recommendation from the    site owner, a text link ad draws more traffic to your site.&nbsp; As for those    who own well-established, high-traffic sites, you can sell space on your site    to text link advertisers. Whether you would like to purchase text link space    or you would like to rent space on your site, the text link advertising business    is a win-win:&nbsp; You could either receive higher potential buyer traffic    for a flat fee, or you could receive residual income -- monthly rental income    that your don''t have to work for.</p>\n<p>There are numerous top advertising agencies who offer online and offline advertising    options, and our aim is to include most of them in our reviews. So keep in touch    with our blog posts and subscribe to our RSS.</p>\n<p>-TextLinkAdsReview.com</p>', ',75,', ',2,', '', 0, 0, '2010-01-19 13:00:00', NULL, 0, '', 0, 'page', 0, 'Text Link Ads Review | Buy Text Link Ads | Sell Text Link Ads', 'buying,selling,monetizing,text,link,advertising,banner,ppc', 'We review different Advertising Platforms like Text Link Ads and many more.', 0),
-(100, 1, NULL, 'My Experience with CodeIgniter', '<p>CodeIgniter is not just a web development app, it is a powerful PHP-based framework designed for PHP coders seeking simple yet effective toolkit that can inspire them to develop full-featured web applications. Developers like me live in the real world. We need to deal with all of the hassles of shared <a href="http://www.webhostgear.com/" target="_blank"> hosting </a> accounts and clients with short deadlines. We don''t need to hassle around with inadequate and mediocre development tools hampered by poorly-designed user interfaces and thin documentation. CodeIgniter solves these problems so I can focus on other, more pressing issues.</p>\r\n<p>', 0, '<p>CodeIgniter is not just a web development app, it is a powerful PHP-based framework designed for PHP coders seeking simple yet effective toolkit that can inspire them to develop full-featured web applications. Developers like me live in the real world. We need to deal with all of the hassles of shared <a href="http://www.webhostgear.com/" target="_blank"> hosting </a> accounts and clients with short deadlines. We don''t need to hassle around with inadequate and mediocre development tools hampered by poorly-designed user interfaces and thin documentation. CodeIgniter solves these problems so I can focus on other, more pressing issues.</p>\r\n<p><!-- pagebreak --></p>\r\n<p>CodeIgniter allows me to save time and energy by providing tools and templates that give me a head start in the PHP game. Instead of writing PHP code by scratch, CodeIgniter writes all the basic "plumbing" for me so I can focus on the particulars of my project. I, for example, frequently take advantage of CodeIgniter''s built-in libraries instead of writing everything myself. With CodeIgniter, you can easily organize the different sections of the PHP application including configuration files, controllers, models, scripts and views. In the past I found many PHP development environments (IDEs) to be clunky, out-dated, and unmanageable. CodeIgniter is different. Its easy-to-use IDE gives you access to all of your files in a clear, organized fashion. It is simple and intuitive, allowing you to create great web pages with little prep-time.</p>\r\n<p>One thing that sets CodeIgniter apart from many other PHP web development applications is that it easily handles all PHP versions and configurations, an important feature for developers who work in diverse environments with many different clients, each having their own <a href="http://www.webhostgear.com/php-hosting.php/" target="_blank"> PHP web hosting </a> solution. If you are like me, you hardly spend all of your time in heterogeneous environments. That doesn''t matter with CodeIgniter. It will happily work with whatever version or versions you want!</p>\r\n<p>CodeIgniter does not require command lines, inflexible coding frameworks, or any templating languages (although it can work with templates if that is your cup of tea; it just doesn''t force you to do so). The documentation is clearly written so that even non-techies can grasp the system quickly and with minimal effort. It even comes stock with a number of useful features such as classes for file uploading, email, FTP and Zip compression. Another class I found handy was the validation class, which allows you to handle data validation with rules that are defined and assigned to specific objects. You can also use data validation to create automatic error messages when data does not pass muster.</p>\r\n<p>The auto-loading feature allows you to implement changes application wide by setting global models for libraries and plugins. Its included helpers cover CAPTCHA, cookie, directory, download, form, HTML, email, security and XML. If there is one thing CodeIgniter excels at, it''s saving you time. It should be pretty clear to you now that CodeIgniter it full of time-saving features helping you to focus less on mundane details and more on your job''s specifics.</p>\r\n<p>CodeIgniter even lets you create your own libraries -- or more precisely folders of classes in your libraries directory. You can create completely new libraries, or you can extend or replace native libraries. All classes can be extended or replaced except for the database classes. If you''re familiar with object-oriented programming, this feature will be a godsend for you.</p>\r\n<p>You can also create your own core system classes with this application. The core system classes are run automatically every time you start the program. CodeIgniter allows you to extend, edit or completely replace the native core system classes with your own alternatives although this is only recommended for experienced coders.</p>\r\n<p>CodeIgniter was a breeze for me to install. It requires PHP version 4.3.2 or newer and one of the following databases: MySQL, MySQLi, MS SQL, ODBC, Oracle, Postgre or SQLite. Most people (myself included) use MySQL, but it''s good to know it supports some of the other big names.</p>\r\n<p>Best of all, CodeIgniter is available as freeware so there is no charge for downloading and using this software! Even though EllisLab Network offers the CodeIgniter software free of charge, they still provide user forums, a wiki and a bug tracker to help support the application and its community of users.</p>\r\n<p>If you are looking for the best way to streamline your PHP web development process, then CodeIgniter may be just the application that you need - I know it was for me.</p>', ',96,', ',1,2,', 'Seth Bryant', 11, 1, '2011-04-14 15:41:40', NULL, 1, 'codeigniter', 1, 'blog', 757, 'My Experience with CodeIgniter', 'codeigniter,codefight', 'With CodeIgniter, you can easily organize the different sections of the PHP application including configuration files, controllers, models, scripts and views.', 0),
-(102, 1, NULL, 'Advertising in Applications', '<p>As iPads and other tablets become more popular, internet advertisers are attempting to tap into the new marketing potential. From magazines to game applications, many companies are finding innovative ways to capture the attention of tablet users. Let''s look at some ways companies are changing the face of advertising.</p>\r\n<h2>Traditional Advertising</h2>\r\n<p>Magazines with traditional advertising tactics of using edgy, attention-grabbing ads are still using similar ads in the new tablet issues. Initial research about magazine applications has found that readers expect to see advertisements in the tablet applications. In fact, many users look forward to perusing advertisements in print media and would be disappointed to find them missing in the magazines designed for tablets.</p>\r\n<p>', 0, '<p>As iPads and other tablets become more popular, internet advertisers are attempting to tap into the new marketing potential. From magazines to game applications, many companies are finding innovative ways to capture the attention of tablet users. Let''s look at some ways companies are changing the face of advertising.</p>\r\n<h2>Traditional Advertising</h2>\r\n<p>Magazines with traditional advertising tactics of using edgy, attention-grabbing ads are still using similar ads in the new tablet issues. Initial research about magazine applications has found that readers expect to see advertisements in the tablet applications. In fact, many users look forward to perusing advertisements in print media and would be disappointed to find them missing in the magazines designed for tablets.</p>\r\n<p><!-- pagebreak --></p>\r\n<h2>Advertising Within Applications</h2>\r\n<p>Moving forward, companies are also finding ways to sneak advertising into applications. Many free applications make money entirely off of the advertising potential. For example, a free game may use advertising revenue to make money, sneaking the advertisements into unobtrusive places.</p>\r\n<p>One example of this is in "Angry Birds." The application is available in both a free version and a purchased version. In the free version, "Angry Birds" players can try out the game for a few levels. Once the player reaches the end of the free version, s/he is given the option to purchase the full version. In a sense, "Angry Birds" advertises for itself.</p>\r\n<p>Other games, like solitaire, sell advertising to other companies. Once the free solitaire application is downloaded, users find that advertisements pop up in between each game. When you think about the low amount of time needed to play a game of solitaire, the advertising potential is pretty high and can be very effective.</p>\r\n<p>Other Advertising/Application Tips</p>\r\n<p>Of course, applications still need to be user-friendly and usable to make advertising effective. This means the application needs to have few or no bugs. If the application does not work properly, the user may forego the application -- and never see the advertising. Other additional tips include:</p>\r\n<ul>\r\n<li>\r\n<p>Make the application easy to use. This means that anywhere you question whether users need instructions, provide them. Also, using intuitive symbols and icons can help users better navigate your application.</p>\r\n</li>\r\n<li>\r\n<p>Make ads clear. If an advertisement does not clearly state its purpose and how to purchase the product, a customer will quickly skip it.</p>\r\n</li>\r\n<li>\r\n<p>Shake it up. With the tablet''s versatility, ads can use video and other forms of media to intrigue a customer. But in that same light, multiple advertisements in a single application benefit from using different advertisements throughout, so shake it up.</p>\r\n</li>\r\n<li>\r\n<p>Use how to videos. Short videos that provide the user with some information applicable to the advertisement will be more successful than simple advertisements.</p>\r\n</li>\r\n<li>\r\n<p>Feed them the product. The best way to ensure an interested party actually purchases the product is to link them directly with the sales page rather than the home page of the advertising company.</p>\r\n</li>\r\n<li>\r\n<p>Link it, link it, link it. With the tablets'' abilities to link customers directly to the desired product, magazines and applications are finding that linking directly from a magazine''s  or an application''s advertisement to the product will produce more buyers than indirect links -- or complete lack of links.</p>\r\n</li>\r\n</ul>\r\n<p>Applications and tablet magazines are becoming much more used in our ever-expanding tablet culture. As research is developed and users respond to the advertisements on applications, we find that interactive advertisements and direct links seem to be the most effective forms of tablet advertisements.</p>', ',109,', ',1,2,', '', 11, 1, '2011-04-30 09:52:22', NULL, 1, 'advertising', 1, 'blog', 264, 'Advertising in Applications - TLAr', 'advertising,angry birds,application,advertiser,advertise,traditional advertising', 'One example of this is in ', 0),
-(103, 1, NULL, 'Download Latest Codefight CMS', '<p><a title="Download Codefight CMS" href="http://codefight.org/" target="_blank"><img title="Codefight CMS" src="http://skin.zoosper.com//media/codefight-cms-2-0-preview.png" alt="Download Codefight CMS" width="500" height="296" /></a></p>', 0, '<p><a title="Download Codefight CMS" href="http://codefight.org/" target="_blank"><img title="Codefight CMS" src="http://skin.zoosper.com//media/codefight-cms-2-0-preview.png" alt="Download Codefight CMS" width="500" height="296" /></a></p>', ',81,', ',1,', '', 0, 0, '2011-12-27 12:10:28', NULL, 0, '', 0, 'page', 0, 'Download Latest Codeigniter cms - Codefight CMS', 'codefight,codeigniter,cms,download,free,multi-site manager,wysiwyg cms,simple and easy cms', 'Download open source softwares', 0);
+(19, 1, NULL, 'How much it costs to call directly to heaven from Nepal?', '<p>An American   decided to write a book about famous churches around the World. So he bought   a plane ticket and took a trip to China   . On his first day he was inside a church taking photographs when   he Noticed a golden telephone mounted on the wall with a sign that   read "$10,000 per call". The American, being intrigued, asked a priest who   was strolling by what?The telephone was used for. The priest replied   that it was a direct line to heaven and that for $10,000 you could talk to   God.</p>\r\n<p>The American thanked the priest and went along his way.?</p>\r\n<p>Next   stop was in Japan .   There, at a very large cathedral, he saw the Same golden telephone with the same   sign under it.</p>\r\n<p>', 0, '<p>An American   decided to write a book about famous churches around the World. So he bought   a plane ticket and took a trip to China   . On his first day he was inside a church taking photographs when   he Noticed a golden telephone mounted on the wall with a sign that   read "$10,000 per call". The American, being intrigued, asked a priest who   was strolling by what?The telephone was used for. The priest replied   that it was a direct line to heaven and that for $10,000 you could talk to   God.</p>\r\n<p>The American thanked the priest and went along his way.?</p>\r\n<p>Next   stop was in Japan .   There, at a very large cathedral, he saw the Same golden telephone with the same   sign under it.</p>\r\n<p><!-- pagebreak --></p>\r\n<p>He wondered if this was the same kind of telephone he saw   in China   and He asked a nearby nun what its purpose was.</p>\r\n<p>She told him that it was   a direct line to heaven and that for $10,000 He Could talk to   God.?</p>\r\n<p>"O.K., thank you," said the American.?He then traveled to   Pakistan ,   Srilanka ,   Russia ,   Germany   and France.</p>\r\n<p>In every church he saw the same golden telephone with the same   "$10,000 Per call" sign under it.?The American, upon leaving   Vermont   decided to travel to up to?Nepal   to See if?Nepalese had the same phone.</p>\r\n<p>He?arrived in?Nepal ,   and again, in the first church he entered, there Was the same golden   telephone, but this s time the sign under it read "One Rupee per   call."</p>\r\n<p>The American was surprised so he asked the priest about the   sign. "Father, I''ve traveled all over World and I''ve seen this same   golden Telephone in many churches. I''m told that it is a direct line   to?Heaven, But in rest of the world price was $10,000 per call.</p>\r\n<p>Why   is it so cheap here?"</p>\r\n<p>Readers, it is your turn........ Think ....before   you scroll down...</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>.....................</p>\r\n<p>The priest smiled and answered, "You''re   in?Nepal   now, Son -?it''s a Local Call?". This is the only heaven on the   Earth.?</p>\r\n<p>KEEP SMILING</p>\r\n<p>If you are proud to be ?Nepalese, pass this   on!!!</p>', ',93,94,', ',1,2,4,', 'Got this in email as forward from Aneeta Gurung', 11, 1, '2009-04-12 19:16:58', NULL, 1, 'Nepal,Nepali,test', 1, 'blog', 926, 'How much it costs to call directly to heaven from Nepal?', 'Nepal,Nepali,Proud to be nepalese,email forward', '', 0),
+(37, 1, NULL, 'Kushal''s First Youtube Video', '<p>{{banner 2}}</p>\r\n<p>Hey! Its me Kushal Bashyal. I am 5months and 3weeks old today. I am very happy today and trying to jump. Wanna watch me jump. So, what you think? My grand mom is trying to hold me but she is very tired but i am enjoying a lot and jumping and jumping and making everyone happy. Hope you like it. Hi nanu sis, saru &amp; yeshu aunt this is for you to see me. And, everyone else as well :)</p>\r\n<p>{{banner 2}}</p>\r\n<div style="margin: 0pt auto; width: 480px; height: 385px; display: block;">\r\n<object width="480" height="385" data="http://www.youtube.com/v/eJA-LeXnqgc&amp;hl=en_US&amp;fs=1&amp;rel=0&amp;color1=0x234900&amp;color2=0x4e9e00" type="application/x-shockwave-flash">\r\n<param name="allowFullScreen" value="true" />\r\n<param name="allowscriptaccess" value="always" />\r\n<param name="src" value="http://www.youtube.com/v/eJA-LeXnqgc&amp;hl=en_US&amp;fs=1&amp;rel=0&amp;color1=0x234900&amp;color2=0x4e9e00" />\r\n<param name="allowfullscreen" value="true" />\r\n</object>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>{{banner 2}}</p>', 0, '<p>{{banner 2}}</p>\r\n<p>Hey! Its me Kushal Bashyal. I am 5months and 3weeks old today. I am very happy today and trying to jump. Wanna watch me jump. So, what you think? My grand mom is trying to hold me but she is very tired but i am enjoying a lot and jumping and jumping and making everyone happy. Hope you like it. Hi nanu sis, saru &amp; yeshu aunt this is for you to see me. And, everyone else as well :)</p>\r\n<p>{{banner 2}}</p>\r\n<div style="margin: 0pt auto; width: 480px; height: 385px; display: block;">\r\n<object width="480" height="385" data="http://www.youtube.com/v/eJA-LeXnqgc&amp;hl=en_US&amp;fs=1&amp;rel=0&amp;color1=0x234900&amp;color2=0x4e9e00" type="application/x-shockwave-flash">\r\n<param name="allowFullScreen" value="true" />\r\n<param name="allowscriptaccess" value="always" />\r\n<param name="src" value="http://www.youtube.com/v/eJA-LeXnqgc&amp;hl=en_US&amp;fs=1&amp;rel=0&amp;color1=0x234900&amp;color2=0x4e9e00" />\r\n<param name="allowfullscreen" value="true" />\r\n</object>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>{{banner 2}}</p>', ',93,', ',1,2,4,', 'Damodar Bashyal', 11, 1, '2009-06-06 05:45:32', NULL, 1, 'Kushal Bashyal,test', 1, 'blog', 975, 'Cute Little Happy Baby Jumping - codefight.org', 'Kushal Bashyal, Baby, Baby Jumping,Happy Baby', 'This is kushal 5months, happy and jumping with the help of grandmom', 0),
+(54, 1, NULL, 'Canonical Page For All Pages That Have No Content', '<p>Blank.</p>\n<p>This is parked page for seo stuff. Inplace of meta nofollow probably i''ll use this page as canonical page.</p>', 0, '<p>Blank.</p>\n<p>This is parked page for seo stuff. Inplace of meta nofollow probably i''ll use this page as canonical page.</p>', ',0,', ',0,', 'Damodar Bashyal', 0, 1, '2010-04-16 22:32:00', NULL, 1, '', 1, 'page', 2684, 'Replacement page for meta noindex, nofollow | codefight .org', 'meta,noindex,nofollow,search,engine,page,rank', 'Remove your less value pages from search index to give more priority to main pages.', 0),
+(67, 1, NULL, 'Contact Us', '<p>Please fill the form below to contact us.</p>\n<p>{{form contact_us}}</p>', 0, '<p>Please fill the form below to contact us.</p>\n<p>{{form contact_us}}</p>', ',83,', ',1,2,3,', '', 0, 0, '2010-11-01 00:00:00', NULL, 0, '', 0, 'page', 4, 'Contact Us', 'contact us,codefight cms,text link ads review,zoosper', 'Contact us for any enquiry regarding our websites.', 0),
+(68, 1, NULL, 'Privacy Policy', '<p>We don''t sell your details. We don''t use your data to spam or for any other reason.</p>', 0, '<p>We don''t sell your details. We don''t use your data to spam or for any other reason.</p>', ',71,', ',2,3,', '', 0, 0, '2010-01-20 00:00:00', NULL, 0, '', 0, 'page', 0, 'Privacy Policy - codefight.org', 'privacy, policy, codefight, cms, open, source, content, management, system', 'we don''t sell your details. Codefight is a free content management system.', 0),
+(69, 1, NULL, 'Google made it easy to search our sites.', '<p>Please enter the word you are looking for</p>\n<div class="google_custom_search_engine">\n<div id="cse" style="width: 100%;">Loading</div>\n<script src="http://www.google.com/jsapi" type="text/javascript"></script>\n<script type="text/javascript"><!--\n   google.load(''search'', ''1'');\n   google.setOnLoadCallback(function(){\n      new google.search.CustomSearchControl(''010442767483169701592:ibrawdecaa8'').draw(''cse'');\n   }, true);\n// --></script>\n</div>', 0, '<p>Please enter the word you are looking for</p>\n<div class="google_custom_search_engine">\n<div id="cse" style="width: 100%;">Loading</div>\n<script src="http://www.google.com/jsapi" type="text/javascript"></script>\n<script type="text/javascript"><!--\n   google.load(''search'', ''1'');\n   google.setOnLoadCallback(function(){\n      new google.search.CustomSearchControl(''010442767483169701592:ibrawdecaa8'').draw(''cse'');\n   }, true);\n// --></script>\n</div>', ',85,', ',1,2,3,', '', 0, 0, '2010-11-15 00:00:00', NULL, 0, '', 0, 'page', 9, 'Google made it easy to search our sites - codefight.org', 'google,search,made,easy,with,site search,codefight,tenthweb', 'Please enter the word you are looking for in our sites codefight and tenthweb.', 0),
+(70, 1, NULL, 'Codefight CMS', '<h1>{{tag url=''http://codefight.org/'' rel=''external,nofollow'' title=''Codefight CMS''}} - A light weight Codeigniter php framework cms.</h1>\r\n<div style="display:block;float:right;margin:0 0 15px;"><a title="Codefight - simple php cms using codeigniter" rel="nofollow external" href="http://cmsigniter.com/download-codefight-cms" target="_blank"><img src="http://skin.zoosper.com/media/upload/Codefight-CMS-Sfotware-md.png" border="0" alt="Download Latest SEO Friendly Codefight BLOG CMS" /></a></div>\r\n<p>Codefight CMS is based on CodeIgniter - Open source PHP web application framework, which is very easy to learn.</p>\r\n<p>The latest version will have a multiple website manager. The new version is almost ready and is in staging for testing purpose before its official release.</p>\r\n<p>If you would like to get informed about the latest releases and news please do subscribe to our feed.</p>\r\n<p>Since Codefight CMS is available for use free of charge, I would appreciate and welcome any feedback, contributions to the code and help translating language files into your language.&nbsp;&nbsp;&nbsp;</p>\r\n<p>You can use this CMS in any way you want: You can modify it as you like and use commercially for free.</p>\r\n<p>I hope one day it will be one of the top {{tag title=''Codeigniter CMS''}}</p>\r\n<p><a class="download-button" href="http://codefight.org/">Download</a></p>\r\n<p>&nbsp;</p>\r\n<p><a href="http://videos.tenthweb.com/index/watch/yt/KnVsHoA6YB4/?t=codefight+CMS+2.0+preview"><img title="codefight CMS preview video on youtube." src="http://skin.zoosper.com/media/codefight-cms-2-0-preview.png" alt="Codefight CMS 2.0 preview" /></a></p>\r\n<h6>Codefight CMS 2.0, a multiple website management software, based on codeigniter 2.0 php framework.<br /></h6>', 0, '<h1>{{tag url=''http://codefight.org/'' rel=''external,nofollow'' title=''Codefight CMS''}} - A light weight Codeigniter php framework cms.</h1>\r\n<div style="display:block;float:right;margin:0 0 15px;"><a title="Codefight - simple php cms using codeigniter" rel="nofollow external" href="http://cmsigniter.com/download-codefight-cms" target="_blank"><img src="http://skin.zoosper.com/media/upload/Codefight-CMS-Sfotware-md.png" border="0" alt="Download Latest SEO Friendly Codefight BLOG CMS" /></a></div>\r\n<p>Codefight CMS is based on CodeIgniter - Open source PHP web application framework, which is very easy to learn.</p>\r\n<p>The latest version will have a multiple website manager. The new version is almost ready and is in staging for testing purpose before its official release.</p>\r\n<p>If you would like to get informed about the latest releases and news please do subscribe to our feed.</p>\r\n<p>Since Codefight CMS is available for use free of charge, I would appreciate and welcome any feedback, contributions to the code and help translating language files into your language.&nbsp;&nbsp;&nbsp;</p>\r\n<p>You can use this CMS in any way you want: You can modify it as you like and use commercially for free.</p>\r\n<p>I hope one day it will be one of the top {{tag title=''Codeigniter CMS''}}</p>\r\n<p><a class="download-button" href="http://codefight.org/">Download</a></p>\r\n<p>&nbsp;</p>\r\n<p><a href="http://videos.tenthweb.com/index/watch/yt/KnVsHoA6YB4/?t=codefight+CMS+2.0+preview"><img title="codefight CMS preview video on youtube." src="http://skin.zoosper.com/media/codefight-cms-2-0-preview.png" alt="Codefight CMS 2.0 preview" /></a></p>\r\n<h6>Codefight CMS 2.0, a multiple website management software, based on codeigniter 2.0 php framework.<br /></h6>', ',75,', ',1,', '', 0, 0, '2010-12-20 00:00:00', NULL, 0, '', 0, 'page', 4, 'Codefight CMS - Codeigniter Multiple Website Manager', 'Codeigniter,cms,codefight,website,manager,php,multiple,website', 'Codefight CMS is based on CodeIgniter - Open source PHP web application framework, which is very easy to learn.', 0),
+(71, 1, NULL, 'Codefight PHP Content Management System (CMS)', '<p>\n<script src="/skin/frontend/default/js/prototype.js" type="text/javascript"></script>\n<script src="/skin/frontend/default/js/scriptaculous.js?load=effects,builder" type="text/javascript"></script>\n<script src="/skin/frontend/default/js/lightbox.js" type="text/javascript"></script>\n</p>\n<h1>Codefight PHP Content Management System (CMS)</h1>\n<div class="banner"><span class="download_link"><a href="http://code.google.com/p/cmsdamu/downloads/list">Download Pre-release Code</a>\n<script src="http://ohloh.net/p/318042/widgets/project_thin_badge.js" type="text/javascript"></script>\n</span><a title="Make money online from sponsored tweets. Its that easy to make money online working from home." href="http://bit.ly/3qzpDq" target="_blank">Today''s Preview Brought To You By Sponsored Tweets.</a></div>\n<p>This is only screenshot Preview of Codefight Content Management System (CMS) which is built with the help of <a title="CodeIgniter - Open source PHP web application framework" href="http://codeigniter.com">codeigniter</a> php framework</p>\n<p>This is still under development. So far the below items from screen shot are completed. If you want to give suggestions and feedbacks, you can do so at our forum <a title="Tenthweb is a place to express your opinions and ask questions on our very own forum." href="http://tenthweb.com/forums/viewforum.php?f=49">tenthweb.com</a></p>\n<p>For backend demo visit:<a title="content management system built with php framework codeigniter - demo (codefight)" href="http://codefight.org/demo/admin.html" target="_blank">http://codefight.org/demo/admin.html</a> <br /> For frontend demo visit: <a href="http://codefight.org/demo/home.html" target="_blank">http://codefight.org/demo/home.html</a> <br /> To download code visit: <a href="http://code.google.com/p/cmsdamu/downloads/list" target="_blank">http://code.google.com/p/cmsdamu/downloads/list</a> <br /> <br /> [please leave a comment in our forum.]</p>\n<p class="notice"><strong>Update: 13.03.2009</strong><br /> Codefight homepage is now powered by codefight cms</p>\n<p><em><strong>This screenshot is outdated. Demo is newer than screenshot. Download can be newer than demo.</strong></em></p>\n<table style="width: 780px;" border="0" cellspacing="10" cellpadding="4" align="center">\n<tbody>\n<tr>\n<td width="260" align="left" valign="top"><a title="Login Form" rel="lightbox[codefight]" href="/media/upload/screenshots/login.jpg"><img src="/media/upload/screenshots/login_thumb.jpg" alt="login thumb" width="250" height="108" /></a></td>\n<td width="260" align="left" valign="top"><a title="Welcome Page After Login" rel="lightbox[codefight]" href="/media/upload/screenshots/welcome.jpg"><img src="/media/upload/screenshots/welcome_thumb.jpg" alt="welcome thumb" width="250" height="88" /></a></td>\n</tr>\n<tr>\n<td width="260" align="left" valign="top"><a title="Groups View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/groups_view.jpg"><img src="/media/upload/screenshots/groups_view_thumb.jpg" alt="groups view thumb" width="250" height="155" /></a></td>\n<td align="left" valign="top"><a title="Groups Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/group_edit.jpg"><img src="/media/upload/screenshots/group_edit_thumb.jpg" alt="group edit thumb" width="250" height="175" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Groups Create" rel="lightbox[codefight]" href="/media/upload/screenshots/group_create.jpg"><img src="/media/upload/screenshots/group_create_thumb.jpg" alt="group create thumb" width="250" height="107" /></a></td>\n<td align="left" valign="top"><a title="Users View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/users.jpg"><img src="/media/upload/screenshots/users_thumb.jpg" alt="users thumb" width="250" height="74" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Users Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/users_edit.jpg"><img src="/media/upload/screenshots/users_edit_thumb.jpg" alt="users edit thumb" width="250" height="163" /></a></td>\n<td align="left" valign="top"><a title="Menu View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/menus.jpg"><img src="/media/upload/screenshots/menus_thumb.jpg" alt="menus thumb" width="250" height="191" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Menu Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/menus_edit.jpg"><img src="/media/upload/screenshots/menus_edit_thumb.jpg" alt="menus edit thumb" width="250" height="180" /></a></td>\n<td align="left" valign="top"><a title="Pages View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/pages.jpg"><img src="/media/upload/screenshots/pages_thumb.jpg" alt="pages thumb" width="250" height="158" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Pages Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/pages_edit.jpg"><img src="/media/upload/screenshots/pages_edit_thumb.jpg" alt="pages edit thumb" width="250" height="204" /></a></td>\n<td>&nbsp;</td>\n</tr>\n</tbody>\n</table>', 0, '<p>\n<script src="/skin/frontend/default/js/prototype.js" type="text/javascript"></script>\n<script src="/skin/frontend/default/js/scriptaculous.js?load=effects,builder" type="text/javascript"></script>\n<script src="/skin/frontend/default/js/lightbox.js" type="text/javascript"></script>\n</p>\n<h1>Codefight PHP Content Management System (CMS)</h1>\n<div class="banner"><span class="download_link"><a href="http://code.google.com/p/cmsdamu/downloads/list">Download Pre-release Code</a>\n<script src="http://ohloh.net/p/318042/widgets/project_thin_badge.js" type="text/javascript"></script>\n</span><a title="Make money online from sponsored tweets. Its that easy to make money online working from home." href="http://bit.ly/3qzpDq" target="_blank">Today''s Preview Brought To You By Sponsored Tweets.</a></div>\n<p>This is only screenshot Preview of Codefight Content Management System (CMS) which is built with the help of <a title="CodeIgniter - Open source PHP web application framework" href="http://codeigniter.com">codeigniter</a> php framework</p>\n<p>This is still under development. So far the below items from screen shot are completed. If you want to give suggestions and feedbacks, you can do so at our forum <a title="Tenthweb is a place to express your opinions and ask questions on our very own forum." href="http://tenthweb.com/forums/viewforum.php?f=49">tenthweb.com</a></p>\n<p>For backend demo visit:<a title="content management system built with php framework codeigniter - demo (codefight)" href="http://codefight.org/demo/admin.html" target="_blank">http://codefight.org/demo/admin.html</a> <br /> For frontend demo visit: <a href="http://codefight.org/demo/home.html" target="_blank">http://codefight.org/demo/home.html</a> <br /> To download code visit: <a href="http://code.google.com/p/cmsdamu/downloads/list" target="_blank">http://code.google.com/p/cmsdamu/downloads/list</a> <br /> <br /> [please leave a comment in our forum.]</p>\n<p class="notice"><strong>Update: 13.03.2009</strong><br /> Codefight homepage is now powered by codefight cms</p>\n<p><em><strong>This screenshot is outdated. Demo is newer than screenshot. Download can be newer than demo.</strong></em></p>\n<table style="width: 780px;" border="0" cellspacing="10" cellpadding="4" align="center">\n<tbody>\n<tr>\n<td width="260" align="left" valign="top"><a title="Login Form" rel="lightbox[codefight]" href="/media/upload/screenshots/login.jpg"><img src="/media/upload/screenshots/login_thumb.jpg" alt="login thumb" width="250" height="108" /></a></td>\n<td width="260" align="left" valign="top"><a title="Welcome Page After Login" rel="lightbox[codefight]" href="/media/upload/screenshots/welcome.jpg"><img src="/media/upload/screenshots/welcome_thumb.jpg" alt="welcome thumb" width="250" height="88" /></a></td>\n</tr>\n<tr>\n<td width="260" align="left" valign="top"><a title="Groups View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/groups_view.jpg"><img src="/media/upload/screenshots/groups_view_thumb.jpg" alt="groups view thumb" width="250" height="155" /></a></td>\n<td align="left" valign="top"><a title="Groups Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/group_edit.jpg"><img src="/media/upload/screenshots/group_edit_thumb.jpg" alt="group edit thumb" width="250" height="175" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Groups Create" rel="lightbox[codefight]" href="/media/upload/screenshots/group_create.jpg"><img src="/media/upload/screenshots/group_create_thumb.jpg" alt="group create thumb" width="250" height="107" /></a></td>\n<td align="left" valign="top"><a title="Users View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/users.jpg"><img src="/media/upload/screenshots/users_thumb.jpg" alt="users thumb" width="250" height="74" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Users Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/users_edit.jpg"><img src="/media/upload/screenshots/users_edit_thumb.jpg" alt="users edit thumb" width="250" height="163" /></a></td>\n<td align="left" valign="top"><a title="Menu View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/menus.jpg"><img src="/media/upload/screenshots/menus_thumb.jpg" alt="menus thumb" width="250" height="191" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Menu Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/menus_edit.jpg"><img src="/media/upload/screenshots/menus_edit_thumb.jpg" alt="menus edit thumb" width="250" height="180" /></a></td>\n<td align="left" valign="top"><a title="Pages View Page" rel="lightbox[codefight]" href="/media/upload/screenshots/pages.jpg"><img src="/media/upload/screenshots/pages_thumb.jpg" alt="pages thumb" width="250" height="158" /></a></td>\n</tr>\n<tr>\n<td align="left" valign="top"><a title="Pages Edit Page" rel="lightbox[codefight]" href="/media/upload/screenshots/pages_edit.jpg"><img src="/media/upload/screenshots/pages_edit_thumb.jpg" alt="pages edit thumb" width="250" height="204" /></a></td>\n<td>&nbsp;</td>\n</tr>\n</tbody>\n</table>', ',72,', ',1,', '', 0, 0, '2011-01-01 00:00:00', NULL, 0, '', 0, 'page', 104, 'Codefight PHP Content Management System &#40;CMS&#41; Preview', 'codefight,cms,demo,preview,codeigniter,2.0,multiple,website,manager', 'This is only screenshot Preview of Codefight Content Management System &#40;CMS&#41; which is built with the help of codeigniter php framework', 0),
+(72, 1, NULL, 'About Us', '<p>We are a collection of professionals focused on the benefits of text link ads.&nbsp;    Our goal is to build a long-standing, comprehensive review website of internet    marketers and affiliate marketers. Differing from most websites, we aim to develop    relationships, observe the internet atmosphere, and report our observations    and experiences to you, the consumer.&nbsp; We want you to benefit from our    observations, reports, and informational blogs for years to come, so we will    work hard to cement our professional review site in the industry.</p>\r\n<p>Yes, we love to hear constructive feedbacks from our visitors, guests and members.</p>\r\n<p>Yes, we read every comment.&nbsp; We enjoy reading and manually approving each    comment -- you are heard and don''t go unnoticed.</p>\r\n<p>We will try to scrub all the details before publishing, and we would love to    hear if we miss any spots.</p>\r\n<p>Thank you for your assistance and continued membership.</p>\r\n<p>Kind regards,</p>\r\n<p>TextLinkAdsReview.com</p>', 0, '<p>We are a collection of professionals focused on the benefits of text link ads.&nbsp;    Our goal is to build a long-standing, comprehensive review website of internet    marketers and affiliate marketers. Differing from most websites, we aim to develop    relationships, observe the internet atmosphere, and report our observations    and experiences to you, the consumer.&nbsp; We want you to benefit from our    observations, reports, and informational blogs for years to come, so we will    work hard to cement our professional review site in the industry.</p>\r\n<p>Yes, we love to hear constructive feedbacks from our visitors, guests and members.</p>\r\n<p>Yes, we read every comment.&nbsp; We enjoy reading and manually approving each    comment -- you are heard and don''t go unnoticed.</p>\r\n<p>We will try to scrub all the details before publishing, and we would love to    hear if we miss any spots.</p>\r\n<p>Thank you for your assistance and continued membership.</p>\r\n<p>Kind regards,</p>\r\n<p>TextLinkAdsReview.com</p>', ',82,', ',1,2,', '', 0, 0, '2010-01-20 00:00:00', NULL, 0, '', 0, 'page', 1, 'About Us - Text Link Ads Review', 'about us, text link ads review,about text link ads review, about TLAr', 'Our goal is to build a long-standing, comprehensive review website of internet marketers and affiliate marketers.', 0),
+(73, 1, NULL, 'Search Text Link Ads Review', '<form action="http://textlinkadsreview.com/search/">\r\n<div><input name="cx" type="hidden" value="partner-pub-9567128729272204:5rf39g-1qd8" /> <input name="cof" type="hidden" value="FORID:11" /> <input name="ie" type="hidden" value="ISO-8859-1" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" /></div>\r\n</form>\r\n<p>\r\n<script src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en" type="text/javascript"></script>\r\n</p>\r\n<p>&nbsp;</p>\r\n<p>\r\n<script type="text/javascript"><!--\r\n  var googleSearchIframeName = "cse-search-results";\r\n  var googleSearchFormName = "cse-search-box";\r\n  var googleSearchFrameWidth = 795;\r\n  var googleSearchDomain = "www.google.com";\r\n  var googleSearchPath = "/cse";\r\n// --></script>\r\n<script src="http://www.google.com/afsonline/show_afs_search.js" type="text/javascript"></script>\r\n</p>', 0, '<form action="http://textlinkadsreview.com/search/">\r\n<div><input name="cx" type="hidden" value="partner-pub-9567128729272204:5rf39g-1qd8" /> <input name="cof" type="hidden" value="FORID:11" /> <input name="ie" type="hidden" value="ISO-8859-1" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" /></div>\r\n</form>\r\n<p>\r\n<script src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en" type="text/javascript"></script>\r\n</p>\r\n<p>&nbsp;</p>\r\n<p>\r\n<script type="text/javascript"><!--\r\n  var googleSearchIframeName = "cse-search-results";\r\n  var googleSearchFormName = "cse-search-box";\r\n  var googleSearchFrameWidth = 795;\r\n  var googleSearchDomain = "www.google.com";\r\n  var googleSearchPath = "/cse";\r\n// --></script>\r\n<script src="http://www.google.com/afsonline/show_afs_search.js" type="text/javascript"></script>\r\n</p>', ',0,', ',0,', '', 0, 0, '2010-01-21 00:00:00', NULL, 0, '', 0, 'page', 0, 'Search Text Link Ads Review - TextLinkAdsReview.com', 'Google,Search, text link ads review,search text link ads review, search TLAr', 'Google Search for Text Link Ads Review.', 0),
+(74, 1, NULL, 'Online Advertising | Text Link Ads | Banner Ads', '<p>Text link advertising is currently one of the most popular methods of internet    marketing. Here at TextLinkAdsReview.com, we realize the importance of text    link advertising in our modern marketing world, so we will write reviews on    different text link advertisement options. Whether you want to sell text link    ads or you want to buy text link ads, we have listed and reviewed many different    text link agencies on our website, and we are continuously working to review    more advertising options for your business.</p>\n<p>We realize there are many advertising companies and text link brokers available    to you, and only TextLinkAdsReview.com will review these many companies and    offer information to help you find the best marketing agency for your business.    These agencies charge a miniscule commission to find your ideal advertising    fit, but the advertising will help you increase your Google page rank slowly    by time.</p>\n<p>Text link ads are very positive for your business.&nbsp; They boost your SEO    (Search Engine Optimization) rating, and they are often better than pay-per-click    (PPC) advertising. PPC advertising can often lead to revenue-sharing clicking    - when a website that shares revenues with yours influences friends or family    to click your banner to decrease your revenue (and increase their own).&nbsp;    Also, because visitors trust text link ads more than flashy banners, visitors    are more apt to click text link ads.&nbsp; Viewed as a recommendation from the    site owner, a text link ad draws more traffic to your site.&nbsp; As for those    who own well-established, high-traffic sites, you can sell space on your site    to text link advertisers. Whether you would like to purchase text link space    or you would like to rent space on your site, the text link advertising business    is a win-win:&nbsp; You could either receive higher potential buyer traffic    for a flat fee, or you could receive residual income -- monthly rental income    that your don''t have to work for.</p>\n<p>There are numerous top advertising agencies who offer online and offline advertising    options, and our aim is to include most of them in our reviews. So keep in touch    with our blog posts and subscribe to our RSS.</p>\n<p>-TextLinkAdsReview.com</p>', 0, '<p>Text link advertising is currently one of the most popular methods of internet    marketing. Here at TextLinkAdsReview.com, we realize the importance of text    link advertising in our modern marketing world, so we will write reviews on    different text link advertisement options. Whether you want to sell text link    ads or you want to buy text link ads, we have listed and reviewed many different    text link agencies on our website, and we are continuously working to review    more advertising options for your business.</p>\n<p>We realize there are many advertising companies and text link brokers available    to you, and only TextLinkAdsReview.com will review these many companies and    offer information to help you find the best marketing agency for your business.    These agencies charge a miniscule commission to find your ideal advertising    fit, but the advertising will help you increase your Google page rank slowly    by time.</p>\n<p>Text link ads are very positive for your business.&nbsp; They boost your SEO    (Search Engine Optimization) rating, and they are often better than pay-per-click    (PPC) advertising. PPC advertising can often lead to revenue-sharing clicking    - when a website that shares revenues with yours influences friends or family    to click your banner to decrease your revenue (and increase their own).&nbsp;    Also, because visitors trust text link ads more than flashy banners, visitors    are more apt to click text link ads.&nbsp; Viewed as a recommendation from the    site owner, a text link ad draws more traffic to your site.&nbsp; As for those    who own well-established, high-traffic sites, you can sell space on your site    to text link advertisers. Whether you would like to purchase text link space    or you would like to rent space on your site, the text link advertising business    is a win-win:&nbsp; You could either receive higher potential buyer traffic    for a flat fee, or you could receive residual income -- monthly rental income    that your don''t have to work for.</p>\n<p>There are numerous top advertising agencies who offer online and offline advertising    options, and our aim is to include most of them in our reviews. So keep in touch    with our blog posts and subscribe to our RSS.</p>\n<p>-TextLinkAdsReview.com</p>', ',75,', ',2,', '', 0, 0, '2010-01-20 00:00:00', NULL, 0, '', 0, 'page', 0, 'Text Link Ads Review | Buy Text Link Ads | Sell Text Link Ads', 'buying,selling,monetizing,text,link,advertising,banner,ppc', 'We review different Advertising Platforms like Text Link Ads and many more.', 0),
+(100, 1, NULL, 'My Experience with CodeIgniter', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque justo sem, elementum a ullamcorper auctor, aliquam non ligula. Cras adipiscing hendrerit quam, vel volutpat nisi luctus eu. Praesent congue magna non urna egestas aliquet. In hac habitasse platea dictumst. Donec risus nisi, fermentum vel aliquet ac, vulputate sed purus. Fusce ornare fringilla ipsum vel porta. Proin sed nibh dolor, vitae ullamcorper lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">', 0, '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque justo sem, elementum a ullamcorper auctor, aliquam non ligula. Cras adipiscing hendrerit quam, vel volutpat nisi luctus eu. Praesent congue magna non urna egestas aliquet. In hac habitasse platea dictumst. Donec risus nisi, fermentum vel aliquet ac, vulputate sed purus. Fusce ornare fringilla ipsum vel porta. Proin sed nibh dolor, vitae ullamcorper lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><!-- pagebreak --></p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">In vehicula arcu eu nibh tincidunt pharetra. Vestibulum non laoreet turpis. Vestibulum egestas, nibh quis tempor cursus, risus quam ornare nulla, quis ultricies augue dolor eget sapien. Sed quis leo nisi, sed porttitor ante. Quisque eget nisl quam, in rutrum quam. Quisque ullamcorper porttitor nibh sit amet imperdiet. In vehicula vulputate sem, vitae tempor nulla auctor tristique. Cras eget varius odio. Cras vel dolor arcu, at malesuada justo. Donec cursus mi a enim mattis et convallis risus malesuada. Mauris elementum nunc in nisi egestas nec dapibus urna condimentum. In odio metus, rutrum pulvinar sagittis at, euismod nec dolor. Maecenas quis nulla id ipsum sagittis aliquam. Etiam aliquet augue a eros eleifend vitae auctor nulla rutrum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Aenean at risus in sem consectetur aliquet sed eu mi. Morbi dignissim malesuada purus vitae condimentum. Suspendisse sit amet urna urna. Fusce vitae tortor nisl, nec cursus diam. Nam cursus consequat ipsum ac volutpat. In eu eleifend ipsum. Maecenas venenatis augue vitae eros viverra ultricies. Donec sit amet consectetur libero. Vivamus aliquam sollicitudin eros in sodales. Cras dapibus, neque eget accumsan molestie, purus dui tincidunt ligula, id ultrices massa lacus mollis eros. Vivamus velit massa, accumsan ut imperdiet sed, egestas eu mi. Nam ut ligula tempus neque pharetra feugiat. Curabitur varius imperdiet lectus non suscipit. Aliquam erat volutpat. Morbi laoreet libero ut sapien convallis faucibus placerat velit egestas. Fusce non lorem lacus, non consectetur tellus.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Sed lacus ligula, commodo at molestie in, pharetra in risus. Etiam tristique dapibus ipsum, eu dignissim nisl rutrum in. Nulla facilisi. Duis sed purus eu nulla eleifend aliquet. Fusce vulputate, nunc ac egestas convallis, est quam lacinia eros, sit amet tincidunt odio ante a lectus. Donec molestie condimentum sapien non pulvinar. Mauris mi lacus, tristique vel vestibulum pretium, pulvinar nec est. Ut lacinia nisl at dolor consequat vitae semper sapien vulputate. Maecenas mattis, ipsum tincidunt pellentesque lobortis, elit augue suscipit tortor, et faucibus urna lacus eget risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus volutpat lacinia felis, dictum adipiscing lorem cursus et. Donec gravida aliquet velit, vel ultrices quam hendrerit nec. Morbi non nibh neque, id faucibus quam. Suspendisse eget erat orci.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Proin gravida purus id lacus adipiscing pretium. Proin volutpat, augue ut molestie adipiscing, urna mauris porttitor felis, a ultricies elit tellus id turpis. Cras a placerat lectus. Curabitur mattis venenatis arcu eu facilisis. Nulla at justo et mi ultrices lacinia. In eu lacus vitae purus iaculis mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc tincidunt dui in felis pharetra cursus nec posuere mi. Maecenas at viverra urna. Etiam ullamcorper luctus eros, at dignissim tellus malesuada vel. Duis sit amet mauris nisi.</p>', ',86,93,96,', ',1,', 'Seth Bryant', 11, 1, '2011-04-15 01:41:40', NULL, 1, 'codeigniter,test', 1, 'blog', 837, 'My Experience with CodeIgniter', 'codeigniter,codefight', 'With CodeIgniter, you can easily organize the different sections of the PHP application including configuration files, controllers, models, scripts and views.', 0),
+(102, 1, NULL, 'Advertising in Applications', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque justo sem, elementum a ullamcorper auctor, aliquam non ligula. Cras adipiscing hendrerit quam, vel volutpat nisi luctus eu. Praesent congue magna non urna egestas aliquet. In hac habitasse platea dictumst. Donec risus nisi, fermentum vel aliquet ac, vulputate sed purus. Fusce ornare fringilla ipsum vel porta. Proin sed nibh dolor, vitae ullamcorper lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">', 0, '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque justo sem, elementum a ullamcorper auctor, aliquam non ligula. Cras adipiscing hendrerit quam, vel volutpat nisi luctus eu. Praesent congue magna non urna egestas aliquet. In hac habitasse platea dictumst. Donec risus nisi, fermentum vel aliquet ac, vulputate sed purus. Fusce ornare fringilla ipsum vel porta. Proin sed nibh dolor, vitae ullamcorper lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><!-- pagebreak --></p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">In vehicula arcu eu nibh tincidunt pharetra. Vestibulum non laoreet turpis. Vestibulum egestas, nibh quis tempor cursus, risus quam ornare nulla, quis ultricies augue dolor eget sapien. Sed quis leo nisi, sed porttitor ante. Quisque eget nisl quam, in rutrum quam. Quisque ullamcorper porttitor nibh sit amet imperdiet. In vehicula vulputate sem, vitae tempor nulla auctor tristique. Cras eget varius odio. Cras vel dolor arcu, at malesuada justo. Donec cursus mi a enim mattis et convallis risus malesuada. Mauris elementum nunc in nisi egestas nec dapibus urna condimentum. In odio metus, rutrum pulvinar sagittis at, euismod nec dolor. Maecenas quis nulla id ipsum sagittis aliquam. Etiam aliquet augue a eros eleifend vitae auctor nulla rutrum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Aenean at risus in sem consectetur aliquet sed eu mi. Morbi dignissim malesuada purus vitae condimentum. Suspendisse sit amet urna urna. Fusce vitae tortor nisl, nec cursus diam. Nam cursus consequat ipsum ac volutpat. In eu eleifend ipsum. Maecenas venenatis augue vitae eros viverra ultricies. Donec sit amet consectetur libero. Vivamus aliquam sollicitudin eros in sodales. Cras dapibus, neque eget accumsan molestie, purus dui tincidunt ligula, id ultrices massa lacus mollis eros. Vivamus velit massa, accumsan ut imperdiet sed, egestas eu mi. Nam ut ligula tempus neque pharetra feugiat. Curabitur varius imperdiet lectus non suscipit. Aliquam erat volutpat. Morbi laoreet libero ut sapien convallis faucibus placerat velit egestas. Fusce non lorem lacus, non consectetur tellus.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Sed lacus ligula, commodo at molestie in, pharetra in risus. Etiam tristique dapibus ipsum, eu dignissim nisl rutrum in. Nulla facilisi. Duis sed purus eu nulla eleifend aliquet. Fusce vulputate, nunc ac egestas convallis, est quam lacinia eros, sit amet tincidunt odio ante a lectus. Donec molestie condimentum sapien non pulvinar. Mauris mi lacus, tristique vel vestibulum pretium, pulvinar nec est. Ut lacinia nisl at dolor consequat vitae semper sapien vulputate. Maecenas mattis, ipsum tincidunt pellentesque lobortis, elit augue suscipit tortor, et faucibus urna lacus eget risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus volutpat lacinia felis, dictum adipiscing lorem cursus et. Donec gravida aliquet velit, vel ultrices quam hendrerit nec. Morbi non nibh neque, id faucibus quam. Suspendisse eget erat orci.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Proin gravida purus id lacus adipiscing pretium. Proin volutpat, augue ut molestie adipiscing, urna mauris porttitor felis, a ultricies elit tellus id turpis. Cras a placerat lectus. Curabitur mattis venenatis arcu eu facilisis. Nulla at justo et mi ultrices lacinia. In eu lacus vitae purus iaculis mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc tincidunt dui in felis pharetra cursus nec posuere mi. Maecenas at viverra urna. Etiam ullamcorper luctus eros, at dignissim tellus malesuada vel. Duis sit amet mauris nisi.</p>', ',109,93,', ',1,2,', '', 11, 1, '2011-04-30 19:52:22', NULL, 1, 'advertising,test', 1, 'blog', 304, 'Advertising in Applications - TLAr', 'advertising,angry birds,application,advertiser,advertise,traditional advertising', 'One example of this is in ', 0),
+(103, 1, NULL, 'Download Latest Codefight CMS', '<p><a title="Download Codefight CMS" href="http://codefight.org/" target="_blank"><img title="Codefight CMS" src="http://skin.zoosper.com//media/codefight-cms-2-0-preview.png" alt="Download Codefight CMS" width="500" height="296" /></a></p>', 0, '<p><a title="Download Codefight CMS" href="http://codefight.org/" target="_blank"><img title="Codefight CMS" src="http://skin.zoosper.com//media/codefight-cms-2-0-preview.png" alt="Download Codefight CMS" width="500" height="296" /></a></p>', ',81,', ',1,', '', 0, 0, '2011-12-27 23:10:28', NULL, 0, '', 0, 'page', 0, 'Download Latest Codeigniter cms - Codefight CMS', 'codefight,codeigniter,cms,download,free,multi-site manager,wysiwyg cms,simple and easy cms', 'Download open source softwares', 0);
 
 -- --------------------------------------------------------
 
@@ -596,6 +634,7 @@ INSERT INTO `cf_page` (`page_id`, `page_active`, `page_code`, `page_title`, `pag
 -- Table structure for table `cf_page_access`
 --
 
+DROP TABLE IF EXISTS `cf_page_access`;
 CREATE TABLE IF NOT EXISTS `cf_page_access` (
   `page_id` int(11) NOT NULL,
   `group_id` varchar(255) NOT NULL DEFAULT '0',
@@ -709,6 +748,7 @@ INSERT INTO `cf_page_access` (`page_id`, `group_id`) VALUES
 -- Table structure for table `cf_page_comment`
 --
 
+DROP TABLE IF EXISTS `cf_page_comment`;
 CREATE TABLE IF NOT EXISTS `cf_page_comment` (
   `page_comment_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -727,8 +767,8 @@ CREATE TABLE IF NOT EXISTS `cf_page_comment` (
 --
 
 INSERT INTO `cf_page_comment` (`page_comment_id`, `name`, `email`, `comment`, `time`, `url`, `page_id`, `page_url`, `page_comment_status`) VALUES
-(5, 'pending comment', 'pending@comment.com', 'This is pending comment example. Written for feed, incase there are not any.', '2009-03-13 16:48:52', 'http://www.codefight.org/', 7, NULL, 0),
-(4, 'Test Test', 'dbashyal@gmail.com', 'Test only 1st ever comment', '2009-03-12 19:33:30', 'http://www.codefight.org/', 7, NULL, 1);
+(5, 'pending comment', 'pending@comment.com', 'This is pending comment example. Written for feed, incase there are not any.', '2009-03-14 03:48:52', 'http://www.codefight.org/', 7, NULL, 0),
+(4, 'Test Test', 'dbashyal@gmail.com', 'Test only 1st ever comment', '2009-03-13 06:33:30', 'http://www.codefight.org/', 7, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -736,6 +776,7 @@ INSERT INTO `cf_page_comment` (`page_comment_id`, `name`, `email`, `comment`, `t
 -- Table structure for table `cf_page_tag`
 --
 
+DROP TABLE IF EXISTS `cf_page_tag`;
 CREATE TABLE IF NOT EXISTS `cf_page_tag` (
   `page_id` int(11) NOT NULL,
   `tag` varchar(255) NOT NULL
@@ -746,20 +787,16 @@ CREATE TABLE IF NOT EXISTS `cf_page_tag` (
 --
 
 INSERT INTO `cf_page_tag` (`page_id`, `tag`) VALUES
-(73, ''),
-(70, ''),
-(103, ''),
-(72, ''),
-(102, 'advertising'),
-(100, 'codeigniter'),
 (37, 'Kushal-Bashyal'),
-(37, 'Baby'),
-(37, 'Baby-Jumping'),
-(37, 'Happy-Baby'),
+(37, 'test'),
 (19, 'Nepal'),
 (19, 'Nepali'),
-(19, 'Proud-to-be-nepalese'),
-(19, 'email-forward');
+(19, 'test'),
+(70, ''),
+(102, 'advertising'),
+(102, 'test'),
+(100, 'codeigniter'),
+(100, 'test');
 
 -- --------------------------------------------------------
 
@@ -767,6 +804,7 @@ INSERT INTO `cf_page_tag` (`page_id`, `tag`) VALUES
 -- Table structure for table `cf_sessions`
 --
 
+DROP TABLE IF EXISTS `cf_sessions`;
 CREATE TABLE IF NOT EXISTS `cf_sessions` (
   `session_id` varchar(40) NOT NULL DEFAULT '0',
   `ip_address` varchar(16) NOT NULL DEFAULT '0',
@@ -776,17 +814,13 @@ CREATE TABLE IF NOT EXISTS `cf_sessions` (
   PRIMARY KEY (`session_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `cf_sessions`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `cf_setting`
 --
 
+DROP TABLE IF EXISTS `cf_setting`;
 CREATE TABLE IF NOT EXISTS `cf_setting` (
   `setting_id` int(11) NOT NULL AUTO_INCREMENT,
   `setting_key` varchar(50) NOT NULL,
@@ -880,6 +914,7 @@ INSERT INTO `cf_setting` (`setting_id`, `setting_key`, `setting_value`, `setting
 -- Table structure for table `cf_setting_keys`
 --
 
+DROP TABLE IF EXISTS `cf_setting_keys`;
 CREATE TABLE IF NOT EXISTS `cf_setting_keys` (
   `setting_id` int(11) NOT NULL AUTO_INCREMENT,
   `setting_key` varchar(50) NOT NULL,
@@ -921,12 +956,17 @@ INSERT INTO `cf_setting_keys` (`setting_id`, `setting_key`, `setting_value`, `se
 -- Table structure for table `cf_tag_cloud`
 --
 
+DROP TABLE IF EXISTS `cf_tag_cloud`;
 CREATE TABLE IF NOT EXISTS `cf_tag_cloud` (
   `tag` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `count` int(11) NOT NULL DEFAULT '1',
   `type` varchar(15) NOT NULL DEFAULT 'page',
   `websites_id` int(11) NOT NULL DEFAULT '0',
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_description` varchar(255) DEFAULT NULL,
+  `meta_keyword` varchar(255) DEFAULT NULL,
+  `content` text,
   KEY `count` (`count`),
   KEY `websites_id` (`websites_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -935,35 +975,38 @@ CREATE TABLE IF NOT EXISTS `cf_tag_cloud` (
 -- Dumping data for table `cf_tag_cloud`
 --
 
-INSERT INTO `cf_tag_cloud` (`tag`, `title`, `count`, `type`, `websites_id`) VALUES
-('advertising', 'advertising', 1, 'blog', 1),
-('codeigniter', 'codeigniter', 1, 'blog', 1),
-('Kushal-Bashyal', 'Kushal Bashyal', 1, 'blog', 2),
-('Kushal-Bashyal', 'Kushal Bashyal', 1, 'blog', 1),
-('Nepali', 'Nepali', 1, 'blog', 1),
-('Nepal', 'Nepal', 1, 'blog', 4),
-('Nepal', 'Nepal', 1, 'blog', 2),
-('Nepal', 'Nepal', 1, 'blog', 1),
-('advertising', 'advertising', 1, 'blog', 2),
-('codeigniter', 'codeigniter', 1, 'blog', 2),
-('Kushal-Bashyal', 'Kushal Bashyal', 1, 'blog', 4),
-('Baby', ' Baby', 1, 'blog', 1),
-('Baby', ' Baby', 1, 'blog', 2),
-('Baby', ' Baby', 1, 'blog', 4),
-('Baby-Jumping', ' Baby Jumping', 1, 'blog', 1),
-('Baby-Jumping', ' Baby Jumping', 1, 'blog', 2),
-('Baby-Jumping', ' Baby Jumping', 1, 'blog', 4),
-('Happy-Baby', 'Happy Baby', 1, 'blog', 1),
-('Happy-Baby', 'Happy Baby', 1, 'blog', 2),
-('Happy-Baby', 'Happy Baby', 1, 'blog', 4),
-('Nepali', 'Nepali', 1, 'blog', 2),
-('Nepali', 'Nepali', 1, 'blog', 4),
-('Proud-to-be-nepalese', 'Proud to be nepalese', 1, 'blog', 1),
-('Proud-to-be-nepalese', 'Proud to be nepalese', 1, 'blog', 2),
-('Proud-to-be-nepalese', 'Proud to be nepalese', 1, 'blog', 4),
-('email-forward', 'email forward', 1, 'blog', 1),
-('email-forward', 'email forward', 1, 'blog', 2),
-('email-forward', 'email forward', 1, 'blog', 4);
+INSERT INTO `cf_tag_cloud` (`tag`, `title`, `count`, `type`, `websites_id`, `meta_title`, `meta_description`, `meta_keyword`, `content`) VALUES
+('Baby-Jumping', ' Baby Jumping', 0, 'blog', 4, NULL, NULL, NULL, NULL),
+('Baby-Jumping', ' Baby Jumping', 0, 'blog', 2, NULL, NULL, NULL, NULL),
+('Baby-Jumping', ' Baby Jumping', 0, 'blog', 1, NULL, NULL, NULL, NULL),
+('Baby', ' Baby', 0, 'blog', 4, NULL, NULL, NULL, NULL),
+('Baby', ' Baby', 0, 'blog', 2, NULL, NULL, NULL, NULL),
+('Baby', ' Baby', 0, 'blog', 1, NULL, NULL, NULL, NULL),
+('Kushal-Bashyal', 'Kushal Bashyal', 1, 'blog', 4, NULL, NULL, NULL, NULL),
+('Kushal-Bashyal', 'Kushal Bashyal', 1, 'blog', 2, NULL, NULL, NULL, NULL),
+('Kushal-Bashyal', 'Kushal Bashyal', 1, 'blog', 1, NULL, NULL, NULL, NULL),
+('Happy-Baby', 'Happy Baby', 0, 'blog', 1, NULL, NULL, NULL, NULL),
+('Happy-Baby', 'Happy Baby', 0, 'blog', 2, NULL, NULL, NULL, NULL),
+('Happy-Baby', 'Happy Baby', 0, 'blog', 4, NULL, NULL, NULL, NULL),
+('advertising', 'advertising', 1, 'blog', 1, NULL, NULL, NULL, NULL),
+('advertising', 'advertising', 1, 'blog', 2, NULL, NULL, NULL, NULL),
+('codeigniter', 'codeigniter', 1, 'blog', 1, NULL, NULL, NULL, NULL),
+('codeigniter', 'codeigniter', 0, 'blog', 2, NULL, NULL, NULL, NULL),
+('Nepal', 'Nepal', 1, 'blog', 1, NULL, NULL, NULL, NULL),
+('Nepal', 'Nepal', 1, 'blog', 2, NULL, NULL, NULL, NULL),
+('Nepal', 'Nepal', 1, 'blog', 4, NULL, NULL, NULL, NULL),
+('Nepali', 'Nepali', 1, 'blog', 1, NULL, NULL, NULL, NULL),
+('Nepali', 'Nepali', 1, 'blog', 2, NULL, NULL, NULL, NULL),
+('Nepali', 'Nepali', 1, 'blog', 4, NULL, NULL, NULL, NULL),
+('Proud-to-be-nepalese', 'Proud to be nepalese', 0, 'blog', 1, NULL, NULL, NULL, NULL),
+('Proud-to-be-nepalese', 'Proud to be nepalese', 0, 'blog', 2, NULL, NULL, NULL, NULL),
+('Proud-to-be-nepalese', 'Proud to be nepalese', 0, 'blog', 4, NULL, NULL, NULL, NULL),
+('email-forward', 'email forward', 0, 'blog', 1, NULL, NULL, NULL, NULL),
+('email-forward', 'email forward', 0, 'blog', 2, NULL, NULL, NULL, NULL),
+('email-forward', 'email forward', 0, 'blog', 4, NULL, NULL, NULL, NULL),
+('test', 'test', 4, 'blog', 1, NULL, NULL, NULL, NULL),
+('test', 'test', 3, 'blog', 2, NULL, NULL, NULL, NULL),
+('test', 'test', 2, 'blog', 4, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -971,6 +1014,7 @@ INSERT INTO `cf_tag_cloud` (`tag`, `title`, `count`, `type`, `websites_id`) VALU
 -- Table structure for table `cf_trim`
 --
 
+DROP TABLE IF EXISTS `cf_trim`;
 CREATE TABLE IF NOT EXISTS `cf_trim` (
   `trim_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `long_url` varchar(255) NOT NULL,
@@ -998,6 +1042,7 @@ INSERT INTO `cf_trim` (`trim_id`, `long_url`, `created`, `creator`, `referrals`)
 -- Table structure for table `cf_user`
 --
 
+DROP TABLE IF EXISTS `cf_user`;
 CREATE TABLE IF NOT EXISTS `cf_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `active` char(1) NOT NULL DEFAULT '',
@@ -1011,6 +1056,9 @@ CREATE TABLE IF NOT EXISTS `cf_user` (
   `is_author` int(1) NOT NULL DEFAULT '0',
   `profile_link` varchar(255) DEFAULT NULL,
   `profile` text,
+  `photo_small` varchar(255) DEFAULT NULL,
+  `photo_large` varchar(255) DEFAULT NULL,
+  `intro` text,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
@@ -1019,11 +1067,11 @@ CREATE TABLE IF NOT EXISTS `cf_user` (
 -- Dumping data for table `cf_user`
 --
 
-INSERT INTO `cf_user` (`user_id`, `active`, `email`, `username`, `password`, `firstname`, `lastname`, `group_id`, `is_admin`, `is_author`, `profile_link`, `profile`) VALUES
-(11, '1', 'test@test.com', NULL, '098f6bcd4621d373cade4e832627b4f6', 'Damodar', 'Bashyal', 1, 1, 1, 'https://plus.google.com/103583381097797606705', '<p>Damodar is a open source web developer who likes to provide web tools for FREE.</p>'),
-(46, '1', 'author@test.com', NULL, '098f6bcd4621d373cade4e832627b4f6', 'Author', 'Author', 4, 1, 1, NULL, NULL),
-(47, '1', 'notauthor@test.com', NULL, 'test', 'Not', 'Author', 0, 0, 0, NULL, NULL),
-(48, '2', 'cancelleduser@test.com', NULL, '098f6bcd4621d373cade4e832627b4f6', 'Cancelled', 'User', 2, 0, 0, '', '<p>This is cancelled user''s profile :)</p>');
+INSERT INTO `cf_user` (`user_id`, `active`, `email`, `username`, `password`, `firstname`, `lastname`, `group_id`, `is_admin`, `is_author`, `profile_link`, `profile`, `photo_small`, `photo_large`, `intro`) VALUES
+(11, '1', 'test@test.com', NULL, '098f6bcd4621d373cade4e832627b4f6', 'Damodar', 'Bashyal', 1, 1, 1, 'https://plus.google.com/103583381097797606705', '<p>Damodar is a open source web developer who likes to provide web tools for FREE.</p>', NULL, NULL, NULL),
+(46, '1', 'author@test.com', NULL, '098f6bcd4621d373cade4e832627b4f6', 'Author', 'Author', 4, 1, 1, NULL, NULL, NULL, NULL, NULL),
+(47, '1', 'notauthor@test.com', NULL, 'test', 'Not', 'Author', 0, 0, 0, NULL, NULL, NULL, NULL, NULL),
+(48, '2', 'cancelleduser@test.com', NULL, '098f6bcd4621d373cade4e832627b4f6', 'Cancelled', 'User', 2, 0, 0, '', '<p>This is cancelled user''s profile :)</p>', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1031,6 +1079,7 @@ INSERT INTO `cf_user` (`user_id`, `active`, `email`, `username`, `password`, `fi
 -- Table structure for table `cf_websites`
 --
 
+DROP TABLE IF EXISTS `cf_websites`;
 CREATE TABLE IF NOT EXISTS `cf_websites` (
   `websites_id` int(11) NOT NULL AUTO_INCREMENT,
   `websites_name` varchar(255) DEFAULT NULL,
@@ -1045,7 +1094,7 @@ CREATE TABLE IF NOT EXISTS `cf_websites` (
 
 INSERT INTO `cf_websites` (`websites_id`, `websites_name`, `websites_url`, `websites_status`) VALUES
 (1, 'Codefight CMS', 'http://np.codefight.org/', 1),
-(2, 'iTalkSEO', 'http://np.italkseo.com/', 1),
-(3, 'Zoosper', 'http://np.zoosper.com/', 1),
-(4, 'Coupon Gift Deals', 'http://np.coupongiftdeals.com/', 1);
+(2, 'Tips-Tricks', 'http://learntipsandtricks.com/', 1),
+(3, 'Zoosper', 'http://zoosper.com/', 1),
+(4, 'Coupon Gift Deals', 'http://coupongiftdeals.com/', 1);
 SET FOREIGN_KEY_CHECKS=1;
