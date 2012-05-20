@@ -4,18 +4,33 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
+/**
+ *
+ */
 class Cf_process_lib
 {
-
+    /**
+     * @param string $html_string
+     * @param bool   $minify_this_page
+     */
     function view($html_string = '', $minify_this_page = true)
     {
         $CI =& get_instance();
 
         if($CI->cfModule != 'admin'){
+            preg_match_all('/{{parse\-(.*)\s\s*(.*)\s*}}/isU', $html_string, $matches);
+            if(count($matches)>1){
+                foreach($matches[1] as $k => $v){
+                    $v = preg_replace('/[^a-z0-9]/isU', '', strtolower($v));
+                    $html_string = Library('parser/'.$v)->parse($html_string, $matches);
+                }
+            }
+
             $html_string = preg_replace('/\[\[BASE_URL\]\]/i', base_url(), $html_string);
             $html_string = preg_replace('/\[\*\[/i', '[[', $html_string);
             $html_string = preg_replace('/\]\*\]/i', ']]', $html_string);
 
+            /*@Deprecated - it's now managed through parser.
             preg_match_all('/{{tag\s\s*(.*)\s*}}/isU', $html_string, $matches);
             if(isset($matches[1])){
                 foreach($matches[1] as $k => $v){
@@ -49,25 +64,10 @@ class Cf_process_lib
                     }
                 }
             }
+            */
             //preg_match_all('/{{tag\s*(url=\'(.*)\')?\s*(rel=\'(.*)\')?\s*(title=\'(.*)\')?\s*(.*)}}/iSu', $html_string, $matches);
         }
-/*
-Array
-(
-    [0] =&gt; Array
-        (
-            [0] =&gt; {{tag url='http://codefight.org/' rel='external,nofollow' title='Codefight CMS'}}
-            [1] =&gt; {{tag title='Codeigniter CMS'}}
-        )
 
-    [1] =&gt; Array
-        (
-            [0] =&gt; url='http://codefight.org/' rel='external,nofollow' title='Codefight CMS'
-            [1] =&gt; title='Codeigniter CMS'
-        )
-
-)
- */
         //Do you want to minify your html
         $html_tidy = Library('asset')->minify_html; //$CI->config->item('cf_minify_html');
 
@@ -79,5 +79,3 @@ Array
     }
 
 }
-
-?>
