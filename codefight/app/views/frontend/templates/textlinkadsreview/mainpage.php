@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en"><?php
 
 //Load Head Block
-$this->cf_block_lib->load('page_html/head'); ?>
+Library('block')->load('page_html/head'); ?>
 
 <body class="codefight-body">
 <div class="wrapper">
     <div class="inner-wrapper"><?php
             //Load message block
-        $this->cf_block_lib->load('page_html/message'); ?>
+        Library('block')->load('page_html/message'); ?>
 
         <div class="round20 header">
             <div class="logo"><a title="Goto <?php echo $this->setting->site_name ?> Home"
@@ -19,7 +19,7 @@ $this->cf_block_lib->load('page_html/head'); ?>
             <div class="banner"><?php
 
                 //Load Banner 728 X 90 Block
-                $this->cf_block_lib->load('advertisements/banner_728x90'); ?>
+                Library('block')->load('advertisements/banner_728x90'); ?>
             </div>
 
             <p class="clear">&nbsp;</p>
@@ -28,12 +28,12 @@ $this->cf_block_lib->load('page_html/head'); ?>
                 <div class="menu"><?php
 
                     //Load page menu horizontal block
-                    $this->cf_block_lib->load('menu/page_horizontal'); ?>
+                    Library('block')->load('menu/page_horizontal'); ?>
 
                     <div class="search-field"><?php
 
                         //Load google Search block
-                        $this->cf_block_lib->load('search/google_search');?>
+                        Library('block')->load('search/google_search');?>
                     </div>
                     <p class="clear">&nbsp;</p>
                 </div>
@@ -47,7 +47,7 @@ $this->cf_block_lib->load('page_html/head'); ?>
                 <div class="recent-posts-container"><?php
 
                     //Load Content Block
-                    $this->cf_block_lib->load($content_block, 'textlinkadsreview'); ?>
+                    Library('block')->load($content_block, 'textlinkadsreview'); ?>
                     <!-- div class="recent-post"></div -->
                 </div>
 
@@ -63,13 +63,13 @@ $this->cf_block_lib->load('page_html/head'); ?>
                 <!-- div class="intro-social-container">Follow FB TWT</div --><?php
 
                 //Load Categories Block
-                $this->cf_block_lib->load('menu/blog_categories_vertical', 'textlinkadsreview');
+                Library('block')->load('menu/blog_categories_vertical', 'textlinkadsreview');
 
                 //Load Tag Cloud block
-                $this->cf_block_lib->load('tag_cloud', 'textlinkadsreview');
+                Library('block')->load('tag_cloud', 'textlinkadsreview');
 
                 //Load Blog Roll block
-                $this->cf_block_lib->load('menu/blog_roll_vertical', 'textlinkadsreview');?>
+                Library('block')->load('menu/blog_roll_vertical', 'textlinkadsreview');?>
 
             </div>
 
@@ -82,21 +82,21 @@ $this->cf_block_lib->load('page_html/head'); ?>
                     <h2>Recent Posts</h2><?php
 
                     //Load Blog Categories block
-                    $this->cf_block_lib->load('blog_recent');?>
+                    Library('block')->load('blog_recent');?>
                 </div>
 
                 <div class="blog_roll">
                     <h2>FAVOURITE LINKS</h2><?php
 
                     //Load Favourite Links block
-                    $this->cf_block_lib->load('menu/favorite_links_vertical');?>
+                    Library('block')->load('menu/favorite_links_vertical');?>
                 </div>
 
                 <div class="footer_most_popular">
                     <h2>Most Popular</h2><?php
 
                     //Load Footer Block
-                    $this->cf_block_lib->load('blog_popular'); ?>
+                    Library('block')->load('blog_popular'); ?>
                 </div>
 
             </div>
@@ -105,7 +105,7 @@ $this->cf_block_lib->load('page_html/head'); ?>
             <div class="copyright-text"><?php
 
                 //Load copyright Block
-                $this->cf_block_lib->load('page_html/copyright'); ?>
+                Library('block')->load('page_html/copyright'); ?>
             </div>
 
             <p class="clear">&nbsp;</p>
@@ -113,7 +113,7 @@ $this->cf_block_lib->load('page_html/head'); ?>
             <div class="powered_by"><?php
 
                 //Load Powered By Block: I hope you keep as it is. Thanks.
-                $this->cf_block_lib->load('page_html/powered_by'); ?>
+                Library('block')->load('page_html/powered_by'); ?>
             </div>
 
         </div>

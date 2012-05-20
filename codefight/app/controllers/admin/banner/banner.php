@@ -34,7 +34,7 @@ class Banner extends MY_Controller
         parent::MY_Controller();
 
         $this->load->helper('file');
-		$this->load->library('banner/cf_banner_lib');
+		Library('banner');
     }
 
     function index()

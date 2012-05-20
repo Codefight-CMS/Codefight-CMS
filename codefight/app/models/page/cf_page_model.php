@@ -147,7 +147,7 @@ class Cf_page_model extends MY_Model
                     $data['link'] = $link;
                     //include($template_path . '/blocks/comment.php');
                     $this->lang->load('comment');
-                    $_content[$k]['comment'] = $this->cf_block_lib->load('comment', false, '.php', true);
+                    $_content[$k]['comment'] = Library('block')->load('comment', false, '.php', true);
                 }
 
             } else {

@@ -2,20 +2,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en"><?php
 
-$this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
+Library('block')->load('page_html/head'); //Load Head Block ?>
 <body class="codefight-body">
 
 <div class="siteContainer">
 
     <div class="header">
 
-        <div class="logo"><?php $this->cf_block_lib->load('page_html/logo'); //Load logo block ?></div>
+        <div class="logo"><?php Library('block')->load('page_html/logo'); //Load logo block ?></div>
 
         <div class="userLogged">
 
-            <div class="feed_counter"><?php $this->cf_block_lib->load('feed/feed_counter'); //Load Feed Counter block ?></div>
+            <div class="feed_counter"><?php Library('block')->load('feed/feed_counter'); //Load Feed Counter block ?></div>
 
-            <?php $this->cf_block_lib->load('welcome'); //Load welcome block ?>
+            <?php Library('block')->load('welcome'); //Load welcome block ?>
 
         </div>
 
@@ -23,13 +23,13 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
     <?php
 
     //Load message block
-    $this->cf_block_lib->load('page_html/message'); ?>
+    Library('block')->load('page_html/message'); ?>
 
     <div class="pageContainer">
 
         <div class="menu_top">
 
-            <?php $this->cf_block_lib->load('menu/page_horizontal'); //Load page menu horizontal block ?>
+            <?php Library('block')->load('menu/page_horizontal'); //Load page menu horizontal block ?>
 
             <p class="clear">&nbsp;</p>
 
@@ -39,7 +39,7 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 
         <div class="contents">
 
-            <?php $this->cf_block_lib->load($content_block); //Load Content Block ?>
+            <?php Library('block')->load($content_block); //Load Content Block ?>
 
         </div>
 
@@ -55,7 +55,7 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 
         <div class="copyright">
 
-            <?php $this->cf_block_lib->load('page_html/copyright'); //Load copyright Block ?>
+            <?php Library('block')->load('page_html/copyright'); //Load copyright Block ?>
 
         </div>
 
@@ -63,7 +63,7 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 
         <div class="powered_by">
 
-            <?php $this->cf_block_lib->load('page_html/powered_by'); //Powered By: Please give me some credit :) ?>
+            <?php Library('block')->load('page_html/powered_by'); //Powered By: Please give me some credit :) ?>
 
         </div>
 

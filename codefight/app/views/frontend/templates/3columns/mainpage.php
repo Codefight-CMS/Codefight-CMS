@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en"><?php
 
 //Load Head Block
-$this->cf_block_lib->load('page_html/head'); ?>
+Library('block')->load('page_html/head'); ?>
 <body class="codefight-body">
 
 <noscript>
@@ -18,7 +18,7 @@ $this->cf_block_lib->load('page_html/head'); ?>
         <?php
 
         //Load page menu horizontal block
-        $this->cf_block_lib->load('menu/page_horizontal'); ?>
+        Library('block')->load('menu/page_horizontal'); ?>
         <p class="clear">&nbsp;</p>
     </div>
     <p class="clear">&nbsp;</p>
@@ -27,19 +27,19 @@ $this->cf_block_lib->load('page_html/head'); ?>
 <div class="siteContainer">
         <?php
             //Load Language Selection Block
-            $this->cf_block_lib->load('languages');
+            Library('block')->load('languages');
 
             //Load message block
-            $this->cf_block_lib->load('page_html/message'); ?>
+            Library('block')->load('page_html/message'); ?>
 
             <div class="header">
                 <div class="userLogged"><?php
 
                     //Load Template Select Block
-                    $this->cf_block_lib->load('template_select');
+                    Library('block')->load('template_select');
 
                     //Load welcome block
-                    $this->cf_block_lib->load('welcome'); ?>
+                    Library('block')->load('welcome'); ?>
 
                 </div>
             </div>
@@ -51,7 +51,7 @@ $this->cf_block_lib->load('page_html/head'); ?>
                         <h2>CATEGORIES</h2><?php
 
                         //Load Blog Categories block
-                        $this->cf_block_lib->load('menu/blog_categories_vertical');?>
+                        Library('block')->load('menu/blog_categories_vertical');?>
                     </div>
 
                     <p class="clear">&nbsp;</p>
@@ -60,7 +60,7 @@ $this->cf_block_lib->load('page_html/head'); ?>
                         <h2>BLOG ROLL</h2><?php
 
                         //Load Blog Roll block
-                        $this->cf_block_lib->load('menu/blog_roll_vertical');?>
+                        Library('block')->load('menu/blog_roll_vertical');?>
                     </div>
 
                     <p class="clear">&nbsp;</p>
@@ -69,7 +69,7 @@ $this->cf_block_lib->load('page_html/head'); ?>
                         <h2>FAVOURITE LINKS</h2><?php
 
                         //Load Favourite Links block
-                        $this->cf_block_lib->load('menu/favorite_links_vertical');?>
+                        Library('block')->load('menu/favorite_links_vertical');?>
                     </div>
 
                     <p class="clear">&nbsp;</p>
@@ -77,7 +77,7 @@ $this->cf_block_lib->load('page_html/head'); ?>
                     <div class="tag_cloud"><?php
 
                         //Load Tag Cloud block
-                        $this->cf_block_lib->load('tag_cloud'); ?>
+                        Library('block')->load('tag_cloud'); ?>
                     </div>
 
                 </div>
@@ -85,7 +85,7 @@ $this->cf_block_lib->load('page_html/head'); ?>
                 <div class="contents"><?php
 
                     //Load Content Block
-                    $this->cf_block_lib->load($content_block, '3columns'); ?>
+                    Library('block')->load($content_block, '3columns'); ?>
 
                 </div>
 
@@ -93,14 +93,14 @@ $this->cf_block_lib->load('page_html/head'); ?>
                     <div class="google_search"><?php
 
                         //Load google Search block
-                        $this->cf_block_lib->load('google_search');?>
+                        Library('block')->load('google_search');?>
                     </div>
 
                     <div class="favorite_links">
                         <h2>Favorite Links</h2><?php
 
                         //Load Sponsored Links block
-                        $this->cf_block_lib->load('menu/favorite_links_vertical'); ?>
+                        Library('block')->load('menu/favorite_links_vertical'); ?>
 
                     </div>
 
@@ -117,7 +117,7 @@ $this->cf_block_lib->load('page_html/head'); ?>
                 <div class="footer_links"><?php
 
                     //Load Footer Block
-                    $this->cf_block_lib->load('page_html/footer'); ?>
+                    Library('block')->load('page_html/footer'); ?>
                 </div>
                 <p class="clear">&nbsp;</p>
 
@@ -125,33 +125,33 @@ $this->cf_block_lib->load('page_html/head'); ?>
                     <h2>Recent Posts</h2><?php
 
                     //Load Footer Block
-                    $this->cf_block_lib->load('blog_recent'); ?>
+                    Library('block')->load('blog_recent'); ?>
                 </div>
                 <div class="footer_most_popular">
                     <h2>Most Popular</h2><?php
 
                     //Load Footer Block
-                    $this->cf_block_lib->load('blog_popular'); ?>
+                    Library('block')->load('blog_popular'); ?>
                 </div>
                 <div class="footer_ontheweb_popular">
                     <h2>Sponsors</h2><?php
 
                     //Load Footer Block
-                    $this->cf_block_lib->load('menu/sponsored_links_vertical'); ?>
+                    Library('block')->load('menu/sponsored_links_vertical'); ?>
                 </div>
                 <p class="clear">&nbsp;</p>
 
                 <div class="copyright"><?php
 
                     //Load copyright Block
-                    $this->cf_block_lib->load('page_html/copyright'); ?>
+                    Library('block')->load('page_html/copyright'); ?>
                 </div>
                 <p class="clear">&nbsp;</p>
 
                 <div class="powered_by"><?php
 
                     //Load Powered By Block: I hope you keep as it is. Thanks.
-                    $this->cf_block_lib->load('page_html/powered_by'); ?>
+                    Library('block')->load('page_html/powered_by'); ?>
                 </div>
             </div>
 

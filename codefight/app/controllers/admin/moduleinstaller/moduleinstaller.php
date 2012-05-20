@@ -43,7 +43,7 @@ class Moduleinstaller extends MY_Controller
     {
         $data = '';
 		$sort = 1;
-		$menu_item = $this->cf_module_lib->_getAdminNav();
+		$menu_item = Library('module')->_getAdminNav();
 
 		$query = $this->db->order_by('parent')->get('module');
 		$modules_db = $query->result_array();

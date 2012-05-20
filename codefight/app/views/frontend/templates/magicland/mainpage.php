@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en"><?php
 
-$this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
+Library('block')->load('page_html/head'); //Load Head Block ?>
 <body class="codefight-body">
 
 <div class="siteContainer">
@@ -12,13 +12,13 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 
             <div class="logo">
 
-                <?php $this->cf_block_lib->load('page_html/logo', 'magicland'); //Load logo block ?>
+                <?php Library('block')->load('page_html/logo', 'magicland'); //Load logo block ?>
 
             </div>
 
             <div class="google_468_60_top">
 
-                <?php $this->cf_block_lib->load('advertisements/banner_468x60', 'magicland'); //Load Banner 468 X 60 block ?>
+                <?php Library('block')->load('advertisements/banner_468x60', 'magicland'); //Load Banner 468 X 60 block ?>
 
             </div>
 
@@ -28,23 +28,23 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 
             <div class="feed_counter">
 
-                <?php $this->cf_block_lib->load('feed/feed_counter'); //Load Feed Counter block ?>
+                <?php Library('block')->load('feed/feed_counter'); //Load Feed Counter block ?>
 
             </div>
 
-            <?php $this->cf_block_lib->load('welcome'); //Load welcome block ?>
+            <?php Library('block')->load('welcome'); //Load welcome block ?>
 
             <p class="clear">&nbsp;</p>
 
         </div>
 
-        <?php $this->cf_block_lib->load('page_html/message'); //Load message block ?>
+        <?php Library('block')->load('page_html/message'); //Load message block ?>
 
         <div class="menu_top">
 
-            <?php //$this->cf_block_lib->load('template_select'); //Load Template Select Block ?>
+            <?php //Library('block')->load('template_select'); //Load Template Select Block ?>
 
-            <?php $this->cf_block_lib->load('menu/page_horizontal'); //Load page menu horizontal block ?>
+            <?php Library('block')->load('menu/page_horizontal'); //Load page menu horizontal block ?>
 
             <p class="clear">&nbsp;</p>
 
@@ -56,7 +56,7 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 
             <div class="contentBlock">
 
-                <?php $this->cf_block_lib->load($content_block, 'magicland'); //Load Content Block ?>
+                <?php Library('block')->load($content_block, 'magicland'); //Load Content Block ?>
 
             </div>
 
@@ -70,7 +70,7 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 
                 <h2>CATEGORIES</h2>
 
-                <?php $this->cf_block_lib->load('menu/blog_categories_vertical'); //Load Blog Categories block ?>
+                <?php Library('block')->load('menu/blog_categories_vertical'); //Load Blog Categories block ?>
 
             </div>
 
@@ -78,13 +78,13 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 
                 <h2>BLOG ROLL</h2>
 
-                <?php $this->cf_block_lib->load('menu/blog_roll_vertical'); //Load Blog Roll block ?>
+                <?php Library('block')->load('menu/blog_roll_vertical'); //Load Blog Roll block ?>
 
             </div>
 
             <div class="tag_cloud">
 
-                <?php $this->cf_block_lib->load('tag_cloud'); //Load Tag Cloud block ?>
+                <?php Library('block')->load('tag_cloud'); //Load Tag Cloud block ?>
 
             </div>
 
@@ -94,7 +94,7 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 
         <div class="right_column">
 
-            <?php $this->cf_block_lib->load('advertisements/banner_160x600', 'magicland'); //Load Banner 160 X 600 block ?>
+            <?php Library('block')->load('advertisements/banner_160x600', 'magicland'); //Load Banner 160 X 600 block ?>
 
             <p class="clear">&nbsp;</p>
 
@@ -106,13 +106,13 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 
             <div class="footer_banner">
 
-                <?php $this->cf_block_lib->load('advertisements/banner_728x90', 'magicland'); //Load Banner 728 X 90 Block ?>
+                <?php Library('block')->load('advertisements/banner_728x90', 'magicland'); //Load Banner 728 X 90 Block ?>
 
             </div>
 
             <div class="footer_links">
 
-                <?php $this->cf_block_lib->load('page_html/footer'); //Load Footer Block ?>
+                <?php Library('block')->load('page_html/footer'); //Load Footer Block ?>
 
             </div>
 
@@ -120,7 +120,7 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 
             <div class="copyright">
 
-                <?php $this->cf_block_lib->load('page_html/copyright'); //Load copyright Block ?>
+                <?php Library('block')->load('page_html/copyright'); //Load copyright Block ?>
 
             </div>
 
@@ -128,7 +128,7 @@ $this->cf_block_lib->load('page_html/head'); //Load Head Block ?>
 
             <div class="powered_by">
 
-                <?php $this->cf_block_lib->load('page_html/powered_by'); //Powered By: Hope to get some credit. ?>
+                <?php Library('block')->load('page_html/powered_by'); //Powered By: Hope to get some credit. ?>
 
             </div>
 

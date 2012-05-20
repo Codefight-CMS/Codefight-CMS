@@ -100,7 +100,7 @@ class Blog extends MY_Controller
            | See These Files For Processing:
            | models/cf_blog_model.php
            | models/cf_data_model.php
-           | libraries/cf_block_lib.php
+           | libraries/block/block_Library.php
            */
         if (isset($data['content']) && count((array)$data['content']) > 0) {
             $data['content'] = $this->cf_blog_model->parseContent($data['content']);

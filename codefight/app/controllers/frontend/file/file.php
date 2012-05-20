@@ -70,7 +70,7 @@ class File extends MY_Controller
            | See These Files For Processing:
            | models/cf_blog_model.php
            | models/cf_data_model.php
-           | libraries/cf_block_lib.php
+           | libraries/block/block_Library.php
            */
         if (isset($data['content']) && count((array)$data['content']) > 0) {
             //For static page, display full content by passing 2nd param as false.
