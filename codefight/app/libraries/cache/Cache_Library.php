@@ -4,18 +4,20 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_cache_lib
+class Cache_Library extends MY_Library
 {
-    var
-        $cache_dir = APPPATH . 'cache',//default cache write directory
-        $allow_empty = true, //default flag to allow empty cache (will check for empty data or empty array if array)
-        $cache_ext = '.cfcache', //default cache file extension (default ".cfcache")
-        $cache_header = '', //default cache header data (default: "")
-        $cache_lifetime = 86400 //default cache default lifetime in seconds (default 24 hours: "86400")
-    ;
+
+    public $cache_dir       = 'cache'; //default cache write directory
+    public $allow_empty     = true; //default flag to allow empty cache (will check for empty data or empty array if array)
+    public $cache_ext       = '.cfcache'; //default cache file extension (default ".cfcache")
+    public $cache_header    = ''; //default cache header data (default: "")
+    public $cache_lifetime  = 86400; //default cache default lifetime in seconds (default 24 hours: "86400")
 
     public function __construct()
     {
+        if(strpos($this->cache_dir, '/') === false){
+            $this->cache_dir = APPPATH . $this->cache_dir;
+        }
         define("CACHE_DIR", $this->cache_dir);
         define("ALLOW_EMPTY", $this->allow_empty);
         define("CACHE_EXT", $this->cache_ext);
@@ -30,7 +32,7 @@ class Cf_cache_lib
      * @var string
      */
     private static $_cache_dir = CACHE_DIR;
-    private static $cache_ext = CACHE_EXT;
+    private static $_cache_ext = CACHE_EXT;
 
     /**
      * Allow empty cache flag
@@ -69,7 +71,7 @@ class Cf_cache_lib
         }
 
         return self::$_cache_dir . $subdir . ( $static_naming ? rawurlencode($cache_id) : rawurlencode(md5($_SERVER["REQUEST_URI"])
-            . ( $cache_id !== null ? "-{$cache_id}" : null )) ) . CACHE_EXT;
+                . ( $cache_id !== null ? "-{$cache_id}" : null )) ) . CACHE_EXT;
     }
 
     /**
@@ -90,7 +92,7 @@ class Cf_cache_lib
      * Flush all cache files
      */
     public static function flushCacheFiles() {
-        array_map("unlink", glob(self::$_cache_dir . "*" . $cache_ext));
+        array_map("unlink", glob(self::$_cache_dir . "*" . $_cache_ext));
     }
 
     /**
@@ -111,7 +113,7 @@ class Cf_cache_lib
                     // return cache file
                     return $unserialize ? unserialize(file_get_contents(self::_getCacheFilename($cache_id, $static_naming)))
                         : file_get_contents(self::_getCacheFilename($cache_id, $static_naming));
-                // cache file has expired
+                    // cache file has expired
                 } else {
                     // flush cache file
                     self::flush($cache_id, $static_naming);
@@ -203,10 +205,10 @@ class Cf_cache_lib
                 // write cache file (with cache header data)
                 return file_put_contents(self::_getCacheFilename($cache_id, $static_naming),
                     self::$_cache_header . ( $serialize ? serialize($content) : $content )) ? true : false;
-            // cache directory not writable
+                // cache directory not writable
             } else {
                 trigger_error("Failed to write cache file, cache directory \""
-                    . self::$_cache_dir . "\" is not writable (" . __METHOD__ . ")", E_USER_WARNING);
+                        . self::$_cache_dir . "\" is not writable (" . __METHOD__ . ")", E_USER_WARNING);
             }
         }
     }

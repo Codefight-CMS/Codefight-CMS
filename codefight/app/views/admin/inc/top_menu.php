@@ -10,7 +10,7 @@
  error_reporting(E_ALL);
 //$menu_item = $this->cf_module_lib->_getAdminNav();
 $menu_item = Library('module')->get_nav_from_db();
-//$cache = $this->cf_cache_lib->cache(60);
+//$cache = Library('cache')->cache(60);
 //print_r(get_class_vars(get_class($cache)));
 //$test = $cache->_display(json_encode($menu_item), 'blahblah_id');
 //print_r($test);
