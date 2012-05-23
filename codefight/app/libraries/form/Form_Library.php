@@ -3,12 +3,11 @@
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
-
 /*
 	>menu_id | menu_active | menu_parent_id | menu_link
 	>menu_title | menu_type | menu_meta_title | menu_meta_keywords
 	>menu_meta_description | menu_sort
-	
+
 	Parameters that can be passed in an array:
 	$parameters = array (
 					'ul_param' => 'class="xyz"...',
@@ -19,7 +18,8 @@ if (!defined('BASEPATH')) {
 	multi level menu created for codefight cms by damodar bashyal
 	visit codefight.org
 */
-class Cf_form_lib
+
+class Asset_Library extends MY_Library
 {
 
     var $CI = '';
@@ -134,7 +134,7 @@ class Cf_form_lib
             }
             //store value to options array
             $checked = ($opK == $this->_get_post_val($val['form_item_name'], $val['form_item_default_value'])) ? true
-                    : false;
+                : false;
             $o_array = array(
                 'name' => $val['form_item_name'],
                 'id' => $val['form_item_name'],
@@ -291,4 +291,3 @@ class Cf_form_lib
 [form_item_default_value] =&gt; Please enter first name
 [form_item_parameters] =&gt; onfocus=""
 */
-?>

@@ -44,7 +44,7 @@ class User extends MY_Controller
            */
         $load = array(
             'model' => 'user/cf_user_model',
-            'library' => 'cf_bbcode_lib + cf_form_lib',
+            'library' => 'cf_bbcode_lib',
             'helper' => 'text + form'
         );
 

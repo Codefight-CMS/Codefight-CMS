@@ -439,7 +439,7 @@ class Cf_blog_model extends MY_Model
 
                 //check to see if there is a form
                 if (preg_match_all('#{{form (.+)}}#isU', $page_content, $identifier)) {
-                    $form = $this->cf_form_lib->create($identifier, current_url());
+                    $form = Library('form')->create($identifier, current_url());
                     if (isset($_POST['identifier'])) {
                         $page_content
                             .= '<script type="text/javascript">
