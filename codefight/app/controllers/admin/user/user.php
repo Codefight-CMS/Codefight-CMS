@@ -70,7 +70,7 @@ class User extends MY_Controller
             //---
             $html_string = $this->load->view('admin/user/user_view', $data, true); //Get view data in place of sending to browser.
 
-            $this->cf_process_lib->view($html_string);
+            Library('process')->view($html_string);
         }
     }
 
@@ -155,7 +155,7 @@ class User extends MY_Controller
         //---
         $html_string = $this->load->view('admin/user/user_create_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function _delete()
@@ -352,7 +352,7 @@ class User extends MY_Controller
         //---
         $html_string = $this->load->view('admin/user/user_edit_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function _email_check($str)

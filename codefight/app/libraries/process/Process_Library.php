@@ -7,7 +7,7 @@ if (!defined('BASEPATH')) {
 /**
  *
  */
-class Cf_process_lib
+class Process_Library extends MY_Library
 {
     /**
      * @param string $html_string

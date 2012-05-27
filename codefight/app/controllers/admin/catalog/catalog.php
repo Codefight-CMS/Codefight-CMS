@@ -40,6 +40,6 @@ class User extends MY_Controller
 		//---
 		$html_string = $this->load->view('admin/catalog/catalog_view', $data, true); //Get view data in place of sending to browser.
 
-		$this->cf_process_lib->view($html_string);
+		Library('process')->view($html_string);
 	}
 }

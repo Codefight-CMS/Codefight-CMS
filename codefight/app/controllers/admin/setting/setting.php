@@ -51,7 +51,7 @@ class Setting extends MY_Controller
         //---
         $html_string = $this->load->view('admin/setting/setting_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function site()
@@ -93,7 +93,7 @@ class Setting extends MY_Controller
         //---
         $html_string = $this->load->view('admin/setting/cache_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function _emptydir($dir, $DeleteMe = false)
@@ -132,7 +132,7 @@ class Setting extends MY_Controller
             //---
             $html_string = $this->load->view('admin/setting/key_view', $data, true); //Get view data in place of sending to browser.
 
-            $this->cf_process_lib->view($html_string);
+            Library('process')->view($html_string);
         }
     }
 
@@ -158,7 +158,7 @@ class Setting extends MY_Controller
             //---
             $html_string = $this->load->view('admin/setting/websites_view', $data, true); //Get view data in place of sending to browser.
 
-            $this->cf_process_lib->view($html_string);
+            Library('process')->view($html_string);
         }
     }
 
@@ -209,7 +209,7 @@ class Setting extends MY_Controller
         //---
         $html_string = $this->load->view('admin/setting/websites_create_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function _websites_edit()
@@ -276,7 +276,7 @@ class Setting extends MY_Controller
         //---
         $html_string = $this->load->view('admin/setting/websites_edit_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function _websites_delete()
@@ -368,7 +368,7 @@ class Setting extends MY_Controller
         //---
         $html_string = $this->load->view('admin/setting/key_create_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function _key_delete()
@@ -503,7 +503,7 @@ class Setting extends MY_Controller
         //---
         $html_string = $this->load->view('admin/setting/key_edit_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function sitemap()
@@ -515,7 +515,7 @@ class Setting extends MY_Controller
         //---
         $html_string = $this->load->view('admin/setting/sitemap_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
 }

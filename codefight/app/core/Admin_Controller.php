@@ -31,7 +31,7 @@ class Admin_Controller {
 
 		//@todo::check if the user can access
         //Check access rights
-        $this->CI->cf_login_lib->check_login($group_id);
+        Library('login')->check_login($group_id);
 
         $page = trim($this->CI->cfAdminController . '/' . $this->CI->cfAdminMethod, '/');
 
@@ -49,7 +49,7 @@ class Admin_Controller {
         {
             return FALSE;
         }
-		
+
 		$msg = array('error' => '<p>You need access to perform action on page <strong>'.$page.'</strong>. </p>');
 		setMessages($msg, 'error');
 

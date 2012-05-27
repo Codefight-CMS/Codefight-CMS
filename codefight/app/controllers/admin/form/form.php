@@ -274,7 +274,7 @@ class Form extends MY_Controller
             //---
             $html_string = $this->load->view("admin/form/form_submitted{$read}_view", $data, true); //Get view data in place of sending to browser.
 
-            $this->cf_process_lib->view($html_string);
+            Library('process')->view($html_string);
         }
     }
 
@@ -298,7 +298,7 @@ class Form extends MY_Controller
             //---
             $html_string = $this->load->view('admin/form/form_item_view', $data, true); //Get view data in place of sending to browser.
 
-            $this->cf_process_lib->view($html_string);
+            Library('process')->view($html_string);
         }
     }
 
@@ -389,7 +389,7 @@ class Form extends MY_Controller
         //---
         $html_string = $this->load->view('admin/form/form_item_create_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function _item_delete()
@@ -517,7 +517,7 @@ class Form extends MY_Controller
         //---
         $html_string = $this->load->view('admin/form/form_item_edit_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
 
@@ -544,7 +544,7 @@ class Form extends MY_Controller
             //---
             $html_string = $this->load->view('admin/form/form_group_view', $data, true); //Get view data in place of sending to browser.
 
-            $this->cf_process_lib->view($html_string);
+            Library('process')->view($html_string);
         }
     }
 
@@ -606,7 +606,7 @@ class Form extends MY_Controller
         //---
         $html_string = $this->load->view('admin/form/form_group_create_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function _group_delete()
@@ -725,7 +725,7 @@ class Form extends MY_Controller
         //---
         $html_string = $this->load->view('admin/form/form_group_edit_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function _manage_group_item()
@@ -804,6 +804,6 @@ class Form extends MY_Controller
         //---
         $html_string = $this->load->view('admin/form/form_group_item_manage_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 }

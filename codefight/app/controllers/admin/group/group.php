@@ -80,7 +80,7 @@ class Group extends MY_Controller
             //---
             $html_string = $this->load->view('admin/group/group_view', $data, true); //Get view data in place of sending to browser.
 
-            $this->cf_process_lib->view($html_string);
+            Library('process')->view($html_string);
         }
     }
 
@@ -133,7 +133,7 @@ class Group extends MY_Controller
         //---
         $html_string = $this->load->view('admin/group/group_create_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function _delete()
@@ -255,7 +255,7 @@ class Group extends MY_Controller
         //---
         $html_string = $this->load->view('admin/group/group_edit_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
 }

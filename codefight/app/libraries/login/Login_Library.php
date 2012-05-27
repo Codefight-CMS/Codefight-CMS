@@ -4,7 +4,10 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_login_lib
+/**
+ *
+ */
+class Login_Library extends MY_Library
 {
     function check_login($access = array())
     {

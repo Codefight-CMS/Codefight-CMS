@@ -178,7 +178,7 @@ class Module_Library extends MY_Library
             $xmlRaw .= preg_replace('@<\?xml(.+)\?>@iU', '', file_get_contents($v));
         }
         $xmlRaw .= '</cfmodules>';
-        $xmlData = $this->CI->cf_simplexml_lib->xml_parse($xmlRaw);
+        $xmlData = Library('simplexml')->xml_parse($xmlRaw);
 
         if (!isset($xmlData['module'])) return array();
 

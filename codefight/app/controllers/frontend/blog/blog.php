@@ -47,7 +47,6 @@ class Blog extends MY_Controller
            */
         $load = array(
             'model'   => 'blog/cf_blog_model + cf_menu_model',
-            'library' => 'cf_bbcode_lib',
             'helper'  => 'text + form'
         );
 
@@ -63,7 +62,7 @@ class Blog extends MY_Controller
      */
     public function index()
     {
-        //$this->cf_menu_lib->get(array('ul_param' => 'class="jd_menu test"'));
+        //Library('menu')->get(array('ul_param' => 'class="jd_menu test"'));
 
         //if page_id is numeric and is greater than 0, that means request for full article
         if (is_numeric($this->page_id) && $this->page_id > 0) {

@@ -38,7 +38,6 @@ class Sitemap extends MY_Controller
     {
         parent::MY_Controller();
         $this->load->helper(array('text'));
-        $this->load->library('cf_sitemap_lib'); //Load Plugin
         $this->load->model('blog/cf_blog_model');
     }
 
@@ -49,20 +48,20 @@ class Sitemap extends MY_Controller
         //$sitemap = new google_sitemap; //Create a new Sitemap Object
         $posts = $this->cf_blog_model->getRecentPosts('50');
 
-        $item = $this->cf_sitemap_lib->google_sitemap_item(site_url(), date("Y-m-d", time()), 'daily', '1.0'); //Create a new Item
-        $this->cf_sitemap_lib->add_item($item);
+        $item = Library('sitemap')->google_sitemap_item(site_url(), date("Y-m-d", time()), 'daily', '1.0'); //Create a new Item
+        Library('sitemap')->add_item($item);
 
         foreach ($posts->result_array() as $entry) {
 
             $link = get_page_url($entry);
 
             //Create a new Item
-            $item = $this->cf_sitemap_lib->google_sitemap_item(site_url($link), date("Y-m-d", strtotime($entry['page_date'])), 'daily', '0.5');
+            $item = Library('sitemap')->google_sitemap_item(site_url($link), date("Y-m-d", strtotime($entry['page_date'])), 'daily', '0.5');
 
             //Append the item to the sitemap object
-            $this->cf_sitemap_lib->add_item($item);
+            Library('sitemap')->add_item($item);
         }
-        $this->cf_sitemap_lib->build("sitemap.xml"); //Build it...
+        Library('sitemap')->build("sitemap.xml"); //Build it...
 
         //Let's compress it to gz
         $data = implode("", file("sitemap.xml"));
@@ -101,4 +100,4 @@ class Sitemap extends MY_Controller
         return ($status);
     }
 
-} 
+}

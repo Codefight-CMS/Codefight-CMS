@@ -205,7 +205,7 @@ class Registration extends MY_Controller
             $password = set_value('password');
 
             /* check login */
-            $this->cf_login_lib->process_login($email, $password);
+            Library('login')->process_login($email, $password);
             /* ------ */
 
             if ($this->session->userdata('logged_in') == FALSE) {

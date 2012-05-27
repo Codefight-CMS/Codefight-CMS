@@ -72,7 +72,7 @@ class Cf_page_model extends MY_Model
             //Get Tags Block
             $page_tag = $this->cf_data_model->page_tag($v['page_tag']);
             //Get Tags Block
-            $content_content = $this->cf_bbcode_lib->output($this->cf_data_model->page_content($v, $show_blurb));
+            $content_content = Library('parse/bbcode')->parse($this->cf_data_model->page_content($v, $show_blurb));
             //$page_content = $this->phpcolor->color_code($content_content);
             $page_content = $content_content;
 

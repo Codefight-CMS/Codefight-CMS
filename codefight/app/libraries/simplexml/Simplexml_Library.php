@@ -1,6 +1,13 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+//If BASEPATH is not defined, simply exit.
+if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
 
-class Cf_simplexml_lib
+/**
+ *
+ */
+class Simplexml_Library extends MY_Library
 {
 
     var $result = array();
@@ -22,11 +29,11 @@ class Cf_simplexml_lib
         $ok = xml_parse_into_struct($parser, $data, $values);
         if (!$ok) {
             $errmsg = sprintf("XML parse error %d '%s' at line %d, column %d (byte index %d)",
-                              xml_get_error_code($parser),
-                              xml_error_string(xml_get_error_code($parser)),
-                              xml_get_current_line_number($parser),
-                              xml_get_current_column_number($parser),
-                              xml_get_current_byte_index($parser));
+                xml_get_error_code($parser),
+                xml_error_string(xml_get_error_code($parser)),
+                xml_get_current_line_number($parser),
+                xml_get_current_column_number($parser),
+                xml_get_current_byte_index($parser));
         }
 
         xml_parser_free($parser);

@@ -87,7 +87,7 @@ class Folder extends MY_Controller
         //---
         $html_string = $this->load->view('admin/folder/manage_folder_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function edit_folder()
@@ -259,7 +259,7 @@ class Folder extends MY_Controller
         //---
         $html_string = $this->load->view('admin/folder/folder_edit_view', $data, TRUE); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
 
     }
 
@@ -349,7 +349,7 @@ class Folder extends MY_Controller
         //---
         $html_string = $this->load->view('admin/folder/folder_create_view', $data, TRUE); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
 
     }
 

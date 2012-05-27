@@ -69,7 +69,7 @@ class MY_Controller extends CI_Controller
             require_once APPPATH . DS . 'core' . DS . 'Admin_Controller.php';
             $Admin_Controller = new Admin_Controller();
             //Check access rights
-            //$this->cf_login_lib->check_login(array('1'));
+            //Library('login')->check_login(array('1'));
         } else {
             require_once APPPATH . DS . 'core' . DS . 'Front_Controller.php';
             $Front_Controller = new Front_Controller();
@@ -186,7 +186,7 @@ class MY_Controller extends CI_Controller
         ) {
             echo "<p>{$template}</p>";
         }
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
 
     }
 

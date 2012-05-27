@@ -88,7 +88,7 @@ class Page extends MY_Controller {
             //---
             $html_string = $this->load->view('admin/' . $this->uri->segment(3, 'page') . '/page_view', $data, true); //Get view data in place of sending to browser.
 
-            $this->cf_process_lib->view($html_string);
+            Library('process')->view($html_string);
         }
     }
 
@@ -222,7 +222,7 @@ class Page extends MY_Controller {
         //---
         $html_string = $this->load->view('admin/' . $this->uri->segment(3, 'page') . '/page_create_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function _delete()
@@ -502,6 +502,6 @@ class Page extends MY_Controller {
         //---
         $html_string = $this->load->view('admin/' . $this->uri->segment(3, 'page') . '/page_edit_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 }

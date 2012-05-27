@@ -86,7 +86,7 @@ class File extends MY_Controller
         //---
         $html_string = $this->load->view('admin/file/manage_file_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function search_file()
@@ -141,7 +141,7 @@ class File extends MY_Controller
         //---
         $html_string = $this->load->view('admin/file/manage_file_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function delete_file()
@@ -309,7 +309,7 @@ class File extends MY_Controller
         //---
         $html_string = $this->load->view('admin/file/upload_file_view', $data, TRUE); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 
     function edit_file()
@@ -468,6 +468,6 @@ class File extends MY_Controller
         //---
         $html_string = $this->load->view('admin/file/file_edit_view', $data, true); //Get view data in place of sending to browser.
 
-        $this->cf_process_lib->view($html_string);
+        Library('process')->view($html_string);
     }
 }

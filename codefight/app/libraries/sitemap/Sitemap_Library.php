@@ -12,7 +12,7 @@ if (!defined('BASEPATH')) {
  * @link http://devquickref.com
  */
 
-class Cf_sitemap_lib
+class Sitemap_Library extends MY_Library
 {
 
     var $header = "<\x3Fxml version=\"1.0\" encoding=\"UTF-8\"\x3F>\n\t<urlset xmlns=\"http://www.google.com/schemas/sitemap/0.84\">";
@@ -104,5 +104,3 @@ class Cf_sitemap_lib
     }
 
 }
-
-?>

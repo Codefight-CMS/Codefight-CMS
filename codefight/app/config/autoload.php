@@ -59,10 +59,6 @@ $autoload['libraries'] = array(
     'cf_library',
     'block/Block_Library',
     'user_agent',
-    'cf_login_lib',
-    'cf_process_lib',
-    'cf_menu_lib',
-    'cf_simplexml_lib',
     'MY_Language',
     'security',
     'module/Module_Library'

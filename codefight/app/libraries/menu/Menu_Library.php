@@ -8,7 +8,7 @@ if (!defined('BASEPATH')) {
 	>menu_id | menu_active | menu_parent_id | menu_link
 	>menu_title | menu_type | menu_meta_title | menu_meta_keywords
 	>menu_meta_description | menu_sort
-	
+
 	Parameters that can be passed in an array:
 	$parameters = array (
 					'ul_param' => 'class="xyz"...',
@@ -19,7 +19,8 @@ if (!defined('BASEPATH')) {
 	multi level menu created for codefight cms by damodar bashyal
 	visit codefight.org
 */
-class Cf_menu_lib
+
+class Menu_Library extends MY_Library
 {
 
     var $CI;
@@ -160,18 +161,18 @@ class Cf_menu_lib
 
                     if (preg_match('@(http(s)?:\/\/|javascript::?void\(0\);?)@', $v['url'])) {
                         $this->echo_list .= '<a' . $a_param . ' ' . $v['params'] . ' href="' . $v['url'] . '">' .
-                                            $v['title'] . '</a>';
+                            $v['title'] . '</a>';
                     }
                     elseif($v['title'] == '[Login|Logout]')
                     {
                         $this->echo_list .= $this->CI->cf_data_model->welcome_get(false,
-                                                                                  $a_param . ' ' . $v['params']);
+                            $a_param . ' ' . $v['params']);
                     }
                     else
                     {
                         if ($this->menu_type != 'page')
                             $this->echo_list .= anchor($this->menu_type . '/c/' . $v['url'], $v['title'],
-                                                       $a_param . '' . $v['params']);
+                                $a_param . '' . $v['params']);
                         else
                             $this->echo_list .= anchor($v['url'], $v['title'], $a_param . '' . $v['params']);
 
@@ -219,5 +220,3 @@ class Cf_menu_lib
         }
     }
 }
-
-?>

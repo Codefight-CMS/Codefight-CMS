@@ -5,7 +5,7 @@ $menu = array(
     'ul_param' => 'class="blog_roll"',
     'a_param' => 'rel="external nofollow"'
 );
-$menu = $this->cf_menu_lib->get($menu);
+$menu = Library('menu')->get($menu);
 if (!empty($menu)) {
     //echo '<div class="round15 sidebar-header">Blog Categories</div>';
     echo $menu;

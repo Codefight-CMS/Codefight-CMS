@@ -4,7 +4,7 @@ $menu = array(
     'menu_type' => 'page',
     'ul_param' => 'class="jd_menu"',
 );
-$menu = $this->cf_menu_lib->get($menu);
+$menu = Library('menu')->get($menu);
 if (!empty($menu)) {
     //echo '<div class="round15 sidebar-header">Blog Categories</div>';
     echo $menu;

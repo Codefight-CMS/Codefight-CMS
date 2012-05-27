@@ -9,6 +9,13 @@ if (!defined('BASEPATH')) {
  */
 class Parser_Bbcode_Library extends MY_Library
 {
+    var $pattern_replacement = array(
+        '#\[php\]#is' => " &lt;?php ",
+        '#\[\/php\]#is' => " ?&gt; ",
+        '#\[b\]#is' => " <strong> ",
+        '#\[\/b\]#is' => " </strong> ",
+    );
+
     /**
      * @param string $html_string
      * @param array  $matches
@@ -16,7 +23,6 @@ class Parser_Bbcode_Library extends MY_Library
      * @return string
      */public function parse($html_string = '', $matches = array())
     {
-        //@todo: Bbcode parsers
-        return $html_string;
+        return preg_replace(array_keys($this->pattern_replacement), array_values($this->pattern_replacement), $html_string);
     }
 }
