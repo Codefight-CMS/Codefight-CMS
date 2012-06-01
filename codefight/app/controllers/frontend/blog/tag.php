@@ -44,7 +44,6 @@ class Tag extends MY_Controller
            | you can load the CI way as well though :)
            */
         $load = array(
-            'model'   => 'blog/cf_blog_model + cf_menu_model',
             'helper'  => 'text + form'
         );
 
@@ -78,7 +77,7 @@ class Tag extends MY_Controller
 
         $config['base_url'] = base_url() . 'blog/tag/' . $keyword . '/';
 
-        $config['total_rows'] = $this->cf_blog_model->get_tag_count($keyword);
+        $config['total_rows'] = Model('blog')->get_tag_count($keyword);
         //echo $keyword;
 
         //echo $config['total_rows'];
@@ -90,11 +89,11 @@ class Tag extends MY_Controller
         $this->paginate($config);
 
         //Get page(?) content for the selected tag.
-        $data = $this->cf_blog_model->get_tag_contents(
+        $data = Model('blog')->get_tag_contents(
             $keyword, $this->setting->pagination_per_page, $this->current_page
         );
 
-        $data['meta'] = $this->cf_blog_model->get_tag_meta($keyword, CFWEBSITEID);
+        $data['meta'] = Model('blog')->get_tag_meta($keyword, CFWEBSITEID);
 
         if (($cur_page = $this->pagination->getCurPage()) > 1) {
             $data['meta']['title'] .= ' - ' . __('Page ') . __($cur_page);
@@ -106,13 +105,11 @@ class Tag extends MY_Controller
         /*
            | Send data to Format Content and get back.
            | See These Files For Processing:
-           | models/cf_blog_model.php
-           | models/cf_data_model.php
            | libraries/block/block_Library.php
            */
-        //if(isset($data['content'])) $data['content'] = $this->cf_blog_model->parseContent($data['content']);
+        //if(isset($data['content'])) $data['content'] = Model('blog')->parseContent($data['content']);
         if (isset($data['content']) && count((array)$data['content']) > 0) {
-            $data['content'] = $this->cf_blog_model->parseContent($data['content']);
+            $data['content'] = Model('blog')->parseContent($data['content']);
         } else {
             header("HTTP/1.0 404 Not Found");
             //if content not found | Set meta to noindex, nofollow to save your website value to search engines.

@@ -33,7 +33,6 @@ class User extends MY_Controller
         parent::MY_Controller();
 
         $this->load->helper(array('form', 'text'));
-        $this->load->model('user/cf_user_model', 'usermodel');
     }
 
     function index()
@@ -56,7 +55,7 @@ class User extends MY_Controller
                 */
             $this->load->library('pagination');
             $config['base_url'] = trim(site_url(), '/') . "/admin/user/index/";
-            $config['total_rows'] = $this->usermodel->get_user_count();
+            $config['total_rows'] = Model('user')->get_user_count();
             $config['per_page'] = '30';
             $config['uri_segment'] = 4;
             $config['num_links'] = 3;
@@ -65,7 +64,7 @@ class User extends MY_Controller
             //END: Pagination
 
             $data['pagination'] = $this->pagination->create_links();
-            $data['user'] = $this->usermodel->get_user($config['per_page'], $this->uri->segment($config['uri_segment'], 0));
+            $data['user'] = Model('user')->get_user($config['per_page'], $this->uri->segment($config['uri_segment'], 0));
 
             //---
             $html_string = $this->load->view('admin/user/user_view', $data, true); //Get view data in place of sending to browser.
@@ -114,8 +113,8 @@ class User extends MY_Controller
             $is_admin = set_value('is_admin');
             $is_author = set_value('is_author');
 
-            $user_exists = (array)$this->usermodel->user_exists($email);
-            //$insert = $this->usermodel->insert($active, $email, $password, $firstname, $lastname, $group_id);
+            $user_exists = (array)Model('user')->user_exists($email);
+            //$insert = Model('user')->insert($active, $email, $password, $firstname, $lastname, $group_id);
 
             if (!count($user_exists))
             {
@@ -132,9 +131,7 @@ class User extends MY_Controller
                     'is_author' => $is_author,
                 );
 
-                $save = $this
-                            ->usermodel
-                            ->reset()
+                $save = Model('user')->reset()
                             ->set('table', 'user')
                             ->set('action', 'insert')
                             ->save($my_data);
@@ -326,9 +323,7 @@ class User extends MY_Controller
 
                         if (!empty($password)) $my_data['password'] = set_value('password');
 
-                        $save = $this
-                                    ->usermodel
-                                    ->reset()
+                        $save = Model('user')->reset()
                                     ->set('table', 'user')
                                     ->set('action', 'update')
                                     ->save($my_data);

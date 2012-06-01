@@ -34,19 +34,18 @@ class Setting extends MY_Controller
         parent::MY_Controller();
 
         $this->load->helper(array('form', 'text'));
-        $this->load->model(array('cf_menu_model', 'websites/cf_websites_model'));
     }
 
     function index()
     {
         $data = '';
 
-        if ($this->input->post('submit')) $this->cf_setting_model->set_setting($_POST);
+        if ($this->input->post('submit')) Model('setting')->set_setting($_POST);
 
         $data['head_includes'] = array('sortable.php', 'setting.php');
-        $data['setting'] = $this->cf_setting_model->get_setting();
-        $data['templates'] = $this->cf_setting_model->get_templates();
-        $data['websites'] = $this->cf_websites_model->get_websites();
+        $data['setting'] = Model('setting')->get_setting();
+        $data['templates'] = Model('setting')->get_templates();
+        $data['websites'] = Model('websites')->get_websites();
 
         //---
         $html_string = $this->load->view('admin/setting/setting_view', $data, true); //Get view data in place of sending to browser.
@@ -65,7 +64,7 @@ class Setting extends MY_Controller
         $data = '';
 
         //get templates for user selection
-        $data['templates'] = $this->cf_setting_model->get_templates();
+        $data['templates'] = Model('setting')->get_templates();
 
         if ($this->input->post('cache')) {
             //delete all cache
@@ -127,7 +126,7 @@ class Setting extends MY_Controller
         {
             $data = '';
 
-            $data['keys'] = $this->cf_setting_model->get_setting_keys();
+            $data['keys'] = Model('setting')->get_setting_keys();
 
             //---
             $html_string = $this->load->view('admin/setting/key_view', $data, true); //Get view data in place of sending to browser.
@@ -138,8 +137,6 @@ class Setting extends MY_Controller
 
     function websites()
     {
-        $this->load->model(array('websites/cf_websites_model'));
-
         if (isset($_POST['create'])) {
             $this->_websites_create();
         }
@@ -153,7 +150,7 @@ class Setting extends MY_Controller
         {
             $data = '';
 
-            $data['websites'] = $this->cf_websites_model->get_websites();
+            $data['websites'] = Model('websites')->get_websites();
 
             //---
             $html_string = $this->load->view('admin/setting/websites_view', $data, true); //Get view data in place of sending to browser.
@@ -203,7 +200,7 @@ class Setting extends MY_Controller
                 'websites_status' => set_value('websites_status')
             );
 
-            $this->cf_websites_model->save($sql);
+            Model('websites')->save($sql);
         }
 
         //---
@@ -267,7 +264,7 @@ class Setting extends MY_Controller
 
                 //update database if set
                 if (!empty($v['websites_name']) && !empty($v['websites_url']) && !empty($v['websites_id'])) {
-                    $this->cf_websites_model->save($v);
+                    Model('websites')->save($v);
                 }
             }
         }
@@ -292,7 +289,7 @@ class Setting extends MY_Controller
             setMessages($msg, 'error');
         }
 
-        $this->cf_websites_model->delete($id_array);
+        Model('websites')->delete($id_array);
 
         unset($_POST);
 
@@ -345,7 +342,7 @@ class Setting extends MY_Controller
             $setting_form = set_value('setting_form');
             $setting_option = set_value('setting_option');
 
-            $insert = $this->cf_setting_model->insert_keys(
+            $insert = Model('setting')->insert_keys(
                 array(
                      'setting_key' => $setting_key,
                      'setting_form' => $setting_form,
@@ -509,8 +506,7 @@ class Setting extends MY_Controller
     function sitemap()
     {
         $data = array();
-	$this->load->model(array('websites/cf_websites_model'));
-	$data['websites'] = $this->cf_websites_model->get_websites();
+    	$data['websites'] = Model('websites')->get_websites();
 
         //---
         $html_string = $this->load->view('admin/setting/sitemap_view', $data, true); //Get view data in place of sending to browser.

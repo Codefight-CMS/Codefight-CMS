@@ -7,7 +7,7 @@
     $options_active = array('0' => __('Inactive'),
                             '1' => __('Active'));
 //get menu
-$menu_ary = $this->cf_menu_model->get_menu_array($this->uri->segment(3, 'page'));
+$menu_ary = Model('menu')->get_menu_array($this->uri->segment(3, 'page'));
 
 $options_menu = array('0' => 'TOP');
 foreach ($menu_ary as $v) {

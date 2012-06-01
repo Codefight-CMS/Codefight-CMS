@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
 <?php
 //Get Most Popular Posts
-$popular = $this->cf_blog_model->getMostPopular(10);
+$popular = Model('blog')->getMostPopular(10);
 if (!empty($popular)): ?>
 <ul class="most_popular">
 

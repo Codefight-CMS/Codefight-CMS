@@ -1,5 +1,5 @@
 <?php  /*if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
-	
+
 			<div class="template_chooser">
 				<script type="text/javascript">
 					function set_template(a) {
@@ -15,13 +15,13 @@
 				}
 			}
 		);
-			
+
 		return false;
 	}
 				</script>
 				<select name="template" id="template" onchange="set_template(this.value);">
-					<?php 
-					foreach($this->cf_setting_model->get_templates() as $k => $v) { ?>
+					<?php
+					foreach(Model('setting')->get_templates() as $k => $v) { ?>
 					<option value="<?php echo $v; ?>"<?php if($k=='selected') echo ' selected="selected"'; ?>><?php echo $v; ?></option>
 					<?php } ?>
 				</select>

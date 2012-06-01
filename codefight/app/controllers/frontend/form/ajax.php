@@ -160,7 +160,7 @@ Message Received From Web Form
             $query = $this->db->get_where('form_group', array('form_group_id' => $identifier));
             $row = $query->result_array();
 
-            $settings = $this->cf_setting_model->get_setting();
+            $settings = Model('setting')->get_setting();
             if (isset($row[0]['form_group_send_to'])) {
                 $email = explode(',', $row[0]['form_group_send_to']);
                 if (count($email) > 0) {

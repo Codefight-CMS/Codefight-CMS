@@ -4,9 +4,8 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_setting_model extends MY_Model
+class Setting_model extends MY_Model
 {
-
     var $setting;
 
     function __construct()
@@ -50,7 +49,7 @@ class Cf_setting_model extends MY_Model
      function selected_template()
      {
          //Get default template from setting
-         $template = $this->cf_setting_model->setting['default_template'];
+         $template = Model('setting')->setting['default_template'];
 
          //Get template from session if user selected any
          if($this->session->userdata('template'))

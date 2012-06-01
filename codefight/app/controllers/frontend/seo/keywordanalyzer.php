@@ -60,7 +60,6 @@ class Keywordanalyzer extends MY_Controller
            | you can load the CI way as well though :)
            */
         $load = array(
-            'model' => 'cf_menu_model',
             'library' => 'form_validation',
             'helper' => 'form'
         );

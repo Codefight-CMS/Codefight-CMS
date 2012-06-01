@@ -4,7 +4,7 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_helper_model extends MY_Model
+class Helper_model extends MY_Model
 {
     //---
     function get_menu_link($id = 0, $page_type = 'page')

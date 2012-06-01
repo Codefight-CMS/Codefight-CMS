@@ -38,7 +38,6 @@ class Sitemap extends MY_Controller
     {
         parent::MY_Controller();
         $this->load->helper(array('text'));
-        $this->load->model('blog/cf_blog_model');
     }
 
 
@@ -46,7 +45,7 @@ class Sitemap extends MY_Controller
     {
 
         //$sitemap = new google_sitemap; //Create a new Sitemap Object
-        $posts = $this->cf_blog_model->getRecentPosts('50');
+        $posts = Model('blog')->getRecentPosts('50');
 
         $item = Library('sitemap')->google_sitemap_item(site_url(), date("Y-m-d", time()), 'daily', '1.0'); //Create a new Item
         Library('sitemap')->add_item($item);

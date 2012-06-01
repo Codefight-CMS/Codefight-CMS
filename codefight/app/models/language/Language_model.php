@@ -6,11 +6,9 @@ if (!defined('BASEPATH')) {
 
 class Language_model extends MY_Model
 {
-
-    function Language_model()
+    public function __construct()
     {
-        // Call the Model constructor
-        parent::MY_Model();
+        parent::__construct();
     }
 
     function load()
@@ -21,5 +19,3 @@ class Language_model extends MY_Model
         }
     }
 }
-
-?>

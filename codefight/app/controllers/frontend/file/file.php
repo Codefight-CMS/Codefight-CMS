@@ -43,7 +43,6 @@ class File extends MY_Controller
            | you can load the CI way as well though :)
            */
         $load = array(
-            'model' => 'page/cf_page_model + blog/cf_blog_model + cf_menu_model + file/cf_file_model',
             'helper' => 'text + form'
         );
 
@@ -62,19 +61,17 @@ class File extends MY_Controller
         //Get page content for the selected menu item.
         $this->menu_link = $id; //$this->uri->segment(1, 'home');
 
-        $data = $this->cf_page_model->get_page_contents($this->menu_link);
+        $data = Model('page')->get_page_contents($this->menu_link);
 
         /*
            | Send data to Format Content and get back.
            | See These Files For Processing:
-           | models/cf_blog_model.php
-           | models/cf_data_model.php
            | libraries/block/block_Library.php
            */
         if (isset($data['content']) && count((array)$data['content']) > 0) {
             //For static page, display full content by passing 2nd param as false.
-            $data['content'] = $this->cf_page_model->parseContent($data['content'], FALSE);
-            $data['content'] = $this->cf_file_model->process($data['content']);
+            $data['content'] = Model('page')->parseContent($data['content'], FALSE);
+            $data['content'] = Model('file')->process($data['content']);
         }
         else
         {

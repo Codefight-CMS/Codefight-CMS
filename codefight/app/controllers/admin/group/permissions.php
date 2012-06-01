@@ -34,7 +34,6 @@ class Permissions extends MY_Controller
         parent::MY_Controller();
 
         $this->load->helper(array('form', 'text'));
-        $this->load->model('groups/cf_permission_model');
 
 		$id = $this->uri->segment(5, 0);
 
@@ -53,16 +52,16 @@ class Permissions extends MY_Controller
         $data = '';
 
         $data['group_id'] = $group_id = $this->input->post('group_id', 1);
-        $data['modules'] = $this->cf_module_model->get();
-        $data['module_ids'] = $this->cf_module_model->get_ids();
-        $data['groups'] = $this->cf_permission_model->get_group();
+        $data['modules'] = Model('module')->get();
+        $data['module_ids'] = Model('module')->get_ids();
+        $data['groups'] = Model('groups/permission')->get_group();
 
 		if(isset($_POST['group_id']) && isset($_POST['permission']))
 		{
-			$this->cf_permission_model->update_permissions($_POST['group_id'], $_POST['permission']);
+			Model('groups/permission')->update_permissions($_POST['group_id'], $_POST['permission']);
 		}
 
-		$data['permissions'] = $this->cf_permission_model->get_group_permission($group_id);
+		$data['permissions'] = Model('groups/permission')->get_group_permission($group_id);
 
 		//---
 		$html_string = $this->load->view('admin/group/permission_view', $data, true); //Get view data in place of sending to browser.

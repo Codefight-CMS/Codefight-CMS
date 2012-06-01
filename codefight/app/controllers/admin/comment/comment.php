@@ -34,7 +34,6 @@ class Comment extends MY_Controller
         parent::MY_Controller();
 
         $this->load->helper(array('form', 'text'));
-        $this->load->model(array('cf_comment_model', 'cf_menu_model'));
     }
 
 
@@ -67,7 +66,7 @@ class Comment extends MY_Controller
         }
 
         $config['base_url'] = trim(site_url(), '/') . "/comment/" . $this->uri->segment(3, 'approved-comment') . "/";
-        $config['total_rows'] = $this->cf_comment_model->get_comment_count($status);
+        $config['total_rows'] = Model('comment')->get_comment_count($status);
 
         $this->pagination->initialize($config);
         //END: Pagination
@@ -76,7 +75,7 @@ class Comment extends MY_Controller
         $data['pagination'] = $this->pagination->create_links();
 
         //load comment menu
-        $data['comment'] = $this->cf_comment_model->get_comment($config['per_page'], $this->uri->segment(3, 0), $status);
+        $data['comment'] = Model('comment')->get_comment($config['per_page'], $this->uri->segment(3, 0), $status);
 
         //---
         $html_string = $this->load->view('admin/comment/comment_view', $data, true); //Get view data in place of sending to browser.

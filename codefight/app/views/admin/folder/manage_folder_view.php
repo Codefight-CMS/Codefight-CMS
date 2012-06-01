@@ -32,7 +32,7 @@
                         src="<?php echo base_url(); ?>assets/admin/img/icon_status_<?php echo $bulb; ?>.gif"
                         alt="<?php echo $bulb; ?>" border="0" width="10" height="10"/></a></div>
             <div class="floatLeft center block borderRightGrey file_grid_heading_status"><a
-                    href="<?php echo site_url('admin/folder/search-file/' . $g['folder_id']); ?>"><?php echo $this->cf_file_model->get_file_count($g['folder_id']); ?></a>
+                    href="<?php echo site_url('admin/folder/search-file/' . $g['folder_id']); ?>"><?php echo Model('file')->get_file_count($g['folder_id']); ?></a>
             </div>
         </li>
         <?php } ?>
@@ -45,8 +45,8 @@
     <p class="clear">&nbsp;</p>
     <?php if (isset($pagination)) echo $pagination; ?>
 
-    <div class="footer_info"><?php echo __('You have used'); ?> <?php echo $this->cf_file_model->disk_free_space(FCPATH . "media/"); ?>
-        <?php echo __('of'); ?> <?php echo $this->cf_file_model->disk_total_space(FCPATH . "media/"); ?> <?php echo __('Available space'); ?>.
+    <div class="footer_info"><?php echo __('You have used'); ?> <?php echo Model('file')->disk_free_space(FCPATH . "media/"); ?>
+        <?php echo __('of'); ?> <?php echo Model('file')->disk_total_space(FCPATH . "media/"); ?> <?php echo __('Available space'); ?>.
     </div>
 </div>
 <?php echo form_close(); ?>

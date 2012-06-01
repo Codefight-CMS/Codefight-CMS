@@ -34,7 +34,7 @@ echo form_open(current_url(), $attributes);
 				<span><?php echo $g['url']; if (!preg_match('|http|i', $g['url'])) echo $this->config->item('url_suffix') ?></span>
 			</div>
             <div class="floatLeft block menu_grid_heading_title">
-				<span><?php echo $this->cf_websites_model->websites_name($g['websites_id']); ?></span>
+				<span><?php echo Model('websites')->websites_name($g['websites_id']); ?></span>
 			</div>
         </li>
 

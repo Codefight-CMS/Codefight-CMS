@@ -34,7 +34,6 @@ class Group extends MY_Controller
         parent::MY_Controller();
 
         $this->load->helper(array('form', 'text'));
-        $this->load->model('cf_group_model', 'groupmodel');
     }
 
 
@@ -66,7 +65,7 @@ class Group extends MY_Controller
             $this->load->library('pagination');
 
             $config['base_url'] = trim(site_url(), '/') . "/group/index/";
-            $config['total_rows'] = $this->groupmodel->get_group_count();
+            $config['total_rows'] = Model('group')->get_group_count();
             $config['per_page'] = '5';
             $config['uri_segment'] = 3;
             $config['num_links'] = 2;
@@ -75,7 +74,7 @@ class Group extends MY_Controller
             //END: Pagination
 
             $data['pagination'] = $this->pagination->create_links();
-            $data['group'] = $this->groupmodel->get_group($config['per_page'], $this->uri->segment(3, 0));
+            $data['group'] = Model('group')->get_group($config['per_page'], $this->uri->segment(3, 0));
 
             //---
             $html_string = $this->load->view('admin/group/group_view', $data, true); //Get view data in place of sending to browser.
@@ -117,7 +116,7 @@ class Group extends MY_Controller
             $title = set_value('title');
             $description = set_value('description');
 
-            $insert = $this->groupmodel->insert($title, $description);
+            $insert = Model('group')->insert($title, $description);
 
             if ($insert) {
                 $msg = array('success' => '<p>New Group <strong>' . $title . '</strong> Successfully Added.</p>');

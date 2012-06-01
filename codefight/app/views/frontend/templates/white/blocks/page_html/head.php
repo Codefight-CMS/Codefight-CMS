@@ -53,11 +53,11 @@ else
     if (isset($head_text)) echo (string)$head_text;
 
     //Load General_js.php file
-    $this->cf_block_lib->load('includes/general_js');
+    Library('block')->load('includes/general_js');
 
     //Load Google Analytics
-    $this->cf_block_lib->load('seo/google_analytics'); ?>
+    Library('block')->load('seo/google_analytics'); ?>
 
-    <script type="text/javascript" src="<?php echo skin_url('global') ?>js/cfShare.js"></script>
+    <script type="text/javascript" src="<?php echo skin_url('global') ?>js/Share.js"></script>
 
 </head>

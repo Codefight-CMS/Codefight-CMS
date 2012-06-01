@@ -35,7 +35,7 @@ Library('block')->load('page_html/head'); ?>
                             'addthis'],
                         addthisId:'dbashyal',
                         startTop : 94,
-                        animate : true,
+                        animate : false,
                         fromPosition:'top'
                     });
                 }

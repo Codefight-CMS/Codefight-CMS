@@ -4,8 +4,25 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_form_model extends MY_Model
+class Form_model extends MY_Model
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    function get_form_items($identifier = 0)
+    {
+        $this->db->select('*');
+        $this->db->where('form_group.form_group_identifier', $identifier);
+        $this->db->order_by('form_item_to_group.form_item_sort', 'asc');
+        $this->db->join('form_group', 'form_group.form_group_id=form_item_to_group.form_group_id');
+        $this->db->join('form_item', 'form_item.form_item_id=form_item_to_group.form_item_id');
+
+        $query = $this->db->get('form_item_to_group');
+
+        return $query->result_array();
+    }
 
     function get_form_item()
     {
@@ -45,5 +62,3 @@ class Cf_form_model extends MY_Model
         }
     }
 }
-
-?>

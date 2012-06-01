@@ -4,8 +4,12 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_cp_model extends MY_Model
+class Cp_model extends MY_Model
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     function get_top_page($limit = 10)
     {
@@ -17,5 +21,3 @@ class Cf_cp_model extends MY_Model
         return $query->result_array();
     }
 }
-
-?>

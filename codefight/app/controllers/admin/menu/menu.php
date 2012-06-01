@@ -34,7 +34,6 @@ class Menu extends MY_Controller
         parent::MY_Controller();
 
         $this->load->helper(array('form', 'text'));
-        $this->load->model(array('cf_menu_model', 'websites/cf_websites_model'));
     }
 
 
@@ -124,7 +123,7 @@ class Menu extends MY_Controller
             );
 
             //insert new menu to database
-            $insert = $this->cf_menu_model->insert($_menu_data);
+            $insert = Model('menu')->insert($_menu_data);
             /*
                if($insert)
                {
@@ -142,7 +141,7 @@ class Menu extends MY_Controller
         }
 
         $data['menu_array'] = (array)$this->cf_menu_lib->get(array('menu_type' => $this->uri->segment(3, 'page')), true);
-        $data['websites'] = $this->cf_websites_model->get_websites();
+        $data['websites'] = Model('websites')->get_websites();
 
         //---
         $html_string = $this->load->view('admin/menu/menu_create_view', $data, true); //Get view data in place of sending to browser.
@@ -306,7 +305,7 @@ class Menu extends MY_Controller
                     );
 
                     //insert new menu to database
-                    $insert = $this->cf_menu_model->update($_menu_data);
+                    $insert = Model('menu')->update($_menu_data);
                 }
 
                 //['update']: to avoid repeated success_message
@@ -319,7 +318,7 @@ class Menu extends MY_Controller
         //END: validate data and update in database
 
         //---
-        $data['websites'] = $this->cf_websites_model->get_websites();
+        $data['websites'] = Model('websites')->get_websites();
         $html_string = $this->load->view('admin/menu/menu_edit_view', $data, true); //Get view data in place of sending to browser.
 
         Library('process')->view($html_string);

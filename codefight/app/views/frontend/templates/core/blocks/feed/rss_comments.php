@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
-<?php 
+<?php
 echo '<' . '?xml version="1.0" encoding="utf-8"?' . '>' . "\n";
 ?>
 <rss version="2.0"
@@ -22,7 +22,7 @@ echo '<' . '?xml version="1.0" encoding="utf-8"?' . '>' . "\n";
         <admin:generatorAgent rdf:resource="http://www.codefight.org/"/>
 
         <?php foreach ($posts->result() as $entry):
-        $link = $this->cf_data_model->link_clean($entry->page_title);
+        $link = Model('data')->link_clean($entry->page_title);
 
         $menu_id = explode(',', $entry->menu_id);
         $menu_id = array_filter($menu_id);

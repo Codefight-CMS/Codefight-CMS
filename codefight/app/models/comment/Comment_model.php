@@ -4,8 +4,12 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_comment_model extends MY_Model
+class Comment_model extends MY_Model
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     function get_comment($per_page = 5, $page = 0, $status = '0')
     {
@@ -23,5 +27,3 @@ class Cf_comment_model extends MY_Model
         return $this->db->count_all_results('page_comment');
     }
 }
-
-?>

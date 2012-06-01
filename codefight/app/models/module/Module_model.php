@@ -4,7 +4,7 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_module_model extends MY_Model
+class Module_model extends MY_Model
 {
 
     function get($group_id=FALSE)
@@ -146,7 +146,7 @@ class Cf_module_model extends MY_Model
 		{
 			$data[$v['url']] = $v['module_id'];
 		}
-		
+
 		return $data;
     }
 
@@ -154,17 +154,15 @@ class Cf_module_model extends MY_Model
     {
 		// $data = array();
 		$query = $this->db->order_by('parent')->get('module');
-		// $modules_db = 
+		// $modules_db =
 		return $query->result_array();
 		/*
 		foreach($modules_db as $k => $v)
 		{
 			$data[$v['module_id']] = $v;
 		}
-		
+
 		return $data;
 		*/
     }
 }
-
-?>

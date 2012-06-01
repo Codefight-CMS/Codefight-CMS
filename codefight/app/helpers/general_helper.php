@@ -35,10 +35,10 @@ if (!function_exists('Library')) {
      *
      * @return mixed
      */
-    function Library($library = 'codefight')
+    function Library($library = 'codefight', $params = NULL)
     {
         $MY_Library = new MY_Library();
-        return $MY_Library->Library($library);
+        return $MY_Library->Library($library, $params);
     }
 }
 
@@ -48,12 +48,12 @@ if (!function_exists('Model')) {
      *
      * @return mixed
      */
-    function Model($model = 'codefight')
+    function Model($model = 'codefight', $config = FALSE)
     {
         $CI =& get_instance();
-        //$MY_Model = new MY_Model();
-        $CI->load->model('MY_Model');
-        return $CI->MY_Model->Model($model);
+        $MY_Model = new MY_Model();
+        //$CI->load->model('MY_Model');
+        return $MY_Model->Model($model, $config);
         //return $MY_Model->Model($model);
     }
 }
@@ -155,7 +155,7 @@ if (!function_exists('get_page_url')) {
             $data['menu_id'] = 0;
         }
 
-        $menu_id = $CI->cf_helper_model->get_menu_link($data['menu_id'], $data['page_type']);
+        $menu_id = Model('helper')->get_menu_link($data['menu_id'], $data['page_type']);
 
         if (!empty($data['page_type'])) {
             if ($data['page_type'] == 'page') {
@@ -202,10 +202,7 @@ if (!function_exists('get_canonical_url')) {
         //echo $page_id;
 
         if ($page_id) {
-
-            $CI->load->model('blog/cf_blog_model');
-
-            $data = $CI->cf_blog_model->get_page_full($page_id);
+            $data = Model('blog')->get_page_full($page_id);
 
             if (isset($data['content'][0])) {
                 $url = site_url(get_page_url($data['content'][0]));

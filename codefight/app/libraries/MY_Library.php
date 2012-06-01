@@ -89,7 +89,7 @@ class MY_Library
      *
      * @return mixed
      */
-    public function Library($library = 'codefight')
+    public function Library($library = 'codefight', $params = NULL)
 	{
         $ci = $this->CI();
 
@@ -107,10 +107,10 @@ class MY_Library
         }
 
 		if(!isset($ci->$library_class) || !is_object($ci->$library_class)) {
-            $ci->load->library($library_file, '', $library_class);
+            $ci->load->library($library_file, $params, $library_class);
 		}
 
 		return $ci->$library_class;
 	}
 }
-new MY_Library();
+//new MY_Library();

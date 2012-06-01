@@ -6,7 +6,7 @@
     <div class="userLogged">
 			<span class="userInfo"><?php
 
-                echo $this->cf_data_model->welcome_get(); ?>
+                echo Model('data')->welcome_get(); ?>
 
                 | </span><span>
 			<?php $format = 'DATE_RFC822'; $time = time(); echo standard_date($format, $time); ?></span>

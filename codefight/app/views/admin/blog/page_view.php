@@ -32,7 +32,7 @@
                     <?php echo word_limiter(strip_tags($g['page_body']), 100); ?>
                 </div>
             </td>
-            <td><?php echo $this->cf_websites_model->websites_name($g['websites_id']); ?></td>
+            <td><?php echo Model('websites')->websites_name($g['websites_id']); ?></td>
         </tr>
             <?php } ?>
         </tbody>

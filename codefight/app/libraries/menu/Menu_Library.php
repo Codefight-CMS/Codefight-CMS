@@ -165,7 +165,7 @@ class Menu_Library extends MY_Library
                     }
                     elseif($v['title'] == '[Login|Logout]')
                     {
-                        $this->echo_list .= $this->CI->cf_data_model->welcome_get(false,
+                        $this->echo_list .= Model('data')->welcome_get(false,
                             $a_param . ' ' . $v['params']);
                     }
                     else

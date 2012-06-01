@@ -43,7 +43,6 @@ class User extends MY_Controller
            | you can load the CI way as well though :)
            */
         $load = array(
-            'model' => 'user/cf_user_model',
             'helper' => 'text + form'
         );
 

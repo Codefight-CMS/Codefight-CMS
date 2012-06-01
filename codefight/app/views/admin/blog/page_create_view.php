@@ -8,8 +8,8 @@
                             '1' => __('Active'));
 //get menu
 $menu_type = $this->uri->segment(3, 'blog');
-$menu_ary = $this->cf_menu_model->get_menu_array($menu_type);
-$websites_ary = $this->cf_websites_model->get_websites();
+$menu_ary = Model('menu')->get_menu_array($menu_type);
+$websites_ary = Model('websites')->get_websites();
 
 $options_websites = array();
 foreach ($websites_ary as $v)
@@ -30,7 +30,7 @@ foreach ($menu_ary as $v)
 }
 
 //get group
-$options_ary = $this->cf_blog_model->get_group();
+$options_ary = Model('blog')->get_group();
 $options_group = array();
 foreach ($options_ary as $v) {
     $options_group[$v['group_id']] = $v['group_title'];
@@ -147,7 +147,7 @@ if (!isset($_POST['group_id']) || !is_array($_POST['group_id']) || count($_POST[
 
     <label><?php echo __('SORT') ?>:</label><input readonly="readonly" class="txtFld" name="page_sort" type="text"
                                                    id="page_sort"
-                                                   value="<?php echo $this->cf_data_model->get_sort_id('page'); ?>"/>
+                                                   value="<?php echo Model('data')->get_sort_id('page'); ?>"/>
 
     <p class="clear">&nbsp;</p>
 

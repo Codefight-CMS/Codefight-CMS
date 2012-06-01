@@ -38,7 +38,6 @@ class Captcha extends MY_Controller
     public function __construct()
     {
         parent::MY_Controller();
-        $this->load->model('cf_setting_model');
     }
 
 
@@ -58,7 +57,7 @@ class Captcha extends MY_Controller
 
     public function index()
     {
-        $captcha = $this->cf_setting_model->security_question();
+        $captcha = Model('setting')->security_question();
 
         // Create a 100*30 image
         $im = imagecreate(100, 16);

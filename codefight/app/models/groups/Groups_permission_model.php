@@ -4,7 +4,7 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_permission_model extends MY_Model
+class Groups_permission_model extends MY_Model
 {
     public function get_group()
     {
@@ -13,7 +13,7 @@ class Cf_permission_model extends MY_Model
 
         return $query->result_array();
     }
-	
+
     public function update_permissions($group_id = 0, $permissions=array())
     {
 		$this->db->where('group_id', $group_id)->or_where('group_id', '0')->delete('group_permission');
@@ -38,7 +38,7 @@ class Cf_permission_model extends MY_Model
 					);
 		}
 		$this->db->insert_batch('group_permission', $sql);
-		
+
 		return $this->db->affected_rows();
 	}
 
@@ -53,7 +53,7 @@ class Cf_permission_model extends MY_Model
 		{
 			$data[$v['module_id']] = $v['group_id'];
 		}
-		
+
 		return $data;
     }
 }

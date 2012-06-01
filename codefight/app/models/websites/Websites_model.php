@@ -4,8 +4,13 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_websites_model extends MY_Model
+class Websites_model extends MY_Model
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     function get_websites()
     {

@@ -34,7 +34,18 @@ class MY_Model extends CI_Model
         $my_check_duplicate
     ;
 
-    public function MY_Model()
+    /**
+     * @var string
+     */
+    protected $prefix = '';
+
+    /**
+     * @var string
+     */
+    protected $suffix = '_model';
+
+
+    public function __construct()
     {
         parent::__construct();
     }
@@ -131,5 +142,33 @@ class MY_Model extends CI_Model
         }
 
         return 0;
+    }
+
+
+    /**
+     * @param string $model
+     *
+     * @return mixed
+     */
+    public function Model($model = 'codefight', $config=FALSE)
+    {
+        if(!strpos($model, '/'))
+        {
+            $model_name = $this->prefix.$model.$this->suffix;
+            $model_class = $this->prefix.ucfirst($model).($this->suffix);
+            $model_file = $model.'/'.$model_name;
+        } else {
+            $model = explode('/', $model);
+
+            $model_name = $this->prefix.ucfirst($model[0]).'_'.strtolower($model[1]).$this->suffix;
+            $model_class = $this->prefix.ucfirst($model[0]).'_'.strtolower($model[1]).$this->suffix;
+            $model_file = "{$model[0]}/{$model_name}";
+        }
+
+        if(!isset($this->$model_class) || !is_object($this->$model_class)) {
+            $this->load->model($model_file, $model_class, $config);
+        }
+
+        return $this->$model_class;
     }
 }

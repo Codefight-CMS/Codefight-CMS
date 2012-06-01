@@ -4,23 +4,28 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_user_model extends MY_Model
+class User_model extends MY_Model
 {
 	private $_groups;
-	
-	public function get_groups()
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function get_groups()
 	{
 		if(count($this->_groups)) return $this->_groups;
-		
+
 		$result = $this->db->get('group')->result_array();
-		
+
 		foreach($result as $v)
 		{
 			$this->_groups[$v['group_id']] = $v;
 		}
 		return $this->_groups;
 	}
-	
+
     public function get_user($per_page = 5, $page = 0)
     {
         $this->db->order_by('user_id');
@@ -33,7 +38,7 @@ class Cf_user_model extends MY_Model
 
         //get group title
 	$groups = $this->get_groups();
-	
+
         foreach ($result as $k => $v) {
             if (isset($groups[$v['group_id']]['group_title'])) {
                 $result[$k]['group_title'] = $groups[$v['group_id']]['group_title'];

@@ -9,23 +9,33 @@ if (!defined('BASEPATH')) {
  */
 class Login_Library extends MY_Library
 {
+    function redirect(){
+        $isLogin = $this->CI()->session->userdata('isLogin');
+        $backUrl = $this->CI()->session->userdata('history');
+
+        if(!empty($isLogin) && !empty($backUrl)){
+            $this->CI()->session->unset_userdata('isLogin');
+            redirect($backUrl);
+        }
+        return TRUE;
+    }
+
     function check_login($access = array())
     {
-        $CI =& get_instance();
         $access = (array)$access;
 
-        if ($CI->session->userdata('logged_in') === '1') {
+        if ($this->CI()->session->userdata('logged_in') === '1') {
 
-            $data = $CI->session->userdata('loggedData');
+            $data = $this->CI()->session->userdata('loggedData');
 
             if (in_array($data['group_id'], $access)) {
-                $CI->db->where(array('email' => $data['email'], 'password' => $data['password'], 'group_id' => $data['group_id']));
-                $CI->db->where('active', '1');
-                $CI->db->from('user');
-                $query = $CI->db->count_all_results();
+                $this->CI()->db->where(array('email' => $data['email'], 'password' => $data['password'], 'group_id' => $data['group_id']));
+                $this->CI()->db->where('active', '1');
+                $this->CI()->db->from('user');
+                $query = $this->CI()->db->count_all_results();
 
                 if ($query < 1) {
-                    $CI->session->set_userdata('login_error', '1');
+                    $this->CI()->session->set_userdata('login_error', '1');
 
                     $msg = array('login' => '<p>Some problem caused accessing this page. Please contact us regarding this issue.</p>');
 
@@ -36,7 +46,7 @@ class Login_Library extends MY_Library
             }
             else
             {
-                $CI->session->set_userdata('login_error', '1');
+                $this->CI()->session->set_userdata('login_error', '1');
                 $msg = array('login' => '<p>You must have appropriate rights to access secure page.</p>');
                 setMessages($msg, 'error');
 
@@ -45,28 +55,27 @@ class Login_Library extends MY_Library
 
         } else {
 
-            $CI->session->set_userdata('login_error', '1');
+            $this->CI()->session->set_userdata('login_error', '1');
             $msg = array('login' => '<p>You must be logged in to access secure area.</p>');
             setMessages($msg, 'error');
 
             redirect('registration/login');
         }
         //just in case
-        $CI->session->set_userdata('redirect', '1');
+        $this->CI()->session->set_userdata('redirect', '1');
 
+        return $this->redirect();
     }
 
     function process_login($email, $password)
     {
-        $CI =& get_instance();
-
         //set where options
-        $CI->db->where('email', $email);
-        $CI->db->where('password', $password);
-        $CI->db->where('active', '1');
+        $this->CI()->db->where('email', $email);
+        $this->CI()->db->where('password', $password);
+        $this->CI()->db->where('active', '1');
 
         //query table for the user
-        $query = $CI->db->get('user');
+        $query = $this->CI()->db->get('user');
 
         //count number of rows
         $numrows = $query->num_rows();
@@ -75,29 +84,29 @@ class Login_Library extends MY_Library
         if ($numrows == 1) {
 
             $data = $query->result_array();
-            $CI->session->set_userdata('logged_in', '1');
+            $this->CI()->session->set_userdata('logged_in', '1');
 
             //set where options to get group title
-            $CI->db->where('group_id', $data[0]['group_id']);
+            $this->CI()->db->where('group_id', $data[0]['group_id']);
 
             //query table for the group title
-            $query = $CI->db->get('group');
+            $query = $this->CI()->db->get('group');
 
             $g = $query->result_array();
 
             $data[0]['group_title'] = $g[0]['group_title'];
 
-            $CI->session->set_userdata('loggedData', $data[0]);
+            $this->CI()->session->set_userdata('loggedData', $data[0]);
 
-            //print_r((($CI)));
+            //print_r((($this->CI())));
 
-            redirect($CI->session->userdata('history'));
+            //redirect($this->CI()->session->userdata('history'));
 
-            return TRUE;
+            return $this->redirect();
 
         } else {
 
-            $CI->session->set_userdata('logged_in', '0');
+            $this->CI()->session->set_userdata('logged_in', '0');
 
             return FALSE;
 

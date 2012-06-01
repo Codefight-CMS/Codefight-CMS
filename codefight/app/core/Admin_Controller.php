@@ -37,13 +37,13 @@ class Admin_Controller {
 
         $defaultToAll = array('sortdata/menu','form/ajax','file/file-search-form'); /*These pages can be accessed by all admins. @todo: better management*/
 
-        if(in_array($page, $defaultToAll)) return TRUE;;
+        if(in_array($page, $defaultToAll)) return TRUE;
 
-        $can_access = $this->CI->cf_module_model->can_access($group_id, $page);
+        $can_access = Model('module')->can_access($group_id, $page);
 
         if($can_access) return TRUE;
 
-        $default_landing = $this->CI->cf_module_model->default_landing($group_id);
+        $default_landing = Model('module')->default_landing($group_id);
 
         if(!$default_landing)
         {

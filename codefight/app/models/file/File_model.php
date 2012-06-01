@@ -4,7 +4,7 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_file_model extends MY_Model
+class File_model extends MY_Model
 {
     var $i = 0;
     var $menu_string;
@@ -13,6 +13,11 @@ class Cf_file_model extends MY_Model
     var $current_folder_id;
     var $loggedData = array();
     var $_folderBreadcrumb = array();
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     function disk_free_space($folder)
     {
@@ -76,7 +81,7 @@ class Cf_file_model extends MY_Model
             $class = ($this->current_folder_id == $v) ? ' class="rootFolder active"' : ' class="rootFolder"';
 
             $this->menu_string .= '<li><a' . $class . ' href="' . site_url('file/folder/' . $v) . '">' . $this->menu['menu'][$v] . '</a>';
-            $this->cf_file_model->get_child_folders($v);
+            Model('file')->get_child_folders($v);
             $this->menu_string .= '</li>';
         }
 
@@ -531,26 +536,26 @@ class Cf_file_model extends MY_Model
 
             if (empty($loggedData)) {
                 $query = $this->db->query("SELECT *
-										  	FROM cf_file 
-											WHERE 
-											file_access = 'public' 
+										  	FROM cf_file
+											WHERE
+											file_access = 'public'
 											AND
 											folder_id = '{$folder_id}'
 											AND
-											file_status = '1' 
+											file_status = '1'
 											ORDER BY file_id DESC"
                 );
 
                 $result = $query->result_array();
 
                 $query = $this->db->query("SELECT *
-										  	FROM cf_folder 
-											WHERE 
-											folder_access = 'public' 
+										  	FROM cf_folder
+											WHERE
+											folder_access = 'public'
 											AND
 											folder_parent_id = '{$folder_id}'
 											AND
-											folder_status = '1' 
+											folder_status = '1'
 											ORDER BY folder_sort ASC"
                 );
 
@@ -561,37 +566,37 @@ class Cf_file_model extends MY_Model
             else
             {
                 $query = $this->db->query("SELECT *
-										   FROM 
-										   	cf_file 
-										   WHERE 
+										   FROM
+										   	cf_file
+										   WHERE
 										   	(
 											 	file_access IN ('all', 'public')
 												OR (file_access = 'group' AND file_access_members LIKE '%," . $loggedData['group_id'] . ",%')
 												OR (file_access = 'group' AND file_access_members LIKE '%," . $loggedData['user_id'] . ",%')
-										   	) 
+										   	)
 										   AND
 										   	folder_id = '{$folder_id}'
-										   AND 
-										   	file_status = '1' 
-										   ORDER BY 
+										   AND
+										   	file_status = '1'
+										   ORDER BY
 										   	file_id DESC");
 
                 $result = $query->result_array();
 
                 $query = $this->db->query("SELECT *
-										   FROM 
-										   	cf_folder 
-										   WHERE 
+										   FROM
+										   	cf_folder
+										   WHERE
 										   	(
 											 	folder_access IN ('all', 'public')
 												OR (folder_access = 'group' AND folder_access_members LIKE '%," . $loggedData['group_id'] . ",%')
 												OR (folder_access = 'user' AND folder_access_members LIKE '%," . $loggedData['user_id'] . ",%')
-										   	) 
+										   	)
 										   AND
 										   	folder_parent_id = '{$folder_id}'
-										   AND 
-										   	folder_status = '1' 
-										   ORDER BY 
+										   AND
+										   	folder_status = '1'
+										   ORDER BY
 										   	folder_sort ASC"
                 );
 

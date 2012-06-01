@@ -4,16 +4,15 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_menu_model extends MY_Model
+class Menu_model extends MY_Model
 {
 
     var $menu_type;
     var $last_id = 0;
 
-    function Cf_menu_model()
+    public function __construct()
     {
-        // Call the Model constructor
-        parent::MY_Model();
+        parent::__construct();
     }
 
     function _menu_type($menu_type)

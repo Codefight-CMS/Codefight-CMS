@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
 <?php
 //Get Tag Cloud
-$cloud = $this->cf_data_model->get_tag_cloud();
+$cloud = Model('data')->get_tag_cloud();
 if (!empty($cloud)): ?>
 <h2 onclick="jQuery('#tag_cloud').slideToggle(500);">TAG CLOUD:</h2>
 

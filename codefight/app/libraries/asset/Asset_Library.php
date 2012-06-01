@@ -66,8 +66,7 @@ class Asset_Library extends MY_Library
         }
 
         //setting from admin
-        //print_r($this->CI->cf_setting_model->setting);
-        foreach ($this->CI->cf_setting_model->setting as $k => $v) {
+        foreach (Model('setting')->setting as $k => $v) {
             $this->$k = $v;
         }
     }
@@ -163,10 +162,10 @@ class Asset_Library extends MY_Library
         else {
             $this->template = $this->default_template . '/';
         }
-		
+
 		//add admin.css or frontend.css
 		$this->addCss($this->module);
-		
+
 		//add admin.js or frontend.js
 		$this->addJs($this->module);
     }

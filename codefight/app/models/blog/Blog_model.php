@@ -4,16 +4,12 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_blog_model extends MY_Model
+class Blog_model extends MY_Model
 {
 
-    //var $CI = '';
-
-    function Cf_blog_model()
+    public function __construct()
     {
-        // Call the Model constructor
-        parent::MY_Model();
-        //$this->CI =& get_instance();
+        parent::__construct();
     }
 
     //DEFAULT META SET
@@ -218,8 +214,6 @@ class Cf_blog_model extends MY_Model
                     $data[0]
                 );
                 if ($web_id != CFWEBSITEID) {
-                    $this->load->model(array('websites/cf_websites_model'));
-
                     $website = $this->db->where('websites_id', $web_id)->get('websites')->row();
                     if (isset($website->websites_url)) {
                         $r_url = prep_url($website->websites_url);
@@ -421,21 +415,21 @@ class Cf_blog_model extends MY_Model
         if (isset($content) && is_array($content) && count($content) > 0) {
             foreach ($content as $k => $v) {
                 //check access
-                $access = $this->cf_data_model->is_granted($v['group_id']);
+                $access = Model('data')->is_granted($v['group_id']);
 
                 //Get Author + Date Block
-                $author_date = $this->cf_data_model->author_date($v);
+                $author_date = Model('data')->author_date($v);
                 //Get Tags Block
-                $page_tag = $this->cf_data_model->page_tag($v['page_tag']);
+                $page_tag = Model('data')->page_tag($v['page_tag']);
                 //Get Tags Block
-                $content_content = Library('parse/bbcode')->parse($this->cf_data_model->page_content($v, $show_blurb));
+                $content_content = Library('parser/bbcode')->parse(Model('data')->page_content($v, $show_blurb));
                 //$page_content = $this->phpcolor->color_code($content_content);
                 $page_content = $content_content;
 
                 //Get the Year | Month | Day the post was posted
-                $_content[$k]['year']  = $this->cf_data_model->post_year($v['show_date'], $v['page_date']);
-                $_content[$k]['month'] = $this->cf_data_model->post_month($v['show_date'], $v['page_date']);
-                $_content[$k]['day']   = $this->cf_data_model->post_day($v['show_date'], $v['page_date']);
+                $_content[$k]['year']  = Model('data')->post_year($v['show_date'], $v['page_date']);
+                $_content[$k]['month'] = Model('data')->post_month($v['show_date'], $v['page_date']);
+                $_content[$k]['day']   = Model('data')->post_day($v['show_date'], $v['page_date']);
 
                 //check to see if there is a form
                 if (preg_match_all('#{{form (.+)}}#isU', $page_content, $identifier)) {
@@ -482,10 +476,10 @@ class Cf_blog_model extends MY_Model
 
                 //check to see if there is a form
                 if (preg_match_all('#{{banner (.+)}}#isU', $page_content, $identifier)) {
-                    $page_content = $this->cf_banner_model->parse($page_content, $identifier);
+                    $page_content = Model('banner')->parse($page_content, $identifier);
                 }
 
-                $_content[$k]['categories'] = $this->cf_data_model->post_category($v['menu_id'], true);
+                $_content[$k]['categories'] = Model('data')->post_category($v['menu_id'], true);
 
                 //$v['menu_id'] = explode(',',$v['menu_id']);
                 //$v['menu_id'] = array_filter($v['menu_id']);
@@ -493,7 +487,7 @@ class Cf_blog_model extends MY_Model
 
                 $link = get_page_url(
                     $v
-                ); //$this->cf_data_model->link_create(array(0 => 'page', 1 => $v['menu_id'], 3 => $v['page_id'], 4 => $this->cf_data_model->link_clean($v['page_title'])));
+                ); //Model('data')->link_create(array(0 => 'page', 1 => $v['menu_id'], 3 => $v['page_id'], 4 => Model('data')->link_clean($v['page_title'])));
 
                 //If the user has right to view this content...
                 if ($access) {
@@ -557,7 +551,7 @@ shared_object.attachButton(document.getElementById(\'st_sharethis\'));shared_obj
                 }
 
                 //Count total comment
-                $_content[$k]['comment_count'] = $this->cf_data_model->post_comment_count($v['page_id']);
+                $_content[$k]['comment_count'] = Model('data')->post_comment_count($v['page_id']);
 
             }
         } //END: Foreach

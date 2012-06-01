@@ -43,7 +43,6 @@ class Registration extends MY_Controller
            | you can load the CI way as well though :)
            */
         $load = array(
-            'model' => 'cf_menu_model + blog/cf_blog_model',
             'library' => 'form_validation',
             'helper' => 'form'
         );

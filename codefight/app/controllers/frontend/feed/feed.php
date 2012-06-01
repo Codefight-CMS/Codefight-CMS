@@ -38,7 +38,6 @@ class Feed extends MY_Controller
     public function __construct()
     {
         parent::MY_Controller();
-        $this->load->model('blog/cf_blog_model', '', TRUE);
         $this->load->helper('xml');
     }
 
@@ -55,11 +54,11 @@ class Feed extends MY_Controller
 
         if ($feed_section) {
             if ($feed_section == 'approved-comment') {
-                $data['posts'] = $this->cf_blog_model->getApprovedComment();
+                $data['posts'] = Model('blog')->getApprovedComment();
                 $view_file = 'frontend/templates/core/blocks/feed/rss_comments';
             }
             else if ($feed_section == 'pending-comment') {
-                $data['posts'] = $this->cf_blog_model->getPendingComment();
+                $data['posts'] = Model('blog')->getPendingComment();
                 $view_file = 'frontend/templates/core/blocks/feed/rss_comments';
             }
             else
@@ -69,7 +68,7 @@ class Feed extends MY_Controller
         }
 
         if (!$feed_section) {
-            $data['posts'] = $this->cf_blog_model->getRecentPosts();
+            $data['posts'] = Model('blog')->getRecentPosts();
             $view_file = 'frontend/templates/core/blocks/feed/rss';
         }
 
@@ -86,7 +85,7 @@ class Feed extends MY_Controller
         $data['page_language'] = 'en-au';
         $data['creator_email'] = 'Damodar Bashyal is at enjoygame at hotmail dot com';
 
-        $data['posts'] = $this->cf_blog_model->get_posts(10, 86);
+        $data['posts'] = Model('blog')->get_posts(10, 86);
         $view_file = 'frontend/templates/core/blocks/feed/rss';
 
         header("Content-Type: application/rss+xml");

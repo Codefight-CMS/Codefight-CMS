@@ -4,8 +4,13 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_data_model extends MY_Model
+class Data_model extends MY_Model
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /*
       * Get sort id for newly created entry
@@ -24,12 +29,6 @@ class Cf_data_model extends MY_Model
           else return 1;
           */
         return 0;
-    }
-
-    function Cf_data_model()
-    {
-        // Call the Model constructor
-        parent::MY_Model();
     }
 
     function get_tag_cloud($type = false)

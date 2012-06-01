@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
-<?php $recent = $this->cf_blog_model->getRecentPosts(10); ?>
+<?php $recent = Model('blog')->getRecentPosts(10); ?>
 
 <ul class="recent_posts">
 

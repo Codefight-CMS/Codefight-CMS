@@ -17,4 +17,4 @@ $banner = array(
     'show_your_add_here' => true
 );
 //Display Banner Here
-echo $this->cf_banner_model->get_advertisement($banner); ?>
+echo Model('banner')->get_advertisement($banner); ?>

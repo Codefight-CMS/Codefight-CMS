@@ -210,6 +210,7 @@ class Module_Library extends MY_Library
     function _getCnfs()
     {
         $ret = array();
+        $cnf = array();
 
         $dir = FCPATH . 'app/modules/';
 
@@ -234,6 +235,6 @@ class Module_Library extends MY_Library
 	{
         $group_id = $this->CI->user('group_id');
 
-		return $this->CI->cf_module_model->get($group_id);
+		return Model('module')->get($group_id);
 	}
 }

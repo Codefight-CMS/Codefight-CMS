@@ -45,7 +45,7 @@ foreach ($menu_array as $v)
     <p class="clear">&nbsp;</p>
 
     <label><?php echo __('SORT'); ?>:</label><input class="txtFld" name="menu_sort" type="text" id="menu_sort"
-                                                    value="<?php echo $this->cf_data_model->get_sort_id('menu'); ?>"/>
+                                                    value="<?php echo Model('data')->get_sort_id('menu'); ?>"/>
 
     <p class="clear">&nbsp;</p>
 

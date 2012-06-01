@@ -45,7 +45,7 @@ class Cp extends MY_Controller
 
         $this->load->model('cf_cp_model');
 
-        $data['top_page'] = $this->cf_cp_model->get_top_page();
+        $data['top_page'] = Model('cp')->get_top_page();
 
         //---
         $html_string = $this->load->view('admin/cp/cp_view', $data, true); //Get view data in place of sending to browser.

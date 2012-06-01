@@ -57,11 +57,9 @@ $autoload['libraries'] = array(
     'database',
     'session',
     'cf_library',
-    'block/Block_Library',
     'user_agent',
     'MY_Language',
     'security',
-    'module/Module_Library'
 );
 
 
@@ -119,15 +117,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array(
-	'cf_data_model',
-	'cf_setting_model',
-	'language_model',
-	'cf_banner_model',
-	'cf_helper_model',
-	'user/cf_user_model',
-	'blog/cf_blog_model',
-    'module/cf_module_model');
+$autoload['model'] = array();
 
 
 /* End of file autoload.php */

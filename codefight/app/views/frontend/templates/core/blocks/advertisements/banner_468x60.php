@@ -19,6 +19,6 @@
         'show_your_add_here' => false
     );
 
-    echo $this->cf_banner_model->get_advertisement($banner);
+    echo Model('banner')->get_advertisement($banner);
 
 endif; ?>

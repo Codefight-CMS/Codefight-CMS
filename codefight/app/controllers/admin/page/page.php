@@ -35,14 +35,13 @@ class Page extends MY_Controller {
         parent::MY_Controller();
 
         $this->load->helper(array('form', 'text'));
-        $this->load->model(array('user/cf_user_model', 'blog/cf_blog_model', 'cf_menu_model', 'websites/cf_websites_model'));
     }
 
     public function get_authors()
     {
 	if(!count($this->authors))
 	{
-		$this->authors = $this->cf_user_model->get_authors();
+		$this->authors = Model('user')->get_authors();
 	}
 
 	return $this->authors;
@@ -71,7 +70,7 @@ class Page extends MY_Controller {
                 */
             $this->load->library('pagination');
             $config['base_url'] = base_url() . "admin/page/" . $this->uri->segment(3, 'page') . "/";
-            $config['total_rows'] = $this->cf_blog_model->get_blog_count($this->uri->segment(3, 'page'), 'admin');
+            $config['total_rows'] = Model('blog')->get_blog_count($this->uri->segment(3, 'page'), 'admin');
             $config['per_page'] = '20';
             $config['uri_segment'] = 4;
             $config['num_links'] = 5;
@@ -83,7 +82,7 @@ class Page extends MY_Controller {
             $data['pagination'] = $this->pagination->create_links();
 
             //load page menu
-            $data['page'] = $this->cf_blog_model->get_page($config['per_page'], $this->uri->segment(4, 0), $this->uri->segment(3, 'page'));
+            $data['page'] = Model('blog')->get_page($config['per_page'], $this->uri->segment(4, 0), $this->uri->segment(3, 'page'));
 
             //---
             $html_string = $this->load->view('admin/' . $this->uri->segment(3, 'page') . '/page_view', $data, true); //Get view data in place of sending to browser.
@@ -201,7 +200,7 @@ class Page extends MY_Controller {
                         $tag = url_title($v);
 
                         //add|increment tag count
-                        $this->cf_data_model->tag_cloud_add($tag, $this->uri->segment(3, 'page'), $v, $websites_id);
+                        Model('data')->tag_cloud_add($tag, $this->uri->segment(3, 'page'), $v, $websites_id);
 
                         //insert tag to tag table
                         $this->db->insert('page_tag', array('page_id' => $page_id, 'tag' => $tag));
@@ -253,7 +252,7 @@ class Page extends MY_Controller {
             if ($this->db->delete('page', array('page_id' => $id))) {
                 if ($page_data[0]['websites_id']) {
                     $websites_id = explode(',', trim($page_data[0]['websites_id'], ','));
-                    $this->cf_data_model->tag_cloud_delete($id, 'page', $websites_id);
+                    Model('data')->tag_cloud_delete($id, 'page', $websites_id);
                 }
                 $msg = array('success' => "<p>Selected page(s) deleted successfully.</p>");
                 $type = 'success';
@@ -443,9 +442,9 @@ class Page extends MY_Controller {
                     $page_data = $query->result_array();
                     if ($page_data[0]['websites_id']) {
                         $websites_ids = explode(',', trim($page_data[0]['websites_id'], ','));
-                        $this->cf_data_model->tag_cloud_delete($id, $this->uri->segment(3, 'page'), $websites_ids);
+                        Model('data')->tag_cloud_delete($id, $this->uri->segment(3, 'page'), $websites_ids);
                     }
-                    //$this->cf_data_model->tag_cloud_delete($id, $this->uri->segment(3, 'page'), $websites_id);
+                    //Model('data')->tag_cloud_delete($id, $this->uri->segment(3, 'page'), $websites_id);
 
                     //update page
                     $this->db->where('page_id', $id);
@@ -483,7 +482,7 @@ class Page extends MY_Controller {
                             $tag = url_title($v);
 
                             //add|increment tag count
-                            $this->cf_data_model->tag_cloud_add($tag, $this->uri->segment(3, 'page'), $v, $websites_id);
+                            Model('data')->tag_cloud_add($tag, $this->uri->segment(3, 'page'), $v, $websites_id);
 
                             //insert tag to tag table
                             $this->db->insert('page_tag', array('page_id' => $id, 'tag' => $tag));

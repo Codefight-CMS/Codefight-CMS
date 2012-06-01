@@ -24,7 +24,7 @@
         <?php
         foreach ($posts->result_array() as $entry)
         {
-            $categories = $this->cf_blog_model->getMenuLinks($entry['menu_id']);
+            $categories = Model('data')->getMenuLinks($entry['menu_id']);
 
             $link = site_url(get_page_url($entry));
             $description = nl2br(trim(str_replace('&nbsp;', ' ', strip_tags($entry['page_blurb'])))); //xml_convert

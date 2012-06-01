@@ -36,7 +36,6 @@ class Folder extends MY_Controller
         parent::MY_Controller();
 
         $this->load->helper(array('form', 'text'));
-        $this->load->model('file/cf_file_model');
 
         $this->isSearch = FALSE;
         $this->q = FALSE;
@@ -73,7 +72,7 @@ class Folder extends MY_Controller
            */
         $this->load->library('pagination');
         $config['base_url'] = trim(site_url(), '/') . "/admin/folder/manage-folder/";
-        $config['total_rows'] = $this->cf_file_model->get_folder_count();
+        $config['total_rows'] = Model('file')->get_folder_count();
         $config['per_page'] = '500';
         $config['uri_segment'] = 4;
         $config['num_links'] = 3;
@@ -82,7 +81,7 @@ class Folder extends MY_Controller
         //END: Pagination
 
         $data['pagination'] = $this->pagination->create_links();
-        $data['folder'] = $this->cf_file_model->get_folder($config['per_page'], $this->uri->segment($config['uri_segment'], 0));
+        $data['folder'] = Model('file')->get_folder($config['per_page'], $this->uri->segment($config['uri_segment'], 0));
 
         //---
         $html_string = $this->load->view('admin/folder/manage_folder_view', $data, true); //Get view data in place of sending to browser.
@@ -113,12 +112,10 @@ class Folder extends MY_Controller
         }
 
         $this->load->library('form_validation');
-        $this->load->model('cf_group_model');
-        $this->load->model('user/cf_user_model');
 
-        $data['folder'] = $this->cf_file_model->get_active_folder();
-        $data['group'] = $this->cf_group_model->get_group(FALSE);
-        $data['user'] = $this->cf_user_model->get_active_user();
+        $data['folder'] = Model('file')->get_active_folder();
+        $data['group'] = Model('group')->get_group(FALSE);
+        $data['user'] = Model('user')->get_active_user();
 
         !is_array($id_array) ? $id_array = array() : '';
 
@@ -230,7 +227,7 @@ class Folder extends MY_Controller
                         );
 
                         //FCPATH
-                        $update = $this->cf_file_model->update_folder($folder);
+                        $update = Model('file')->update_folder($folder);
 
                         if ($update) {
                             $msg = array('success' => '<p>' . $success_count++ . ' Records Updated successfully.</p>');
@@ -254,7 +251,7 @@ class Folder extends MY_Controller
         }
         //END: validate data and update in database
 
-        $data['folder'] = $this->cf_file_model->get_active_folder();
+        $data['folder'] = Model('file')->get_active_folder();
 
         //---
         $html_string = $this->load->view('admin/folder/folder_edit_view', $data, TRUE); //Get view data in place of sending to browser.
@@ -268,12 +265,10 @@ class Folder extends MY_Controller
         $data = '';
 
         $this->load->library('form_validation');
-        $this->load->model('cf_group_model');
-        $this->load->model('user/cf_user_model');
 
-        $data['folder'] = $this->cf_file_model->get_active_folder();
-        $data['group'] = $this->cf_group_model->get_group(FALSE);
-        $data['user'] = $this->cf_user_model->get_active_user();
+        $data['folder'] = Model('file')->get_active_folder();
+        $data['group'] = Model('group')->get_group(FALSE);
+        $data['user'] = Model('user')->get_active_user();
 
         $val = array(
             array('field' => 'active', 'label' => 'Status', 'rules' => 'trim|required|xss_clean'),
@@ -331,7 +326,7 @@ class Folder extends MY_Controller
             );
 
             //FCPATH
-            $insert = $this->cf_file_model->create_folder($folder);
+            $insert = Model('file')->create_folder($folder);
 
             if ($insert) {
                 $msg = array('success' => '<p>New Folder(s) Created.</p>');
@@ -344,7 +339,7 @@ class Folder extends MY_Controller
             }
         }
 
-        $data['folder'] = $this->cf_file_model->get_active_folder();
+        $data['folder'] = Model('file')->get_active_folder();
 
         //---
         $html_string = $this->load->view('admin/folder/folder_create_view', $data, TRUE); //Get view data in place of sending to browser.

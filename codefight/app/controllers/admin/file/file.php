@@ -36,7 +36,6 @@ class File extends MY_Controller
         parent::MY_Controller();
 
         $this->load->helper(array('form', 'text'));
-        $this->load->model('file/cf_file_model');
 
         $this->isSearch = FALSE;
         $this->q = FALSE;
@@ -71,7 +70,7 @@ class File extends MY_Controller
            */
         $this->load->library('pagination');
         $config['base_url'] = trim(site_url(), '/') . "/admin/file/" . $this->uri->segment(3, 'manage-file') . "/";
-        $config['total_rows'] = $this->cf_file_model->get_file_count();
+        $config['total_rows'] = Model('file')->get_file_count();
         $config['per_page'] = '500';
         $config['uri_segment'] = 4;
         $config['num_links'] = 3;
@@ -81,7 +80,7 @@ class File extends MY_Controller
         //END: Pagination
 
         $data['pagination'] = $this->pagination->create_links();
-        $data['file'] = $this->cf_file_model->get_searched_file($config['per_page'], $this->uri->segment($config['uri_segment'], 0), $this->q);
+        $data['file'] = Model('file')->get_searched_file($config['per_page'], $this->uri->segment($config['uri_segment'], 0), $this->q);
 
         //---
         $html_string = $this->load->view('admin/file/manage_file_view', $data, true); //Get view data in place of sending to browser.
@@ -121,7 +120,7 @@ class File extends MY_Controller
            */
         $this->load->library('pagination');
         $config['base_url'] = trim(site_url(), '/') . "/admin/file/" . $this->uri->segment(3, 'manage-file') . "/";
-        $config['total_rows'] = $this->cf_file_model->get_file_count();
+        $config['total_rows'] = Model('file')->get_file_count();
         $config['per_page'] = '30';
         $config['uri_segment'] = 4;
         $config['num_links'] = 3;
@@ -136,7 +135,7 @@ class File extends MY_Controller
         //END: Pagination
 
         $data['pagination'] = $this->pagination->create_links();
-        $data['file'] = $this->cf_file_model->get_file($config['per_page'], $this->uri->segment($config['uri_segment'], 0), $folder_id);
+        $data['file'] = Model('file')->get_file($config['per_page'], $this->uri->segment($config['uri_segment'], 0), $folder_id);
 
         //---
         $html_string = $this->load->view('admin/file/manage_file_view', $data, true); //Get view data in place of sending to browser.
@@ -165,7 +164,7 @@ class File extends MY_Controller
         {
             //$id = preg_replace('/[^0-9]+/','',$id);
             //$this->db->delete('file', array('file_id' => $id));
-            $delete = $this->cf_file_model->delete_file($id);
+            $delete = Model('file')->delete_file($id);
 
             if ($this->db->affected_rows()) {
                 //if(is_file())
@@ -220,12 +219,10 @@ class File extends MY_Controller
     {
         $data = '';
         $this->load->library('form_validation');
-        $this->load->model('cf_group_model');
-        $this->load->model('user/cf_user_model');
 
-        $data['folder'] = $this->cf_file_model->get_active_folder();
-        $data['group'] = $this->cf_group_model->get_group(FALSE);
-        $data['user'] = $this->cf_user_model->get_active_user();
+        $data['folder'] = Model('file')->get_active_folder();
+        $data['group'] = Model('group')->get_group(FALSE);
+        $data['user'] = Model('user')->get_active_user();
 
         $val = array(
             array('field' => 'active', 'label' => 'STATUS', 'rules' => 'trim|required|xss_clean'),
@@ -271,7 +268,7 @@ class File extends MY_Controller
             $group = set_value('group[]');
             $user = set_value('user[]');
 
-            $config['upload_path'] = $this->cf_file_model->get_upload_path($parent);
+            $config['upload_path'] = Model('file')->get_upload_path($parent);
 
             if (!$config['upload_path']) {
                 $msg = array('error' => '<p>Upload Path Not Found.</p>');
@@ -291,7 +288,7 @@ class File extends MY_Controller
                         'upload_data' => $upload_data
                     );
 
-                    $insert = $this->cf_file_model->add_new_file($file);
+                    $insert = Model('file')->add_new_file($file);
 
                     if ($insert) {
                         $msg = array('success' => '<p>New file successfully uploaded</p>');
@@ -336,12 +333,10 @@ class File extends MY_Controller
         }
 
         $this->load->library('form_validation');
-        $this->load->model('cf_group_model');
-        $this->load->model('user/cf_user_model');
 
-        $data['folder'] = $this->cf_file_model->get_active_folder();
-        $data['group'] = $this->cf_group_model->get_group(FALSE);
-        $data['user'] = $this->cf_user_model->get_active_user();
+        $data['folder'] = Model('file')->get_active_folder();
+        $data['group'] = Model('group')->get_group(FALSE);
+        $data['user'] = Model('user')->get_active_user();
 
         !is_array($id_array) ? $id_array = array() : '';
 
@@ -441,7 +436,7 @@ class File extends MY_Controller
                         );
 
                         //FCPATH
-                        $update = $this->cf_file_model->update_file($file);
+                        $update = Model('file')->update_file($file);
 
                         if ($update) {
                             $msg = array('success' => '<p>' . $success_count++ . ' Records Updated successfully.</p>');

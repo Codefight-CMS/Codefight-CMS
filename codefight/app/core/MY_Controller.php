@@ -21,6 +21,7 @@ class MY_Controller extends CI_Controller
     public $cfSegments;
     public $current_language = 'english';//@todo::search and remove references.
     public $language = 'english';
+    public $backUrl = '';
 
 
     /**
@@ -65,7 +66,12 @@ class MY_Controller extends CI_Controller
             $this->session->set_userdata('history', uri_string());
         }
 
+        if (in_array($this->cfModule, array('registration'))) {
+            $this->session->set_userdata('isLogin', 1);
+        }
+
         if ($this->cfModule == 'admin' /*&& $this->cfAdminController != 'cf'*/) {
+
             require_once APPPATH . DS . 'core' . DS . 'Admin_Controller.php';
             $Admin_Controller = new Admin_Controller();
             //Check access rights
@@ -87,7 +93,7 @@ class MY_Controller extends CI_Controller
         $this->load_language_files();
 
         //load setting
-        //$this->cf_setting_model->load_setting();
+        //Model('setting')->load_setting();
 
         //if $load is defined load them
         foreach ((array)$load as $k => $v)
@@ -102,15 +108,15 @@ class MY_Controller extends CI_Controller
         }
 
         //Overwrite Language If Set.
-        $this->language_model->load();
+        Model('language')->load();
 
         //Load all setting defined at setting manager
-        //$this->cf_setting_model->load_setting();
-        $this->setting = $this->cf_setting_model->setting;
+        //Model('setting')->load_setting();
+        $this->setting = Model('setting')->setting;
 
         //check if site is enabled
         if ($this->cfModule != 'admin') {
-            $this->cf_setting_model->check_site_enabled();
+            Model('setting')->check_site_enabled();
         }
 
         //On clicking menu link, show all page contents linked to that link
@@ -138,9 +144,9 @@ class MY_Controller extends CI_Controller
         }
 
         if (!is_numeric($this->menu_id) && !in_array(strtolower($this->menu_id), array('c', 'tag', 'ajax'))) {
-            $this->menu_id = $this->cf_blog_model->getMenuId($this->menu_id);
+            $this->menu_id = Model('blog')->getMenuId($this->menu_id);
         } else if($this->menu_id > 0 && is_numeric($this->page_id) && $this->page_id > 0) {
-            $this->cf_blog_model->redirect_blog($this->page_id);
+            Model('blog')->redirect_blog($this->page_id);
         }
 
         //Start caching page
@@ -167,10 +173,10 @@ class MY_Controller extends CI_Controller
     {
         //Get available templates, this should be called first
         //as this will get and set default template
-        $data['templates'] = $this->cf_setting_model->get_templates();
+        $data['templates'] = Model('setting')->get_templates();
 
         //Get template
-        $template = $this->cf_setting_model->selected_template();
+        $template = Model('setting')->selected_template();
 
         //Get Body Id
         $data['bodyId'] = $this->getBodyId();

@@ -34,7 +34,6 @@ class Form extends MY_Controller
         parent::MY_Controller();
 
         $this->load->helper(array('form', 'text'));
-        $this->load->model(array('cf_menu_model', 'cf_form_model'));
 
     }
 
@@ -293,7 +292,7 @@ class Form extends MY_Controller
         {
             $data = '';
 
-            $data['keys'] = $this->cf_form_model->get_form_item();
+            $data['keys'] = Model('form')->get_form_item();
 
             //---
             $html_string = $this->load->view('admin/form/form_item_view', $data, true); //Get view data in place of sending to browser.
@@ -365,7 +364,7 @@ class Form extends MY_Controller
             $form_item_parameters = set_value('form_item_parameters');
             $form_item_data_type = set_value('form_item_data_type');
 
-            $insert = $this->cf_form_model->insert_form_item(array(
+            $insert = Model('form')->insert_form_item(array(
                                                                   'form_item_label' => $form_item_label,
                                                                   'form_item_name' => $form_item_name,
                                                                   'form_item_input_type' => $form_item_input_type,
@@ -539,7 +538,7 @@ class Form extends MY_Controller
         {
             $data = '';
 
-            $data['keys'] = $this->cf_form_model->get_form_group();
+            $data['keys'] = Model('form')->get_form_group();
 
             //---
             $html_string = $this->load->view('admin/form/form_group_view', $data, true); //Get view data in place of sending to browser.
@@ -586,7 +585,7 @@ class Form extends MY_Controller
             $form_group_identifier = set_value('form_group_identifier');
             $form_group_send_to = set_value('form_group_send_to');
 
-            $insert = $this->cf_form_model->insert_form_group(array(
+            $insert = Model('form')->insert_form_group(array(
                                                                    'form_group_name' => $form_group_name,
                                                                    'form_group_identifier' => $form_group_identifier,
                                                                    'form_group_send_to' => $form_group_send_to

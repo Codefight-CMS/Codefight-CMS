@@ -29,7 +29,6 @@ class Asset_Library extends MY_Library
 
         //Get instance
         $this->CI =& get_instance();
-        $this->CI->load->model('cf_form_mdl');
         $this->CI->load->library('form_validation');
 
         //identifier contains full identifer block and code
@@ -47,7 +46,7 @@ class Asset_Library extends MY_Library
         foreach ($identifier_codes as $k => $v) {
             $form_item[$k]['block'] = $identifier_blocks[$k];
             $form_item[$k]['identifier'] = $v;
-            $form_item[$k]['item'] = $this->CI->cf_form_mdl->get_form_item($v);
+            $form_item[$k]['item'] = Model('form')->get_form_items($v);
         }
 
         foreach ($form_item as $k => $v) {

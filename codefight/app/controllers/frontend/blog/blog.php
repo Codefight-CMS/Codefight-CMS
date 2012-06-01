@@ -46,7 +46,6 @@ class Blog extends MY_Controller
            | you can load the CI way as well though :)
            */
         $load = array(
-            'model'   => 'blog/cf_blog_model + cf_menu_model',
             'helper'  => 'text + form'
         );
 
@@ -67,7 +66,7 @@ class Blog extends MY_Controller
         //if page_id is numeric and is greater than 0, that means request for full article
         if (is_numeric($this->page_id) && $this->page_id > 0) {
             //Get full page text on clicking more >> link
-            $data = $this->cf_blog_model->get_page_full($this->page_id);
+            $data = Model('blog')->get_page_full($this->page_id);
         }
         else
         {
@@ -78,7 +77,7 @@ class Blog extends MY_Controller
             //if(!$this->page_id) $this->page_id = 'home';
 
             $config['base_url']    = base_url() . 'blog/' . $this->menu_id . '/' . $this->page_id . '/';
-            $config['total_rows']  = $this->cf_blog_model->get_blog_count($this->menu_id);
+            $config['total_rows']  = Model('blog')->get_blog_count($this->menu_id);
             $config['uri_segment'] = 4;
             //END: Pagination
 
@@ -86,7 +85,7 @@ class Blog extends MY_Controller
             $this->paginate($config);
 
             //Get page content for the selected menu item.
-            $data = $this->cf_blog_model->get_blog_contents(
+            $data = Model('blog')->get_blog_contents(
                 $this->menu_id, $this->setting->pagination_per_page, $this->current_page
             );
 
@@ -97,14 +96,12 @@ class Blog extends MY_Controller
         /*
            | Send data to Format Content and get back.
            | See These Files For Processing:
-           | models/cf_blog_model.php
-           | models/cf_data_model.php
            | libraries/block/block_Library.php
            */
         if (isset($data['content']) && count((array)$data['content']) > 0) {
-            $data['content'] = $this->cf_blog_model->parseContent($data['content']);
+            $data['content'] = Model('blog')->parseContent($data['content']);
         } else {
-            $this->cf_blog_model->redirect_blog($this->page_id);
+            Model('blog')->redirect_blog($this->page_id);
 
             header("HTTP/1.0 404 Not Found");
             //if content not found | Set meta to noindex, nofollow to save your website value to search engines.
