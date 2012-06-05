@@ -1,11 +1,5 @@
 <?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
 <?php $this->load->view('admin/inc/header'); ?>
-<script>jQuery(document).ready(function() {/*call the tablesorter plugin, the magic happens in the markup*/
-    jQuery("table").tablesorter({sortList:[
-        [1,0],
-        [2,1]
-    ], widgets: ['zebra']});
-});</script>
 <h1><?php echo ucwords(preg_replace('/\-/', ' ', $this->uri->segment(3, 'Static Page')));?></h1>
 
 <?php echo form_open(uri_string()); ?>

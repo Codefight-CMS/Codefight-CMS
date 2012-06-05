@@ -77,10 +77,7 @@ class MY_Library
      */
     public function CI()
 	{
-        if(empty($this->ci))
-        {
-            $this->ci =& get_instance();
-        }
+        $this->ci =& get_instance();
         return $this->ci;
     }
 

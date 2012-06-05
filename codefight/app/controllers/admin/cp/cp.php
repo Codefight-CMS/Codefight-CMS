@@ -43,8 +43,6 @@ class Cp extends MY_Controller
     {
         $data = '';
 
-        $this->load->model('cf_cp_model');
-
         $data['top_page'] = Model('cp')->get_top_page();
 
         //---

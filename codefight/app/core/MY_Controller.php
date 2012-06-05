@@ -63,14 +63,17 @@ class MY_Controller extends CI_Controller
         $this->cfAdminController = $this->uri->segment(2, '');
         $this->cfAdminMethod     = $this->uri->segment(3, '');
         if (!in_array($this->cfModule, array('registration', 'skin', 'media', 'favicon.ico'))) {
-            $this->session->set_userdata('history', uri_string());
+            $backUrl = uri_string();
+            if(!empty($this->cfModule) && !empty($backUrl)){
+                $this->session->set_userdata('backUrl', htmlspecialchars($backUrl));
+            }
         }
 
         if (in_array($this->cfModule, array('registration'))) {
             $this->session->set_userdata('isLogin', 1);
         }
 
-        if ($this->cfModule == 'admin' /*&& $this->cfAdminController != 'cf'*/) {
+        if ($this->cfModule == 'admin') {
 
             require_once APPPATH . DS . 'core' . DS . 'Admin_Controller.php';
             $Admin_Controller = new Admin_Controller();

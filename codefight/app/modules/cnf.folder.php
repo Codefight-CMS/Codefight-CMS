@@ -22,6 +22,16 @@ $cnf['+media']['+folder']['admin'] = array(
                         'status' => 1,
 						'title' => 'Create Folder'
 						),
-				)
-		);
+                    'folder/folder-status' => array(
+                        'is_menu' => 0,
+                        'status' => 1,
+                        'title' => 'Change folder Status',
+                    ),
+                    'folder/search-file' => array(
+                        'is_menu' => 0,
+                        'status' => 1,
+                        'title' => 'Search Files under folder',
+                    ),
+            )
+);
 $cnf['folder']['frontend'] = array();/*to be included in future releases*/

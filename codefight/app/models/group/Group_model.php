@@ -4,7 +4,7 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Cf_group_model extends MY_Model
+class Group_model extends MY_Model
 {
 
     function get_group($per_page = 5, $page = 0)

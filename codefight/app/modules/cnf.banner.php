@@ -12,7 +12,8 @@ $cnf['banner']['global'] = array(
 			//'url' => 'banner',
             'void' => 1, /*1 = onclick="return false;"*/
 			'parent' => 'top',
-		);
+            'is_menu' => 0,
+);
 $cnf['banner']['admin'] = array(
 			'child' => array(
 					'banner/manage' => array(

@@ -53,7 +53,7 @@ class Menu extends MY_Controller
             $data = '';
 
             $data['head_includes'] = array('sortable.php');
-            $data['menu'] = $this->cf_menu_lib->get(array('menu_type' => $this->uri->segment(3, 'page')), true);
+            $data['menu'] = Library('menu')->get(array('menu_type' => $this->uri->segment(3, 'page')), true);
 
             //---
             $html_string = $this->load->view('admin/menu/menu_view', $data, true); //Get view data in place of sending to browser.
@@ -140,7 +140,7 @@ class Menu extends MY_Controller
                */
         }
 
-        $data['menu_array'] = (array)$this->cf_menu_lib->get(array('menu_type' => $this->uri->segment(3, 'page')), true);
+        $data['menu_array'] = (array)Library('menu')->get(array('menu_type' => $this->uri->segment(3, 'page')), true);
         $data['websites'] = Model('websites')->get_websites();
 
         //---

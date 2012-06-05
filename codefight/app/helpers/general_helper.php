@@ -50,9 +50,13 @@ if (!function_exists('Model')) {
      */
     function Model($model = 'codefight', $config = FALSE)
     {
-        $CI =& get_instance();
+        if(!is_object('MY_Model')){
+            include_once APPPATH . DS . 'core' . DS . 'MY_Model.php';
+        }
+
+        //$CI =& get_instance();
         $MY_Model = new MY_Model();
-        //$CI->load->model('MY_Model');
+        //$CI->model('MY_Model');
         return $MY_Model->Model($model, $config);
         //return $MY_Model->Model($model);
     }

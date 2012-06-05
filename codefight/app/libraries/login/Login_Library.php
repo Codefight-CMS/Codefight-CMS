@@ -11,9 +11,10 @@ class Login_Library extends MY_Library
 {
     function redirect(){
         $isLogin = $this->CI()->session->userdata('isLogin');
-        $backUrl = $this->CI()->session->userdata('history');
+        $backUrl = $this->CI()->session->userdata('backUrl');
 
-        if(!empty($isLogin) && !empty($backUrl)){
+        if(!empty($isLogin)){
+            empty($backUrl) ? $backUrl = 'home' : '';
             $this->CI()->session->unset_userdata('isLogin');
             redirect($backUrl);
         }

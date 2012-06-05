@@ -117,7 +117,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array('codefight_model');
 
 
 /* End of file autoload.php */

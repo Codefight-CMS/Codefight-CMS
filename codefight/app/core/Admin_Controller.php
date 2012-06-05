@@ -35,7 +35,12 @@ class Admin_Controller {
 
         $page = trim($this->CI->cfAdminController . '/' . $this->CI->cfAdminMethod, '/');
 
-        $defaultToAll = array('sortdata/menu','form/ajax','file/file-search-form'); /*These pages can be accessed by all admins. @todo: better management*/
+        $defaultToAll = array(  /*These pages can be accessed by all admins. @todo: better management*/
+                            'sortdata/menu',
+                            'sortdata/folder',
+                            'sortdata/group',
+                            'form/ajax',
+                            'file/file-search-form');
 
         if(in_array($page, $defaultToAll)) return TRUE;
 

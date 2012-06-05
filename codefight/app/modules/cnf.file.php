@@ -22,6 +22,11 @@ $cnf['+media']['+file']['admin'] = array(
                         'status' => 1,
 						'title' => 'Upload File'
 						),
+					'file/file-status' => array(
+                        'is_menu' => 0,
+                        'status' => 1,
+						'title' => 'Change File Status',
+						),
 				)
 		);
 $cnf['file']['frontend'] = array();/*to be included in future releases*/

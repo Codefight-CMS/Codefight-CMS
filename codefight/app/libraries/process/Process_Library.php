@@ -27,8 +27,6 @@ class Process_Library extends MY_Library
             }
 
             $html_string = preg_replace('/\[\[BASE_URL\]\]/i', base_url(), $html_string);
-            $html_string = preg_replace('/\[\*\[/i', '[[', $html_string);
-            $html_string = preg_replace('/\]\*\]/i', ']]', $html_string);
 
             /*@Deprecated - it's now managed through parser.
             preg_match_all('/{{tag\s\s*(.*)\s*}}/isU', $html_string, $matches);
@@ -67,6 +65,8 @@ class Process_Library extends MY_Library
             */
             //preg_match_all('/{{tag\s*(url=\'(.*)\')?\s*(rel=\'(.*)\')?\s*(title=\'(.*)\')?\s*(.*)}}/iSu', $html_string, $matches);
         }
+        $html_string = preg_replace('/\[\*\[/i', '[[', $html_string);
+        $html_string = preg_replace('/\]\*\]/i', ']]', $html_string);
 
         //Do you want to minify your html
         $html_tidy = Library('asset')->minify_html; //$CI->config->item('cf_minify_html');

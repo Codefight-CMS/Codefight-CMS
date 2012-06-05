@@ -6,6 +6,7 @@
  * Date: 9/10/2011
  */
 $cnf['comment']['global'] = array(
+			'void' => 1,
 			'status' => 1,
 			'sort' => 70,
 			'title' => 'Comments',
