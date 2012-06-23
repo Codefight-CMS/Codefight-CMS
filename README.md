@@ -18,8 +18,8 @@ admin:
 ------
 base_url/admin
 
-user: test@test.com 
-pass: test
+- user: test@test.com 
+- pass: test
 
 If you want to use same cms for 2nd website
 -------------------------------------------
