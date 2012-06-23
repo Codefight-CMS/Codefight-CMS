@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 09, 2012 at 02:28 PM
+-- Generation Time: Jun 23, 2012 at 03:15 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -20,7 +20,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `cf_banner`
 --
 
-DROP TABLE IF EXISTS `cf_banner`;
 CREATE TABLE IF NOT EXISTS `cf_banner` (
   `banner_id` int(11) NOT NULL AUTO_INCREMENT,
   `banner_title` varchar(64) NOT NULL DEFAULT '',
@@ -49,7 +48,6 @@ CREATE TABLE IF NOT EXISTS `cf_banner` (
 -- Table structure for table `cf_banner_history`
 --
 
-DROP TABLE IF EXISTS `cf_banner_history`;
 CREATE TABLE IF NOT EXISTS `cf_banner_history` (
   `banner_history_id` int(11) NOT NULL AUTO_INCREMENT,
   `banner_id` int(11) NOT NULL DEFAULT '0',
@@ -70,7 +68,6 @@ CREATE TABLE IF NOT EXISTS `cf_banner_history` (
 -- Table structure for table `cf_file`
 --
 
-DROP TABLE IF EXISTS `cf_file`;
 CREATE TABLE IF NOT EXISTS `cf_file` (
   `file_id` int(11) NOT NULL AUTO_INCREMENT,
   `file_title` varchar(255) DEFAULT NULL,
@@ -108,7 +105,6 @@ INSERT INTO `cf_file` (`file_id`, `file_title`, `file_description`, `folder_id`,
 -- Table structure for table `cf_folder`
 --
 
-DROP TABLE IF EXISTS `cf_folder`;
 CREATE TABLE IF NOT EXISTS `cf_folder` (
   `folder_id` int(11) NOT NULL AUTO_INCREMENT,
   `folder_parent_id` int(11) NOT NULL DEFAULT '0',
@@ -138,7 +134,6 @@ INSERT INTO `cf_folder` (`folder_id`, `folder_parent_id`, `folder_path`, `folder
 -- Table structure for table `cf_form_data_int`
 --
 
-DROP TABLE IF EXISTS `cf_form_data_int`;
 CREATE TABLE IF NOT EXISTS `cf_form_data_int` (
   `form_submitted_id` int(11) NOT NULL,
   `form_item_id` int(11) NOT NULL,
@@ -157,7 +152,6 @@ CREATE TABLE IF NOT EXISTS `cf_form_data_int` (
 -- Table structure for table `cf_form_data_text`
 --
 
-DROP TABLE IF EXISTS `cf_form_data_text`;
 CREATE TABLE IF NOT EXISTS `cf_form_data_text` (
   `form_submitted_id` int(11) NOT NULL,
   `form_item_id` int(11) NOT NULL,
@@ -171,7 +165,8 @@ CREATE TABLE IF NOT EXISTS `cf_form_data_text` (
 
 INSERT INTO `cf_form_data_text` (`form_submitted_id`, `form_item_id`, `form_item_data`) VALUES
 (8, 16, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nWhy do we use it?\n\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n \nWhere does it come from?\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.\nWhere can I get some?\n\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don''t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn''t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.'),
-(2, 16, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nWhy do we use it?\n\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n \nWhere does it come from?\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.\nWhere can I get some?\n\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don''t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn''t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.');
+(2, 16, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nWhy do we use it?\n\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).\n \nWhere does it come from?\n\nContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.\n\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.\nWhere can I get some?\n\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don''t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn''t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.'),
+(21, 16, 'Hi,\nThanks for downloading and trying codefight cms.\nHopefully you will like it.\nAny feedback from you will be highly appreciated as it will help to make it more better and better.\nThanks.\n\nRegards,\nDamu');
 
 -- --------------------------------------------------------
 
@@ -179,7 +174,6 @@ INSERT INTO `cf_form_data_text` (`form_submitted_id`, `form_item_id`, `form_item
 -- Table structure for table `cf_form_data_varchar`
 --
 
-DROP TABLE IF EXISTS `cf_form_data_varchar`;
 CREATE TABLE IF NOT EXISTS `cf_form_data_varchar` (
   `form_submitted_id` int(11) NOT NULL,
   `form_item_id` int(11) NOT NULL,
@@ -197,7 +191,11 @@ INSERT INTO `cf_form_data_varchar` (`form_submitted_id`, `form_item_id`, `form_i
 (2, 13, 'Damodar Bashyal'),
 (2, 14, 'dbashyal@xyz.com'),
 (8, 18, 'hydrogen,oxygen,'),
-(8, 17, 'Male');
+(8, 17, 'Male'),
+(21, 13, 'Damodar Bashyal'),
+(21, 22, '0400000000'),
+(21, 14, 'dbashyal@gmail.com'),
+(21, 21, 'Admin');
 
 -- --------------------------------------------------------
 
@@ -205,7 +203,6 @@ INSERT INTO `cf_form_data_varchar` (`form_submitted_id`, `form_item_id`, `form_i
 -- Table structure for table `cf_form_group`
 --
 
-DROP TABLE IF EXISTS `cf_form_group`;
 CREATE TABLE IF NOT EXISTS `cf_form_group` (
   `form_group_id` int(11) NOT NULL AUTO_INCREMENT,
   `form_group_name` varchar(25) DEFAULT NULL,
@@ -227,7 +224,6 @@ INSERT INTO `cf_form_group` (`form_group_id`, `form_group_name`, `form_group_ide
 -- Table structure for table `cf_form_item`
 --
 
-DROP TABLE IF EXISTS `cf_form_item`;
 CREATE TABLE IF NOT EXISTS `cf_form_item` (
   `form_item_id` int(11) NOT NULL AUTO_INCREMENT,
   `form_item_name` varchar(50) NOT NULL,
@@ -254,7 +250,7 @@ INSERT INTO `cf_form_item` (`form_item_id`, `form_item_name`, `form_item_label`,
 (18, 'newsletters_options[]', 'Select newsletters you would like to subscribe', 'checkbox', '', '1=maths|2=computer|3=science', '', 'varchar', 0),
 (20, 'file', 'file', 'file', 'trim|required', '', 'class=&quot;txtFld&quot;', 'text', 0),
 (21, 'receive_by', 'Who do you want to receive this submission?', 'select', 'trim|required', 'Admin=Admin|Sales=Sales|Support=Support', 'class=&quot;txtFld&quot;', 'varchar', 0),
-(22, 'contact_number', 'Contact Number', 'textbox', 'trim', '', 'class="txtFld"', 'varchar', 0);
+(22, 'contact_number', 'Contact Number', 'textbox', 'trim', '', 'class="txtFld"', 'varchar', 1);
 
 -- --------------------------------------------------------
 
@@ -262,7 +258,6 @@ INSERT INTO `cf_form_item` (`form_item_id`, `form_item_name`, `form_item_label`,
 -- Table structure for table `cf_form_item_to_group`
 --
 
-DROP TABLE IF EXISTS `cf_form_item_to_group`;
 CREATE TABLE IF NOT EXISTS `cf_form_item_to_group` (
   `form_group_id` int(11) NOT NULL,
   `form_item_id` int(11) NOT NULL,
@@ -281,7 +276,7 @@ INSERT INTO `cf_form_item_to_group` (`form_group_id`, `form_item_id`, `form_item
 (4, 15, 8, 0),
 (4, 16, 6, 0),
 (4, 21, 7, 0),
-(4, 22, 2, 0);
+(4, 22, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -289,14 +284,13 @@ INSERT INTO `cf_form_item_to_group` (`form_group_id`, `form_item_id`, `form_item
 -- Table structure for table `cf_form_submitted`
 --
 
-DROP TABLE IF EXISTS `cf_form_submitted`;
 CREATE TABLE IF NOT EXISTS `cf_form_submitted` (
   `form_submitted_id` int(11) NOT NULL AUTO_INCREMENT,
   `form_group_id` int(11) NOT NULL,
   `form_status` int(11) NOT NULL,
   PRIMARY KEY (`form_submitted_id`),
   KEY `form_groups_id` (`form_group_id`,`form_status`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `cf_form_submitted`
@@ -304,7 +298,8 @@ CREATE TABLE IF NOT EXISTS `cf_form_submitted` (
 
 INSERT INTO `cf_form_submitted` (`form_submitted_id`, `form_group_id`, `form_status`) VALUES
 (8, 4, 0),
-(2, 4, 1);
+(2, 4, 1),
+(21, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -312,7 +307,6 @@ INSERT INTO `cf_form_submitted` (`form_submitted_id`, `form_group_id`, `form_sta
 -- Table structure for table `cf_group`
 --
 
-DROP TABLE IF EXISTS `cf_group`;
 CREATE TABLE IF NOT EXISTS `cf_group` (
   `group_id` int(11) NOT NULL AUTO_INCREMENT,
   `group_title` varchar(255) NOT NULL,
@@ -339,7 +333,6 @@ INSERT INTO `cf_group` (`group_id`, `group_title`, `group_description`, `group_s
 -- Table structure for table `cf_group_permission`
 --
 
-DROP TABLE IF EXISTS `cf_group_permission`;
 CREATE TABLE IF NOT EXISTS `cf_group_permission` (
   `group_id` int(11) NOT NULL,
   `module_id` int(11) NOT NULL
@@ -374,7 +367,7 @@ INSERT INTO `cf_group_permission` (`group_id`, `module_id`) VALUES
 (1, 4),
 (1, 22),
 (1, 23),
-(1, 24),
+(1, 52),
 (1, 5),
 (1, 25),
 (1, 26),
@@ -414,7 +407,6 @@ INSERT INTO `cf_group_permission` (`group_id`, `module_id`) VALUES
 -- Table structure for table `cf_installs`
 --
 
-DROP TABLE IF EXISTS `cf_installs`;
 CREATE TABLE IF NOT EXISTS `cf_installs` (
   `installs_id` int(11) NOT NULL AUTO_INCREMENT,
   `website` varchar(255) DEFAULT NULL,
@@ -436,7 +428,6 @@ INSERT INTO `cf_installs` (`installs_id`, `website`, `count`, `date`) VALUES
 -- Table structure for table `cf_menu`
 --
 
-DROP TABLE IF EXISTS `cf_menu`;
 CREATE TABLE IF NOT EXISTS `cf_menu` (
   `menu_id` int(11) NOT NULL AUTO_INCREMENT,
   `menu_active` int(1) NOT NULL DEFAULT '0',
@@ -512,7 +503,6 @@ INSERT INTO `cf_menu` (`menu_id`, `menu_active`, `menu_parent_id`, `menu_link`, 
 -- Table structure for table `cf_module`
 --
 
-DROP TABLE IF EXISTS `cf_module`;
 CREATE TABLE IF NOT EXISTS `cf_module` (
   `module_id` int(11) NOT NULL AUTO_INCREMENT,
   `parent` varchar(255) NOT NULL,
@@ -525,7 +515,7 @@ CREATE TABLE IF NOT EXISTS `cf_module` (
   `child` text NOT NULL,
   `is_menu` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`module_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=53 ;
 
 --
 -- Dumping data for table `cf_module`
@@ -535,7 +525,7 @@ INSERT INTO `cf_module` (`module_id`, `parent`, `status`, `sort`, `url`, `title`
 (1, 'top', 1, 1, 'cp', 'Admin', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:2:"cp";s:5:"title";s:5:"Admin";s:5:"child";a:2:{s:5:"cp/cp";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:5:"cp/cp";s:5:"title";s:4:"Home";}s:9:"cp/update";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"cp/update";s:5:"title";s:17:"Codefight Updates";}}}', 'a:2:{i:0;s:5:"cp/cp";i:1;s:9:"cp/update";}', 1),
 (2, 'top', 1, 4, 'menu', 'Menu', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:4:"menu";s:5:"title";s:4:"Menu";s:5:"child";a:6:{s:9:"menu/page";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"menu/page";s:5:"title";s:10:"Page Links";}s:9:"menu/blog";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"menu/blog";s:5:"title";s:15:"Blog Categories";}s:14:"menu/blog-roll";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:14:"menu/blog-roll";s:5:"title";s:9:"Blog Roll";}s:16:"menu/classifieds";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:16:"menu/classifieds";s:5:"title";s:21:"Classified Categories";}s:20:"menu/favourite-links";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:20:"menu/favourite-links";s:5:"title";s:15:"Favourite Links";}s:20:"menu/sponsored-links";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:20:"menu/sponsored-links";s:5:"title";s:15:"Sponsored Links";}}}', 'a:6:{i:0;s:9:"menu/page";i:1;s:9:"menu/blog";i:2;s:14:"menu/blog-roll";i:3;s:16:"menu/classifieds";i:4;s:20:"menu/favourite-links";i:5;s:20:"menu/sponsored-links";}', 1),
 (3, 'top', 1, 11, 'user', 'User', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:4:"user";s:5:"title";s:4:"User";s:5:"child";a:3:{s:10:"user/index";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:10:"user/index";s:5:"title";s:5:"Users";}s:5:"group";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:5:"group";s:5:"title";s:6:"Groups";}s:17:"group/permissions";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:17:"group/permissions";s:5:"title";s:17:"Group Permissions";}}}', 'a:3:{i:0;s:10:"user/index";i:1;s:5:"group";i:2;s:17:"group/permissions";}', 1),
-(4, 'top', 1, 15, 'form', 'Form', 0, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:4:"form";s:5:"title";s:4:"Form";s:5:"child";a:3:{s:9:"form/item";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"form/item";s:5:"title";s:5:"Items";}s:10:"form/group";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:10:"form/group";s:5:"title";s:5:"Group";}s:14:"menu/submitted";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:14:"menu/submitted";s:5:"title";s:9:"Submitted";}}}', 'a:3:{i:0;s:9:"form/item";i:1;s:10:"form/group";i:2;s:14:"menu/submitted";}', 1),
+(4, 'top', 1, 15, 'form', 'Form', 0, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:4:"form";s:5:"title";s:4:"Form";s:5:"child";a:3:{s:9:"form/item";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"form/item";s:5:"title";s:5:"Items";}s:10:"form/group";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:10:"form/group";s:5:"title";s:5:"Group";}s:14:"form/submitted";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:14:"form/submitted";s:5:"title";s:9:"Submitted";}}}', 'a:3:{i:0;s:9:"form/item";i:1;s:10:"form/group";i:2;s:14:"form/submitted";}', 1),
 (5, 'top', 1, 19, 'page', 'CMS', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:4:"page";s:5:"title";s:3:"CMS";s:5:"child";a:3:{s:9:"page/page";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"page/page";s:5:"title";s:11:"Static Page";}s:9:"page/blog";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:9:"page/blog";s:5:"title";s:12:"Blog Article";}s:10:"page/block";a:4:{s:7:"is_menu";i:0;s:4:"void";i:1;s:3:"url";s:10:"page/block";s:5:"title";s:13:"Static Blocks";}}}', 'a:3:{i:0;s:9:"page/page";i:1;s:9:"page/blog";i:2;s:10:"page/block";}', 1),
 (6, 'top', 1, 23, 'comment', 'Comments', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:7:"comment";s:5:"title";s:8:"Comments";s:5:"child";a:2:{s:23:"comment/pending-comment";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:23:"comment/pending-comment";s:5:"title";s:16:"Pending Comments";}s:24:"comment/approved-comment";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:24:"comment/approved-comment";s:5:"title";s:17:"Approved Comments";}}}', 'a:2:{i:0;s:23:"comment/pending-comment";i:1;s:24:"comment/approved-comment";}', 1),
 (7, 'top', 1, 26, 'media', 'Media', 1, 'a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:5:"media";s:5:"title";s:5:"Media";s:5:"child";a:2:{s:4:"file";a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:4:"file";s:5:"title";s:12:"File Manager";s:5:"child";a:3:{s:16:"file/manage-file";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:16:"file/manage-file";s:5:"title";s:12:"Manage Files";}s:16:"file/upload-file";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:16:"file/upload-file";s:5:"title";s:11:"Upload File";}s:16:"file/file-status";a:4:{s:7:"is_menu";i:0;s:4:"void";i:0;s:3:"url";s:16:"file/file-status";s:5:"title";s:18:"Change File Status";}}}s:6:"folder";a:5:{s:7:"is_menu";i:1;s:4:"void";i:1;s:3:"url";s:6:"folder";s:5:"title";s:14:"Folder Manager";s:5:"child";a:4:{s:20:"folder/manage-folder";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:20:"folder/manage-folder";s:5:"title";s:14:"Manage Folders";}s:20:"folder/create-folder";a:4:{s:7:"is_menu";i:1;s:4:"void";i:0;s:3:"url";s:20:"folder/create-folder";s:5:"title";s:13:"Create Folder";}s:20:"folder/folder-status";a:4:{s:7:"is_menu";i:0;s:4:"void";i:0;s:3:"url";s:20:"folder/folder-status";s:5:"title";s:20:"Change folder Status";}s:18:"folder/search-file";a:4:{s:7:"is_menu";i:0;s:4:"void";i:0;s:3:"url";s:18:"folder/search-file";s:5:"title";s:25:"Search Files under folder";}}}}}', 'a:2:{i:0;s:4:"file";i:1;s:6:"folder";}', 1),
@@ -582,7 +572,8 @@ INSERT INTO `cf_module` (`module_id`, `parent`, `status`, `sort`, `url`, `title`
 (48, 'banner', 1, 39, 'banner/status', 'Change Banner Status', 0, '', '', 0),
 (49, 'file', 1, 30, 'file/file-status', 'Change File Status', 0, '', '', 0),
 (50, 'folder', 1, 34, 'folder/folder-status', 'Change folder Status', 0, '', '', 0),
-(51, 'folder', 1, 35, 'folder/search-file', 'Search Files under folder', 0, '', '', 0);
+(51, 'folder', 1, 35, 'folder/search-file', 'Search Files under folder', 0, '', '', 0),
+(52, 'form', 1, 18, 'form/submitted', 'Submitted', 0, '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -590,7 +581,6 @@ INSERT INTO `cf_module` (`module_id`, `parent`, `status`, `sort`, `url`, `title`
 -- Table structure for table `cf_page`
 --
 
-DROP TABLE IF EXISTS `cf_page`;
 CREATE TABLE IF NOT EXISTS `cf_page` (
   `page_id` int(11) NOT NULL AUTO_INCREMENT,
   `page_active` int(1) NOT NULL DEFAULT '0',
@@ -637,8 +627,8 @@ INSERT INTO `cf_page` (`page_id`, `page_active`, `page_code`, `page_title`, `pag
 (72, 1, NULL, 'About Us', '<p>We are a collection of professionals focused on the benefits of text link ads.&nbsp;    Our goal is to build a long-standing, comprehensive review website of internet    marketers and affiliate marketers. Differing from most websites, we aim to develop    relationships, observe the internet atmosphere, and report our observations    and experiences to you, the consumer.&nbsp; We want you to benefit from our    observations, reports, and informational blogs for years to come, so we will    work hard to cement our professional review site in the industry.</p>\r\n<p>Yes, we love to hear constructive feedbacks from our visitors, guests and members.</p>\r\n<p>Yes, we read every comment.&nbsp; We enjoy reading and manually approving each    comment -- you are heard and don''t go unnoticed.</p>\r\n<p>We will try to scrub all the details before publishing, and we would love to    hear if we miss any spots.</p>\r\n<p>Thank you for your assistance and continued membership.</p>\r\n<p>Kind regards,</p>\r\n<p>TextLinkAdsReview.com</p>', 0, '<p>We are a collection of professionals focused on the benefits of text link ads.&nbsp;    Our goal is to build a long-standing, comprehensive review website of internet    marketers and affiliate marketers. Differing from most websites, we aim to develop    relationships, observe the internet atmosphere, and report our observations    and experiences to you, the consumer.&nbsp; We want you to benefit from our    observations, reports, and informational blogs for years to come, so we will    work hard to cement our professional review site in the industry.</p>\r\n<p>Yes, we love to hear constructive feedbacks from our visitors, guests and members.</p>\r\n<p>Yes, we read every comment.&nbsp; We enjoy reading and manually approving each    comment -- you are heard and don''t go unnoticed.</p>\r\n<p>We will try to scrub all the details before publishing, and we would love to    hear if we miss any spots.</p>\r\n<p>Thank you for your assistance and continued membership.</p>\r\n<p>Kind regards,</p>\r\n<p>TextLinkAdsReview.com</p>', ',82,', ',1,2,', '', 0, 0, '2010-01-20 00:00:00', NULL, 0, '', 0, 'page', 1, 'About Us - Text Link Ads Review', 'about us, text link ads review,about text link ads review, about TLAr', 'Our goal is to build a long-standing, comprehensive review website of internet marketers and affiliate marketers.', 0),
 (73, 1, NULL, 'Search Text Link Ads Review', '<form action="http://textlinkadsreview.com/search/">\r\n<div><input name="cx" type="hidden" value="partner-pub-9567128729272204:5rf39g-1qd8" /> <input name="cof" type="hidden" value="FORID:11" /> <input name="ie" type="hidden" value="ISO-8859-1" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" /></div>\r\n</form>\r\n<p>\r\n<script src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en" type="text/javascript"></script>\r\n</p>\r\n<p>&nbsp;</p>\r\n<p>\r\n<script type="text/javascript"><!--\r\n  var googleSearchIframeName = "cse-search-results";\r\n  var googleSearchFormName = "cse-search-box";\r\n  var googleSearchFrameWidth = 795;\r\n  var googleSearchDomain = "www.google.com";\r\n  var googleSearchPath = "/cse";\r\n// --></script>\r\n<script src="http://www.google.com/afsonline/show_afs_search.js" type="text/javascript"></script>\r\n</p>', 0, '<form action="http://textlinkadsreview.com/search/">\r\n<div><input name="cx" type="hidden" value="partner-pub-9567128729272204:5rf39g-1qd8" /> <input name="cof" type="hidden" value="FORID:11" /> <input name="ie" type="hidden" value="ISO-8859-1" /> <input name="q" size="31" type="text" /> <input name="sa" type="submit" value="Search" /></div>\r\n</form>\r\n<p>\r\n<script src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en" type="text/javascript"></script>\r\n</p>\r\n<p>&nbsp;</p>\r\n<p>\r\n<script type="text/javascript"><!--\r\n  var googleSearchIframeName = "cse-search-results";\r\n  var googleSearchFormName = "cse-search-box";\r\n  var googleSearchFrameWidth = 795;\r\n  var googleSearchDomain = "www.google.com";\r\n  var googleSearchPath = "/cse";\r\n// --></script>\r\n<script src="http://www.google.com/afsonline/show_afs_search.js" type="text/javascript"></script>\r\n</p>', ',0,', ',0,', '', 0, 0, '2010-01-21 00:00:00', NULL, 0, '', 0, 'page', 0, 'Search Text Link Ads Review - TextLinkAdsReview.com', 'Google,Search, text link ads review,search text link ads review, search TLAr', 'Google Search for Text Link Ads Review.', 0),
 (74, 1, NULL, 'Online Advertising | Text Link Ads | Banner Ads', '<p>Text link advertising is currently one of the most popular methods of internet    marketing. Here at TextLinkAdsReview.com, we realize the importance of text    link advertising in our modern marketing world, so we will write reviews on    different text link advertisement options. Whether you want to sell text link    ads or you want to buy text link ads, we have listed and reviewed many different    text link agencies on our website, and we are continuously working to review    more advertising options for your business.</p>\n<p>We realize there are many advertising companies and text link brokers available    to you, and only TextLinkAdsReview.com will review these many companies and    offer information to help you find the best marketing agency for your business.    These agencies charge a miniscule commission to find your ideal advertising    fit, but the advertising will help you increase your Google page rank slowly    by time.</p>\n<p>Text link ads are very positive for your business.&nbsp; They boost your SEO    (Search Engine Optimization) rating, and they are often better than pay-per-click    (PPC) advertising. PPC advertising can often lead to revenue-sharing clicking    - when a website that shares revenues with yours influences friends or family    to click your banner to decrease your revenue (and increase their own).&nbsp;    Also, because visitors trust text link ads more than flashy banners, visitors    are more apt to click text link ads.&nbsp; Viewed as a recommendation from the    site owner, a text link ad draws more traffic to your site.&nbsp; As for those    who own well-established, high-traffic sites, you can sell space on your site    to text link advertisers. Whether you would like to purchase text link space    or you would like to rent space on your site, the text link advertising business    is a win-win:&nbsp; You could either receive higher potential buyer traffic    for a flat fee, or you could receive residual income -- monthly rental income    that your don''t have to work for.</p>\n<p>There are numerous top advertising agencies who offer online and offline advertising    options, and our aim is to include most of them in our reviews. So keep in touch    with our blog posts and subscribe to our RSS.</p>\n<p>-TextLinkAdsReview.com</p>', 0, '<p>Text link advertising is currently one of the most popular methods of internet    marketing. Here at TextLinkAdsReview.com, we realize the importance of text    link advertising in our modern marketing world, so we will write reviews on    different text link advertisement options. Whether you want to sell text link    ads or you want to buy text link ads, we have listed and reviewed many different    text link agencies on our website, and we are continuously working to review    more advertising options for your business.</p>\n<p>We realize there are many advertising companies and text link brokers available    to you, and only TextLinkAdsReview.com will review these many companies and    offer information to help you find the best marketing agency for your business.    These agencies charge a miniscule commission to find your ideal advertising    fit, but the advertising will help you increase your Google page rank slowly    by time.</p>\n<p>Text link ads are very positive for your business.&nbsp; They boost your SEO    (Search Engine Optimization) rating, and they are often better than pay-per-click    (PPC) advertising. PPC advertising can often lead to revenue-sharing clicking    - when a website that shares revenues with yours influences friends or family    to click your banner to decrease your revenue (and increase their own).&nbsp;    Also, because visitors trust text link ads more than flashy banners, visitors    are more apt to click text link ads.&nbsp; Viewed as a recommendation from the    site owner, a text link ad draws more traffic to your site.&nbsp; As for those    who own well-established, high-traffic sites, you can sell space on your site    to text link advertisers. Whether you would like to purchase text link space    or you would like to rent space on your site, the text link advertising business    is a win-win:&nbsp; You could either receive higher potential buyer traffic    for a flat fee, or you could receive residual income -- monthly rental income    that your don''t have to work for.</p>\n<p>There are numerous top advertising agencies who offer online and offline advertising    options, and our aim is to include most of them in our reviews. So keep in touch    with our blog posts and subscribe to our RSS.</p>\n<p>-TextLinkAdsReview.com</p>', ',75,', ',2,', '', 0, 0, '2010-01-20 00:00:00', NULL, 0, '', 0, 'page', 0, 'Text Link Ads Review | Buy Text Link Ads | Sell Text Link Ads', 'buying,selling,monetizing,text,link,advertising,banner,ppc', 'We review different Advertising Platforms like Text Link Ads and many more.', 0),
-(100, 1, NULL, 'My Experience with CodeIgniter', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque justo sem, elementum a ullamcorper auctor, aliquam non ligula. Cras adipiscing hendrerit quam, vel volutpat nisi luctus eu. Praesent congue magna non urna egestas aliquet. In hac habitasse platea dictumst. Donec risus nisi, fermentum vel aliquet ac, vulputate sed purus. Fusce ornare fringilla ipsum vel porta. Proin sed nibh dolor, vitae ullamcorper lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">', 0, '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque justo sem, elementum a ullamcorper auctor, aliquam non ligula. Cras adipiscing hendrerit quam, vel volutpat nisi luctus eu. Praesent congue magna non urna egestas aliquet. In hac habitasse platea dictumst. Donec risus nisi, fermentum vel aliquet ac, vulputate sed purus. Fusce ornare fringilla ipsum vel porta. Proin sed nibh dolor, vitae ullamcorper lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><!-- pagebreak --></p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">In vehicula arcu eu nibh tincidunt pharetra. Vestibulum non laoreet turpis. Vestibulum egestas, nibh quis tempor cursus, risus quam ornare nulla, quis ultricies augue dolor eget sapien. Sed quis leo nisi, sed porttitor ante. Quisque eget nisl quam, in rutrum quam. Quisque ullamcorper porttitor nibh sit amet imperdiet. In vehicula vulputate sem, vitae tempor nulla auctor tristique. Cras eget varius odio. Cras vel dolor arcu, at malesuada justo. Donec cursus mi a enim mattis et convallis risus malesuada. Mauris elementum nunc in nisi egestas nec dapibus urna condimentum. In odio metus, rutrum pulvinar sagittis at, euismod nec dolor. Maecenas quis nulla id ipsum sagittis aliquam. Etiam aliquet augue a eros eleifend vitae auctor nulla rutrum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Aenean at risus in sem consectetur aliquet sed eu mi. Morbi dignissim malesuada purus vitae condimentum. Suspendisse sit amet urna urna. Fusce vitae tortor nisl, nec cursus diam. Nam cursus consequat ipsum ac volutpat. In eu eleifend ipsum. Maecenas venenatis augue vitae eros viverra ultricies. Donec sit amet consectetur libero. Vivamus aliquam sollicitudin eros in sodales. Cras dapibus, neque eget accumsan molestie, purus dui tincidunt ligula, id ultrices massa lacus mollis eros. Vivamus velit massa, accumsan ut imperdiet sed, egestas eu mi. Nam ut ligula tempus neque pharetra feugiat. Curabitur varius imperdiet lectus non suscipit. Aliquam erat volutpat. Morbi laoreet libero ut sapien convallis faucibus placerat velit egestas. Fusce non lorem lacus, non consectetur tellus.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Sed lacus ligula, commodo at molestie in, pharetra in risus. Etiam tristique dapibus ipsum, eu dignissim nisl rutrum in. Nulla facilisi. Duis sed purus eu nulla eleifend aliquet. Fusce vulputate, nunc ac egestas convallis, est quam lacinia eros, sit amet tincidunt odio ante a lectus. Donec molestie condimentum sapien non pulvinar. Mauris mi lacus, tristique vel vestibulum pretium, pulvinar nec est. Ut lacinia nisl at dolor consequat vitae semper sapien vulputate. Maecenas mattis, ipsum tincidunt pellentesque lobortis, elit augue suscipit tortor, et faucibus urna lacus eget risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus volutpat lacinia felis, dictum adipiscing lorem cursus et. Donec gravida aliquet velit, vel ultrices quam hendrerit nec. Morbi non nibh neque, id faucibus quam. Suspendisse eget erat orci.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Proin gravida purus id lacus adipiscing pretium. Proin volutpat, augue ut molestie adipiscing, urna mauris porttitor felis, a ultricies elit tellus id turpis. Cras a placerat lectus. Curabitur mattis venenatis arcu eu facilisis. Nulla at justo et mi ultrices lacinia. In eu lacus vitae purus iaculis mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc tincidunt dui in felis pharetra cursus nec posuere mi. Maecenas at viverra urna. Etiam ullamcorper luctus eros, at dignissim tellus malesuada vel. Duis sit amet mauris nisi.</p>', ',86,93,96,', ',1,', 'Seth Bryant', 11, 1, '2011-04-15 01:41:40', NULL, 1, 'codeigniter,test', 1, 'blog', 855, 'My Experience with CodeIgniter', 'codeigniter,codefight', 'With CodeIgniter, you can easily organize the different sections of the PHP application including configuration files, controllers, models, scripts and views.', 0),
-(102, 1, NULL, 'Advertising in Applications', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque justo sem, elementum a ullamcorper auctor, aliquam non ligula. Cras adipiscing hendrerit quam, vel volutpat nisi luctus eu. Praesent congue magna non urna egestas aliquet. In hac habitasse platea dictumst. Donec risus nisi, fermentum vel aliquet ac, vulputate sed purus. Fusce ornare fringilla ipsum vel porta. Proin sed nibh dolor, vitae ullamcorper lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">', 0, '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque justo sem, elementum a ullamcorper auctor, aliquam non ligula. Cras adipiscing hendrerit quam, vel volutpat nisi luctus eu. Praesent congue magna non urna egestas aliquet. In hac habitasse platea dictumst. Donec risus nisi, fermentum vel aliquet ac, vulputate sed purus. Fusce ornare fringilla ipsum vel porta. Proin sed nibh dolor, vitae ullamcorper lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><!-- pagebreak --></p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">In vehicula arcu eu nibh tincidunt pharetra. Vestibulum non laoreet turpis. Vestibulum egestas, nibh quis tempor cursus, risus quam ornare nulla, quis ultricies augue dolor eget sapien. Sed quis leo nisi, sed porttitor ante. Quisque eget nisl quam, in rutrum quam. Quisque ullamcorper porttitor nibh sit amet imperdiet. In vehicula vulputate sem, vitae tempor nulla auctor tristique. Cras eget varius odio. Cras vel dolor arcu, at malesuada justo. Donec cursus mi a enim mattis et convallis risus malesuada. Mauris elementum nunc in nisi egestas nec dapibus urna condimentum. In odio metus, rutrum pulvinar sagittis at, euismod nec dolor. Maecenas quis nulla id ipsum sagittis aliquam. Etiam aliquet augue a eros eleifend vitae auctor nulla rutrum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Aenean at risus in sem consectetur aliquet sed eu mi. Morbi dignissim malesuada purus vitae condimentum. Suspendisse sit amet urna urna. Fusce vitae tortor nisl, nec cursus diam. Nam cursus consequat ipsum ac volutpat. In eu eleifend ipsum. Maecenas venenatis augue vitae eros viverra ultricies. Donec sit amet consectetur libero. Vivamus aliquam sollicitudin eros in sodales. Cras dapibus, neque eget accumsan molestie, purus dui tincidunt ligula, id ultrices massa lacus mollis eros. Vivamus velit massa, accumsan ut imperdiet sed, egestas eu mi. Nam ut ligula tempus neque pharetra feugiat. Curabitur varius imperdiet lectus non suscipit. Aliquam erat volutpat. Morbi laoreet libero ut sapien convallis faucibus placerat velit egestas. Fusce non lorem lacus, non consectetur tellus.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Sed lacus ligula, commodo at molestie in, pharetra in risus. Etiam tristique dapibus ipsum, eu dignissim nisl rutrum in. Nulla facilisi. Duis sed purus eu nulla eleifend aliquet. Fusce vulputate, nunc ac egestas convallis, est quam lacinia eros, sit amet tincidunt odio ante a lectus. Donec molestie condimentum sapien non pulvinar. Mauris mi lacus, tristique vel vestibulum pretium, pulvinar nec est. Ut lacinia nisl at dolor consequat vitae semper sapien vulputate. Maecenas mattis, ipsum tincidunt pellentesque lobortis, elit augue suscipit tortor, et faucibus urna lacus eget risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus volutpat lacinia felis, dictum adipiscing lorem cursus et. Donec gravida aliquet velit, vel ultrices quam hendrerit nec. Morbi non nibh neque, id faucibus quam. Suspendisse eget erat orci.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Proin gravida purus id lacus adipiscing pretium. Proin volutpat, augue ut molestie adipiscing, urna mauris porttitor felis, a ultricies elit tellus id turpis. Cras a placerat lectus. Curabitur mattis venenatis arcu eu facilisis. Nulla at justo et mi ultrices lacinia. In eu lacus vitae purus iaculis mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc tincidunt dui in felis pharetra cursus nec posuere mi. Maecenas at viverra urna. Etiam ullamcorper luctus eros, at dignissim tellus malesuada vel. Duis sit amet mauris nisi.</p>', ',109,93,', ',1,2,', '', 11, 1, '2011-04-30 19:52:22', NULL, 1, 'advertising,test', 1, 'blog', 306, 'Advertising in Applications - TLAr', 'advertising,angry birds,application,advertiser,advertise,traditional advertising', 'One example of this is in ', 0),
+(100, 1, NULL, 'My Experience with CodeIgniter', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque justo sem, elementum a ullamcorper auctor, aliquam non ligula. Cras adipiscing hendrerit quam, vel volutpat nisi luctus eu. Praesent congue magna non urna egestas aliquet. In hac habitasse platea dictumst. Donec risus nisi, fermentum vel aliquet ac, vulputate sed purus. Fusce ornare fringilla ipsum vel porta. Proin sed nibh dolor, vitae ullamcorper lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">', 0, '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque justo sem, elementum a ullamcorper auctor, aliquam non ligula. Cras adipiscing hendrerit quam, vel volutpat nisi luctus eu. Praesent congue magna non urna egestas aliquet. In hac habitasse platea dictumst. Donec risus nisi, fermentum vel aliquet ac, vulputate sed purus. Fusce ornare fringilla ipsum vel porta. Proin sed nibh dolor, vitae ullamcorper lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><!-- pagebreak --></p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">In vehicula arcu eu nibh tincidunt pharetra. Vestibulum non laoreet turpis. Vestibulum egestas, nibh quis tempor cursus, risus quam ornare nulla, quis ultricies augue dolor eget sapien. Sed quis leo nisi, sed porttitor ante. Quisque eget nisl quam, in rutrum quam. Quisque ullamcorper porttitor nibh sit amet imperdiet. In vehicula vulputate sem, vitae tempor nulla auctor tristique. Cras eget varius odio. Cras vel dolor arcu, at malesuada justo. Donec cursus mi a enim mattis et convallis risus malesuada. Mauris elementum nunc in nisi egestas nec dapibus urna condimentum. In odio metus, rutrum pulvinar sagittis at, euismod nec dolor. Maecenas quis nulla id ipsum sagittis aliquam. Etiam aliquet augue a eros eleifend vitae auctor nulla rutrum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Aenean at risus in sem consectetur aliquet sed eu mi. Morbi dignissim malesuada purus vitae condimentum. Suspendisse sit amet urna urna. Fusce vitae tortor nisl, nec cursus diam. Nam cursus consequat ipsum ac volutpat. In eu eleifend ipsum. Maecenas venenatis augue vitae eros viverra ultricies. Donec sit amet consectetur libero. Vivamus aliquam sollicitudin eros in sodales. Cras dapibus, neque eget accumsan molestie, purus dui tincidunt ligula, id ultrices massa lacus mollis eros. Vivamus velit massa, accumsan ut imperdiet sed, egestas eu mi. Nam ut ligula tempus neque pharetra feugiat. Curabitur varius imperdiet lectus non suscipit. Aliquam erat volutpat. Morbi laoreet libero ut sapien convallis faucibus placerat velit egestas. Fusce non lorem lacus, non consectetur tellus.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Sed lacus ligula, commodo at molestie in, pharetra in risus. Etiam tristique dapibus ipsum, eu dignissim nisl rutrum in. Nulla facilisi. Duis sed purus eu nulla eleifend aliquet. Fusce vulputate, nunc ac egestas convallis, est quam lacinia eros, sit amet tincidunt odio ante a lectus. Donec molestie condimentum sapien non pulvinar. Mauris mi lacus, tristique vel vestibulum pretium, pulvinar nec est. Ut lacinia nisl at dolor consequat vitae semper sapien vulputate. Maecenas mattis, ipsum tincidunt pellentesque lobortis, elit augue suscipit tortor, et faucibus urna lacus eget risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus volutpat lacinia felis, dictum adipiscing lorem cursus et. Donec gravida aliquet velit, vel ultrices quam hendrerit nec. Morbi non nibh neque, id faucibus quam. Suspendisse eget erat orci.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Proin gravida purus id lacus adipiscing pretium. Proin volutpat, augue ut molestie adipiscing, urna mauris porttitor felis, a ultricies elit tellus id turpis. Cras a placerat lectus. Curabitur mattis venenatis arcu eu facilisis. Nulla at justo et mi ultrices lacinia. In eu lacus vitae purus iaculis mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc tincidunt dui in felis pharetra cursus nec posuere mi. Maecenas at viverra urna. Etiam ullamcorper luctus eros, at dignissim tellus malesuada vel. Duis sit amet mauris nisi.</p>', ',86,93,96,', ',1,', 'Seth Bryant', 11, 1, '2011-04-15 01:41:40', NULL, 1, 'codeigniter,test', 1, 'blog', 857, 'My Experience with CodeIgniter', 'codeigniter,codefight', 'With CodeIgniter, you can easily organize the different sections of the PHP application including configuration files, controllers, models, scripts and views.', 0),
+(102, 1, NULL, 'Advertising in Applications', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque justo sem, elementum a ullamcorper auctor, aliquam non ligula. Cras adipiscing hendrerit quam, vel volutpat nisi luctus eu. Praesent congue magna non urna egestas aliquet. In hac habitasse platea dictumst. Donec risus nisi, fermentum vel aliquet ac, vulputate sed purus. Fusce ornare fringilla ipsum vel porta. Proin sed nibh dolor, vitae ullamcorper lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">', 0, '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque justo sem, elementum a ullamcorper auctor, aliquam non ligula. Cras adipiscing hendrerit quam, vel volutpat nisi luctus eu. Praesent congue magna non urna egestas aliquet. In hac habitasse platea dictumst. Donec risus nisi, fermentum vel aliquet ac, vulputate sed purus. Fusce ornare fringilla ipsum vel porta. Proin sed nibh dolor, vitae ullamcorper lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><!-- pagebreak --></p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">In vehicula arcu eu nibh tincidunt pharetra. Vestibulum non laoreet turpis. Vestibulum egestas, nibh quis tempor cursus, risus quam ornare nulla, quis ultricies augue dolor eget sapien. Sed quis leo nisi, sed porttitor ante. Quisque eget nisl quam, in rutrum quam. Quisque ullamcorper porttitor nibh sit amet imperdiet. In vehicula vulputate sem, vitae tempor nulla auctor tristique. Cras eget varius odio. Cras vel dolor arcu, at malesuada justo. Donec cursus mi a enim mattis et convallis risus malesuada. Mauris elementum nunc in nisi egestas nec dapibus urna condimentum. In odio metus, rutrum pulvinar sagittis at, euismod nec dolor. Maecenas quis nulla id ipsum sagittis aliquam. Etiam aliquet augue a eros eleifend vitae auctor nulla rutrum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Aenean at risus in sem consectetur aliquet sed eu mi. Morbi dignissim malesuada purus vitae condimentum. Suspendisse sit amet urna urna. Fusce vitae tortor nisl, nec cursus diam. Nam cursus consequat ipsum ac volutpat. In eu eleifend ipsum. Maecenas venenatis augue vitae eros viverra ultricies. Donec sit amet consectetur libero. Vivamus aliquam sollicitudin eros in sodales. Cras dapibus, neque eget accumsan molestie, purus dui tincidunt ligula, id ultrices massa lacus mollis eros. Vivamus velit massa, accumsan ut imperdiet sed, egestas eu mi. Nam ut ligula tempus neque pharetra feugiat. Curabitur varius imperdiet lectus non suscipit. Aliquam erat volutpat. Morbi laoreet libero ut sapien convallis faucibus placerat velit egestas. Fusce non lorem lacus, non consectetur tellus.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Sed lacus ligula, commodo at molestie in, pharetra in risus. Etiam tristique dapibus ipsum, eu dignissim nisl rutrum in. Nulla facilisi. Duis sed purus eu nulla eleifend aliquet. Fusce vulputate, nunc ac egestas convallis, est quam lacinia eros, sit amet tincidunt odio ante a lectus. Donec molestie condimentum sapien non pulvinar. Mauris mi lacus, tristique vel vestibulum pretium, pulvinar nec est. Ut lacinia nisl at dolor consequat vitae semper sapien vulputate. Maecenas mattis, ipsum tincidunt pellentesque lobortis, elit augue suscipit tortor, et faucibus urna lacus eget risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus volutpat lacinia felis, dictum adipiscing lorem cursus et. Donec gravida aliquet velit, vel ultrices quam hendrerit nec. Morbi non nibh neque, id faucibus quam. Suspendisse eget erat orci.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial,Helvetica,sans; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;">Proin gravida purus id lacus adipiscing pretium. Proin volutpat, augue ut molestie adipiscing, urna mauris porttitor felis, a ultricies elit tellus id turpis. Cras a placerat lectus. Curabitur mattis venenatis arcu eu facilisis. Nulla at justo et mi ultrices lacinia. In eu lacus vitae purus iaculis mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc tincidunt dui in felis pharetra cursus nec posuere mi. Maecenas at viverra urna. Etiam ullamcorper luctus eros, at dignissim tellus malesuada vel. Duis sit amet mauris nisi.</p>', ',109,93,', ',1,2,', '', 11, 1, '2011-04-30 19:52:22', NULL, 1, 'advertising,test', 1, 'blog', 328, 'Advertising in Applications - TLAr', 'advertising,angry birds,application,advertiser,advertise,traditional advertising', 'One example of this is in ', 0),
 (103, 1, NULL, 'Download Latest Codefight CMS', '<p><a title="Download Codefight CMS" href="http://codefight.org/" target="_blank"><img title="Codefight CMS" src="http://skin.zoosper.com//media/codefight-cms-2-0-preview.png" alt="Download Codefight CMS" width="500" height="296" /></a></p>', 0, '<p><a title="Download Codefight CMS" href="http://codefight.org/" target="_blank"><img title="Codefight CMS" src="http://skin.zoosper.com//media/codefight-cms-2-0-preview.png" alt="Download Codefight CMS" width="500" height="296" /></a></p>', ',81,', ',1,', '', 0, 0, '2011-12-27 23:10:28', NULL, 0, '', 0, 'page', 0, 'Download Latest Codeigniter cms - Codefight CMS', 'codefight,codeigniter,cms,download,free,multi-site manager,wysiwyg cms,simple and easy cms', 'Download open source softwares', 0);
 
 -- --------------------------------------------------------
@@ -647,7 +637,6 @@ INSERT INTO `cf_page` (`page_id`, `page_active`, `page_code`, `page_title`, `pag
 -- Table structure for table `cf_page_access`
 --
 
-DROP TABLE IF EXISTS `cf_page_access`;
 CREATE TABLE IF NOT EXISTS `cf_page_access` (
   `page_id` int(11) NOT NULL,
   `group_id` varchar(255) NOT NULL DEFAULT '0',
@@ -761,7 +750,6 @@ INSERT INTO `cf_page_access` (`page_id`, `group_id`) VALUES
 -- Table structure for table `cf_page_comment`
 --
 
-DROP TABLE IF EXISTS `cf_page_comment`;
 CREATE TABLE IF NOT EXISTS `cf_page_comment` (
   `page_comment_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -789,7 +777,6 @@ INSERT INTO `cf_page_comment` (`page_comment_id`, `name`, `email`, `comment`, `t
 -- Table structure for table `cf_page_tag`
 --
 
-DROP TABLE IF EXISTS `cf_page_tag`;
 CREATE TABLE IF NOT EXISTS `cf_page_tag` (
   `page_id` int(11) NOT NULL,
   `tag` varchar(255) NOT NULL
@@ -817,7 +804,6 @@ INSERT INTO `cf_page_tag` (`page_id`, `tag`) VALUES
 -- Table structure for table `cf_sessions`
 --
 
-DROP TABLE IF EXISTS `cf_sessions`;
 CREATE TABLE IF NOT EXISTS `cf_sessions` (
   `session_id` varchar(40) NOT NULL DEFAULT '0',
   `ip_address` varchar(16) NOT NULL DEFAULT '0',
@@ -827,14 +813,6 @@ CREATE TABLE IF NOT EXISTS `cf_sessions` (
   PRIMARY KEY (`session_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `cf_sessions`
---
-
-INSERT INTO `cf_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('9576765be5335f163cfd3273b0b7f6e5', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gecko', 1339217584, 'a:2:{s:9:"user_data";s:0:"";s:8:"template";a:1:{i:1;s:5:"white";}}'),
-('4a322281de8f9cd5f4e634efd1501f3f', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gecko', 1339243544, 'a:7:{s:9:"user_data";s:0:"";s:7:"backUrl";s:20:"admin/setting/site/4";s:8:"template";a:1:{i:1;s:5:"white";}s:9:"logged_in";s:1:"1";s:10:"loggedData";a:16:{s:7:"user_id";s:2:"11";s:6:"active";s:1:"1";s:5:"email";s:13:"test@test.com";s:8:"username";N;s:8:"password";s:32:"098f6bcd4621d373cade4e832627b4f6";s:9:"firstname";s:7:"Damodar";s:8:"lastname";s:7:"Bashyal";s:8:"group_id";s:1:"1";s:8:"is_admin";s:1:"1";s:9:"is_author";s:1:"1";s:12:"profile_link";s:45:"https://plus.google.com/103583381097797606705";s:7:"profile";s:86:"<p>Damodar is a open source web developer who likes to provide web tools for FREE.</p>";s:11:"photo_small";N;s:11:"photo_large";N;s:5:"intro";N;s:11:"group_title";s:13:"Administrator";}s:8:"redirect";s:1:"1";s:11:"websites_id";s:1:"4";}'),
-('96b5038f6a69211ace266ec6ec81b3d2', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gecko', 1339154469, 'a:6:{s:9:"user_data";s:0:"";s:7:"backUrl";s:29:"assets/default/css/helper.css";s:8:"template";a:1:{i:1;s:5:"white";}s:9:"logged_in";s:1:"1";s:10:"loggedData";a:16:{s:7:"user_id";s:2:"11";s:6:"active";s:1:"1";s:5:"email";s:13:"test@test.com";s:8:"username";N;s:8:"password";s:32:"098f6bcd4621d373cade4e832627b4f6";s:9:"firstname";s:7:"Damodar";s:8:"lastname";s:7:"Bashyal";s:8:"group_id";s:1:"1";s:8:"is_admin";s:1:"1";s:9:"is_author";s:1:"1";s:12:"profile_link";s:45:"https://plus.google.com/103583381097797606705";s:7:"profile";s:86:"<p>Damodar is a open source web developer who likes to provide web tools for FREE.</p>";s:11:"photo_small";N;s:11:"photo_large";N;s:5:"intro";N;s:11:"group_title";s:13:"Administrator";}s:8:"redirect";s:1:"1";}');
 
 -- --------------------------------------------------------
 
@@ -842,7 +820,6 @@ INSERT INTO `cf_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 -- Table structure for table `cf_setting`
 --
 
-DROP TABLE IF EXISTS `cf_setting`;
 CREATE TABLE IF NOT EXISTS `cf_setting` (
   `setting_id` int(11) NOT NULL AUTO_INCREMENT,
   `setting_key` varchar(50) NOT NULL,
@@ -936,7 +913,6 @@ INSERT INTO `cf_setting` (`setting_id`, `setting_key`, `setting_value`, `setting
 -- Table structure for table `cf_setting_keys`
 --
 
-DROP TABLE IF EXISTS `cf_setting_keys`;
 CREATE TABLE IF NOT EXISTS `cf_setting_keys` (
   `setting_id` int(11) NOT NULL AUTO_INCREMENT,
   `setting_key` varchar(50) NOT NULL,
@@ -978,7 +954,6 @@ INSERT INTO `cf_setting_keys` (`setting_id`, `setting_key`, `setting_value`, `se
 -- Table structure for table `cf_tag_cloud`
 --
 
-DROP TABLE IF EXISTS `cf_tag_cloud`;
 CREATE TABLE IF NOT EXISTS `cf_tag_cloud` (
   `tag` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -1036,7 +1011,6 @@ INSERT INTO `cf_tag_cloud` (`tag`, `title`, `count`, `type`, `websites_id`, `met
 -- Table structure for table `cf_trim`
 --
 
-DROP TABLE IF EXISTS `cf_trim`;
 CREATE TABLE IF NOT EXISTS `cf_trim` (
   `trim_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `long_url` varchar(255) NOT NULL,
@@ -1064,7 +1038,6 @@ INSERT INTO `cf_trim` (`trim_id`, `long_url`, `created`, `creator`, `referrals`)
 -- Table structure for table `cf_user`
 --
 
-DROP TABLE IF EXISTS `cf_user`;
 CREATE TABLE IF NOT EXISTS `cf_user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `active` char(1) NOT NULL DEFAULT '',
@@ -1101,7 +1074,6 @@ INSERT INTO `cf_user` (`user_id`, `active`, `email`, `username`, `password`, `fi
 -- Table structure for table `cf_websites`
 --
 
-DROP TABLE IF EXISTS `cf_websites`;
 CREATE TABLE IF NOT EXISTS `cf_websites` (
   `websites_id` int(11) NOT NULL AUTO_INCREMENT,
   `websites_name` varchar(255) DEFAULT NULL,
