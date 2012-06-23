@@ -1,0 +1,58 @@
+html, body {
+    background: url(../images/body-bg.jpg) repeat fixed center top transparent;
+}
+
+.siteContainer .header {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 4px;
+}
+
+.siteContainer .header .logo {
+    display: block;
+    float: left;
+    height: 70px;
+    overflow: hidden;
+    width: 170px;
+}
+
+.siteContainer .header .logo a {
+    background: transparent url(../images/logo.gif) no-repeat 10px 14px;
+    display: block;
+    height: 70px;
+    text-indent: -99999px;
+}
+
+.siteContainer .header .userLogged {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
+    background: none repeat scroll 0 0 #222222;
+    clear: both;
+    color: #FFFFFF;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 1px 0 0;
+    overflow: hidden;
+    padding: 10px 5px;
+    text-align: right;
+}
+
+.siteContainer .header .userLogged a {
+    color: #AEE474;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.siteContainer .header .userLogged a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
