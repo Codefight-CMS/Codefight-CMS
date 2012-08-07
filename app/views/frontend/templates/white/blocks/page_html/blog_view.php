@@ -15,7 +15,7 @@ if (isset($content) && is_array($content) && count($content) > 0){
                     </span>
                 </li>
                 <li>
-                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child">
                         <a href="<?php echo site_url('blog'); ?>" itemprop="url" rel="breadcrumb blog" title="Goto Blog">
                             <span itemprop="title">Blog</span>
                         </a>
@@ -27,7 +27,7 @@ if (isset($content) && is_array($content) && count($content) > 0){
                     <span class="divider">/</span>
                 </li>
                 <li class="active">
-                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child">
                         <a href="<?php echo $v['title-url']; ?>" itemprop="url" rel="breadcrumb post page" title="<?php echo htmlspecialchars($v['title']); ?>">
                             <span itemprop="title"><?php echo $v['title']; ?></span>
                         </a>
