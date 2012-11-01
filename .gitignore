@@ -1,2 +1,8 @@
-/skin/global/js/share.js
-/skin/global/js/complier.jar
+.idea
+*/config/development
+*/logs/log-*.php
+*/logs/!index.html
+*/cache/*
+*/cache/!index.html
+*/skin/global/js/share.js
+*/skin/global/js/complier.jar

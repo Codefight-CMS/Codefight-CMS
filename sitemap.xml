@@ -1,77 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<urlset xmlns="http://www.google.com/schemas/sitemap/0.84">
 		<url>
-			<loc>http://nplab.codefight.org/</loc>
+			<loc>http://local.codefight.org/</loc>
 			<lastmod>2012-03-24</lastmod>
 			<changefreq>daily</changefreq>
 			<priority>1.0</priority>
 		</url>
 
 		<url>
-			<loc>http://nplab.codefight.org/download-latest-codefight-cms</loc>
+			<loc>http://local.codefight.org/download-latest-codefight-cms</loc>
 			<lastmod>2011-12-27</lastmod>
 			<changefreq>daily</changefreq>
 			<priority>0.5</priority>
 		</url>
 
 		<url>
-			<loc>http://nplab.codefight.org/blog/advertising/102/Advertising-in-Applications</loc>
+			<loc>http://local.codefight.org/blog/advertising/102/Advertising-in-Applications</loc>
 			<lastmod>2011-04-30</lastmod>
 			<changefreq>daily</changefreq>
 			<priority>0.5</priority>
 		</url>
 
 		<url>
-			<loc>http://nplab.codefight.org/blog/releases/100/My-Experience-with-CodeIgniter</loc>
+			<loc>http://local.codefight.org/blog/releases/100/My-Experience-with-CodeIgniter</loc>
 			<lastmod>2011-04-15</lastmod>
 			<changefreq>daily</changefreq>
 			<priority>0.5</priority>
 		</url>
 
 		<url>
-			<loc>http://nplab.codefight.org/about-us</loc>
+			<loc>http://local.codefight.org/about-us</loc>
 			<lastmod>2010-01-20</lastmod>
 			<changefreq>daily</changefreq>
 			<priority>0.5</priority>
 		</url>
 
 		<url>
-			<loc>http://nplab.codefight.org/codefight-cms-preview-built-with-codeigniter-2.0-framework-demo-code</loc>
+			<loc>http://local.codefight.org/codefight-cms-preview-built-with-codeigniter-2.0-framework-demo-code</loc>
 			<lastmod>2011-01-01</lastmod>
 			<changefreq>daily</changefreq>
 			<priority>0.5</priority>
 		</url>
 
 		<url>
-			<loc>http://nplab.codefight.org/home</loc>
+			<loc>http://local.codefight.org/home</loc>
 			<lastmod>2010-12-20</lastmod>
 			<changefreq>daily</changefreq>
 			<priority>0.5</priority>
 		</url>
 
 		<url>
-			<loc>http://nplab.codefight.org/search</loc>
+			<loc>http://local.codefight.org/search</loc>
 			<lastmod>2010-11-15</lastmod>
 			<changefreq>daily</changefreq>
 			<priority>0.5</priority>
 		</url>
 
 		<url>
-			<loc>http://nplab.codefight.org/contact-us</loc>
+			<loc>http://local.codefight.org/contact-us</loc>
 			<lastmod>2010-11-01</lastmod>
 			<changefreq>daily</changefreq>
 			<priority>0.5</priority>
 		</url>
 
 		<url>
-			<loc>http://nplab.codefight.org/blog/diary/37/Kushals-First-Youtube-Video</loc>
+			<loc>http://local.codefight.org/blog/diary/37/Kushals-First-Youtube-Video</loc>
 			<lastmod>2009-06-06</lastmod>
 			<changefreq>daily</changefreq>
 			<priority>0.5</priority>
 		</url>
 
 		<url>
-			<loc>http://nplab.codefight.org/blog/diary/19/How-much-it-costs-to-call-directly-to-heaven-from-Nepal</loc>
+			<loc>http://local.codefight.org/blog/diary/19/How-much-it-costs-to-call-directly-to-heaven-from-Nepal</loc>
 			<lastmod>2009-04-12</lastmod>
 			<changefreq>daily</changefreq>
 			<priority>0.5</priority>
