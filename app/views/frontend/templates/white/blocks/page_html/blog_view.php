@@ -6,32 +6,26 @@ if (isset($content) && is_array($content) && count($content) > 0){
         <div class="content">
             <ul class="breadcrumb">
                 <li><span class="hide">You are here: </span></li>
-                <li>
-                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-                        <a href="<?php echo base_url(); ?>" itemprop="url" rel="breadcrumb home" title="Goto Homepage">
-                            <span itemprop="title">Home</span>
-                        </a>
-                        <span class="divider">/</span>
-                    </span>
+                <li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <a href="<?php echo base_url(); ?>" itemprop="url"rel="breadcrumb home" title="Goto Homepage">
+                        <span itemprop="title">Home</span>
+                    </a>
+                    <span class="divider">/</span>
                 </li>
-                <li>
-                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child">
-                        <a href="<?php echo site_url('blog'); ?>" itemprop="url" rel="breadcrumb blog" title="Goto Blog">
-                            <span itemprop="title">Blog</span>
-                        </a>
-                        <span class="divider">/</span>
-                    </span>
+                <li class="" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child">
+                    <a href="<?php echo site_url('blog'); ?>" itemprop="url" rel="breadcrumb blog" title="Goto Blog">
+                        <span itemprop="title">Blog</span>
+                    </a>
+                    <span class="divider">/</span>
                 </li>
                 <li>
                     <?php echo $v['categories']; ?>
                     <span class="divider">/</span>
                 </li>
-                <li class="active">
-                    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child">
-                        <a href="<?php echo $v['title-url']; ?>" itemprop="url" rel="breadcrumb post page" title="<?php echo htmlspecialchars($v['title']); ?>">
-                            <span itemprop="title"><?php echo $v['title']; ?></span>
-                        </a>
-                    </span>
+                <li class="active" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child">
+                    <a href="<?php echo $v['title-url']; ?>" itemprop="url" rel="breadcrumb post page" title="You are now reading: <?php echo htmlspecialchars($v['title']); ?>">
+                        <span itemprop="title"><?php echo $v['title']; ?></span>
+                    </a>
                 </li>
             </ul>
 

@@ -286,11 +286,11 @@ class Data_model extends MY_Model
                 switch($seoType){
                     case 'schema':
                         $ret[] = '
-                            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child">'
+                            <span  itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child">'
                             . anchor($url, "<span itemprop=\"title\">{$title}</span>", ' itemprop="url" rel="category tag" title="'.__('View all posts in') . ' ' . $title . '"')
                             . '</span>'
                             ;
-                            break;
+                            break(2);
                     default:
                         $ret[] = anchor($url, $title, ' rel="category tag" title="'.__('View all posts in') . ' ' . $title . '"');
                 }
