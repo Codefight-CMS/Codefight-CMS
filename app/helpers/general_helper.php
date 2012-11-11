@@ -203,7 +203,6 @@ if (!function_exists('get_canonical_url')) {
 
         $CI      =& get_instance();
         $page_id = (int)$CI->uri->segment(3);
-        //echo $page_id;
 
         if ($page_id) {
             $data = Model('blog')->get_page_full($page_id);
@@ -213,7 +212,6 @@ if (!function_exists('get_canonical_url')) {
             }
         } else {
             $segments = $CI->uri->segment_array();
-            //print_r($segments);
             foreach ($segments as $k => $v) {
                 //----
                 //$corrupted = substr($v, -5);
@@ -227,6 +225,11 @@ if (!function_exists('get_canonical_url')) {
             $url = site_url(implode('/', $segments));
         }
 
+        // if duplicate site created with same content and want to notify google
+        // set CANONICAL as original base url.
+        if(defined('CANONICAL')){
+            $url = str_replace(base_url(), CANONICAL, $url);
+        }
 
         return $url;
     }
