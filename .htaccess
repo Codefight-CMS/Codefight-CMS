@@ -8,10 +8,10 @@
 
 	#RewriteBase /codefight_141/
 
-	RewriteCond %{HTTP_HOST} !^local.codefight.org [NC]
-	RewriteRule ^(.*)$ http://local.codefight.org/$1 [L,R=301]
+	#RewriteCond %{HTTP_HOST} !^local.codefight.org [NC]
+	#RewriteRule ^(.*)$ http://local.codefight.org/$1 [L,R=301]
 
-	RewriteRule ^(home(\.html)?)$ http://local.codefight.org/ [L,R=301]
+	#RewriteRule ^(home(\.html)?)$ http://local.codefight.org/ [L,R=301]
 
 	RewriteCond %{THE_REQUEST} \/index\.(php|html)\ HTTP [NC]
 	RewriteRule (.*)index\.(php|html)$ /$1 [R=301,L]

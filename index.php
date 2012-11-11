@@ -88,6 +88,7 @@ if (defined('ENVIRONMENT'))
 |
 */
 //define('CFWEBSITE', 'http://local.codefight.org/');
+//define('CANONICAL', 'http://local.codefight.org/');
 define('CFWEBSITEID', 1);
 
 /*
