@@ -37,7 +37,7 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-/* 
+/*
  * Front Controllers Folder
  */
 /*
@@ -46,12 +46,12 @@
 
 $route['front_controllers_folder'] = "frontend";
 
-/* 
+/*
  * Blog Controller
  */
 //$route['blog(/.*)?'] = $route['front_controllers_folder'] . '/blog/blog/index$1';
 
-/* 
+/*
  * Default Controller [page]
  */
 $route['default_controller'] = $route['front_controllers_folder'] . "/page/page";
@@ -68,6 +68,9 @@ $route['admin' . '(/.*)?'] = 'admin$1';
 
 $route['(.*)?'] = $route['default_controller'] . '/index/$1';
 $route['scaffolding_trigger'] = "";
+
+// lets rename trim to go
+$route['go/(.+)'] = $route['front_controllers_folder'] . '/trim/trim/index$1';
 /*
 $route['blog/(.+)'] = "blog/blog/index/$1";
 $route['page/(.+)'] = "page/page/index/$1";

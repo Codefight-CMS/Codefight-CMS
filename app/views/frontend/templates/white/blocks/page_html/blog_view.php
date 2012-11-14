@@ -29,6 +29,7 @@ if (isset($content) && is_array($content) && count($content) > 0){
                 </li>
             </ul>
 
+            <!-- H1:Post Heading for - <?php echo $v['title']; ?> -->
             <h1 class="title heading"><?php
                 //Show heading of the content, ...
                 echo $v['title']; ?></h1>
@@ -55,7 +56,13 @@ if (isset($content) && is_array($content) && count($content) > 0){
             //Show tag of the post
             echo $v['tag']; ?>
 
-            <h5><?php echo __('Link'); ?>: <?php echo $v['title-link']; ?></h5>
+            <?php //@todo:: get short url for Link ?>
+            <h5>
+                <?php echo __('QR Code'); ?>:
+                <a href="<?php echo ($v['title-url']); ?>" target="_blank">
+                    <img border="0" width="50" height="50" src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=<?php echo urlencode($v['title-url']); ?>&choe=UTF-8" alt="<?php echo htmlspecialchars($v['title']); ?>" title="<?php echo htmlspecialchars($v['title']); ?>" />
+                </a>
+            </h5>
 
         </div><?php
 
