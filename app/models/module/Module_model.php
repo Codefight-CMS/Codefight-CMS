@@ -63,6 +63,18 @@ class Module_model extends MY_Model
 
     function can_access($group_id=FALSE, $page=FALSE)
     {
+        // first check if user is allowed to access all
+        $count = $this->db
+                    ->from('group_permission')
+                    ->where('group_id', $group_id)
+                    ->where('module_id', '0')
+                    ->count_all_results();
+        if($count){
+            return TRUE;
+        }
+
+        // if not allowed to access everything
+        // check if allowed to access requested page
         return $this->db
                     ->from('module')
                     ->join('group_permission', 'group_permission.module_id = module.module_id')
