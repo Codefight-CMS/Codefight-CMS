@@ -7,7 +7,7 @@ if (isset($content) && is_array($content) && count($content) > 0){
             <ul class="breadcrumb">
                 <li><span class="hide">You are here: </span></li>
                 <li itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
-                    <a href="<?php echo base_url(); ?>" itemprop="url"rel="breadcrumb home" title="Goto Homepage">
+                    <a href="<?php echo base_url(); ?>" itemprop="url" rel="breadcrumb home" title="Goto Homepage">
                         <span itemprop="title">Home</span>
                     </a>
                     <span class="divider">/</span>
