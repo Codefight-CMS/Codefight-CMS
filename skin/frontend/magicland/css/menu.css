@@ -1,0 +1,42 @@
+/*START:Menu Left*/
+.menuLeft {
+	display:block;
+	float:left;
+	margin:20px 30px 10px 0;
+	overflow:hidden;
+	width:160px;
+	}
+.menuLeft .banner_left {
+	display:block;
+	width:160px;
+	overflow:hidden;
+	}
+.menuLeft div {
+	margin:0 0 10px 0;
+	}
+/*END:Menu Left*/
+
+/*START:Menu Top*/
+.menu_top ul {
+	float:right;
+	}
+.menu_top {
+	background:#FEFECA url(../images/bot.jpg) repeat left top;
+	clear:both;
+	display:block;
+	padding:4px 0 6px;
+	}
+.menu_top ul.jd_menu li {
+	margin:0 2px 2px 0;
+	border-style:outset;
+	}
+.menu_top ul.jd_menu li ul {
+	margin:2px 2px 0 0;
+	}
+.menu_top ul.jd_menu li ul li ul {
+	margin:2px 0 0 2px;
+	}
+/*END:Menu Top*/
+.template_chooser {
+	float:left;
+	}

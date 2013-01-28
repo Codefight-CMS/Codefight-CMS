@@ -1,0 +1,24 @@
+ul.allComments {
+    margin: 0;
+}
+ul.allComments li {
+    border-bottom: 1px solid #DEDEDE;
+    margin: 0 0 20px !important;
+}
+ul.allComments li h2{background: none !important;}
+ul.allComments li h4{}
+.siteContainer .pageContainer .contents ul.allComments li h4 a {
+    font-size: 14px;
+    font-weight: normal;
+    text-transform: capitalize;
+}
+ul.allComments li blockquote {
+    background: #FFFFEF !important;
+}
+ul.allComments li blockquote a{}
+ul.allComments li blockquote span {
+    color: #666666;
+    display: block;
+    font-style: normal;
+    margin: 5px 0 0;
+}

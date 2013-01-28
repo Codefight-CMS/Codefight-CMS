@@ -1,0 +1,70 @@
+/*
+ * CSS Document
+ * footer.css
+ * Created by DAMU for codefight CMS
+ * First created on 10.09.08 
+ */
+
+.siteContainer #footer {
+	display:block;
+	}
+.siteContainer #footer .suppliers {
+	background:#fff url(../images/footer.jpg) left top no-repeat;
+	display:block;
+	height:70px;
+	}
+.siteContainer #footer .links {
+	display:block;
+	color:#666;
+	}
+.siteContainer #footer .links a:hover {
+	text-decoration:underline;
+	}
+.siteContainer #footer .links p {
+	display:block;
+	clear:both;
+	float:none;
+	margin:4px 0 0 7px;
+	}
+.siteContainer #footer .links ul {
+	display:block;
+	list-style:none;
+	list-style-position:outside;
+	}
+.siteContainer #footer .links ul.site li {
+	display:block;
+	float:left;
+	}
+.siteContainer #footer .links ul.site li a {
+	display:block;
+	padding:0 6px;
+	}
+.siteContainer #footer .links ul.acidgreen li {
+	display:block;
+	float:right;
+	}
+#footer .footer_banner {
+	border:1px solid #fff;
+	display:block;
+	margin:0 auto;
+	overflow:hidden;
+	width:728px;
+	height:90px;
+	}
+.copyright {
+	border-top:1px dashed #CCCCCC;
+	text-align:center;
+	padding:10px 0 30px 0;
+	}
+.powered_by {
+	display:block;
+	text-align:center;
+	}
+.powered_by a {
+	color:#666;
+	}
+.powered_by a:hover {
+	color:#000;
+	}
+
+

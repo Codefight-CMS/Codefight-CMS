@@ -1,0 +1,55 @@
+/*
+ * CSS Document
+ * header.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+
+.header {padding:0 0 110px 120px;display:block;}
+.header h1 { margin: 0; color: #68a7ad; font-size: 32px; font-weight: normal; font-style: italic; }
+.header h1 a, .header h1 a:link { color: #68a7ad; }
+.header h1 a:hover { color: #96712e; text-decoration: none; }
+#description { color: #85c128; font-size: 12px; }
+
+.google_468_60_top {
+	display:block;
+	float:right;
+	height:60px;
+	margin-top:12px;
+	overflow:hidden;
+	width:468px;
+	}
+
+.userLogged {
+	clear:both;
+	color:#666;
+	display:block;
+	font-size:12px;
+	font-weight:bold;
+	padding:25px 10px 0 6px;
+	text-align:right;
+	}
+.userLogged a {
+	color:#AEE474;
+	font-size:12px;
+	font-weight:bold;
+	text-align:right;
+	}
+.userLogged a:hover {
+	color:#666;
+	text-decoration:underline;
+	}
+.feed_counter {
+	background:#99CC99;
+	display:block;
+	float:left;
+	height:26px;
+	overflow:hidden;
+	text-align:center;
+	width:90px;
+	}
+.welcome {
+	display:block;
+	float:right;
+	margin:6px 0 0;
+	}

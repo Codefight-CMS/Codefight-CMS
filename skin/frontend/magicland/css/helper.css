@@ -1,0 +1,244 @@
+/*
+ * CSS Document
+ * helper.css
+ * Created by DAMU
+ * First created on 10.09.08 
+ */
+ 
+ /* Some Common Settings */
+* {
+	margin:0;
+	padding:0;
+	}
+html, body {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	/*background:#5690c0 url(../images/bg_image.jpg) center top repeat-x fixed;*/
+	color:#747474;
+	}
+/* END: ----------------------- */
+
+
+/* Paragraph and Headings Definition */
+/* Paragraph Line Height */
+p {
+	line-height:20px;
+	}
+/* Heading And Paragraph Margin */
+h1, h2, h3, h4, h5, p {
+	margin:0 0 10px 0;
+	}
+/* Heading Size Reset */
+h1 {
+	font-size:24px;
+	}
+h2 {
+	font-size:20px;
+	}
+h3 {
+	font-size:18px;
+	}
+h4 {
+	font-size:16px;
+	}
+h5 {
+	font-size:14px;
+	}
+h6 {
+	font-size:12px;
+	}
+/* END: ----------------------- */
+
+
+/* Clear Definition : life saver with floats */	
+.clear {
+	clear:both !important;
+	line-height:0 !important;
+	height:0 !important;
+	font-size:0 !important;
+	display:block !important;
+	float:none !important;
+	margin:0 !important;
+	padding:0 !important;
+	}
+/* END: ----------------------- */
+
+
+/* Error/Success Messages Definition */	
+.error {
+	border:1px solid #FF0033;
+	color:#FF0000;
+	display:block;
+	margin:2px 0;
+	padding:15px 10px 4px 10px;
+	}
+.success {
+	border:1px solid #00CC00;
+	color:#006600;
+	display:block;
+	margin:2px 0;
+	padding:15px 10px 4px 10px;
+	}
+/* END: ----------------------- */
+
+
+/* Background Definition */	
+.backgroundNone {
+	background:none !important;
+	}
+/* END: ----------------------- */
+
+
+/* Border Settings : default => width:1px; color: white; */
+.borderNone {
+	border:none !important;
+	}
+.borderSolid {
+	border:1px solid #fff;
+	}
+.borderDashed {
+	border:1px dashed #fff;
+	}
+.borderDotted {
+	border:1px dotted #fff;
+	}
+.borderRightGrey {
+	border-right:1px solid #ccc;
+	}
+/* END: ----------------------- */
+
+
+/* Float Setting */
+.floatRight {
+	float:right !important;
+	}
+.floatLeft {
+	float:left !important;
+	}
+.floatNone {
+	float:none !important;
+	}
+/* END: ----------------------- */
+
+
+/* Text Style */
+.bold {
+	font-weight:bold !important;
+	}
+.italic {
+	font-style:italic !important;
+	}
+.left {
+	text-align:left !important;
+	}
+.right {
+	text-align:right !important;
+	}
+.center {
+	text-align:center !important;
+	}
+/* END: ----------------------- */
+
+
+/* show/hide definition */
+.hide {
+	display:none !important;
+	}
+.show {
+	display:block !important;
+	}
+.block {
+	display:block;
+	}
+/* END: ----------------------- */
+
+
+/* color definition */
+.blue {
+	color:#0495f1;
+	}
+.red {
+	color:#d42229;
+	}
+.brown {
+	color:#c60;
+	}
+.black {
+	color:#000;
+	}
+/* END: ----------------------- */
+
+
+/* link color definition */
+a {
+	color:#666;
+	text-decoration:none;
+	outline:none;
+	}
+a:hover {
+	color:#d42229;
+	/*text-decoration:underline;*/
+	}
+a.brown {
+	color:#c60;
+	}
+a.brown:hover {
+	color:#09f;
+	}
+a.red {
+	color:#d42229;
+	}
+a.red:hover {
+	color:#666;
+	}
+/* END: ----------------------- */
+
+
+/*Forms*/
+.cf_form_label {
+	background:#EEEEEE;
+	display:block;
+	float:left;
+	margin:0 5px 15px 0;
+	padding:2px;
+	width:120px;
+}
+label.submit {
+	background:none;
+}
+label.textarea {
+}
+.txtFld
+{
+	border:1px solid #999999;
+	display:block;
+	float:left;
+	margin-bottom:2px;
+	width:220px;
+}
+textarea#message {
+	display:block;
+	float:left;
+	margin:0 0 10px;
+	width:300px;
+}
+
+.block_path {
+	display:block;
+	overflow:visible;
+	z-index:100;
+}
+
+.block_path:hover {
+	z-index:1000;
+}
+
+.block_path .path {
+	background:#FFFFFF;
+	border:1px dotted #FF6600;
+	color:#FF0000;
+	display:block;
+	margin:2px;
+	padding:2px;
+}
+

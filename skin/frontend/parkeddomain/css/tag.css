@@ -1,0 +1,110 @@
+/*
+ * CSS Document
+ * tag.css
+ * Created by DAMU for codefight CMS
+ * First created on 21.03.09 
+ */
+.tag_cloud {
+	display:block;
+	margin:0 auto;
+	padding-top:10px;
+	width:100%;
+	text-align:center;
+	}
+.tag_cloud a {
+	display:block;
+	float:left;
+	padding:0 2px 2px 0;
+	}
+.tag_cloud a:hover {
+	background:#f3f3f3;
+	}
+.tag_cloud a.cloud0 {
+	font-size:200% !important;
+	color:#FF00FF;
+	}
+.tag_cloud a.cloud1 {
+	font-size:191.7% !important;
+	color:#00FFFF;
+	}
+.tag_cloud a.cloud2 {
+	font-size:183.3% !important;
+	color:#FFFF00;
+	}
+.tag_cloud a.cloud3 {
+	font-size:175% !important;
+	color:#0000FF;
+	}
+.tag_cloud a.cloud4 {
+	font-size:166.7% !important;
+	color:#00FF00;
+	}
+.tag_cloud a.cloud5 {
+	font-size:158.3% !important;
+	color:#FF0000;
+	}
+.tag_cloud a.cloud6 {
+	font-size:150% !important;
+	color:#000000;
+	}
+.tag_cloud a.cloud7 {
+	font-size:141.7% !important;
+	color:#333333;
+	}
+.tag_cloud a.cloud8 {
+	font-size:133.3% !important;
+	color:#666666;
+	}
+.tag_cloud a.cloud9 {
+	font-size:125% !important;
+	color:#999999;
+	}
+.tag_cloud a.cloud10 {
+	font-size:116.7% !important;
+	color:#999999;
+	}
+.tag_cloud a.cloud11 {
+	font-size:108.3% !important;
+	color:#999999;
+	}
+.tag_cloud a.cloud12 {
+	font-size:100% !important;
+	color:#999999;
+	}
+.tag_cloud a.cloud13 {
+	font-size:91.7% !important;
+	color:#999999;
+	}
+.tag_cloud a.cloud14 {
+	font-size:83.3% !important;
+	color:#999999;
+	}
+.tag_cloud a.cloud15 {
+	font-size:75% !important;
+	color:#999999;
+	}
+.tag_cloud a.cloud16 {
+	font-size:66.7% !important;
+	color:#999999;
+	}
+.tag_cloud a.cloud17 {
+	font-size:58.3% !important;
+	color:#999999;
+	}
+.tag_cloud a.cloud18 {
+	font-size:50% !important;
+	color:#999999;
+	}
+.tag_cloud a.cloud19 {
+	font-size:50% !important;
+	color:#999999;
+	}
+.tag_cloud a.cloud20 {
+	font-size:50% !important;
+	color:#999999;
+	}
+
+
+
+
+

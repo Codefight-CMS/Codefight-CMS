@@ -1,0 +1,43 @@
+/*
+ * CSS Document
+ * pages.css
+ * Created by DAMU for codefight CMS
+ * First created on 19.03.09 
+ */
+.page_numbers {
+	display:block;
+	margin:0 auto;
+	padding-top:10px;
+	width:100%;
+	text-align:center;
+	}
+.page_numbers div {
+	background:#F3F3F3;
+	border:1px solid #DEDEDE;
+	display:block;
+	float:left;
+	font-weight:bold;
+	margin-right:2px;
+	}
+.page_numbers div a, .page_numbers .current {
+	display:block;
+	padding:4px 10px;
+	}
+.page_numbers .first {
+	}
+.page_numbers .previous {
+	}
+.page_numbers .digit {
+	}
+.page_numbers .current {
+	background:#666666;
+	color:#FFFFFF;
+	}
+.page_numbers .next {
+	}
+.page_numbers .last {
+	}
+
+
+
+
