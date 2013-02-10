@@ -188,12 +188,12 @@ class MY_Controller extends CI_Controller
         $this->load->vars($data);
 
         //Get data from view.
-        $template    = "{$module}/templates/{$template}/{$master_page}";
+        $template    = $module.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$template.DIRECTORY_SEPARATOR.$master_page;
         $html_string = $this->load->view($template, '', true);
 
         if (isset($this->setting->display_view_path) && $this->setting->display_view_path == true
         ) {
-            echo "<p>{$template}</p>";
+            echo '<p>'.$template.'</p>';
         }
         Library('process')->view($html_string);
 
@@ -201,9 +201,9 @@ class MY_Controller extends CI_Controller
 
     public function load_language_files()
     {
-        require_once(APPPATH . 'libraries/Pregfind.php');
+        require_once(APPPATH . 'libraries'.DIRECTORY_SEPARATOR.'Pregfind.php');
 
-        $language_path = realpath(APPPATH . 'language/' . $this->current_language) . DIRECTORY_SEPARATOR;
+        $language_path = realpath(APPPATH . 'language'.DIRECTORY_SEPARATOR.'' . $this->current_language) . DIRECTORY_SEPARATOR;
 
         $preg_find      = new preg_find();
         $language_files = $preg_find->find(
