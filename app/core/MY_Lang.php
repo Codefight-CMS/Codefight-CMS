@@ -49,6 +49,7 @@ class MY_Lang extends CI_Lang {
             if(!empty($file)){
                 $file = trim($file);
                 $this->lang_file[$file] = $file;
+                log_message('debug', "Lang file - {$file}");
             }
         }
         $this->lang_file = array_unique($this->lang_file);

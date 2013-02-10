@@ -8,20 +8,21 @@
 class MY_Controller extends CI_Controller
 {
 
-    private $_data = array();
-    public $menu_id;
-    public $page_id;
-    public $menu_link;
-    public $current_page;
-    public $page_links;
-    public $setting;
-    public $cfModule;
-    public $cfRedirect = false;
-    public $cfQuery;
-    public $cfSegments;
-    public $current_language = 'english';//@todo::search and remove references.
-    public $language = 'english';
-    public $backUrl = '';
+    private $_data          = array();
+    public
+        $menu_id            = 0,
+        $page_id            = 0,
+        $menu_link          = '',
+        $current_page       = '',
+        $page_links         = 0,
+        $setting            = 0,
+        $cfModule           = '',
+        $cfRedirect         = FALSE,
+        $cfQuery            = '',
+        $cfSegments         = '',
+        $current_language   = 'english',//@todo::search and remove references.
+        $language           = 'english',
+        $backUrl            = '';
 
 
     /**

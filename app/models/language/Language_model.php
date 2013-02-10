@@ -8,6 +8,7 @@ class Language_model extends MY_Model
 {
     public function __construct()
     {
+        log_message('debug', "Language_model Initialized");
         parent::__construct();
     }
 
@@ -17,5 +18,6 @@ class Language_model extends MY_Model
         if ($this->session->userdata('cf_language')) {
             $this->config->config['language'] = $this->session->userdata('cf_language');
         }
+        log_message('debug', "Language - " . $this->config->config['language']);
     }
 }

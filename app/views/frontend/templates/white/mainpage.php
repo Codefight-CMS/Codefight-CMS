@@ -101,7 +101,7 @@ Library('block')->load('page_html/head'); ?>
 
             <div class="menuLeft">
                 <div class="blog_categories">
-                    <div class="title-h2">CATEGORIES</div><?php
+                    <div class="title-h2"><?php echo __('CATEGORIES') ?></div><?php
 
                     //Load Blog Categories block
                     Library('block')->load('menu/blog_categories_vertical');?>
