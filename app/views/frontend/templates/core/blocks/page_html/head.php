@@ -40,6 +40,18 @@ if (isset($this->setting->meta_suffix)) {
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo site_url('feed'); ?>"/>
+
+    <!-- twitter card starts -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@codefight">
+    <meta name="twitter:creator" content="@dbashyal">
+    <meta name="twitter:url" content="<?php echo get_canonical_url(); ?>">
+    <meta name="twitter:title" content="<?php echo $meta['title'] . $meta_suffix; ?>">
+    <meta name="twitter:description" content="<?php echo $meta['description']; ?>">
+    <meta name="twitter:image" content="http://codefight.org/skin/global/images/logo.png">
+    <!-- twitter card ends -->
+
+
     <?php
     //Get Assets (js|css)
     Library('asset')->get();

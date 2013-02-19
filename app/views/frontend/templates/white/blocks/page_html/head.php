@@ -43,6 +43,27 @@ else
     <link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo site_url('feed'); ?>"/>
 	<!--<link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>-->
 
+    <!-- Add the following three tags inside head -->
+    <meta itemprop="name" content="<?php echo $meta['title'] . $meta_suffix; ?>">
+    <meta itemprop="description" content="<?php echo $meta['description']; ?>">
+    <meta itemprop="image" content="http://codefight.org/skin/global/images/logo.png">
+
+    <meta property="og:title" content="<?php echo $meta['title'] . $meta_suffix; ?>" />
+    <meta property="og:description" content="<?php echo $meta['description']; ?>" />
+    <meta property="og:image" content="http://codefight.org/skin/global/images/logo.png" />
+
+    <!-- twitter card starts -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@codefight">
+    <meta name="twitter:creator" content="@dbashyal">
+    <meta name="twitter:url" content="<?php echo get_canonical_url(); ?>">
+    <meta name="twitter:title" content="<?php echo $meta['title'] . $meta_suffix; ?>">
+    <meta name="twitter:description" content="<?php echo $meta['description']; ?>">
+    <meta name="twitter:image" content="http://codefight.org/skin/global/images/logo.png">
+    <!-- twitter card ends -->
+
+
+
 
     <?php
 
