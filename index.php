@@ -217,6 +217,7 @@ define('CFWEBSITEID', 1);
  *
  */
 require_once BASEPATH.'core/CodeIgniter.php';
+require_once APPPATH.'Codefight_Bootstrap.php';
 
 /* End of file index.php */
 /* Location: ./index.php */

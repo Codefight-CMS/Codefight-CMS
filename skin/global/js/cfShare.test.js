@@ -5,7 +5,12 @@
  *  License: General Public Open Source
  */
 
-;
+;var CodefightShare = {
+    version: '0.0.1',
+    extensions: {},
+    pluginspages: {}
+};
+
 (function ($, window, undefined) {
 
     var cfShare = 'cfShare',
