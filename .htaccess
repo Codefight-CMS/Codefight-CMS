@@ -16,8 +16,26 @@
 	RewriteCond %{THE_REQUEST} \/index\.(php|html)\ HTTP [NC]
 	RewriteRule (.*)index\.(php|html)$ /$1 [R=301,L]
 
+    #todo::seo url for pagination: url/p/category_id/page_number
+    RewriteCond %{HTTP_HOST} !^www\.(.+)$ [NC]
+    RewriteCond %{HTTP_HOST} (.+)\.local.codefight\.org [NC]
+    RewriteCond %{HTTP_HOST}%{REQUEST_URI} ^(.+)\.local.codefight\.org/p/(\d+)/(\d+)$ [NC]
+    RewriteRule .* http://local.codefight.org/blog/%2/%1/%3/? [P]
+
+    #todo::seo url for full blog post: url/blog_id-seo-friendly-url
+    RewriteCond %{HTTP_HOST} !^www\.(.+)$ [NC]
+    RewriteCond %{HTTP_HOST} (.+)\.local.codefight\.org [NC]
+    RewriteCond %{HTTP_HOST}%{REQUEST_URI} ^(.+)\.local.codefight\.org/(\d+)-(.*) [NC]
+    RewriteRule .* http://local.codefight.org/blog/%1/%2/%3/? [P]
+
+    #todo::seo url for blog categories: category_name.url
+    RewriteCond %{HTTP_HOST} !^www\.(.+)$ [NC]
+    RewriteCond %{HTTP_HOST} (.+)\.local.codefight\.org [NC]
+    RewriteRule .* http://local.codefight.org/blog/c/%1/? [P]
+
 	RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
     RewriteRule ^(.*)$ index.php?/$1 [L]
 
 </IfModule>
