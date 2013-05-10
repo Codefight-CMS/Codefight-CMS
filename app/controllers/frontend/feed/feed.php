@@ -68,7 +68,7 @@ class Feed extends MY_Controller
         }
 
         if (!$feed_section) {
-            $data['posts'] = Model('blog')->getRecentPosts();
+            $data['posts'] = Model('blog')->getRecentPosts(50);
             $view_file = 'frontend/templates/core/blocks/feed/rss';
         }
 
