@@ -165,7 +165,7 @@ function maketable($dirname) {
                      $belyeg = './'.$AUDIOICON;
                      $belyegurl = './'.$AUDIOICON;
                 }
-                // ha még nincsbélyegkép akkor létrehozni
+                // ha mï¿½g nincsbï¿½lyegkï¿½p akkor lï¿½trehozni
                 if (!file_exists($belyeg)) {
                    if ($GDok) make_thumb($fnev,$belyeg,100,100);
 	            };
@@ -240,7 +240,8 @@ if ($act == 'upload') {
 }
 if ($act == 'delete') {
   // do delete file
-  unlink($IMGFOLDER.'/'.$_POST['fname']);
+    // disabled due to security issue
+  // unlink($IMGFOLDER.'/'.$_POST['fname']);
 }
 if ($act == 'list') {
   // generate table
