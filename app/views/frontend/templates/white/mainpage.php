@@ -188,14 +188,7 @@ Library('block')->load('page_html/head'); ?>
 
 //Load Powered By Block: I hope you keep as it is. Thanks.
 Library('block')->load('seo/wibiya'); ?>
-<script type="text/javascript">
-    var uvOptions = {};
-    (function() {
-        var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/RpupWgmvyekGAIFkQjHn4g.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-    })();
-</script>
+<a href="https://github.com/dbashyal/Codefight-CMS" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
 </body>
 </html>
 
