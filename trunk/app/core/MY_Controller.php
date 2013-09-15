@@ -204,7 +204,7 @@ class MY_Controller extends CI_Controller
     {
         require_once(APPPATH . 'libraries'.DIRECTORY_SEPARATOR.'Pregfind.php');
 
-        $language_path = realpath(APPPATH . 'language'.DIRECTORY_SEPARATOR.'' . $this->current_language) . DIRECTORY_SEPARATOR;
+        $language_path = realpath(APPPATH . 'language'.DIRECTORY_SEPARATOR.'' . $this->current_language);
 
         $preg_find      = new preg_find();
         $language_files = $preg_find->find(
