@@ -1,5 +1,7 @@
 <?php
-if(is_dir(dirname(__FILE__).'/install'))
+$_FILE_PATH = $_SERVER['SCRIPT_FILENAME'];
+
+if(is_dir(dirname($_FILE_PATH).'/install'))
 	die('<p><a href="install">Click here</a> to install or remove install folder</p>');
 
 /*
@@ -154,7 +156,7 @@ define('CFWEBSITEID', 1);
 	// Set the current directory correctly for CLI requests
 	if (defined('STDIN'))
 	{
-		chdir(dirname(__FILE__));
+		chdir(dirname($_FILE_PATH));
 	}
 
 	if (realpath($system_path) !== FALSE)
@@ -168,7 +170,7 @@ define('CFWEBSITEID', 1);
 	// Is the system path correct?
 	if ( ! is_dir($system_path))
 	{
-		exit("Your system folder path does not appear to be set correctly. Please open the following file and correct this: ".pathinfo(__FILE__, PATHINFO_BASENAME));
+		exit("Your system folder path does not appear to be set correctly. Please open the following file and correct this: ".pathinfo($_FILE_PATH, PATHINFO_BASENAME));
 	}
 
 /*
@@ -177,7 +179,7 @@ define('CFWEBSITEID', 1);
  * -------------------------------------------------------------------
  */
 	// The name of THIS file
-	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+	define('SELF', pathinfo($_FILE_PATH, PATHINFO_BASENAME));
 
 	// The PHP file extension
 	// this global constant is deprecated.
@@ -187,7 +189,7 @@ define('CFWEBSITEID', 1);
 	define('BASEPATH', str_replace("\\", "/", $system_path));
 
 	// Path to the front controller (this file)
-	define('FCPATH', str_replace(SELF, '', __FILE__));
+	define('FCPATH', str_replace(SELF, '', $_FILE_PATH));
 
 	// Name of the "system folder"
 	define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
