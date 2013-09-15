@@ -399,6 +399,7 @@ if (!function_exists('__')) {
                 } else {
                     $msg = array('error' => "{$CI->language}/{$file}_lang.php not found!");
                     setMessages($msg, 'error', false);
+                    log_message('error', 'not found - ' . $filename_path);
                 }
             }
         }
