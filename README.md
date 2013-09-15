@@ -16,7 +16,7 @@ you can add more websites on same admin just use different website id on index f
 
 admin:
 ------
-base_url/admin
+base_url/admin/ (must end with slash)
 
 - user: test@test.com 
 - pass: test
