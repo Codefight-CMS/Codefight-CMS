@@ -60,10 +60,8 @@ $route['default_controller'] = $route['front_controllers_folder'] . "/page/page"
 /*
 * Route to Admin control panel
 */
+$route['admin/' . '(.*)?'] = 'admin/$1';
 $route['admin'] = "admin/cp/cp";
-
-
-$route['admin' . '(/.*)?'] = 'admin$1';
 
 
 $route['(.*)?'] = $route['default_controller'] . '/index/$1';
