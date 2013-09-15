@@ -394,7 +394,9 @@ if (!function_exists('__')) {
             if (!empty($file)) {
                 $filename = 'language' . DS . $CI->language . DS . "{$file}_lang.php";
                 $filename_path = str_replace(array('/','\\'), DS, FCPATH . APPPATH . $filename);
+                log_message('info', $filename_path);
                 if (is_file($filename_path)) {
+                    log_message('info', 'exists: ' . $filename_path);
                     $CI->lang->load($file, $CI->language);
                 } else {
                     $msg = array('error' => "{$CI->language}/{$file}_lang.php not found!");
