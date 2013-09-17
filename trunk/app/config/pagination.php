@@ -51,9 +51,8 @@ $config['num_tag_open'] = '<div class="digit">';
 //The closing tag for the "digit" link.
 $config['num_tag_close'] = '</div>';
 
-
+$config['attributes']['rel'] = TRUE;
 
 
 /* End of file pagination.php */
 /* Location: ./system/application/config/pagination.php */
-?>
