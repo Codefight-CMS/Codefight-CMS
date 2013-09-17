@@ -97,6 +97,7 @@ class Tag extends MY_Controller
 
         if (($cur_page = $this->pagination->getCurPage()) > 1) {
             $data['meta']['title'] .= ' - ' . __('Page ') . __($cur_page);
+            $data['noindex'] = 'yes';
         }
 
         //get created page links from library -> MY_Controller (paginate_page)
