@@ -1,10 +1,13 @@
+.DS_Store
 .idea/
 *.test.*
 trunk/app/config/development
 trunk/app/logs/*
-trunk/app/logs/!index.html
+!trunk/app/logs/index.html
+!trunk/app/logs/.htaccess
 trunk/app/cache/*
-trunk/app/cache/!index.html
+!trunk/app/cache/index.html
+!trunk/app/cache/.htaccess
 trunk/media/cache/*
 trunk/media/cache/!index.html
 trunk/skin/global/js/share.js
