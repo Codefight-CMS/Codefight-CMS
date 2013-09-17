@@ -114,6 +114,7 @@ class Blog extends MY_Controller
 
         if (($cur_page = $this->pagination->getCurPage()) > 1) {
             $data['meta']['title'] .= ' - ' . __('Page ') . __($cur_page);
+            $data['noindex'] = 'yes';
         }
 
         //main content block [content view]
