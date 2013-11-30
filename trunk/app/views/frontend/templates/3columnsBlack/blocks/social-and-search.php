@@ -53,28 +53,14 @@
             <div class="fb-like-box" data-href="https://www.facebook.com/learntipsandtricks/" data-width="300" data-height="65" data-show-faces="false" data-border-color="#DCDCDC" data-stream="false" data-header="false"></div>
         </td>
     </tr>
-    <tr><?php
-    /*
-        <td width="300" align="center">
-            <a class="twitter-timeline" href="https://twitter.com/dbashyal" data-widget-id="251436890379653120">Tweets by @dbashyal</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        </td>
-    </tr>
     <tr>
-     */
-    ?>
         <td width="300" align="center">
-            <!--iframe width="300" scrolling="no" height="210" frameborder="0" src="http://sponsormeclub.org/ad/faces-300" style="border:none; width:300px; height:210px; display: block;margin: 0 auto;"></iframe-->
             <!-- Learn-tips-300-250 -->
             <div id='div-gpt-ad-1357216295046-0' style='width:300px; height:250px;'>
                 <script type='text/javascript'>
                     googletag.cmd.push(function() { googletag.display('div-gpt-ad-1357216295046-0'); });
                 </script>
             </div>
-            <!--<br/>
-            <a href="http://learntipsandtricks.com/go/5" target="_blank" onmouseover="window.status='http://www.hostgator.com';return true;" onmouseout="window.status=' ';return true;">
-                <img src="http://www.ftjcfx.com/image-4006920-10854117" width="300" height="250" alt="" border="0"/>
-            </a>-->
         </td>
     </tr>
     </tbody>
