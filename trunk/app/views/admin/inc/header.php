@@ -126,7 +126,7 @@ if (!isset($head_includes) || !is_array($head_includes)) {
         <?php echo get_top_menu(); ?>
         <!-- END:: Top Menu -->
         <?php //die('1233'); ?>
-		<div class="controls-wrapper" style="border:1px solid #dedede;padding:5px;">
+		<div class="controls-wrapper" style="border:1px solid #dedede;padding:5px;display:none;">
 			<div class="search-controls">
 				<form action="<?php echo current_url();?>">
 				placeholder for search controls
