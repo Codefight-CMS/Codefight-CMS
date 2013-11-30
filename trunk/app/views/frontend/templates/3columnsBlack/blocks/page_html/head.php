@@ -46,9 +46,7 @@ else
     <meta property="og:description" content="<?php echo $meta['description']; ?>" />
     <meta property="og:image" content="http://codefight.org/skin/global/images/logo.png" />
 
-    <?php if(current_url() == base_url()) { ?>
-	<link href="https://plus.google.com/103583381097797606705" rel="publisher" />
-    <?php } ?>
+    <link href="https://plus.google.com/<?php echo $this->setting->google_plus ?>" rel="publisher" />
 
     <!-- twitter card starts -->
     <meta name="twitter:card" content="summary">
@@ -78,7 +76,7 @@ else
         <script type="text/javascript" src="<?php echo skin_url('global') ?>js/share.mini.js"></script>
 
 <!-- Place this tag in the <head> of your document -->
-<link href="https://plus.google.com/113900044608227915446" rel="publisher" /><script type="text/javascript">
+<script type="text/javascript">
 window.___gcfg = {lang: 'en'};
 (function()
 {var po = document.createElement("script");

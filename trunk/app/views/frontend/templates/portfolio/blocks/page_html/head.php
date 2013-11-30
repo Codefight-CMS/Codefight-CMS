@@ -27,7 +27,7 @@
 	<meta name="generator" content="Codefight CMS" />
     <meta name="vendor" content="<?php echo $this->setting->site_name ?>" />
     <meta name="Language" content="en"/>
-	<link href="https://plus.google.com/103583381097797606705" rel="publisher" />
+	<link href="https://plus.google.com/<?php echo $this->setting->google_plus ?>" rel="publisher" />
 
  	<link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo site_url('feed'); ?>" />
 
