@@ -59,10 +59,13 @@ class Trim extends MY_Controller
         $trim_id = $this->_getShortUrl($this->uri->segment(2, 0));
 
         if ($this->config->item('cache')) {
-            // if cache directory doesn't exists, create one
+            // create cache directory if doesn't exists
             @mkdir($this->config->item('cache_dir'), 0777);
 
-            $long_url = file_get_contents($this->config->item('cache_dir') . $trim_id);
+            $long_url = false;
+            if(file_exists($this->config->item('cache_dir') . $trim_id)){
+                $long_url = file_get_contents($this->config->item('cache_dir') . $trim_id);
+            }
             if (empty($long_url) || !preg_match('|^https?://|', $long_url)) {
                 $this->db->where('trim_id', $trim_id);
                 $this->db->select('long_url');
