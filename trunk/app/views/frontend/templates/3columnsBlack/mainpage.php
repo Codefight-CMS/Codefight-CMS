@@ -147,10 +147,6 @@ Library('block')->load('page_html/message'); ?>
         //Load Social Icons
         Library('block')->load('social-and-search', '3columnsBlack'); ?>
 
-        <?php /*<div class="b300250">
-                <iframe scrolling="no" frameborder="0" src="http://zoosper.com/zoosperads/index/site/zoosper.com/width/125/height/125/limit/6/key/hostgator,hosting/view/tips125" style="border:none; overflow:hidden; width:320px; height:400px;" allowtransparency="true"></iframe>
-            </div>
-            <br />*/?>
         <p class="clear">&nbsp;</p>
 
         <div class="menuLeft">
