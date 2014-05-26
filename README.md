@@ -24,3 +24,5 @@ base_url/admin/ (must end with slash)
 If you want to use same cms for 2nd website
 -------------------------------------------
 just copy two root files (.htaccess and index.php) to 2nd website's folder, note, they should be on same server to share files.
+
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=dbashyal&url=https://github.com/dbashyal&title=Github Repos&language=&tags=github&category=software)
