@@ -828,12 +828,13 @@ INSERT INTO `cf_page_tag` (`page_id`, `tag`) VALUES
 DROP TABLE IF EXISTS `cf_sessions`;
 CREATE TABLE IF NOT EXISTS `cf_sessions` (
   `session_id` varchar(40) NOT NULL DEFAULT '0',
-  `ip_address` varchar(16) NOT NULL DEFAULT '0',
-  `user_agent` varchar(50) NOT NULL,
+  `ip_address` varchar(45) NOT NULL DEFAULT '0',
+  `user_agent` varchar(120) NOT NULL,
   `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
   `user_data` text NOT NULL,
   PRIMARY KEY (`session_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 
 
 -- --------------------------------------------------------
