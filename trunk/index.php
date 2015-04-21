@@ -258,7 +258,7 @@ define('CFWEBSITEID', 1);
 	}
 
 	define('VIEWPATH', $view_folder);
-	define('VIEWPATH', dirname(APPPATH). '/');
+	define('SKINPATH', dirname(APPPATH). '/');
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
