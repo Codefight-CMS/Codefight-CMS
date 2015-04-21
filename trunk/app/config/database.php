@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
-$db['default']['username'] = "codefight";
-$db['default']['password'] = "cms";
+$db['default']['username'] = "root";
+$db['default']['password'] = "password";
 $db['default']['database'] = "codefight";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "cf_";
