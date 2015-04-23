@@ -235,21 +235,9 @@ class MY_Router extends CI_Router
 
    		// Nothing else to do at this point but show a 404
    		show_404($segments[0]);
+
+        return false;
    	}
-
-    // --------------------------------------------------------------------
-
-    /**
-     *  Set the directory name
-     *
-     * @access    public
-     * @param    string
-     * @return    void
-     */
-    function set_directory($dir)
-    {
-        $this->directory = trim($dir, '/') . '/';
-    }
 
     // --------------------------------------------------------------------
 
