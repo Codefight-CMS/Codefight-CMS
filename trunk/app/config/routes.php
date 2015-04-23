@@ -1,4 +1,6 @@
-<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -23,7 +25,7 @@
 | RESERVED ROUTES
 | -------------------------------------------------------------------------
 |
-| There are two reserved routes:
+| There are three reserved routes:
 |
 |	$route['default_controller'] = 'welcome';
 |
@@ -33,10 +35,23 @@
 |
 |	$route['404_override'] = 'errors/page_missing';
 |
-| This route will tell the Router what URI segments to use if those provided
-| in the URL cannot be matched to a valid route.
+| This route will tell the Router which controller/method to use if those
+| provided in the URL cannot be matched to a valid route.
 |
+|	$route['translate_uri_dashes'] = FALSE;
+|
+| This is not exactly a route, but allows you to automatically route
+| controller and method names that contain dashes. '-' isn't a valid
+| class or method name character, so it requires translation.
+| When you set this option to TRUE, it will replace ALL dashes in the
+| controller and method URI segments.
+|
+| Examples:	my-controller/index	-> my_controller/index
+|		my-controller/my-method	-> my_controller/my_method
 */
+$route['404_override'] = '';
+$route['translate_uri_dashes'] = FALSE;
+
 /*
  * Front Controllers Folder
  */
@@ -65,7 +80,6 @@ $route['admin'] = "admin/cp/cp";
 
 
 $route['(.*)?'] = $route['default_controller'] . '/index/$1';
-$route['scaffolding_trigger'] = "";
 
 // lets rename trim to go
 $route['go/(.+)'] = $route['front_controllers_folder'] . '/trim/trim/index$1';
@@ -85,7 +99,4 @@ $route['default_controller'] = "page/page";
 $route['admin'.'(/.*)?'] = 'admin$1';
 
 $route['scaffolding_trigger'] = "";
-
-
-/* End of file routes.php */
-/* Location: ./application/config/routes.php */
+*/
