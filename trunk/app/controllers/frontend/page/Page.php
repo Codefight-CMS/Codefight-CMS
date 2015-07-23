@@ -89,7 +89,3 @@ class Page extends MY_Controller
         $this->process_view($data);
     }
 }
-
-/* End of file page.php */
-/* Location: ./app/frontend/controllers/page/page.php */
-?>
