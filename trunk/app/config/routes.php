@@ -83,20 +83,3 @@ $route['(.*)?'] = $route['default_controller'] . '/index/$1';
 
 // lets rename trim to go
 $route['go/(.+)'] = $route['front_controllers_folder'] . '/trim/trim/index$1';
-/*
-$route['blog/(.+)'] = "blog/blog/index/$1";
-$route['page/(.+)'] = "page/page/index/$1";
-$route['page/(.+)'] = "page/page/index/$1";
-$route['tag/(.+)'] = "blog/tag/index/$1";
-$route['ajax/(.+)'] = "blog/ajax/$1";
-$route['home'] = "page/page";
-$route['registration/(.+)'] = "registration/registration/$1";
-$route['registration'] = "registration/registration/";
-//$route['feed'] = "feed";
-//$route['sitemap'] = "sitemap";
-$route['default_controller'] = "page/page";
-
-$route['admin'.'(/.*)?'] = 'admin$1';
-
-$route['scaffolding_trigger'] = "";
-*/

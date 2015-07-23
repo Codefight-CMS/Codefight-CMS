@@ -95,20 +95,19 @@ class MY_Router extends CI_Router
         // Validate & get reserved routes
         if (isset($route) && is_array($route))
         {
+            /*
+           * Updated for codefight cms
+           */
+            $this->routes = $route;
+            $_route = $this->_generate_auto_routes();
+            $route = array_merge($_route, $route);
+            /*---END---*/
+
             isset($route['default_controller']) && $this->default_controller = $route['default_controller'];
             isset($route['translate_uri_dashes']) && $this->translate_uri_dashes = $route['translate_uri_dashes'];
             unset($route['default_controller'], $route['translate_uri_dashes']);
             $this->routes = $route;
         }
-
-        /*
-       * Updated for codefight cms
-       */
-        $route = $this->_generate_auto_routes();
-        $this->routes = (!isset($route) OR !is_array($route)) ? array() : $route;
-        /*---END---*/
-
-        unset($route);
 
         // Is there anything to parse?
         if ($this->uri->uri_string !== '')
@@ -131,7 +130,7 @@ class MY_Router extends CI_Router
      * @param    array
      * @return    array
      */
-    function _validate_request($segments)
+    /*function _validate_request($segments)
    	{
    		if (count($segments) == 0)
    		{
@@ -154,7 +153,7 @@ class MY_Router extends CI_Router
                /*
                    * Updated for codefight cms
                    * Added new code to allow multi-level sub-folder
-                   */
+                   *//*
                $subfolder = false;
                if (((count($segments) > 0) && is_dir(APPPATH . 'controllers/' . $this->directory . $segments[0])) && (!file_exists(APPPATH . 'controllers/' . $this->directory . $segments[0] . '.php'))) $subfolder = true;
 
@@ -171,7 +170,7 @@ class MY_Router extends CI_Router
                        $subfolder = false;
                    }
                }
-               /*---END--Sub-folder--*/
+               /*---END--Sub-folder--*//*
 
 
    			if (count($segments) > 0)
@@ -229,6 +228,7 @@ class MY_Router extends CI_Router
 
         return false;
    	}
+*/
 
     // --------------------------------------------------------------------
 
@@ -241,10 +241,10 @@ class MY_Router extends CI_Router
      */
     function _generate_auto_routes()
     {
-        $module_rotes = array();
-        $module_rotes[0] = array();
-        $module_rotes[1] = array();
-        $module_rotes[2] = array();
+        $module_routes = array();
+        $module_routes[0] = array();
+        $module_routes[1] = array();
+        $module_routes[2] = array();
 
         $dir = APPPATH . 'controllers' . '/';
         if ($handle = opendir($dir)) {
@@ -253,7 +253,7 @@ class MY_Router extends CI_Router
                 if ($file != "." && $file != ".." && $file != 'Thumbs.db') {
                     if (is_file($dir . $file) && $file != 'index.html') {
                         $file = str_replace('.php', '', $file);
-                        $module_rotes[0][$file . '(/.*)?'] = $file . '/index$1';
+                        $module_routes[0][$file . '(/.*)?'] = $file . '/index$1';
                     }
                     elseif (!in_array($file, array('index.html','_notes')) && (is_dir($dir2 = $dir . $file . '/')))
                     {
@@ -263,7 +263,7 @@ class MY_Router extends CI_Router
                                 if ($file2 != "." && $file2 != ".." && $file2 != 'Thumbs.db') {
                                     if (is_file($dir2 . $file2) && $file2 != 'index.html') {
                                         $file2 = str_replace('.php', '', $file2);
-                                        $module_rotes[1][$file . '/' . $file2 . '(/.*)?'] = $file . '/' . $file2 . '/index$1';
+                                        $module_routes[1][$file . '/' . $file2 . '(/.*)?'] = $file . '/' . $file2 . '/index$1';
                                     }
                                     elseif (!in_array($file2, array('index.html','_notes')) && (is_dir($dir3 = $dir2 . $file2 . '/')))
                                     {
@@ -271,7 +271,7 @@ class MY_Router extends CI_Router
                                         /*
                                                   if($this->routes['front_controllers_folder'] != $file)
                                                   {
-                                                      $module_rotes[$file . '/' . $file2.'(/.*)?'] = $file . '/' . $file2 . '/' . $file2 . '/index$1';
+                                                      $module_routes[$file . '/' . $file2.'(/.*)?'] = $file . '/' . $file2 . '/' . $file2 . '/index$1';
                                                   }
                                                   */
 
@@ -298,7 +298,7 @@ class MY_Router extends CI_Router
 
                                                         $val .= $file2 . '/' . $file3;
 
-                                                        $module_rotes[2][$key . '(/.*)?'] = $val . '/index$1';
+                                                        $module_routes[2][$key . '(/.*)?'] = $val . '/index$1';
                                                     }
                                                 }
                                             }
@@ -315,10 +315,10 @@ class MY_Router extends CI_Router
         }
         closedir($handle);
 
-        $module_rotes = array_merge($module_rotes[2], $module_rotes[1], $module_rotes[0], $this->routes);
-        krsort($module_rotes);
+        $module_routes = array_merge($module_routes[2], $module_routes[1], $module_routes[0], $this->routes);
+        krsort($module_routes);
 
-        return $module_rotes;
+        return $module_routes;
     }
 }
 // END MY_Router Class

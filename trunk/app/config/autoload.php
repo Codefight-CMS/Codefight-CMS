@@ -66,8 +66,7 @@ $autoload['libraries'] = array(
     'session',
     'cf_library',
     'user_agent',
-    'MY_Language',
-    'security',
+    'MY_Language'
 );
 
 

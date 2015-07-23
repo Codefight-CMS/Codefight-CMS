@@ -266,5 +266,5 @@ define('CFWEBSITEID', 1);
  *
  * And away we go...
  */
-require_once BASEPATH.'core/CodeIgniter.php';
 require_once APPPATH.'Codefight_Bootstrap.php';
+require_once BASEPATH.'core/CodeIgniter.php';
