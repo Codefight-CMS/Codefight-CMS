@@ -130,7 +130,7 @@ if (!function_exists('get_top_menu')) {
         $CI =& get_instance();
 
         if ($CI->session->userdata('logged_in') === '1') {
-            return $CI->load->view('admin/inc/top_menu');
+            $CI->load->view('admin/inc/top_menu');
         }
 
         return '';

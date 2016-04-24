@@ -200,7 +200,7 @@ class Setting extends MY_Controller
                 'websites_status' => set_value('websites_status')
             );
 
-            Model('websites')->save($sql);
+            Model('websites')->save_data($sql);
         }
 
         //---
@@ -264,7 +264,7 @@ class Setting extends MY_Controller
 
                 //update database if set
                 if (!empty($v['websites_name']) && !empty($v['websites_url']) && !empty($v['websites_id'])) {
-                    Model('websites')->save($v);
+                    Model('websites')->save_data($v);
                 }
             }
         }
