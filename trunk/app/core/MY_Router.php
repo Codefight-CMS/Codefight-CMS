@@ -205,7 +205,7 @@ class MY_Router extends CI_Router
                     if ($handle2 = opendir($dir2)) {
                         while (false !== ($file2 = readdir($handle2))) {
                             if(!preg_match('/[^a-z0-9]/i', $file2)){
-                                $module_routes[3][$file2] = strtolower($file) . '/' . strtolower($file2) . '/' . strtolower($file2) . '/index$1';
+                                $module_routes[3][$file2 . '(/.*)?'] = strtolower($file) . '/' . strtolower($file2) . '/' . strtolower($file2) . '/index$1';
                             }
                             if(is_file($dir2 . $file2) && substr($file2, -4) == '.php'){
                                 $file2 = str_replace('.php', '', $file2);
