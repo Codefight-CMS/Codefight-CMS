@@ -68,9 +68,9 @@ $route['front_controllers_folder'] = "frontend";
 
 /*
  * Default Controller [page]
+ * folder_path/controller/default_method
  */
-$route['default_controller'] = $route['front_controllers_folder'] . "/page/page";
-
+$route['default_controller'] = $route['front_controllers_folder'] . "/page/page/index";
 
 /*
 * Route to Admin control panel
@@ -79,7 +79,7 @@ $route['admin/' . '(.*)?'] = 'admin/$1';
 $route['admin'] = "admin/cp/cp";
 
 
-$route['(.*)?'] = $route['default_controller'] . '/index/$1';
+$route['(.*)?'] = $route['default_controller'] . '/$1';
 
 // lets rename trim to go
 $route['go/(.+)'] = $route['front_controllers_folder'] . '/trim/trim/index$1';
