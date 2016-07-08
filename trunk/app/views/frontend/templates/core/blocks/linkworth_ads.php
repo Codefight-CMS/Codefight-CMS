@@ -1,12 +1,11 @@
-<?php
-/*
-$linkads = file_get_contents('http://feeds.chiej.com/?440e5d8575ff7ca6c3d9fdbf4ee97aeb437');
-echo $linkads;
-*/
-?>
-<?php
-error_reporting(0);
-/*
-$rotating_ads = file_get_contents('http://feeds.chiej.com/?ce20ec208760d26b7d2f088b1e0ccd882160');
-echo $rotating_ads;
-?>*/
+<?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
+<?php if (base_url() == 'http://codefight.org/'): //Load only if the site is codefight.org
+
+    $linkads_hndl = curl_init("http://feeds.chiej.com/?440e5d8575ff7ca6c3d9fdbf4ee97aeb437");
+    curl_exec($linkads_hndl);
+    curl_close($linkads_hndl);
+
+    $rotating_ads = file_get_contents('http://www.codefight.org/lw_rads.php?location=3&format=6&website_id=60933');
+   echo $rotating_ads;
+
+endif; ?>
