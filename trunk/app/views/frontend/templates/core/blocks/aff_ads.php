@@ -1,10 +1,3 @@
-<br />
-<!-- YB: side_160x600 (160x600) -->
-<script type="text/javascript"><!--
-yieldbuild_site = 4356;
-yieldbuild_loc = "side_160x600";
-//--></script>
-<script type="text/javascript" src="http://hook.yieldbuild.com/s_ad.js"></script>
 
 <br />
 <script type="text/javascript"><!--
@@ -16,3 +9,16 @@ google_ad_height = 90;
 //-->
 </script>
 <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+
+<br />
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-9567128729272204";
+/* 160x600, created 10/23/10 */
+google_ad_slot = "6798898590";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
