@@ -14,9 +14,6 @@ if (isset($content) && is_array($content) && count($content) > 0) foreach ($cont
     //Show content
     echo $v['content'];
 
-    //Display Addthis button
-    if (isset($v['addthis'])) echo $v['addthis'];
-
     //Show Comment
     //if(isset($v['comment'])) echo $v['comment'];
 

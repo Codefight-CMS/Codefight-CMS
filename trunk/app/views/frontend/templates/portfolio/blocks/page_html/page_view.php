@@ -13,10 +13,7 @@ if(isset($content) && is_array($content) && count($content) > 0) foreach ($conte
 		//Show content
 		echo $v['content'];
 		if($this->uri->segment(1) == 'contact-us') echo '</div>';
-		
-		//Display Addthis button
-		if(isset($v['addthis'])) echo $v['addthis'];
-		
+
 		//Show Comment
 		if(isset($v['comment'])) echo $v['comment'];
 		
