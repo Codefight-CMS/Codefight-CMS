@@ -7,7 +7,7 @@
  */
 $cnf['+tools']['trim']['admin'] = array(
 			'child' => array(
-					'trim' => array(
+					'trim/trim' => array(
                         'status' => 1,
 						'title' => 'Shorten URL'
 						),
