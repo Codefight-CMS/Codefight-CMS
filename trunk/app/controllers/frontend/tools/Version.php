@@ -58,6 +58,17 @@ class Version extends MY_Controller
     public function index()
     {
         echo '2.2.2.0';
+
+        $install = xss_clean(str_replace(base_url() . 'tools/version/', '', current_url()));
+        if(!empty($install)){
+            $count = $this->db->where('website', $install)->count_all_results('installs');
+
+            if($count){
+                $this->db->set('count', 'count+1', FALSE)->where('website', $install)->update('installs');
+            } else {
+                $this->db->set('count', 'count+1', FALSE)->set('website', $install)->insert('installs');
+            }
+        }
     }
 }
 
