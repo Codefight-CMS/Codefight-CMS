@@ -50,7 +50,7 @@ class Feed extends MY_Controller
         $data['page_language'] = 'en-au';
         $data['creator_email'] = 'Damodar Bashyal is at enjoygame at hotmail dot com';
 
-        $feed_section = $this->uri->segment(3, 0);
+        $feed_section = $this->uri->segment(2, 0);
 
         if ($feed_section) {
             if ($feed_section == 'approved-comment') {

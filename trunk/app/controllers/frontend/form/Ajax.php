@@ -113,11 +113,11 @@ Message Received From Web Form
                     else
                     {
                         //Otherwise, split the default value from bar |
-                        $splita = split('\|', $email_item[$k]['value']);
+                        $splita = explode('|', $email_item[$k]['value']);
                         foreach ($splita as $sv)
                         {
                             //The again split from is equal to =
-                            $splitb = split('=', $sv);
+                            $splitb = explode('=', $sv);
                             //Now check the input/selected value and get it, if matched as...
                             if (count($splitb) == 2 && $splitb[0] == $v) {
                                 //$message .= $splitb[1].'['.$splitb[0].'=='.$v.']';
@@ -138,12 +138,12 @@ Message Received From Web Form
                     //First Get the Label
                     $message .= $email_item[$k . '[]']['label'] . ": ";
                     //Split the default value from bar |
-                    $splita = split('\|', $email_item[$k . '[]']['value']);
+                    $splita = explode('|', $email_item[$k . '[]']['value']);
                     $form_data['form_item_data'] = '';
                     foreach ($splita as $sv)
                     {
                         //The again split from is equal to =
-                        $splitb = split('=', $sv);
+                        $splitb = explode('=', $sv);
                         //Now check the input/selected value and get it, if matched as...
                         if (count($splitb) == 2 && in_array($splitb[0], $v)) {
                             $message .= $splitb[1] . ',';
