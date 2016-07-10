@@ -12,7 +12,7 @@ class Websites_model extends MY_Model
         parent::__construct();
     }
 
-    function get_websites()
+    public function get_websites()
     {
         $query = $this->db->get('websites');
 
@@ -21,7 +21,7 @@ class Websites_model extends MY_Model
 
 
     //Get websites name(s)
-    function websites_name($ids = '')
+    public function websites_name($ids = '')
     {
         $name = '';
 
@@ -42,7 +42,7 @@ class Websites_model extends MY_Model
 
 
     //check to see if website is disabled or not
-    function is_enabled($id = 0)
+    public function is_enabled($id = 0)
     {
         $this->db->where('websites_id', $id);
         $this->db->where('websites_status', '1');
@@ -51,7 +51,7 @@ class Websites_model extends MY_Model
     }
 
 
-    function save($data)
+    public function save_data($data)
     {
         if (!is_array($data)) {
             return;
@@ -107,7 +107,7 @@ class Websites_model extends MY_Model
         return;
     }
 
-    function delete($id)
+    public function delete($id)
     {
         if (empty($id)) {
             $msg = array('error' => "<p>Error! ID is required.</p>");
@@ -127,7 +127,7 @@ class Websites_model extends MY_Model
         return;
     }
 
-    function delete_ids($id)
+    public function delete_ids($id)
     {
         $error = 0;
         $success = 0;
@@ -159,5 +159,3 @@ class Websites_model extends MY_Model
     }
 
 }
-
-?>

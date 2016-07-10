@@ -1,4 +1,6 @@
-<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
@@ -9,7 +11,7 @@
 | and its corresponding controller class/method. The segments in a
 | URL normally follow this pattern:
 |
-| 	example.com/class/method/id/
+|	example.com/class/method/id/
 |
 | In some instances, however, you may want to remap this relationship
 | so that a different class/function is called than the one
@@ -17,13 +19,13 @@
 |
 | Please see the user guide for complete details:
 |
-|	http://codeigniter.com/user_guide/general/routing.html
+|	https://codeigniter.com/user_guide/general/routing.html
 |
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
 | -------------------------------------------------------------------------
 |
-| There are two reserved routes:
+| There are three reserved routes:
 |
 |	$route['default_controller'] = 'welcome';
 |
@@ -33,10 +35,23 @@
 |
 |	$route['404_override'] = 'errors/page_missing';
 |
-| This route will tell the Router what URI segments to use if those provided
-| in the URL cannot be matched to a valid route.
+| This route will tell the Router which controller/method to use if those
+| provided in the URL cannot be matched to a valid route.
 |
+|	$route['translate_uri_dashes'] = FALSE;
+|
+| This is not exactly a route, but allows you to automatically route
+| controller and method names that contain dashes. '-' isn't a valid
+| class or method name character, so it requires translation.
+| When you set this option to TRUE, it will replace ALL dashes in the
+| controller and method URI segments.
+|
+| Examples:	my-controller/index	-> my_controller/index
+|		my-controller/my-method	-> my_controller/my_method
 */
+$route['404_override'] = '';
+$route['translate_uri_dashes'] = FALSE;
+
 /*
  * Front Controllers Folder
  */
@@ -53,9 +68,9 @@ $route['front_controllers_folder'] = "frontend";
 
 /*
  * Default Controller [page]
+ * folder_path/controller/default_method
  */
-$route['default_controller'] = $route['front_controllers_folder'] . "/page/page";
-
+$route['default_controller'] = $route['front_controllers_folder'] . "/page/page/index";
 
 /*
 * Route to Admin control panel
@@ -64,28 +79,19 @@ $route['admin/' . '(.*)?'] = 'admin/$1';
 $route['admin'] = "admin/cp/cp";
 
 
-$route['(.*)?'] = $route['default_controller'] . '/index/$1';
-$route['scaffolding_trigger'] = "";
+$route['(.*)?'] = $route['default_controller'] . '/$1';
 
 // lets rename trim to go
 $route['go/(.+)'] = $route['front_controllers_folder'] . '/trim/trim/index$1';
-/*
-$route['blog/(.+)'] = "blog/blog/index/$1";
-$route['page/(.+)'] = "page/page/index/$1";
-$route['page/(.+)'] = "page/page/index/$1";
-$route['tag/(.+)'] = "blog/tag/index/$1";
-$route['ajax/(.+)'] = "blog/ajax/$1";
-$route['home'] = "page/page";
-$route['registration/(.+)'] = "registration/registration/$1";
-$route['registration'] = "registration/registration/";
-//$route['feed'] = "feed";
-//$route['sitemap'] = "sitemap";
-$route['default_controller'] = "page/page";
 
-$route['admin'.'(/.*)?'] = 'admin$1';
-
-$route['scaffolding_trigger'] = "";
-
-
-/* End of file routes.php */
-/* Location: ./application/config/routes.php */
+// load custom route configs
+// move this to somewhere that can be cached
+$dir = APPPATH . 'modules' . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR;
+if ($handle = opendir($dir)) {
+    while (false !== ($file = readdir($handle))) {
+        if(is_file($dir . $file) && substr($file, -4) == '.php'){
+            include_once ($dir . $file);
+        }
+    }
+}
+krsort($route);

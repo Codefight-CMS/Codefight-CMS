@@ -82,7 +82,9 @@ class Block_Library extends MY_Library
                         }
                     }
 
-                    $html .= $CI->load->view($blocks_template_view . $v, '', $return);
+                    $html_object = $CI->load->view($blocks_template_view . $v, '', $return);
+                    if($return)
+                        $html .= $html_object;
 
                     /*
                          if($this->display_path == TRUE)
@@ -110,7 +112,9 @@ class Block_Library extends MY_Library
                         }
                     }
 
-                    $html .= $CI->load->view($blocks_core_view . $v, '', $return);
+                    $html_object = $CI->load->view($blocks_core_view . $v, '', $return);
+                    if($return)
+                        $html .= $html_object;
 
                     /*
                          if($this->display_path == TRUE)

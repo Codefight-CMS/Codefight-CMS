@@ -9,8 +9,6 @@
 
         <?php echo $v['content']; //Show content ?>
 
-        <?php if (isset($v['addthis'])) echo $v['addthis']; //Display Addthis button ?>
-
     </div>
 
     <?php endforeach; ?>

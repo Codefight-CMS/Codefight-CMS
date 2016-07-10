@@ -25,7 +25,7 @@
 
 </script>
 <div class="comment_holder">
-    <div class="title"><a name="comment"></a>COMMENTS: <img src="assets/common/icons/feed.png" alt="FEED" name="Feed"
+    <div class="title"><a name="comment"></a>COMMENTS: <img src="/skin/global/icons/Feed_32x32.png" alt="FEED" name="Feed"
                                                             width="16" height="16" border="0"
                                                             id="Feed"/>( <?php echo anchor('feed/approved-comment', 'Approved Comment'); ?>
         | <?php echo anchor('feed/pending-comment', 'Pending Comment'); ?> )

@@ -144,9 +144,6 @@ class Page_model extends MY_Model
                 $_content[$k]['content'] = $page_content;
                 $_content[$k]['tag'] = $page_tag;
 
-                //add share button
-                $_content[$k]['addthis'] = '<br /><!-- AddThis Button BEGIN --><div class="addthis_toolbox addthis_default_style "><a class="addthis_button_google_plusone"></a><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a><a class="addthis_button_tweet"></a><a class="addthis_counter addthis_pill_style"></a></div><script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=dbashyal"></script><!-- AddThis Button END -->';
-
                 if (isset($v['allow_comment']) && ($v['allow_comment'])) {
                     $data['page_id'] = $v['page_id'];
                     $data['link'] = $link;

@@ -43,11 +43,6 @@ if (isset($content) && is_array($content) && count($content) > 0){
             //Show content
             echo $v['content'];
 
-            //Display Addthis button
-            if (isset($v['addthis'])){
-                echo $v['addthis'];
-            }
-
             //Show Comment
             if (isset($v['comment'])){
                 echo $v['comment'];
@@ -59,8 +54,8 @@ if (isset($content) && is_array($content) && count($content) > 0){
             <?php //@todo:: get short url for Link ?>
             <h5>
                 <?php echo __('QR Code'); ?>:
-                <a href="<?php echo ($v['title-url']); ?>" target="_blank">
-                    <img border="0" width="50" height="50" src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=<?php echo urlencode($v['title-url']); ?>&choe=UTF-8" alt="<?php echo htmlspecialchars($v['title']); ?>" title="<?php echo htmlspecialchars($v['title']); ?>" />
+                <a href="<?php echo site_url($v['title-url']); ?>" target="_blank">
+                    <img border="0" width="50" height="50" src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=<?php echo urlencode(site_url($v['title-url'])); ?>&choe=UTF-8" alt="<?php echo htmlspecialchars($v['title']); ?>" title="<?php echo htmlspecialchars($v['title']); ?>" />
                 </a>
             </h5>
 
@@ -80,9 +75,6 @@ if (isset($content) && is_array($content) && count($content) > 0){
 
                 //Show content
                 echo $v['content'];
-
-                //Display Addthis button
-                if (isset($v['addthis'])) echo $v['addthis'];
 
                 //Show Comment
                 if (isset($v['comment'])) echo $v['comment'];

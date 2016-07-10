@@ -27,8 +27,6 @@
 
         <?php echo $v['content']; //Show content ?>
 
-        <?php if (isset($v['addthis'])) echo $v['addthis']; //Display Addthis button ?>
-
         <?php if (isset($v['comment'])) echo $v['comment']; //Show Comment ?>
 
         <!-- <div class="tag">

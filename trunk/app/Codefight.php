@@ -108,4 +108,45 @@ class Codefight
     {
         throw new Codefight_Exceptions($message);
     }
+
+    /**
+     * log facility (??)
+     *
+     * @param string $message
+     * @param integer $level
+     * @param string $file
+     * @param bool $forceLog
+     */
+    public static function log($message, $level = null, $file = '', $forceLog = false)
+    {
+        if (empty($file)) {
+            $file = 'system.log';
+        }
+
+        static $loggers = array();
+
+        try {
+            if (!isset($loggers[$file])) {
+                $logDir  = APPPATH . DS . 'logs';
+                $logFile = $logDir . DS . $file;
+
+                if (!is_dir($logDir)) {
+                    mkdir($logDir);
+                    chmod($logDir, 0750);
+                }
+
+                if (!file_exists($logFile)) {
+                    file_put_contents($logFile, '');
+                    chmod($logFile, 0640);
+                }
+
+                if (is_array($message) || is_object($message)) {
+                    $message = print_r($message, true);
+                }
+                write_file($logFile, "\n".$message, 'a');
+            }
+        }
+        catch (Exception $e) {
+        }
+    }
 }

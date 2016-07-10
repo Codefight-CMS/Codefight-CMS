@@ -34,6 +34,7 @@ define('BP', BASEPATH);
  * Load custom exceptions
  */
 require_once APPPATH.'core'.DS.'Codefight_Exceptions.php';
+require_once BASEPATH.'helpers'.DS.'file_helper.php';
 
 /*
  * Load Codefight Class

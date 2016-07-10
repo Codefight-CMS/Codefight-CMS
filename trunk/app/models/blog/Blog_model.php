@@ -501,38 +501,6 @@ class Blog_model extends MY_Model
 
                     if ($this->uri->segment(3, 0) == $v['page_id']) {
 
-                        //add share button
-                        $_content[$k]['addthis']
-                            = '<br /><!-- AddThis Button BEGIN --><script type="text/javascript">var addthis_pub="dbashyal";</script><a href="http://www.addthis.com/bookmark.php?v=20" onmouseover="return addthis_open(this, \'\', \'[URL]\', \'[TITLE]\')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/200/addthis_widget.js"></script><!-- AddThis Button END -->';
-                        $_content[$k]['sharethis']
-                            = '
-<div class="post_share social-media"><div class="large-buttons"><div class="wdt_button">
-<iframe id="tweet_frame_483679" name="tweet_frame_483679" allowtransparency="true" frameborder="0" role="presentation" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url='
-                            . urlencode(site_url($link)) . '&amp;via=@codefight&amp;text=' . urlencode($v['page_title'])
-                            . '&amp;count=vertical" width="55" height="63"></iframe>
-</div><div class="wdt_button wdt_fb"><fb:share-button href="' . site_url($link) . '" type="box_count"></fb:share-button></div><div class="wdt_button">
-<script src="http://www.stumbleupon.com/hostedbadge.php?s=5&ampr=' . urlencode(site_url($link)) . '&amp;title='
-                            . urlencode($v['page_title']) . '"></script></div></div><div class="small-buttons" style="display:none"><div class="wdt_button_min">
-<iframe id="tweet_frame_483679" name="tweet_frame_483679" allowtransparency="true" frameborder="0" role="presentation" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.html?url='
-                            . urlencode(site_url($link)) . '&amp;via=@codefight&amp;text=' . urlencode($v['page_title'])
-                            . '&amp;count=horizontal" width="110" height="20"></iframe>
-</div><div class="wdt_button_min"><fb:share-button href="' . $link . '" type="button_count"></fb:share-button></div><div class="wdt_button_min">
-<script src="http://www.stumbleupon.com/hostedbadge.php?s=1&r=' . urlencode(site_url($link)) . '&amp;title='
-                            . urlencode($v['page_title']) . '"></script></div><div class="wdt_button_min">
-<a class="chicklet" id="st_email_min" href="javascript:void(0);">email</a></div><div class="wdt_button_min"
-><a class="chicklet" id="st_sharethis_min" href="javascript:void(0);">share</a>
-<script type="text/javascript">
-var shared_object = SHARETHIS.addEntry({title: "' . ($v['page_title']) . '",url: "' . site_url($link) . '"}, {button:false,onmouseover:false});
-shared_object.attachButton(document.getElementById(\'st_sharethis_min\'));
-shared_object.attachChicklet(\'email\', document.getElementById(\'st_email_min\'));
-</script>
-</div></div><div class="wdt_button"><a class="chicklet" id="st_email" href="javascript:void(0);">email</a></div><div class="wdt_button">
-<a class="chicklet" id="st_sharethis" href="javascript:void(0);">share</a>
-<script type="text/javascript">
-var shared_object = SHARETHIS.addEntry({title: "' . ($v['page_title']) . '",url: "' . site_url($link) . '"}, {button:false,onmouseover:false});
-shared_object.attachButton(document.getElementById(\'st_sharethis\'));shared_object.attachChicklet(\'email\', document.getElementById(\'st_email\'));
-</script></div></div>';
-
                         if (isset($v['allow_comment']) && ($v['allow_comment'])) {
                             $data['page_id'] = $v['page_id'];
                             $data['link']    = $link;

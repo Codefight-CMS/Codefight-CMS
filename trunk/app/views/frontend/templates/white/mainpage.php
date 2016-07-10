@@ -24,25 +24,6 @@ Library('block')->load('page_html/head'); ?>
 
 </div>
 <div class="siteContainer">
-    <div id="sharebox" class="">
-        <div class="cfshare">
-            <script type="text/javascript">
-                jQuery(document).ready(function(){
-                    if(jQuery('div#sharebox').length > 0)
-                    {
-                        jQuery('#sharebox').cfShare({
-                            shareClients:['facebook','facebooksend','twitter', 'googleplusone', 'reddit', 'linkedin','digg',
-                                'addthis'],
-                            addthisId:'dbashyal',
-                            startTop : 94,
-                            animate : false,
-                            fromPosition:'top'
-                        });
-                    }
-                })
-            </script>
-        </div>
-    </div>
     <?php
     //Load Language Selection Block
     Library('block')->load('languages');
@@ -68,11 +49,7 @@ Library('block')->load('page_html/head'); ?>
 
     <div class="pageContainer">
 
-        <div class="menuLeft" style="display: none;">
 
-            <p><a href="http://codefight.org/r/?a=mediatemple" target="_top"><img src="https://affiliate.mediatemple.net/accounts/default1/banners/mt-120x60-dk.gif" alt="web hosting " title="web hosting " width="120" height="60" /></a><img style="border:0" src="https://affiliate.mediatemple.net/scripts/imp.php?a_aid=4eb76a403e9cf&amp;a_bid=96d943a8" width="1" height="1" alt="" /></p>
-
-        </div>
 
         <div class="contents"><?php
 

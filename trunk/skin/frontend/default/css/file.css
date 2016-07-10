@@ -29,6 +29,11 @@
 	margin:2px 0 0;
 	text-align:center;
 }
+
+
+.breadcrumb {padding:5px;}
+
+
 .siteContainer .pageContainer .contents ol.user_files {
 	clear:both;
 	color:#666666;

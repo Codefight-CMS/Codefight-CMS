@@ -52,27 +52,6 @@ Library('block')->load('page_html/message'); ?>
         <div class="text-link-ads">
             <ul>
                 <li>
-                    <div id="sharebox" class="">
-                        <div class="cfshare">
-                            <script type="text/javascript">
-                                jQuery(document).ready(function () {
-                                    if (jQuery('div#sharebox').length > 0) {
-                                        jQuery('#sharebox').cfShare({
-                                            shareClients:['facebook', 'twitter', 'googleplusone', 'linkedin', 'digg', 'reddit', 'addthis'],
-                                            addthisId:'dbashyal',
-                                            startTop:88,
-                                            pageWidth:1200,
-                                            shareLeft:-94,
-                                            marginFixed:'0 7px 4px -635px',
-                                            animate:false
-                                        });
-                                    }
-                                })
-                            </script>
-                        </div>
-                    </div>
-                </li>
-                <li>
                     <iframe allowtransparency="true" frameborder="0" scrolling="no"
                             src="//platform.twitter.com/widgets/follow_button.html?screen_name=dbashyal&button=grey&show_count=true"
                             style="width:300px; height:20px;"></iframe>

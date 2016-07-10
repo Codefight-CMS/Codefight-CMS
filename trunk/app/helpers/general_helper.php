@@ -130,8 +130,7 @@ if (!function_exists('get_top_menu')) {
         $CI =& get_instance();
 
         if ($CI->session->userdata('logged_in') === '1') {
-            return $CI->load->view('admin/inc/top_menu');
-
+            $CI->load->view('admin/inc/top_menu');
         }
 
         return '';
@@ -390,10 +389,13 @@ if (!function_exists('__')) {
         }
         $files = $CI->lang->getFile();
 
+        $appPath = str_replace(array('/','\\'), DS, FCPATH . str_replace(FCPATH, '', APPPATH));
+
         foreach($files as $file) {
             if (!empty($file)) {
                 $filename = 'language' . DS . $CI->language . DS . "{$file}_lang.php";
-                $filename_path = str_replace(array('/','\\'), DS, FCPATH . APPPATH . $filename);
+                $filename_path = $appPath . $filename;
+
                 log_message('info', $filename_path);
                 if (is_file($filename_path)) {
                     log_message('info', 'exists: ' . $filename_path);

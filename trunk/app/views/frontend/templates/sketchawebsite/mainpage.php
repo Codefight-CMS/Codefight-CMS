@@ -60,25 +60,6 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
         <div class="page_inner">
             <div class="post post_inner_article">
                 <div class="category-page-columns-frame">
-                    <div id="sharebox" class="">
-                        <div class="cfshare">
-                            <script type="text/javascript">
-                                jQuery(document).ready(function () {
-                                    if (jQuery('div#sharebox').length > 0) {
-                                        jQuery('#sharebox').cfShare({
-                                            shareClients:['facebook', 'twitter', 'googleplusone', 'linkedin', 'digg', 'reddit', 'addthis'],
-                                            addthisId:'dbashyal',
-                                            startTop:139,
-                                            pageWidth:1190,
-                                            shareLeft:-94,
-                                            marginFixed:'0 7px 4px -676px',
-                                            animate:false
-                                        });
-                                    }
-                                })
-                            </script>
-                        </div>
-                    </div>
                     <?php
 			//Load message block
 			Library('block')->load('page_html/message');

@@ -8,7 +8,7 @@
 -- PHP Version: 5.3.5
 
 SET FOREIGN_KEY_CHECKS=0;
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
 --
 -- Database: `codefight`
@@ -835,8 +835,6 @@ CREATE TABLE IF NOT EXISTS `cf_sessions` (
   PRIMARY KEY (`session_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-
-
 -- --------------------------------------------------------
 
 --
@@ -1078,7 +1076,7 @@ CREATE TABLE IF NOT EXISTS `cf_user` (
   `firstname` varchar(100) NOT NULL DEFAULT '',
   `lastname` varchar(100) NOT NULL DEFAULT '',
   `group_id` int(11) NOT NULL DEFAULT '0',
-  `is_admin` int(11) DEFAULT '0',
+  `is_admin` int(11) NOT NULL DEFAULT '0',
   `is_author` int(1) NOT NULL DEFAULT '0',
   `profile_link` varchar(255) DEFAULT NULL,
   `profile` text,

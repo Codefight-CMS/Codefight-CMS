@@ -29,18 +29,6 @@
 class MY_Router extends CI_Router
 {
 
-    	/**
-    	 * Constructor
-    	 *
-    	 * Runs the route mapping function.
-    	 */
-    	function __construct()
-    	{
-    		parent::__construct();
-    	}
-
-    // --------------------------------------------------------------------
-
     /**
      * Set the route mapping
      *
@@ -50,205 +38,144 @@ class MY_Router extends CI_Router
      * @access    private
      * @return    void
      */
-    function _set_routing()
-   	{
-   		// Are query strings enabled in the config file?  Normally CI doesn't utilize query strings
-   		// since URI segments are more search-engine friendly, but they can optionally be used.
-   		// If this feature is enabled, we will gather the directory/class/method a little differently
-   		$segments = array();
-   		if ($this->config->item('enable_query_strings') === TRUE AND isset($_GET[$this->config->item('controller_trigger')]))
-   		{
-   			if (isset($_GET[$this->config->item('directory_trigger')]))
-   			{
-   				$this->set_directory(trim($this->uri->_filter_uri($_GET[$this->config->item('directory_trigger')])));
-   				$segments[] = $this->fetch_directory();
-   			}
-
-   			if (isset($_GET[$this->config->item('controller_trigger')]))
-   			{
-   				$this->set_class(trim($this->uri->_filter_uri($_GET[$this->config->item('controller_trigger')])));
-   				$segments[] = $this->fetch_class();
-   			}
-
-   			if (isset($_GET[$this->config->item('function_trigger')]))
-   			{
-   				$this->set_method(trim($this->uri->_filter_uri($_GET[$this->config->item('function_trigger')])));
-   				$segments[] = $this->fetch_method();
-   			}
-   		}
-
-   		// Load the routes.php file.
-   		if (defined('ENVIRONMENT') AND is_file(APPPATH.'config/'.ENVIRONMENT.'/routes'.EXT))
-   		{
-   			include(APPPATH.'config/'.ENVIRONMENT.'/routes'.EXT);
-   		}
-   		elseif (is_file(APPPATH.'config/routes'.EXT))
-   		{
-   			include(APPPATH.'config/routes'.EXT);
-   		}
-
-   		$this->routes = ( ! isset($route) OR ! is_array($route)) ? array() : $route;
-
-   		/*
-          * Updated for codefight cms
-          */
-           $route = $this->_generate_auto_routes();
-           $this->routes = (!isset($route) OR !is_array($route)) ? array() : $route;
-           /*---END---*/
-
-   		unset($route);
-
-   		// Set the default controller so we can display it in the event
-   		// the URI doesn't correlated to a valid controller.
-   		$this->default_controller = ( ! isset($this->routes['default_controller']) OR $this->routes['default_controller'] == '') ? FALSE : strtolower($this->routes['default_controller']);
-
-   		// Were there any query string segments?  If so, we'll validate them and bail out since we're done.
-   		if (count($segments) > 0)
-   		{
-   			return $this->_validate_request($segments);
-   		}
-
-   		// Fetch the complete URI string
-   		$this->uri->_fetch_uri_string();
-
-   		// Is there a URI string? If not, the default controller specified in the "routes" file will be shown.
-   		if ($this->uri->uri_string == '')
-   		{
-   			return $this->_set_default_controller();
-   		}
-
-   		// Do we need to remove the URL suffix?
-   		$this->uri->_remove_url_suffix();
-
-   		// Compile the segments into an array
-   		$this->uri->_explode_segments();
-
-   		// Parse any custom routing that may exist
-   		$this->_parse_routes();
-
-   		// Re-index the segment array so that it starts with 1 rather than 0
-   		$this->uri->_reindex_segments();
-   	}
-
-    // --------------------------------------------------------------------
-
-    /**
-     * Validates the supplied segments.  Attempts to determine the path to
-     * the controller.
-     *
-     * @access    private
-     * @param    array
-     * @return    array
-     */
-    function _validate_request($segments)
-   	{
-   		if (count($segments) == 0)
-   		{
-   			return $segments;
-   		}
-
-   		// Does the requested controller exist in the root folder?
-   		if (file_exists(APPPATH.'controllers/'.$segments[0].EXT))
-   		{
-   			return $segments;
-   		}
-
-   		// Is the controller in a sub-folder?
-   		if (is_dir(APPPATH.'controllers/'.$segments[0]))
-   		{
-   			// Set the directory and remove it from the segment array
-   			$this->set_directory($segments[0]);
-   			$segments = array_slice($segments, 1);
-
-               /*
-                   * Updated for codefight cms
-                   * Added new code to allow multi-level sub-folder
-                   */
-               $subfolder = false;
-               if (((count($segments) > 0) && is_dir(APPPATH . 'controllers/' . $this->directory . $segments[0])) && (!file_exists(APPPATH . 'controllers/' . $this->directory . $segments[0] . EXT))) $subfolder = true;
-
-               while ($subfolder)
-               {
-                   if (!isset($segments[0])) break;
-
-                   //Set the directory and remove it from the segment array
-                   $this->set_directory($this->directory . $segments[0]);
-                   $segments = array_slice($segments, 1);
-
-                   // Does the requested controller exist in the root folder?
-                   if ((count($segments) > 0) && file_exists(APPPATH . 'controllers/' . $this->directory . $segments[0] . EXT)) {
-                       $subfolder = false;
-                   }
-               }
-               /*---END--Sub-folder--*/
-
-
-   			if (count($segments) > 0)
-   			{
-   				// Does the requested controller exist in the sub-folder?
-   				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$segments[0].EXT))
-   				{
-   					show_404($this->fetch_directory().$segments[0]);
-   				}
-   			}
-   			else
-   			{
-   				// Is the method being specified in the route?
-   				if (strpos($this->default_controller, '/') !== FALSE)
-   				{
-   					$x = explode('/', $this->default_controller);
-
-   					$this->set_class($x[0]);
-   					$this->set_method($x[1]);
-   				}
-   				else
-   				{
-   					$this->set_class($this->default_controller);
-   					$this->set_method('index');
-   				}
-
-   				// Does the default controller exist in the sub-folder?
-   				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$this->default_controller.EXT))
-   				{
-   					$this->directory = '';
-   					return array();
-   				}
-
-   			}
-
-   			return $segments;
-   		}
-
-
-   		// If we've gotten this far it means that the URI does not correlate to a valid
-   		// controller class.  We will now see if there is an override
-   		if ( ! empty($this->routes['404_override']))
-   		{
-   			$x = explode('/', $this->routes['404_override']);
-
-   			$this->set_class($x[0]);
-   			$this->set_method(isset($x[1]) ? $x[1] : 'index');
-
-   			return $x;
-   		}
-
-
-   		// Nothing else to do at this point but show a 404
-   		show_404($segments[0]);
-   	}
-
-    // --------------------------------------------------------------------
-
-    /**
-     *  Set the directory name
-     *
-     * @access    public
-     * @param    string
-     * @return    void
-     */
-    function set_directory($dir)
+    protected function _set_routing()
     {
-        $this->directory = trim($dir, '/') . '/';
+        // Load the routes.php file. It would be great if we could
+        // skip this for enable_query_strings = TRUE, but then
+        // default_controller would be empty ...
+        if (file_exists(APPPATH.'config/routes.php'))
+        {
+            include(APPPATH.'config/routes.php');
+        }
+
+        if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/routes.php'))
+        {
+            include(APPPATH.'config/'.ENVIRONMENT.'/routes.php');
+        }
+
+        // Validate & get reserved routes
+        if (isset($route) && is_array($route))
+        {
+            /*
+             * Updated for codefight cms
+             * to be @deprecated as now we have custom router files
+             * see @ apppath / modules / routes
+             */
+            //$this->routes = $route;
+            //$_route = $this->_generate_auto_routes();
+            //$route = array_merge($_route, $route);
+            /*---END---*/
+
+
+            isset($route['default_controller']) && $this->default_controller = $route['default_controller'];
+            isset($route['translate_uri_dashes']) && $this->translate_uri_dashes = $route['translate_uri_dashes'];
+            unset($route['default_controller'], $route['translate_uri_dashes']);
+            $this->routes = $route;
+        }
+
+        // Are query strings enabled in the config file? Normally CI doesn't utilize query strings
+        // since URI segments are more search-engine friendly, but they can optionally be used.
+        // If this feature is enabled, we will gather the directory/class/method a little differently
+        if ($this->enable_query_strings)
+        {
+            // If the directory is set at this time, it means an override exists, so skip the checks
+            if ( ! isset($this->directory))
+            {
+                $_d = $this->config->item('directory_trigger');
+                $_d = isset($_GET[$_d]) ? trim($_GET[$_d], " \t\n\r\0\x0B/") : '';
+
+                if ($_d !== '')
+                {
+                    $this->uri->filter_uri($_d);
+                    $this->set_directory($_d);
+                }
+            }
+
+            $_c = trim($this->config->item('controller_trigger'));
+            if ( ! empty($_GET[$_c]))
+            {
+                $this->uri->filter_uri($_GET[$_c]);
+                $this->set_class($_GET[$_c]);
+
+                $_f = trim($this->config->item('function_trigger'));
+                if ( ! empty($_GET[$_f]))
+                {
+                    $this->uri->filter_uri($_GET[$_f]);
+                    $this->set_method($_GET[$_f]);
+                }
+
+                $this->uri->rsegments = array(
+                    1 => $this->class,
+                    2 => $this->method
+                );
+            }
+            else
+            {
+                $this->_set_default_controller();
+            }
+
+            // Routing rules don't apply to query strings and we don't need to detect
+            // directories, so we're done here
+            return;
+        }
+
+        // Is there anything to parse?
+        if ($this->uri->uri_string !== '')
+        {
+            $this->_parse_routes();
+        }
+        else
+        {
+            $this->_set_default_controller();
+        }
+    }
+
+    /**
+     * Set default controller
+     *
+     * @return	void
+     */
+    protected function _set_default_controller()
+    {
+        if (empty($this->default_controller))
+        {
+            show_error('Unable to determine what should be displayed. A default route has not been specified in the routing file.');
+        }
+
+        // override for Codefight CMS starts here
+        $default_controller = explode('/', trim($this->default_controller, '/'));
+        if(count($default_controller) > 2){
+            $method = array_pop($default_controller);
+            $class = array_pop($default_controller);
+            $this->default_controller = $class . '/' . $method;
+
+            $directory = implode(DIRECTORY_SEPARATOR, $default_controller);
+            $this->set_directory($directory);
+        }
+        // override for Codefight CMS ends here
+
+        // Is the method being specified?
+        if (sscanf($this->default_controller, '%[^/]/%s', $class, $method) !== 2)
+        {
+            $method = 'index';
+        }
+
+        if ( ! file_exists(APPPATH.'controllers/'.$this->directory.ucfirst($class).'.php'))
+        {
+            // This will trigger 404 later
+            return;
+        }
+
+        $this->set_class($class);
+        $this->set_method($method);
+
+        // Assign routed segments, index starting from 1
+        $this->uri->rsegments = array(
+            1 => $class,
+            2 => $method
+        );
+
+        log_message('debug', 'No URI present. Default controller set.');
     }
 
     // --------------------------------------------------------------------
@@ -259,73 +186,66 @@ class MY_Router extends CI_Router
      * @access    public
      * @param    array
      * @return    null
+     *
+     * @deprecated: auto generated disabled, must define using custom routes
+     * @see apppath / modules / routes
      */
     function _generate_auto_routes()
     {
-        $module_rotes = array();
-        $module_rotes[0] = array();
-        $module_rotes[1] = array();
-        $module_rotes[2] = array();
+        $module_routes = array();
+        $module_routes[0] = array();
+        $module_routes[1] = array();
+        $module_routes[2] = array();
+        $module_routes[3] = array();
 
         $dir = APPPATH . 'controllers' . '/';
         if ($handle = opendir($dir)) {
             while (false !== ($file = readdir($handle)))
             {
-                if ($file != "." && $file != ".." && $file != 'Thumbs.db') {
-                    if (is_file($dir . $file) && $file != 'index.html') {
-                        $file = str_replace(EXT, '', $file);
-                        $module_rotes[0][$file . '(/.*)?'] = $file . '/index$1';
-                    }
-                    elseif (!in_array($file, array('index.html','_notes')) && (is_dir($dir2 = $dir . $file . '/')))
-                    {
-                        if ($handle2 = opendir($dir2)) {
-                            while (false !== ($file2 = readdir($handle2)))
-                            {
-                                if ($file2 != "." && $file2 != ".." && $file2 != 'Thumbs.db') {
-                                    if (is_file($dir2 . $file2) && $file2 != 'index.html') {
-                                        $file2 = str_replace(EXT, '', $file2);
-                                        $module_rotes[1][$file . '/' . $file2 . '(/.*)?'] = $file . '/' . $file2 . '/index$1';
-                                    }
-                                    elseif (!in_array($file2, array('index.html','_notes')) && (is_dir($dir3 = $dir2 . $file2 . '/')))
-                                    {
-
-                                        /*
-                                                  if($this->routes['front_controllers_folder'] != $file)
-                                                  {
-                                                      $module_rotes[$file . '/' . $file2.'(/.*)?'] = $file . '/' . $file2 . '/' . $file2 . '/index$1';
-                                                  }
-                                                  */
-
-                                        if ($handle3 = opendir($dir3)) {
-                                            while (false !== ($file3 = readdir($handle3)))
-                                            {
-                                                if ($file3 != "." && $file3 != ".." && $file3 != 'Thumbs.db') {
-                                                    if (is_file($dir3 . $file3) && $file3 != 'index.html') {
-                                                        $file3 = str_replace(EXT, '', $file3);
-                                                        $key = '';
-                                                        $val = $file . '/';
-                                                        if ($this->routes['front_controllers_folder'] != $file) {
-                                                            $key .= $file . '/';
-                                                            //$val = '';
-                                                        }
-
-                                                        if ($file2 == $file3) {
-                                                            $key .= $file3;
-                                                        }
-                                                        else
-                                                        {
-                                                            $key .= $file2 . '/' . $file3;
-                                                        }
-
-                                                        $val .= $file2 . '/' . $file3;
-
-                                                        $module_rotes[2][$key . '(/.*)?'] = $val . '/index$1';
-                                                    }
-                                                }
+                if(is_file($dir . $file) && substr($file, -4) == '.php'){
+                    $file = str_replace('.php', '', $file);
+                    $file = strtolower($file);
+                    $module_routes[0][$file . '(/.*)?'] = $file . '/index$1';
+                } elseif(is_dir($dir2 = $dir . $file . DS) && !preg_match('/[^a-z0-9\/\\\_\-]/i', $dir2)) {
+                    if ($handle2 = opendir($dir2)) {
+                        while (false !== ($file2 = readdir($handle2))) {
+                            if(!preg_match('/[^a-z0-9]/i', $file2)){
+                                $module_routes[3][$file2 . '(/.*)?'] = strtolower($file) . '/' . strtolower($file2) . '/' . strtolower($file2) . '/index$1';
+                            }
+                            if(is_file($dir2 . $file2) && substr($file2, -4) == '.php'){
+                                $file2 = str_replace('.php', '', $file2);
+                                $file = strtolower($file);
+                                $file2 = strtolower($file2);
+                                $module_routes[1][$file . '/' . $file2 . '(/.*)?'] = $file . '/' . $file2 . '/index$1';
+                            } elseif(is_dir($dir3 = $dir2 . $file2 . DS) && !preg_match('/[^a-z0-9\/\\\_\-]/i', $dir3)) {
+                                if ($handle3 = opendir($dir3)) {
+                                    while (false !== ($file3 = readdir($handle3))) {
+                                        if(is_file($dir3 . $file3) && substr($file3, -4) == '.php'){
+                                            $file3 = str_replace('.php', '', $file3);
+                                            $key = '';
+                                            $val = $file . '/';
+                                            if ($this->routes['front_controllers_folder'] != $file) {
+                                                $key .= $file . '/';
+                                                //$val = '';
                                             }
-                                            closedir($handle3);
+
+                                            if ($file2 == $file3) {
+                                                $key .= $file3;
+                                            }
+                                            else
+                                            {
+                                                $key .= $file2 . '/' . $file3;
+                                            }
+
+                                            $val .= $file2 . '/' . $file3;
+
+                                            $key = strtolower($key);
+                                            $val = strtolower($val);
+
+                                            $module_routes[2][$key . '(/.*)?'] = $val . '/index$1';
                                         }
                                     }
+                                    closedir($handle3);
                                 }
                             }
                         }
@@ -336,13 +256,10 @@ class MY_Router extends CI_Router
         }
         closedir($handle);
 
-        $module_rotes = array_merge($module_rotes[2], $module_rotes[1], $module_rotes[0], $this->routes);
-        krsort($module_rotes);
-        //print_r($module_rotes);
-        //$this->routes['front_controllers_folder']
-        //EXT
+        $module_routes = array_merge($module_routes[3], $module_routes[2], $module_routes[1], $module_routes[0], $this->routes);
+        krsort($module_routes);
 
-        return $module_rotes;
+        return $module_routes;
     }
 }
 // END MY_Router Class
