@@ -36,9 +36,7 @@ class Sortdata extends MY_Controller
 
     function index()
     {
-        !isset($_POST['sortme']) ? $_POST['sortme'] = array() : '';
-
-        $sortme = $_POST['sortme'];
+        $sortme = !isset($_POST['sortme']) ? array() : $_POST['sortme'];
 
         $table = $this->uri->segment(3, 0);
 
@@ -48,11 +46,5 @@ class Sortdata extends MY_Controller
 
             if ($this->db->update($table, array($table . '_sort' => $i), array($table . '_id' => $sortme[$i]))) echo "OK";
         }
-
-        //$this->load->view('welcome_message');
     }
 }
-
-/* End of file welcome.php */
-/* Location: ./system/application/controllers/welcome.php */
-?>

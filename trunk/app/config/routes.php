@@ -83,3 +83,15 @@ $route['(.*)?'] = $route['default_controller'] . '/$1';
 
 // lets rename trim to go
 $route['go/(.+)'] = $route['front_controllers_folder'] . '/trim/trim/index$1';
+
+// load custom route configs
+// move this to somewhere that can be cached
+$dir = APPPATH . 'modules' . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR;
+if ($handle = opendir($dir)) {
+    while (false !== ($file = readdir($handle))) {
+        if(is_file($dir . $file) && substr($file, -4) == '.php'){
+            include_once ($dir . $file);
+        }
+    }
+}
+krsort($route);

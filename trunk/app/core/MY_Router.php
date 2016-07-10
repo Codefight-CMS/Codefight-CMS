@@ -58,10 +58,12 @@ class MY_Router extends CI_Router
         {
             /*
              * Updated for codefight cms
+             * to be @deprecated as now we have custom router files
+             * see @ apppath / modules / routes
              */
-            $this->routes = $route;
-            $_route = $this->_generate_auto_routes();
-            $route = array_merge($_route, $route);
+            //$this->routes = $route;
+            //$_route = $this->_generate_auto_routes();
+            //$route = array_merge($_route, $route);
             /*---END---*/
 
 
@@ -184,6 +186,9 @@ class MY_Router extends CI_Router
      * @access    public
      * @param    array
      * @return    null
+     *
+     * @deprecated: auto generated disabled, must define using custom routes
+     * @see apppath / modules / routes
      */
     function _generate_auto_routes()
     {
