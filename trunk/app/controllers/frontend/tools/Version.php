@@ -57,7 +57,7 @@ class Version extends MY_Controller
 
     public function index()
     {
-        echo '2.2.2.0';
+        echo '2.5.0.0';
 
         $install = xss_clean(str_replace(base_url() . 'tools/version/', '', current_url()));
         if(!empty($install)){
