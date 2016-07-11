@@ -1,14 +1,11 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 /*
  * Package: Codefight CMS
- * Module: Trim URL
+ * Module: seo
  * Author: Damodar Bashyal
  * Date: 5/10/2011
  */
- 
- // admin routes
-$route['admin/trim(/.*)?'] = 'admin/trim/trim/index$1';
-
 // frontend routes
-// trim
-$route['trim(/.*)?'] = 'frontend/trim/trim/index$1';
+// SEO
+$route['seo(/.*)?'] = 'frontend/seo/home/index$1';
+$route['seo/keywordanalyzer(/.*)?'] = 'frontend/seo/keywordanalyzer/index$1';
