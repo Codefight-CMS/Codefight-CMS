@@ -1,19 +1,30 @@
-User-Agent: *
+User-agent: *
+Allow: /
 Disallow: /admin/
-Disallow: /cms/
-Disallow: /download/
-Disallow: /upload/
-Disallow: /temp/
-Disallow: /tmp/
+Disallow: /app/
 Disallow: /assets/
 Disallow: /cache/
-Disallow: /templates/
-Disallow: /urchin/
+Disallow: /cgi-bin/
+Disallow: /CIcore/
+Disallow: /cms/
+Disallow: /demo/
+Disallow: /docs-and-licences/
+Disallow: /download/
 Disallow: /font/
 Disallow: /install/
+Disallow: /media/
+Disallow: /old-install/
 Disallow: /registration/
-Disallow: /CI/
-#Disallow: /demo/
+Disallow: /skin/
+Disallow: /temp/
+Disallow: /templates/
+Disallow: /tmp/
+Disallow: /upload/
+Disallow: /urchin/
 
 #Block out things that are secure or login oriented
 Disallow: /registration.html
+
+
+sitemap: sitemap.xml.gz
+sitemap: sitemap.xml

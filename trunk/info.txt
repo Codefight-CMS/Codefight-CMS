@@ -1,0 +1,10 @@
+# Contact info submission
+url: codefight.org
+site_owner: Damodar Bashyal
+address1: PO BOX 1124
+city: Sydney
+state: NSW
+country: Australia
+postal_code: 2216
+site_name: codefight
+site_description: Codefight offers free php cms
