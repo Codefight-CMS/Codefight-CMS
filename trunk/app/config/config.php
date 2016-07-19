@@ -27,12 +27,12 @@ if (defined('ENVIRONMENT')) {
     switch (ENVIRONMENT)
     {
         case 'development':
-            $config['base_url'] = "http://local.codefight.org/";
+            $config['base_url'] = "http://codefightcms.com/";
             break;
 
         case 'testing':
         case 'production':
-            $config['base_url'] = "http://local.codefight.org/";
+            $config['base_url'] = "http://codefightcms.com/";
             break;
 
         default:

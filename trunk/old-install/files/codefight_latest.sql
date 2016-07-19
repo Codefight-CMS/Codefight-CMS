@@ -1116,7 +1116,7 @@ CREATE TABLE IF NOT EXISTS `cf_websites` (
 --
 
 INSERT INTO `cf_websites` (`websites_id`, `websites_name`, `websites_url`, `websites_status`) VALUES
-(1, 'Codefight CMS', 'http://local.codefight.org/', 1),
+(1, 'Codefight CMS', 'http://local.codefightcms.com/', 1),
 (2, 'Tips-Tricks', 'http://local.learntipsandtricks.com/', 1),
 (3, 'Zoosper', 'http://local.zoosper.com/', 1),
 (4, 'Coupon Gift Deals', 'http://local.coupongiftdeals.com/', 1);
