@@ -389,7 +389,7 @@ if (!function_exists('__')) {
         }
         $files = $CI->lang->getFile();
 
-        $appPath = str_replace(array('/','\\'), DS, FCPATH . str_replace(FCPATH, '', APPPATH));
+        $appPath = APPPATH;
 
         foreach($files as $file) {
             if (!empty($file)) {
