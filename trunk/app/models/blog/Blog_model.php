@@ -346,7 +346,7 @@ class Blog_model extends MY_Model
         return $this->db->get('page');
     }
 
-    function getApprovedComment($limit = 20)
+    function getApprovedComment($limit = 20, $all_sites = false)
     {
         $this->db->order_by('page_comment.page_comment_id', 'desc');
         $this->db->where('page_comment.page_comment_status', 1);
@@ -354,7 +354,7 @@ class Blog_model extends MY_Model
         $this->db->from('page');
         $this->db->join('page_comment', 'page_comment.page_id = page.page_id');
 
-        if (defined('CFWEBSITEID')) {
+        if (!$all_sites && defined('CFWEBSITEID')) {
             $this->db->like('page.websites_id', ',' . CFWEBSITEID . ',');
         }
 

@@ -61,6 +61,10 @@ class Feed extends MY_Controller
                 $data['posts'] = Model('blog')->getPendingComment();
                 $view_file = 'frontend/templates/core/blocks/feed/rss_comments';
             }
+            else if ($feed_section == 'global-comments') {
+                $data['posts'] = Model('blog')->getApprovedComment(50, true);
+                $view_file = 'frontend/templates/core/blocks/feed/rss_comments';
+            }
             else
             {
                 $feed_section = false;
@@ -92,5 +96,3 @@ class Feed extends MY_Controller
         $this->load->view($view_file, $data);
     }
 }
-
-?>
