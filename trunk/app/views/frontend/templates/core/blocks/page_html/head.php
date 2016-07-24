@@ -29,7 +29,7 @@ if (isset($this->setting->meta_suffix)) {
     <?php } else { ?>
     <meta name="robots" content="index, follow"/>
     <?php } ?>
-    <link rel='canonical' href="<?php echo get_canonical_url(); ?>"/>
+    <link rel='canonical' href="<?php echo get_canonical_url($meta); ?>"/>
     <meta name="robots" content="noodp,noydir"/>
     <meta name="revisit-after" content="1 days"/>
     <meta name="generator" content="Codefight CMS"/>

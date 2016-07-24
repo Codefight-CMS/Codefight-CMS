@@ -128,8 +128,10 @@ class Blog_model extends MY_Model
         //If menu item is set, then grab content related to that menu only. Otherwise get all that is type blog.
         if ($menu_id) {
             $this->db->like('page.menu_id', ",$menu_id,");
+            $isRoot = false;
         } else {
             $this->db->where('page_type', 'blog');
+            $isRoot = true;
         }
 
         if (defined('CFWEBSITEID')) {
@@ -145,7 +147,7 @@ class Blog_model extends MY_Model
         $data1 = $query->result_array();
         //echo $this->db->last_query();
 
-        $data = '';
+        $data = array();
         if (is_array($data1) && count($data1) > 0) {
 
             $data['meta']    = $this->meta_fetch($data1[0]);
@@ -158,13 +160,23 @@ class Blog_model extends MY_Model
             $data['content'] = array();
         }
 
+        if($isRoot){
+            $data['meta']['canonical'] = 'blog';
+        }
+
         return $data;
     }
 
-    function getMenuId($menu_link = '0')
+    function get_menu_id($menu_link = '0')
     {
-        $row = $this->db->select('menu_id')->where('menu_link', xss_clean($menu_link))->limit(1)->get('menu')
+        $row = $this
+            ->db
+            ->select('menu_id')
+            ->where('menu_link', xss_clean($menu_link))
+            ->limit(1)
+            ->get('menu')
             ->result_array();
+
         if (isset($row[0]['menu_id'])) {
             return $row[0]['menu_id'];
         }
