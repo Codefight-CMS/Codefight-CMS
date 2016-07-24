@@ -76,7 +76,7 @@ class Page extends MY_Controller
         // if it's 404 or set to no index
         // send 404 header
         if(!$data['meta']['index']){
-            //if content not found | Set meta to noindex, nofollow to save your website value to search engines.
+            //if content not found | Set meta to noindex to save your website value to search engines.
             header("HTTP/1.0 404 Not Found");
             $data['noindex'] = 'yes';
         }

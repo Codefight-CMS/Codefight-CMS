@@ -113,7 +113,7 @@ class Tag extends MY_Controller
             $data['content'] = Model('blog')->parseContent($data['content']);
         } else {
             header("HTTP/1.0 404 Not Found");
-            //if content not found | Set meta to noindex, nofollow to save your website value to search engines.
+            //if content not found | Set meta to noindex to save your website value to search engines.
             $data['noindex'] = 'yes';
         }
 

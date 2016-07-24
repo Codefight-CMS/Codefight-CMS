@@ -75,7 +75,7 @@ class File extends MY_Controller
         }
         else
         {
-            //if content not found | Set meta to noindex, nofollow to save your website value to search engines.
+            //if content not found | Set meta to noindex to save your website value to search engines.
             $data['noindex'] = 'yes';
         }
 

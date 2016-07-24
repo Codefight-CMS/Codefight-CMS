@@ -104,7 +104,7 @@ class Blog extends MY_Controller
             Model('blog')->redirect_blog($this->page_id);
 
             header("HTTP/1.0 404 Not Found");
-            //if content not found | Set meta to noindex, nofollow to save your website value to search engines.
+            //if content not found | Set meta to noindex to save your website value to search engines.
             $data['noindex'] = 'yes';
         }
 
