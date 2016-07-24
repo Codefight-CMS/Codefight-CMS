@@ -47,7 +47,7 @@ class Page_model extends MY_Model
         $data1 = $query->result_array();
         //echo $this->db->last_query();
 
-        $data = '';
+        $data = array();
         if (is_array($data1) && count($data1) > 0) {
 
             $data['meta'] = Model('blog')->meta_fetch($data1[0]);
@@ -58,6 +58,11 @@ class Page_model extends MY_Model
         {
             $data['meta'] = Model('blog')->defaults();
             $data['content'] = array();
+        }
+
+        $data['meta']['index'] = true;
+        if(!$menu_id){
+            $data['meta']['index'] = false;
         }
 
         return $data;
