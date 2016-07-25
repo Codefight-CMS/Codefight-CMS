@@ -107,9 +107,12 @@ if (isset($content) && is_array($content) && ($count=count($content)) > 0)
 
             <?php //@todo:: get short url for Link ?>
             <h5>
-                <?php echo __('QR Code'); ?>:
-                <a href="<?php echo site_url($v['title-url']); ?>" target="_blank">
-                    <img border="0" width="50" height="50" src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=<?php echo urlencode(site_url($v['title-url'])); ?>&choe=UTF-8" alt="<?php echo htmlspecialchars($v['title']); ?>" title="<?php echo htmlspecialchars($v['title']); ?>" />
+                <?php
+                $qrImage = '//chart.googleapis.com/chart?chs=500x500&cht=qr&chl='. urlencode(site_url($v['title-url'])) . '&choe=UTF-8';
+                echo __('QR Code');
+                ?>:
+                <a href="<?php echo $qrImage;//site_url($v['title-url']); ?>" target="_blank" rel="external nofollow">
+                    <img border="0" width="150" height="150" src="<?php echo $qrImage ?>" alt="<?php echo htmlspecialchars($v['title']); ?>" title="<?php echo htmlspecialchars($v['title']); ?>" />
                 </a>
             </h5>
 
