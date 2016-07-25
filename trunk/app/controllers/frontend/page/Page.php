@@ -68,13 +68,15 @@ class Page extends MY_Controller
            | See These Files For Processing:
            | libraries/block/block_Library.php
            */
-        if (isset($data['content']) && count((array)$data['content']) > 0) {
+        if (count($data['content']) > 0) {
             //For static page, display full content by passing 2nd param as false.
             $data['content'] = Model('page')->parseContent($data['content'], FALSE);
         }
-        else
-        {
-            //if content not found | Set meta to noindex, nofollow to save your website value to search engines.
+
+        // if it's 404 or set to no index
+        // send 404 header
+        if(!$data['meta']['index']){
+            //if content not found | Set meta to noindex to save your website value to search engines.
             header("HTTP/1.0 404 Not Found");
             $data['noindex'] = 'yes';
         }

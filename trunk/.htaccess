@@ -381,25 +381,31 @@ AddDefaultCharset utf-8
     RewriteEngine On
     RewriteCond %{HTTPS} !=on
     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteCond %{HTTP_HOST} ^local\.(.+)$ [NC]
     RewriteRule ^ %{ENV:PROTO}://%1%{REQUEST_URI} [R=301,L]
 
+	############################################
+	## Point media files to original website | required for multiple websites
+    #RewriteCond %{REQUEST_URI} ^/(skin/|media/|js/).*/ [NC]
+	#RewriteRule ^(.*)$ http://codefightcms.com/$1 [L]
 
-    RewriteCond %{HTTP_USER_AGENT} !^(FeedBurner|FeedValidator|Googlebot|YahooFeedSeeker|Feedfetcher|Google|Mediapartners|TechnoratiBot) [NC]
-    RewriteRule ^(tools/)?feed(\.html)?$ http://feeds2.feedburner.com/codefightorg [R,L]
-    RewriteRule ^(tools/)?feed/pending-comments(\.html)?$ http://feeds2.feedburner.com/codefight/vvvP [R,L]
-    RewriteRule ^(tools/)?feed/approved-comments(\.html)?$ http://feeds2.feedburner.com/codefight/Akrl [R,L]
+    #RewriteCond %{HTTP_USER_AGENT} !^(FeedBurner|FeedValidator|Googlebot|YahooFeedSeeker|Feedfetcher|Google|Mediapartners|TechnoratiBot) [NC]
+    #RewriteRule ^(tools/)?feed(\.html)?$ http://feeds.feedburner.com/LearnTipsAndTricks [R,L]
+    #RewriteRule ^(tools/)?feed/pending-comments(\.html)?$ http://feeds2.feedburner.com/codefight/vvvP [R,L]
+    #RewriteRule ^(tools/)?feed/approved-comments(\.html)?$ http://feeds2.feedburner.com/codefight/Akrl [R,L]
 
 	RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-l
     RewriteRule ^(.*)$ index.php?/$1 [L]
 
-    <Files admin>
-        order deny,allow
-        deny from all
-        allow from 220.244.123.85 #home
-        allow from 210.215.130.166 #lowes 1
-    </Files>
+# uncomment to restrict admin to IP
+#	<Files admin>
+#        order deny,allow
+#        deny from all
+#        allow from 200.201.202.203 #home
+#        allow from 204.205.206.207 #work
+#	</Files>
 
 </IfModule>
 

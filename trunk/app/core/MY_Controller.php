@@ -148,7 +148,7 @@ class MY_Controller extends CI_Controller
         }
 
         if (!is_numeric($this->menu_id) && !in_array(strtolower($this->menu_id), array('c', 'tag', 'ajax'))) {
-            $this->menu_id = Model('blog')->getMenuId($this->menu_id);
+            $this->menu_id = Model('blog')->get_menu_id($this->menu_id);
         } else if($this->menu_id > 0 && is_numeric($this->page_id) && $this->page_id > 0) {
             Model('blog')->redirect_blog($this->page_id);
         }

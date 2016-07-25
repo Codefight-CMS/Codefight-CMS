@@ -181,4 +181,9 @@ function tla_decode_str($str)
     $replace_ar = array('<', '>', '"');
     return str_replace($search_ar, $replace_ar, html_entity_decode(strip_tags($str)));
 }
-tla_ads();
+
+
+$baseUrl = base_url();
+if(in_array($baseUrl, array('http://www.codefight.org/', 'http://codefight.org/'))){
+    tla_ads();
+}

@@ -25,12 +25,12 @@ else
 	<?php $corrupted = substr(current_url(), -5); ?>
 
 	<?php if(($this->uri->segment(1) == 'ontheweb') || (isset($noindex) && $noindex == 'yes') || ($corrupted == '_html')): ?>
-    <meta name="robots" content="noindex, nofollow"/>
+    <meta name="robots" content="noindex, follow"/>
     <meta name="robots" content="noarchive">
 	<?php else: ?>
     <meta name="robots" content="index, follow"/>
 	<?php endif; ?>
-    <link rel='canonical' href="<?php echo get_canonical_url(); ?>" />
+    <link rel='canonical' href="<?php echo get_canonical_url($meta); ?>" />
 	<meta name="robots" content="noodp,noydir" />
 	<meta name="revisit-after" content="1 days"/>
 	<meta name="generator" content="Codefight CMS" />
@@ -40,11 +40,11 @@ else
     <!-- Add the following three tags inside head -->
     <meta itemprop="name" content="<?php echo $meta['title'] . $meta_suffix; ?>">
     <meta itemprop="description" content="<?php echo $meta['description']; ?>">
-    <meta itemprop="image" content="http://codefight.org/skin/global/images/logo.png">
+    <meta itemprop="image" content="https://chart.googleapis.com/chart?chs=500x500&cht=qr&choe=UTF-8&chl=<?php echo urlencode(current_url()) ?>">
 
     <meta property="og:title" content="<?php echo $meta['title'] . $meta_suffix; ?>" />
     <meta property="og:description" content="<?php echo $meta['description']; ?>" />
-    <meta property="og:image" content="http://codefight.org/skin/global/images/logo.png" />
+    <meta property="og:image" content="https://chart.googleapis.com/chart?chs=500x500&cht=qr&choe=UTF-8&chl=<?php echo urlencode(current_url()) ?>" />
 
     <link href="https://plus.google.com/<?php echo $this->setting->google_plus ?>" rel="publisher" />
 
@@ -55,7 +55,7 @@ else
     <meta name="twitter:url" content="<?php echo get_canonical_url(); ?>">
     <meta name="twitter:title" content="<?php echo $meta['title'] . $meta_suffix; ?>">
     <meta name="twitter:description" content="<?php echo $meta['description']; ?>">
-    <meta name="twitter:image" content="http://codefight.org/skin/global/images/logo.png">
+    <meta name="twitter:image" content="https://chart.googleapis.com/chart?chs=500x500&cht=qr&choe=UTF-8&chl=<?php echo urlencode(current_url()) ?>">
     <!-- twitter card ends -->
 
 

@@ -194,34 +194,38 @@ if (!function_exists('get_page_url')) {
 
 if (!function_exists('get_canonical_url')) {
     /**
+     * @param $meta array
      * @return mixed
      */
-    function get_canonical_url()
+    function get_canonical_url($meta=array())
     {
-        $url = current_url();
-
-        $CI      =& get_instance();
-        $page_id = (int)$CI->uri->segment(3);
-
-        if ($page_id) {
-            $data = Model('blog')->get_page_full($page_id);
-
-            if (isset($data['content'][0])) {
-                $url = site_url(get_page_url($data['content'][0]));
-            }
+        if(!empty($meta['canonical'])){
+            $url = site_url($meta['canonical']);
         } else {
-            $segments = $CI->uri->segment_array();
-            foreach ($segments as $k => $v) {
-                //----
-                //$corrupted = substr($v, -5);
-                while (substr($v, -5) == '_html') {
-                    $v = substr($v, 0, -5);
+            $url = current_url();
+            $CI      =& get_instance();
+            $page_id = (int)$CI->uri->segment(3);
+
+            if ($page_id) {
+                $data = Model('blog')->get_page_full($page_id);
+
+                if (isset($data['content'][0])) {
+                    $url = site_url(get_page_url($data['content'][0]));
+                }
+            } else {
+                $segments = $CI->uri->segment_array();
+                foreach ($segments as $k => $v) {
+                    //----
+                    //$corrupted = substr($v, -5);
+                    while (substr($v, -5) == '_html') {
+                        $v = substr($v, 0, -5);
+                    }
+
+                    $segments[$k] = $v;
                 }
 
-                $segments[$k] = $v;
+                $url = site_url(implode('/', $segments));
             }
-
-            $url = site_url(implode('/', $segments));
         }
 
         // if duplicate site created with same content and want to notify google
@@ -389,7 +393,7 @@ if (!function_exists('__')) {
         }
         $files = $CI->lang->getFile();
 
-        $appPath = str_replace(array('/','\\'), DS, FCPATH . str_replace(FCPATH, '', APPPATH));
+        $appPath = APPPATH;
 
         foreach($files as $file) {
             if (!empty($file)) {

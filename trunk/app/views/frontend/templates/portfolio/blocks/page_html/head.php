@@ -16,12 +16,12 @@
 	<?php $corrupted = substr(current_url(), -5); ?>
 
 	<?php if(($this->uri->segment(1) == 'ontheweb') || (isset($noindex) && $noindex == 'yes') || ($corrupted == '_html')): ?>
-		<meta name="robots" content="noindex, nofollow"/>
+		<meta name="robots" content="noindex, follow"/>
 		<meta name="robots" content="noarchive">
 	<?php else: ?>
 		<meta name="robots" content="index, follow"/>
 	<?php endif; ?>
-		<link rel='canonical' href="<?php echo get_canonical_url(); ?>" />
+		<link rel='canonical' href="<?php echo get_canonical_url($meta); ?>" />
 	<meta name="robots" content="noodp,noydir" />
 	<meta name="revisit-after" content="1 days"/>
 	<meta name="generator" content="Codefight CMS" />

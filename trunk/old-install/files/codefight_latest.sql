@@ -980,6 +980,7 @@ INSERT INTO `cf_setting_keys` (`setting_id`, `setting_key`, `setting_value`, `se
 
 DROP TABLE IF EXISTS `cf_tag_cloud`;
 CREATE TABLE IF NOT EXISTS `cf_tag_cloud` (
+`tag_cloud_id` int(11) NOT NULL,
   `tag` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `count` int(11) NOT NULL DEFAULT '1',
@@ -988,10 +989,14 @@ CREATE TABLE IF NOT EXISTS `cf_tag_cloud` (
   `meta_title` varchar(255) DEFAULT NULL,
   `meta_description` varchar(255) DEFAULT NULL,
   `meta_keyword` varchar(255) DEFAULT NULL,
-  `content` text,
-  KEY `count` (`count`),
-  KEY `websites_id` (`websites_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `content` text
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+ALTER TABLE `cf_tag_cloud`
+ ADD PRIMARY KEY (`tag_cloud_id`), ADD KEY `count` (`count`), ADD KEY `websites_id` (`websites_id`);
+
+ALTER TABLE `cf_tag_cloud` MODIFY `tag_cloud_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
+
 
 --
 -- Dumping data for table `cf_tag_cloud`

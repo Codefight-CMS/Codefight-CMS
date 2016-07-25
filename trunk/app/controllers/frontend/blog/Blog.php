@@ -98,18 +98,18 @@ class Blog extends MY_Controller
            | See These Files For Processing:
            | libraries/block/block_Library.php
            */
-        if (isset($data['content']) && count((array)$data['content']) > 0) {
+        if (count($data['content']) > 0) {
             $data['content'] = Model('blog')->parseContent($data['content']);
         } else {
             Model('blog')->redirect_blog($this->page_id);
 
             header("HTTP/1.0 404 Not Found");
-            //if content not found | Set meta to noindex, nofollow to save your website value to search engines.
+            //if content not found | Set meta to noindex to save your website value to search engines.
             $data['noindex'] = 'yes';
         }
 
         if (!empty($this->meta)) {
-            $data['meta'] = $this->meta;
+            $data['meta'] = array_merge($data['meta'], $this->meta);
         }
 
         if (($cur_page = $this->pagination->getCurPage()) > 1) {
