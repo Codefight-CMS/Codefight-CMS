@@ -167,12 +167,6 @@ Library('block')->load('page_html/message'); ?>
 
         <div class="right_column">
             <div class="favorite_links">
-                <h2>
-                    <iframe src="http://zoosper.com/zoosperads/index/site/codefight.org/width/80/height/15/key/hosting/"
-                            scrolling="no" frameborder="0"
-                            style="border:none; overflow:hidden; width:80px; height:15px;"
-                            allowTransparency="true"></iframe>
-                </h2>
                 <?php
                 //Load Affiliate Ads Block
                 Library('block')->load('aff_ads'); ?>
