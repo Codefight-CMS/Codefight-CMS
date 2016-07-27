@@ -106,7 +106,7 @@ Library('block')->load('page_html/head'); //Load Head Block ?>
 
             <div class="footer_banner">
 
-                <?php Library('block')->load('advertisements/banner_728x90', 'magicland'); //Load Banner 728 X 90 Block ?>
+                <?php Library('block')->load('advertisements/banner_728x90'); //Load Banner 728 X 90 Block ?>
 
             </div>
 

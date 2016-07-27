@@ -90,12 +90,9 @@ Library('block')->load('page_html/message'); ?>
                     </a>
                 </li>
                 <li>
-                    <!-- AfterComments -->
-                    <div id='div-gpt-ad-1336730094607-0' style='width:728px; height:90px;'>
-                        <script type='text/javascript'>
-                            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1336730094607-0'); });
-                        </script>
-                    </div>
+                    <?php
+                    //Load Content Block
+                    Library('block')->load('advertisements/banner_728x90'); ?>
                 </li>
                 <li>
                     <script type="text/javascript"><!--

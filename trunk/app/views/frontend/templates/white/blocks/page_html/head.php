@@ -79,30 +79,11 @@ else
     //Load Google Analytics
     Library('block')->load('seo/google_analytics'); ?>
 
-    <script type="text/javascript" src="<?php echo skin_url('global') ?>js/share.mini.js"></script>
-
-    <!-- Double Click -->
-    <script type='text/javascript'>
-        var googletag = googletag || {};
-        googletag.cmd = googletag.cmd || [];
-        (function() {
-            var gads = document.createElement('script');
-            gads.async = true;
-            gads.type = 'text/javascript';
-            var useSSL = 'https:' == document.location.protocol;
-            gads.src = (useSSL ? 'https:' : 'http:') +
-                '//www.googletagservices.com/tag/js/gpt.js';
-            var node = document.getElementsByTagName('script')[0];
-            node.parentNode.insertBefore(gads, node);
-        })();
-    </script>
-
-    <script type='text/javascript'>
-        googletag.cmd.push(function() {
-            googletag.defineSlot('/1041902/AfterComments', [728, 90], 'div-gpt-ad-1336730094607-0').addService(googletag.pubads());
-            googletag.defineSlot('/1041902/LearnTips-728x90', [728, 90], 'div-gpt-ad-1336656460674-0').addService(googletag.pubads());
-            googletag.defineSlot('/1041902/LearnTips-728x90-AP', [728, 90], 'div-gpt-ad-1336656460674-1').addService(googletag.pubads());
-            googletag.enableServices();
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9567128729272204",
+            enable_page_level_ads: true
         });
     </script>
 

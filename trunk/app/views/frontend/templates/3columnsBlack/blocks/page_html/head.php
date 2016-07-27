@@ -73,19 +73,26 @@ else
 	//Load Google Analytics
 	Library('block')->load('seo/google_analytics'); ?>
 
-        <script type="text/javascript" src="<?php echo skin_url('global') ?>js/share.mini.js"></script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-9567128729272204",
+            enable_page_level_ads: true
+        });
+    </script>
 
-<!-- Place this tag in the <head> of your document -->
-<script type="text/javascript">
-window.___gcfg = {lang: 'en'};
-(function()
-{var po = document.createElement("script");
-po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
-var s = document.getElementsByTagName("script")[0];
-s.parentNode.insertBefore(po, s);
-})();</script>
+    <!-- Place this tag in the <head> of your document -->
+    <script type="text/javascript">
+        window.___gcfg = {lang: 'en'};
+        (function()
+        {var po = document.createElement("script");
+        po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(po, s);
+        })();
+    </script>
 
-<!-- Double Click -->
+    <!-- Double Click -->
     <script type='text/javascript'>
         var googletag = googletag || {};
         googletag.cmd = googletag.cmd || [];
@@ -103,9 +110,6 @@ s.parentNode.insertBefore(po, s);
 
     <script type='text/javascript'>
         googletag.cmd.push(function() {
-            googletag.defineSlot('/1041902/AfterComments', [728, 90], 'div-gpt-ad-1336730094607-0').addService(googletag.pubads());
-            googletag.defineSlot('/1041902/LearnTips-728x90', [728, 90], 'div-gpt-ad-1336656460674-0').addService(googletag.pubads());
-            googletag.defineSlot('/1041902/LearnTips-728x90-AP', [728, 90], 'div-gpt-ad-1336656460674-1').addService(googletag.pubads());
             googletag.defineSlot('/1041902/Learn-tips-300-250', [300, 250], 'div-gpt-ad-1357216295046-0').addService(googletag.pubads());
             googletag.enableServices();
         });
