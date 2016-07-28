@@ -90,12 +90,9 @@ Library('block')->load('page_html/message'); ?>
                     </a>
                 </li>
                 <li>
-                    <!-- AfterComments -->
-                    <div id='div-gpt-ad-1336730094607-0' style='width:728px; height:90px;'>
-                        <script type='text/javascript'>
-                            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1336730094607-0'); });
-                        </script>
-                    </div>
+                    <?php
+                    //Load Content Block
+                    Library('block')->load('advertisements/banner_728x90'); ?>
                 </li>
                 <li>
                     <script type="text/javascript"><!--
@@ -167,12 +164,6 @@ Library('block')->load('page_html/message'); ?>
 
         <div class="right_column">
             <div class="favorite_links">
-                <h2>
-                    <iframe src="http://zoosper.com/zoosperads/index/site/codefight.org/width/80/height/15/key/hosting/"
-                            scrolling="no" frameborder="0"
-                            style="border:none; overflow:hidden; width:80px; height:15px;"
-                            allowTransparency="true"></iframe>
-                </h2>
                 <?php
                 //Load Affiliate Ads Block
                 Library('block')->load('aff_ads'); ?>

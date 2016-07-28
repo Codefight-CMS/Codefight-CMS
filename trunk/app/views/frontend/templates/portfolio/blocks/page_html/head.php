@@ -81,4 +81,12 @@ rel="stylesheet" media="screen" href="ie6.css"/> <![endif]--> <script type="text
 	//Load Google Analytics
 	Library('block')->load('seo/google_analytics'); ?>
 
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "ca-pub-9567128729272204",
+			enable_page_level_ads: true
+		});
+	</script>
+
 </head>

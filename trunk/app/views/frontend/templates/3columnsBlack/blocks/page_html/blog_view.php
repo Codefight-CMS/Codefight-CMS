@@ -61,12 +61,9 @@ if (isset($content) && is_array($content) && ($count=count($content)) > 0)
                         </script>
                         </li>
                         <li>
-                            <!-- LearnTips-728x90-AP -->
-                            <div id='div-gpt-ad-1336656460674-1' style='width:728px; height:90px;'>
-                                <script type='text/javascript'>
-                                    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1336656460674-1'); });
-                                </script>
-                            </div>
+                            <?php
+                            //Load Content Block
+                            Library('block')->load('advertisements/banner_728x90'); ?>
                         </li>
                         <li>
                             &nbsp;
