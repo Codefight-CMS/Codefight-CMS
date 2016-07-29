@@ -100,11 +100,6 @@ class Asset_Library extends MY_Library
             if(is_file($themeConfig)){
                 require_once $themeConfig;
 
-                foreach ($theme as $key => $value) {
-                    if($key == 'remove') continue;
-                    $this->$key = array_merge($this->$key, $value);
-                }
-
                 // remove css/js if requested any
                 if(!empty($theme['remove'])){
                     foreach($theme['remove'] as $key => $value){
@@ -118,6 +113,11 @@ class Asset_Library extends MY_Library
                             $this->$key = $combinedConfig;
                         }
                     }
+                }
+
+                foreach ($theme as $key => $value) {
+                    if($key == 'remove') continue;
+                    $this->$key = array_merge($this->$key, $value);
                 }
             }
         }
