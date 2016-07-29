@@ -50,6 +50,7 @@ class Asset_Library extends MY_Library
     public function __construct()
     {
         parent::__construct();
+        $this->CI =& get_instance();
 
         if(!$this->init){
             $this->init = TRUE;
@@ -69,12 +70,61 @@ class Asset_Library extends MY_Library
         foreach (Model('setting')->setting as $k => $v) {
             $this->$k = $v;
         }
+
+        // load theme specific configuration values
+        // get currently loaded theme
+        $template = Model('setting')->selected_template();
+
+        // check if current url is admin
+        $isAdmin = ($this->CI->uri->segment(1, 'frontend') == 'admin') ? 1 : 0;
+
+        $viewPath = VIEWPATH . 'frontend' . DS;
+        if($isAdmin){
+            $viewPath = VIEWPATH . 'admin' . DS;
+        }
+
+        // always load default config
+        // app/views/frontend/themes/default/config.php
+        $themeConfigPath = $viewPath . 'themes' . DS;
+        $defaultConfig = $themeConfigPath . 'default' . DS . 'config.php';
+        require_once $defaultConfig;
+
+        foreach ($theme as $key => $value) {
+            $this->$key = $value;
+        }
+
+        // if current template is not default and theme config is defined
+        // overwrite values
+        if($template != 'default'){
+            $themeConfig = $themeConfigPath . $template . DS . 'config.php';
+            if(is_file($themeConfig)){
+                require_once $themeConfig;
+
+                foreach ($theme as $key => $value) {
+                    if($key == 'remove') continue;
+                    $this->$key = array_merge($this->$key, $value);
+                }
+
+                // remove css/js if requested any
+                if(!empty($theme['remove'])){
+                    foreach($theme['remove'] as $key => $value){
+                        if(isset($this->$key)){
+                            $combinedConfig = array_combine($this->$key, $this->$key);
+                            foreach($value as $name){
+                                if(is_array($combinedConfig) && isset($combinedConfig[$name])){
+                                    unset($combinedConfig[$name]);
+                                }
+                            }
+                            $this->$key = $combinedConfig;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public function getConfig()
     {
-        $this->CI =& get_instance();
-
         //Get Config values
         $cf_config = $this->CI->config->config;
 
@@ -97,8 +147,6 @@ class Asset_Library extends MY_Library
     //load all the assets
     public function load($assets = array(), $sub_folder = false)
     {
-        $this->CI =& get_instance();
-
         //Get Config values
         $cf_config = $this->CI->config->config;
 
@@ -162,12 +210,6 @@ class Asset_Library extends MY_Library
         else {
             $this->template = $this->default_template . '/';
         }
-
-		//add admin.css or frontend.css
-		$this->addCss($this->module);
-
-		//add admin.js or frontend.js
-		$this->addJs($this->module);
     }
 
     //start getting assets
@@ -175,36 +217,24 @@ class Asset_Library extends MY_Library
     {
         //get requested CSSs
         if (is_array($this->css)) {
-			if(isset($this->_css['all'])) {
-				$this->css = array_merge($this->_css['all'], $this->css);
+			if(isset($this->_css)) {
+				$this->css = array_merge($this->_css, $this->css);
 			}
 
             foreach ($this->css as $k => $g) {
-                //if $g is not array i.e. media type not defined
-                //set its media type default as all
-                if (!is_array($g)) {
-                    $g = array($g);
-                    $k = 'all';
-                }
+                $g = (string)$g;
+                $k = 'all';
 
-                //get autoloaded/default css
-                $def = array();
-                if (isset($this->defaults['css']) && isset($this->defaults['css'][$k])) {
-                    $def = $this->defaults['css'][$k];
-                    unset($this->defaults['css'][$k]);
+                if(empty($this->defaults['css'][$k])){
+                    $this->defaults['css'][$k] = array();
                 }
-
-                if (is_array($def)) {
-                    $g = array_merge($def, $g);
-                }
-
-                //remove duplicate requests
-                $g = array_unique($g);
-                $this->echo_css($g, $k);
+                $this->defaults['css'][$k][$g] = $g;
             }
+            //add admin.css or frontend.css | load last
+            $this->defaults['css']['all'][$this->module] = $this->module;
         }
 
-        //Load autoloaded css, that are still not loaded above
+        // echo css
         if (isset($this->defaults['css']) && is_array($this->defaults['css'])) {
             foreach ($this->defaults['css'] as $k => $g) {
                 $this->echo_css($g, $k);
@@ -229,6 +259,10 @@ class Asset_Library extends MY_Library
 
             //remove duplicate requests
             $g = array_unique($g);
+
+            //add admin.js or frontend.js | load last
+            $g[$this->module] = $this->module;
+
             $this->echo_js($g);
         }
     }
@@ -490,7 +524,7 @@ class Asset_Library extends MY_Library
         }
 
         //$this->_css[$css] = array($media => $condition);
-        $this->_css[$media][] = $css;
+        $this->_css[$css] = $css;
     }
 
     public function debug()

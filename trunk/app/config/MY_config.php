@@ -47,29 +47,6 @@ $config['cf']['cache_dir'] = 'cache';
 $config['cf']['is_js_css_split'] = true;
 
 /*
- * if is_js_css_split is true, define directories they can be found according to preferences in an array
- * e.g. css can be found at: assets/common/css or, assets/admin/css etc...
- * Script stops search when it finds one.
- */
-/* -- deprecated
-$config['cf']['js_css_dir'] 		= array(
-                                'frontend',
-                                'admin'
-                                );
-*/
-/*
- * Define css that need to be autoloaded in every page
- */
-$config['cf']['defaults']['css'] = array(
-    'all' => array('bootstrap-responsive.min', 'bootstrap.min', 'codefight', 'shThemeDefault', 'shCore')
-);
-//'menuLeft'
-/*
- * Define js that need to be autoloaded in every page
- */
-$config['cf']['defaults']['js'] = array('jquery', 'jquery-ui.min', 'bootstrap.min', 'bootstrap-alert', 'shCore', 'shBrushPhp', 'general', 'codefight-bootstrap');
-
-/*
  * Define disallowed words
  */
 $config['cf']['disallowed'] = array('nude', 'anal', 'nudity', 'nudist', 'naked', 'erotic', 'fetish', 'boob', 'damn',
