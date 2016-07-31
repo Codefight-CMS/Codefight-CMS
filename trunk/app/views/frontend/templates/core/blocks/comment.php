@@ -24,12 +24,20 @@
     }
 
 </script>
-<div class="comment_holder">
-    <div class="title"><a name="comment"></a>COMMENTS: <img src="/skin/global/icons/Feed_32x32.png" alt="FEED" name="Feed"
-                                                            width="16" height="16" border="0"
-                                                            id="Feed"/>( <?php echo anchor('feed/approved-comment', 'Approved Comment'); ?>
-        | <?php echo anchor('feed/pending-comment', 'Pending Comment'); ?> )
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a name="comment"></a>
+            <span class="navbar-brand">Comments: </span>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><?php echo anchor('feed/approved-comment', '<i class="fa fa-rss-square" aria-hidden="true"></i> Approved Comments'); ?></li>
+            <li><?php echo anchor('feed/pending-comment', '<i class="fa fa-rss-square" aria-hidden="true"></i> Pending Comments'); ?></li>
+        </ul>
     </div>
+</nav>
+
+<div class="comment_holder">
     <div id="comment"><?php Model('blog')->get_comment(preg_replace('/[^0-9]+/', '', $this->uri->segment(3, 0))); ?></div>
     <div id="comment_new">&nbsp;</div>
     <?php
@@ -37,28 +45,45 @@
     $attributes = array('id' => 'comment', 'class' => 'comment', 'onsubmit' => 'return false;');
     echo form_open(current_url(), $attributes);
     ?>
-    <label><?php echo lang('name'); ?>*:</label><input name="name" type="text" class="txtfield inputtxt" id="name"
-                                                       value="" maxlength="35"/>
-    <br/>
-    <label><?php echo lang('email'); ?>*:</label><input name="email" type="text" class="txtfield inputtxt" id="email"
-                                                        value="" maxlength="100"/>
+    <div class="form-group">
+        <label for="name"><?php echo lang('name'); ?>*:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="<?php echo lang('Name'); ?>" maxlength="35">
+    </div>
 
-    <p class="clear">&nbsp;</p>
-    <label><?php echo lang('url'); ?>*:</label><input name="url" type="text" class="txtfield inputtxt" id="url" value=""
-                                                      maxlength="250"/>
+    <div class="form-group">
+        <label for="email"><?php echo lang('email'); ?>*:</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="<?php echo lang('Email'); ?>" maxlength="100" aria-describedby="emailHelp">
+        <small id="emailHelp" class="form-text text-muted"><?php echo lang('not published on website'); ?></small>
+    </div>
 
-    <br/>
-    <label><?php echo lang('comment'); ?>*:</label><textarea class="txtarea inputtxt" name="comment"
-                                                             id="comment"></textarea>
+    <div class="form-group">
+        <label for="url"><?php echo lang('url'); ?>*:</label>
+        <input type="text" class="form-control" id="url" name="url" placeholder="<?php echo lang('url'); ?>" maxlength="250">
+    </div>
 
-    <br/>
-    <label><?php echo lang('spam_check'); ?>*:</label><input name="spam" type="text" class="txtfield inputtxt" id="spam"
-                                                             value="" maxlength="250"/>
+    <div class="form-group">
+        <label for="comment"><?php echo lang('comment'); ?>*:</label>
+        <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="spam"><?php echo lang('spam_check'); ?>*:</label>
+        <input type="text" class="form-control" id="spam" name="spam" placeholder="<?php echo lang('spam_check'); ?>" maxlength="250" aria-describedby="captchaHelp">
+
+        <small id="captchaHelp" class="form-text text-muted">
+            <img
+                class="btn btn-warning"
+                id="captcha"
+                src="<?php echo base_url(); ?>tools/captcha/?<?php echo time(); ?>"
+                alt=""
+                border="0"
+                onclick="jQuery('#captcha').attr('src', '<?php echo base_url(); ?>tools/captcha/?' + Math.floor(new Date().getTime() / 1000));"/>
+        </small>
+    </div>
+
     <br/>
     <label class="spam_question">
-        <img class="btn btn-warning" id="captcha" src="<?php echo base_url(); ?>tools/captcha/?<?php echo time(); ?>"
-                                      alt=""
-                                      border="0" onclick="jQuery('#captcha').attr('src', '<?php echo base_url(); ?>tools/captcha/?' + Math.floor(new Date().getTime() / 1000));"/>
+
     </label>
 
 
@@ -66,6 +91,10 @@
 
     <input class="btn btn-primary" type="button" id="Btn" name="Btn" value="publish" onclick="process_comment();"/>
 
-    <div id="js_req" class="alert alert-error"><?php echo lang('enable_js_to_comment'); ?></div>
-    </form>
+    <div id="js_req" class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span> <?php echo lang('enable_js_to_comment'); ?>
+    </div>
+
+    <?php echo form_close() ?>
 </div>

@@ -7,12 +7,114 @@ body {
     padding-bottom: 20px;
 }
 
+.breadcrumb a.active {
+    color: #777;
+}
 
+.v4-tease {
+    display: block;
+    padding: 15px 20px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    background-color: #0275d8;
+}
 
+.v4-tease:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #0269c2;
+}
 
+nav.codefight-frontend-sidebar{}
+nav.codefight-frontend-sidebar li a{padding: 5px 0 5px 10px;}
 
+span.tag_cloud_item{display: block; float: left; padding: 0 10px 0 0;}
 
-
+.tag_cloud a.cloud0 {
+    font-size:22px !important;
+    color:#666666;
+}
+.tag_cloud a.cloud1 {
+    font-size:21px !important;
+    color:#666656;
+}
+.tag_cloud a.cloud2 {
+    font-size:20px !important;
+    color:#666646;
+}
+.tag_cloud a.cloud3 {
+    font-size:19px !important;
+    color:#666636;
+}
+.tag_cloud a.cloud4 {
+    font-size:18px !important;
+    color:#666626;
+}
+.tag_cloud a.cloud5 {
+    font-size:17px !important;
+    color:#666616;
+}
+.tag_cloud a.cloud6 {
+    font-size:16px !important;
+    color:#666606;
+}
+.tag_cloud a.cloud7 {
+    font-size:15px !important;
+    color:#666596;
+}
+.tag_cloud a.cloud8 {
+    font-size:14px !important;
+    color:#666586;
+}
+.tag_cloud a.cloud9 {
+    font-size:13px !important;
+    color:#666576;
+}
+.tag_cloud a.cloud10 {
+    font-size:12px !important;
+    color:#666566;
+}
+.tag_cloud a.cloud11 {
+    font-size:11px !important;
+    color:#666556;
+}
+.tag_cloud a.cloud12 {
+    font-size:10px !important;
+    color:#666546;
+}
+.tag_cloud a.cloud13 {
+    font-size:10px !important;
+    color:#666536;
+}
+.tag_cloud a.cloud14 {
+    font-size:10px !important;
+    color:#666526;
+}
+.tag_cloud a.cloud15 {
+    font-size:10px !important;
+    color:#666516;
+}
+.tag_cloud a.cloud16 {
+    font-size:9px !important;
+    color:#666506;
+}
+.tag_cloud a.cloud17 {
+    font-size:9px !important;
+    color:#666496;
+}
+.tag_cloud a.cloud18 {
+    font-size:9px !important;
+    color:#666486;
+}
+.tag_cloud a.cloud19 {
+    font-size:9px !important;
+    color:#666476;
+}
+.tag_cloud a.cloud20 {
+    font-size:9px !important;
+    color:#666466;
+}
 
 
 

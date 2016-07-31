@@ -5,7 +5,7 @@
 $theme = array();
 
 // load css files
-$theme['css'] = array('bootstrap.min', 'bootstrap-theme.min', 'codefight');
+$theme['css'] = array('bootstrap.min', 'bootstrap-theme.min', 'font-awesome.min', 'codefight');
 
 // load js files
 $theme['js'] = array(

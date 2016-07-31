@@ -37,115 +37,97 @@ Library('block')->load('page_html/head'); ?>
     </div>
 </nav>
 
+<a href="https://github.com/Codefight-CMS/Codefight-CMS/releases" class="v4-tease">Download Latest Codefight CMS From Github</a>
+
 <div class="container">
 <?php
 //Load message block
 Library('block')->load('page_html/message'); ?>
 
-<div class="header"></div>
-
 <div class="pageContainer">
 
-    <div class="row"><?php
-        //Load Content Block
-        Library('block')->load($content_block, 'responsive'); ?>
-    </div>
+    <div class="row">
+        <div class="col-md-9" role="main"><?php
+            //Load Content Block
+            Library('block')->load($content_block, 'responsive'); ?>
+        </div>
 
+        <div class="col-md-3" role="complementary">
+            <nav class="codefight-frontend-sidebar">
+                <div class="blog_categories">
+                    <h5>CATEGORIES</h5><?php
 
+                    //Load Blog Categories block
+                    Library('block')->load('menu/blog_categories_vertical');?>
+                </div>
 
-    <div class="sidebar-wrapper">
+                <p class="clear">&nbsp;</p>
 
-        <div class="menuLeft">
-            <div class="blog_categories">
-                <h2>CATEGORIES</h2><?php
+                <div class="tag_cloud"><?php
 
-                //Load Blog Categories block
-                Library('block')->load('menu/blog_categories_vertical');?>
-            </div>
+                    //Load Tag Cloud block
+                    Library('block')->load('tag_cloud'); ?>
 
-            <p class="clear">&nbsp;</p>
-
-            <div class="blog_roll">
-                <h2>BLOG ROLL</h2><?php
-
-                //Load Blog Roll block
-                Library('block')->load('menu/blog_roll_vertical');?>
-            </div>
-
-            <p class="clear">&nbsp;</p>
-
-            <div class="blog_roll">
-                <h2>FAVOURITE LINKS</h2><?php
-
-                //Load Favourite Links block
-                Library('block')->load('menu/favorite_links_vertical');?>
-            </div>
-
-            <p class="clear">&nbsp;</p>
-
-            <div class="tag_cloud"><?php
-
-                //Load Tag Cloud block
-                Library('block')->load('tag_cloud'); ?>
-
-            </div>
-
+                </div>
+            </nav>
         </div>
     </div>
-
-    <p class="clear">&nbsp;</p>
 </div>
 
 <p class="clear">&nbsp;</p>
 
+    <footer>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-12">
+                    <?php
 
-<div id="footer">
-    <div class="footer_links"><?php
+                    //Load Footer Block
+                    Library('block')->load('page_html/footer'); ?>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container well well-sm">
+                <div class="col-md-4">
+                    <h5>Recent Posts</h5><?php
 
-        //Load Footer Block
-        Library('block')->load('page_html/footer'); ?>
-    </div>
-    <p class="clear">&nbsp;</p>
+                    //Load Footer Block
+                    Library('block')->load('blog_recent'); ?>
+                </div>
+                <div class="col-md-4">
+                    <h5>Most Popular</h5><?php
 
-    <div class="footer_recent_entry">
-        <h2>Recent Posts</h2><?php
+                    //Load Footer Block
+                    Library('block')->load('blog_popular'); ?>
+                </div>
+                <div class="col-md-4">
+                    <h5>Sponsors</h5><?php
 
-        //Load Footer Block
-        Library('block')->load('blog_recent'); ?>
-    </div>
-    <div class="footer_most_popular">
-        <h2>Most Popular</h2><?php
+                    //Load Footer Block
+                    Library('block')->load('menu/sponsored_links_vertical'); ?>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container well well-sm">
+                <div class="col-md-12 text-center">
+                    <?php
 
-        //Load Footer Block
-        Library('block')->load('blog_popular'); ?>
-    </div>
-    <div class="footer_ontheweb_popular">
-        <h2>Sponsors</h2><?php
+                    //Load copyright Block
+                    Library('block')->load('page_html/copyright'); ?>
+                </div>
+                <div class="col-md-12 text-center">
+                    <?php
 
-        //Load Footer Block
-        Library('block')->load('menu/sponsored_links_vertical'); ?>
-    </div>
-    <p class="clear">&nbsp;</p>
+                    //Load Powered By Block: I hope you keep as it is. Thanks.
+                    Library('block')->load('page_html/powered_by'); ?>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    <div class="copyright"><?php
-
-        //Load copyright Block
-        Library('block')->load('page_html/copyright'); ?>
-    </div>
-    <p class="clear">&nbsp;</p>
-
-    <div class="powered_by"><?php
-
-        //Load Powered By Block: I hope you keep as it is. Thanks.
-        Library('block')->load('page_html/powered_by'); ?>
-    </div>
 </div>
-
-</div>
-<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-<img style="display:none;" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" width="0" height="0"
-     alt=""/>
-<script type="text/javascript" src="http://s.skimresources.com/js/45041X1159517.skimlinks.js"></script>
 <?php Library('block')->load('seo/wibiya'); ?>
 </body>
 </html>

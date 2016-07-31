@@ -73,6 +73,7 @@ class Form_Library extends MY_Library
     //Create textbox form element
     function _input_textbox($val)
     {
+        
         $rtn = "<label class=\"cf_form_label textbox\">{$val['form_item_label']}</label>";
         $rtn .= "<input name=\"{$val['form_item_name']}\" type=\"textbox\" id=\"{$val['form_item_name']}\" value=\"" . $this->_get_post_val($val['form_item_name'], $val['form_item_default_value']) . "\" {$val['form_item_parameters']}/>";
 

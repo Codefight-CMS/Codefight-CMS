@@ -2,7 +2,7 @@
 <?php
 $menu = array(
     'menu_type' => 'favourite-links',
-    'ul_param' => 'class="favourite_links"',
+    'ul_param' => 'class="nav favourite_links"',
     'a_param' => 'rel="external nofollow"'
 );
 $menu = Library('menu')->get($menu);

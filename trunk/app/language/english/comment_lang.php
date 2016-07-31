@@ -3,7 +3,7 @@
  * Language used for comment form
  */
 $lang['name'] = 'Name';
-$lang['email'] = 'Email <br/>(not published)';
+$lang['email'] = 'Email';
 $lang['website'] = 'Website';
 $lang['url'] = 'URL';
 $lang['comment'] = 'Comment';
