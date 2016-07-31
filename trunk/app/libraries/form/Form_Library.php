@@ -73,20 +73,27 @@ class Form_Library extends MY_Library
     //Create textbox form element
     function _input_textbox($val)
     {
-        
-        $rtn = "<label class=\"cf_form_label textbox\">{$val['form_item_label']}</label>";
-        $rtn .= "<input name=\"{$val['form_item_name']}\" type=\"textbox\" id=\"{$val['form_item_name']}\" value=\"" . $this->_get_post_val($val['form_item_name'], $val['form_item_default_value']) . "\" {$val['form_item_parameters']}/>";
-
-        return $rtn;
+        return
+            '
+            <div class="form-group">
+                    <label for="'.$val['form_item_name'].'" class="cf_form_label textbox">'.$val['form_item_label'].'</label>
+                    <input type="text" class="form-control"
+                    id="'.$val['form_item_name'].'" name="'.$val['form_item_name'].'"
+                    value="' . $this->_get_post_val($val['form_item_name'], $val['form_item_default_value']) . '"' . $val['form_item_parameters'] . '
+                    placeholder="'.$val['form_item_name'].'">
+            </div>
+        ';
     }
 
-    //Create submit button form element
+    //Create submit form element
     function _input_submit($val)
     {
-        $rtn = "<label class=\"cf_form_label submit\">&nbsp;</label>";
-        $rtn .= "<input name=\"{$val['form_item_name']}\" type=\"submit\" id=\"{$val['form_item_name']}\" value=\"{$val['form_item_label']}\" {$val['form_item_parameters']}/>";
-
-        return $rtn;
+        return
+            '
+            <div class="form-group">
+                <input name="' . $val['form_item_name']. '" id="' . $val['form_item_name']. '" type="submit" class="btn btn-default" value="' . $val['form_item_label'] . '" ' . $val['form_item_parameters'] . '/>
+            </div>
+        ';
     }
 
     //Create select dropdown form element
@@ -109,10 +116,25 @@ class Form_Library extends MY_Library
             $o_array[$opK] = $opV;
         }
 
-        $rtn = "<label class=\"cf_form_label select\">{$val['form_item_label']}</label>";
-        $rtn .= form_dropdown($val['form_item_name'], $o_array, $this->_get_post_val($val['form_item_name'], $val['form_item_default_value']), $val['form_item_parameters'] . ' id=' . $val['form_item_name']);
+        $val['form_item_parameters'] = htmlspecialchars_decode($val['form_item_parameters'], ENT_QUOTES) . ' id="da"';
+        preg_match_all('#class\s?=\s?"(.*?)"#isu', $val['form_item_parameters'], $matches);
 
-        return $rtn;
+        if(isset($matches[0][0])){
+            $val['form_item_parameters'] = str_replace($matches[0][0], '', $val['form_item_parameters']);
+            $matches[1][] = 'form-control';
+
+            $val['form_item_parameters'] .= ' class="' . implode(' ', $matches[1]) . '"';
+        } else {
+            $val['form_item_parameters'] .= ' class="form-control"';
+        }
+
+        return
+            '
+            <div class="form-group">
+                    <label for="'.$val['form_item_name'].'" class="cf_form_label select">'.$val['form_item_label'].'</label>' .
+                    form_dropdown($val['form_item_name'], $o_array, $this->_get_post_val($val['form_item_name'], $val['form_item_default_value']), $val['form_item_parameters'] . ' id=' . $val['form_item_name']) . '
+            </div>
+        ';
     }
 
     //Create radio form element
@@ -191,10 +213,12 @@ class Form_Library extends MY_Library
     //Create textarea form element
     function _input_textarea($val)
     {
-        $rtn = "<label class=\"cf_form_label textarea\">{$val['form_item_label']}</label>";
-        $rtn .= "<textarea cols=\"55\" rows=\"5\" name=\"{$val['form_item_name']}\" id=\"{$val['form_item_name']}\" {$val['form_item_parameters']}>" . $this->_get_post_val($val['form_item_name'], $val['form_item_default_value']) . '</textarea>';
-
-        return $rtn;
+        return '
+        <div class="form-group">
+            <label for="'.$val['form_item_name'].'" class="cf_form_label textarea">'.$val['form_item_label'].'</label>
+            <textarea name="'.$val['form_item_name'].'" id="'.$val['form_item_name'].'" class="form-control" rows="3" '.$val['form_item_parameters'].'>'.$this->_get_post_val($val['form_item_name'], $val['form_item_default_value']).'</textarea>
+        </div>
+        ';
     }
 
     /*
@@ -261,7 +285,7 @@ class Form_Library extends MY_Library
 
                 $fn = '_input_' . $w['form_item_input_type'];
                 if (isset($w['element'])) {
-                    $form .= $w['element'] . '<p class="clear">&nbsp;</p>';
+                    $form .= $w['element'];// . '<p class="clear">&nbsp;</p>';
                 }
 
                 if ($i == count($v['item'])) $form .= form_close(); //close form
