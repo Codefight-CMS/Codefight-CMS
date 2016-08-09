@@ -116,7 +116,7 @@ class Form_Library extends MY_Library
             $o_array[$opK] = $opV;
         }
 
-        $val['form_item_parameters'] = htmlspecialchars_decode($val['form_item_parameters'], ENT_QUOTES) . ' id="da"';
+        $val['form_item_parameters'] = htmlspecialchars_decode($val['form_item_parameters'], ENT_QUOTES);
         preg_match_all('#class\s?=\s?"(.*?)"#isu', $val['form_item_parameters'], $matches);
 
         if(isset($matches[0][0])){
