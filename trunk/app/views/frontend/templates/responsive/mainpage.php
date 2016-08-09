@@ -100,12 +100,17 @@ Library('block')->load('page_html/message'); ?>
 
                     //Load Footer Block
                     Library('block')->load('blog_popular'); ?>
+
                 </div>
                 <div class="col-md-4">
                     <h5>Sponsors</h5><?php
 
                     //Load Footer Block
-                    Library('block')->load('menu/sponsored_links_vertical'); ?>
+                    Library('block')->load('menu/sponsored_links_vertical');
+
+                    //Load Text Link Ads Block
+                    Library('block')->load('text_link_ads'); ?>
+
                 </div>
             </div>
         </div>

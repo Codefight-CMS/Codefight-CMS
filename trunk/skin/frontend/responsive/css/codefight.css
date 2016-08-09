@@ -116,7 +116,12 @@ span.tag_cloud_item{display: block; float: left; padding: 0 10px 0 0;}
     color:#666466;
 }
 
+footer ul.nav>li>a {
+    padding: 5px 0;
+}
 
+footer ul.nav>li>span {}
+footer ul.nav>li>span>a {}
 
 
 
