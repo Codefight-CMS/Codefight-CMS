@@ -98,7 +98,7 @@ ErrorDocument 404 /404.html
 #
 # https://httpd.apache.org/docs/current/content-negotiation.html#multiviews
 
-Options -MultiViews
+# Options -MultiViews
 
 
 # ######################################################################
@@ -323,7 +323,7 @@ AddDefaultCharset utf-8
     RewriteEngine On
 
     # (2)
-    Options +FollowSymlinks
+    # Options +FollowSymlinks
 
     # (3)
     # Options +SymLinksIfOwnerMatch
@@ -524,7 +524,7 @@ AddDefaultCharset utf-8
 # includes rather private places such as the CMS's directories).
 
 <IfModule mod_autoindex.c>
-    Options -Indexes
+    # Options -Indexes
 </IfModule>
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -579,7 +579,7 @@ AddDefaultCharset utf-8
 
     # Apache ≥ 2.3
     <IfModule mod_authz_core.c>
-        Require all denied
+        # Require all denied
     </IfModule>
 
 </FilesMatch>
