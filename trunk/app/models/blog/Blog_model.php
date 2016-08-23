@@ -403,7 +403,7 @@ class Blog_model extends MY_Model
         $c = '';
         if (is_array($q) && count($q) > 0) {
             foreach ($q as $v) {
-                $c .= "\n" . '<div class="comment"><a name="cmnt' . $v['page_comment_id'] . '"></a>';
+                $c .= "\n" . '<div class="panel comment"><a name="cmnt' . $v['page_comment_id'] . '"></a>';
                 $c .= "\n" . '<p class="comment"><img class="gravatar" src="http://www.gravatar.com/avatar/' . md5(
                     strtolower(trim($v['email']))
                 ) . '?s=40&d=mm" />' . nl2br($v['comment']) . '</p>';
