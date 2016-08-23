@@ -403,18 +403,29 @@ class Blog_model extends MY_Model
         $c = '';
         if (is_array($q) && count($q) > 0) {
             foreach ($q as $v) {
-                $c .= "\n" . '<div class="panel comment"><a name="cmnt' . $v['page_comment_id'] . '"></a>';
-                $c .= "\n" . '<p class="comment"><img class="gravatar" src="http://www.gravatar.com/avatar/' . md5(
-                    strtolower(trim($v['email']))
-                ) . '?s=40&d=mm" />' . nl2br($v['comment']) . '</p>';
-                $c
-                    .= "\n" . '<p class="commenter"><a href="' . current_url() . '#cmnt' . $v['page_comment_id']
-                    . '"><span> '
-                    . date("d/m/y h:i:s", strtotime($v['time'])) . '</span></a><span>|</span>';
-                $c .= "\n" . '<a rel="external nofollow" href="' . prep_url($v['url']) . '#" target="_blank">'
-                    . $v['name']
-                    . '</a></p>';
-                $c .= "\n" . '</div>';
+                $c .= '<div class="panel media comment">
+                            <h4>
+                                <a name="cmnt' . $v['page_comment_id'] . '"></a>
+                                <a class="comment-author" rel="external nofollow" href="' . prep_url($v['url']) . '#" target="_blank">
+                                    ' . $v['name'] . '
+                                </a> 
+                                <span class="comment-date"> posted on - 
+                                    <span>
+                                        ' . date("l jS \of F Y h:i:s A", strtotime($v['time'])) . '
+                                    </span>
+                                </span>
+                            </h4>
+                           <div class="media-left">
+                               <a href="' . current_url() . '#cmnt' . $v['page_comment_id'] . '">
+                                   <img 
+                                       class="media-object gravatar" 
+                                       src="http://www.gravatar.com/avatar/' . md5(strtolower(trim($v['email']))) . '?s=40&d=mm" />
+                               </a>
+                           </div>
+                           <div class="media-body">
+                               <div class="comment-body">' . nl2br($v['comment']) . '</div>
+                           </div>
+                       </div>';
             }
         }
         echo $c;

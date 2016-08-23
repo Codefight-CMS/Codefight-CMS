@@ -116,6 +116,23 @@ span.tag_cloud_item{display: block; float: left; padding: 0 10px 0 0;}
     color:#666466;
 }
 
+.media-body {
+    width: 10000px;
+}
+
+.comment_holder h4 {
+    background: #fafafa;
+    margin: 0;
+    padding: 10px;
+    font-size: 1em;
+}
+
+.comment-body {
+    margin: 0;
+    padding: 10px 0 0 0;
+}
+
+
 footer ul.nav>li>a {
     padding: 5px 0;
 }
