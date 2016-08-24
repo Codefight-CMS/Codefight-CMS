@@ -133,6 +133,7 @@ Library('block')->load('page_html/message'); ?>
     </footer>
 
 </div>
+<?php Library('block')->load('page_html/footer'); ?>
 <?php Library('block')->load('seo/wibiya'); ?>
 </body>
 </html>
