@@ -63,6 +63,17 @@ Library('block')->load('page_html/message'); ?>
 
                 <p class="clear">&nbsp;</p>
 
+                <div class="adsnse"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- wibiya -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-9567128729272204"
+                         data-ad-slot="2220424816"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script></div>
+
                 <div class="tag_cloud"><?php
 
                     //Load Tag Cloud block
@@ -133,6 +144,7 @@ Library('block')->load('page_html/message'); ?>
     </footer>
 
 </div>
+<?php Library('block')->load('page_html/footer'); ?>
 <?php Library('block')->load('seo/wibiya'); ?>
 </body>
 </html>

@@ -18,6 +18,19 @@ if (isset($content) && is_array($content) && ($count=count($content)) > 0)
                     }
                     ?>
                 </div>
+
+                <div class="adsnse" style="max-height: 100px;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- wibiya -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-9567128729272204"
+                         data-ad-slot="2220424816"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+
             </div>
 
             <nav>
@@ -58,6 +71,19 @@ if (isset($content) && is_array($content) && ($count=count($content)) > 0)
             </article>
 
         <div class="content">
+
+            <div class="adsnse"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- wibiya -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9567128729272204"
+                     data-ad-slot="2220424816"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
             <?php
 
             //Show Comment
