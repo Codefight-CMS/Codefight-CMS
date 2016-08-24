@@ -5,11 +5,12 @@
 $theme = array();
 
 // load css files
-$theme['css'] = array('bootstrap.min', 'bootstrap-theme.min', 'font-awesome.min', 'codefight');
+$theme['css'] = array('bootstrap.min', 'highlight.default', 'bootstrap-theme.min', 'font-awesome.min', 'codefight');
 
 // load js files
 $theme['js'] = array(
     'vendor/jquery-1.11.2',
+    'highlight.pack',
     'vendor/modernizr-2.8.3-respond-1.4.2.min',
     'vendor/bootstrap.min',
     'plugins',
