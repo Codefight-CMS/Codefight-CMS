@@ -57,11 +57,13 @@
     <input class="btn btn-primary" name="create" type="submit" id="create" value="Create New File"/>
     <input class="btn btn-primary" name="edit" type="submit" id="edit" value="Edit Selected"/>
     <input class="btn btn-inverse" name="reset" type="reset" id="reset" value="Reset"/>
-
-    <p class="clear">&nbsp;</p>
-    <?php if (isset($pagination)) echo $pagination; ?>
 </div>
 <?php echo form_close(); ?>
+
+<p class="clear">&nbsp;</p>
+<nav aria-label="Page navigation">
+    <?php if (isset($pagination)) echo $pagination; ?>
+</nav>
 
 <div class="footer_info"><?php echo __('You have used'); ?> <?php echo Model('file')->disk_free_space(FCPATH . "media/"); ?>
     <?php echo __('of'); ?> <?php echo Model('file')->disk_total_space(FCPATH . "media/"); ?> <?php echo __('Available space'); ?>.
