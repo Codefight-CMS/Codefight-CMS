@@ -36,12 +36,12 @@
     <input class="btn btn-primary" name="edit" type="submit" id="edit" value="<?php echo __('Edit Selected') ?>"/>
     <input class="btn btn-primary" name="create" type="submit" id="create" value="<?php echo __('Create New Page') ?>"/>
     <input class="btn btn-inverse" name="reset" type="reset" id="reset" value="<?php echo __('Reset') ?>"/>
-
-    <p class="clear">&nbsp;</p>
-    <?php if (isset($pagination)) echo $pagination; ?>
-
-
 </div>
 <?php echo form_close(); ?>
+
+<p class="clear">&nbsp;</p>
+<nav aria-label="Page navigation">
+    <?php if (isset($pagination)) echo $pagination; ?>
+</nav>
 
 <?php $this->load->view('admin/inc/footer'); ?>

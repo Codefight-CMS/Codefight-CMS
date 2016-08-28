@@ -56,8 +56,24 @@ class MY_Lang extends CI_Lang {
 
         return $this;
     }
-}
-// END Language Class
 
-/* End of file MY_Lang.php */
-/* Location: ./core/MY_Lang.php */
+    /**
+     * Language line
+     *
+     * Fetches a single line of text from the language array
+     *
+     * @param	string	$line		Language line key
+     * @param	bool	$log_errors	Whether to log an error message if the line is not found
+     * @return	string	Translation
+     */
+    public function line($line, $log_errors = TRUE)
+    {
+        $value = parent::line($line, $log_errors);
+
+        // if no translation found, return same string
+        if(empty($value)){
+            $value = $line;
+        }
+        return $value;
+    }
+}

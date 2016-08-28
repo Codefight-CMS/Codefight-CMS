@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit(__('No direct script access allowed')); ?>
-<?php $recent = Model('blog')->getRecentPosts(10); ?>
+<?php $recent = Model('blog')->getRecentPosts(5); ?>
 
-<ul class="recent_posts">
+<ul class="nav nav-pills nav-stacked recent_posts">
 
     <?php foreach ($recent->result_array() as $v) { ?>
 

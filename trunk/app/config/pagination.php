@@ -9,47 +9,47 @@ $config['per_page'] = '5';
 //$config['num_links'] = 2;
 //The opening tag placed on the left side of the entire result.
 
-$config['full_tag_open'] = '<div class="page_numbers">';
+$config['full_tag_open'] = '<ul class="pagination">';
 //The closing tag placed on the right side of the entire result.
-$config['full_tag_close'] = '</div>';
+$config['full_tag_close'] = '</ul>';
 
 //The text you would like shown in the "first" link on the left.
 $config['first_link'] = '&laquo; First';
 //The opening tag for the "first" link.
-$config['first_tag_open'] = '<div class="first">';
+$config['first_tag_open'] = '<li class="first">';
 //The closing tag for the "first" link.
-$config['first_tag_close'] = '</div>';
+$config['first_tag_close'] = '</li>';
 
 //The text you would like shown in the "last" link on the right.
 $config['last_link'] = 'Last &raquo;';
 //The opening tag for the "last" link.
-$config['last_tag_open'] = '<div class="last">';
+$config['last_tag_open'] = '<li class="last">';
 //The closing tag for the "last" link.
-$config['last_tag_close'] = '</div>';
+$config['last_tag_close'] = '</li>';
 
 //The text you would like shown in the "next" page link.
 $config['next_link'] = '&gt;';
 //The opening tag for the "next" link.
-$config['next_tag_open'] = '<div class="next">';
+$config['next_tag_open'] = '<li class="next">';
 //The closing tag for the "next" link.
-$config['next_tag_close'] = '</div>';
+$config['next_tag_close'] = '</li>';
 
 //The text you would like shown in the "previous" page link.
 $config['prev_link'] = '&lt;';
 //The opening tag for the "previous" link.
-$config['prev_tag_open'] = '<div class="previous">';
+$config['prev_tag_open'] = '<li class="previous">';
 //The closing tag for the "previous" link.
-$config['prev_tag_close'] = '</div>';
+$config['prev_tag_close'] = '</li>';
 
 //The opening tag for the "current" link.
-$config['cur_tag_open'] = '<div class="current">';
+$config['cur_tag_open'] = '<li class="current active"><a>';
 //The closing tag for the "current" link.
-$config['cur_tag_close'] = '</div>';
+$config['cur_tag_close'] = '</a></li>';
 
 //The opening tag for the "digit" link.
-$config['num_tag_open'] = '<div class="digit">';
+$config['num_tag_open'] = '<li class="digit">';
 //The closing tag for the "digit" link.
-$config['num_tag_close'] = '</div>';
+$config['num_tag_close'] = '</li>';
 
 $config['attributes']['rel'] = TRUE;
 

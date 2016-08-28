@@ -130,7 +130,7 @@ class Ajax extends MY_Controller
                     $this->form_validation->set_rules('page_url', lang('page_url'), 'xss_clean|trim');
 
                     if ($this->form_validation->run() == FALSE) {
-                        echo '<div class="alert alert-error"><a class="close" data-dismiss="alert" href="'.current_url().'#">&times;</a>' . validation_errors() . '</div>';
+                        echo '<div class="alert alert-danger alert-error"><a class="close" data-dismiss="alert" href="'.current_url().'#">&times;</a>' . validation_errors() . '</div>';
                         if(form_error('spam')){
                             echo '<script>jQuery(\'#captcha\').attr(\'src\', \''.base_url().'tools/captcha/?\' + Math.floor(new Date().getTime() / 1000));</script>';
                         }
@@ -149,14 +149,14 @@ class Ajax extends MY_Controller
                             $this->db->insert('page_comment', array('name' => $name, 'page_url' => $page_url, 'email' => $email, 'url' => $url, 'comment' => $comment, 'page_id' => $page_id));
 
                             if ($this->db->insert_id()) {
-                                echo "<p>
+                                echo "<p class='alert alert-success'>
 							You Just Posted: [<em>Subject to approval</em>] <br />
 							--------------------------------------------<br />
 							name: $name<br />
 							email: ***<br />
 							url: $url<br />
 							comment: " . nl2br($comment) . "<br />
-							Time:" . date("d/m/y h:i:s", time()) . "<br />
+							Time: " . date("d/m/y h:i:s", time()) . "<br />
 							check @ pending comment feed above.
 							</p>";
 
@@ -169,7 +169,6 @@ class Ajax extends MY_Controller
                                 }
                             }
                         }
-                        //$this->load->view('formuccess');
                     }
 
 
@@ -198,11 +197,8 @@ class Ajax extends MY_Controller
     }
 
     /**
-     *
-     *
-     * @access public
-     * @param string
-     * @return void
+     * @param $str
+     * @return bool
      */
     public function _captcha_check($str)
     {

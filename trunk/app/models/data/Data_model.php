@@ -225,16 +225,16 @@ class Data_model extends MY_Model
 
         $author_date = '';
         if ((!empty($page_author) && $show_author == '1') || $show_date == '1') {
-            $author_date = '<div class="author_date">';
-
-            if ($show_date == '1') {
-                $author_date .= '<span class="date">' . $page_date . '</span>';
-            }
+            $author_date = '<div class="meta author_date">';
 
             if (!empty($page_author) && $show_author == '1') {
                 $author_date
-                    .= '<span class="author"><a href="' . site_url("user/{$v['user_id']}{$name}") . '" rel="author vcard">'
+                    .= '<span class="author">Posted by <a href="' . site_url("user/{$v['user_id']}{$name}") . '" rel="author vcard">'
                     . $page_author . '</a></span>';
+            }
+
+            if ($show_date == '1') {
+                $author_date .= '<span class="date"> on ' . date("F d, Y", strtotime($page_date)) . '</span>';
             }
 
             $author_date .= '<p class="clear">&nbsp;</p></div>';
@@ -331,7 +331,24 @@ class Data_model extends MY_Model
         $tag_array = array();
         if (!empty($tag)) {
             if ($format) {
-                $page_tag = '<div class="tag"><span class="title">TAGS:</span>';
+                $page_tag = '
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <span class="navbar-brand">TAGS</span>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+';
             }
 
             $page_tag_array = explode(',', $tag);
@@ -347,7 +364,7 @@ class Data_model extends MY_Model
                     $tag_link = url_title($v_t);
 
                     if ($format) {
-                        $page_tag .= anchor("blog/tag/$tag_link", trim($v_t), 'class="' . $tag_a_class . '"');
+                        $page_tag .= '<li>' . anchor("blog/tag/$tag_link", trim($v_t), 'class="' . $tag_a_class . '"') . '</li>';
                     }
                     else
                     {
@@ -358,7 +375,10 @@ class Data_model extends MY_Model
             }
 
             if ($format) {
-                $page_tag .= '<p class="clear">&nbsp;</p></div><p class="clear">&nbsp;</p>';
+                $page_tag .= '</ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>';
             }
         }
         if ($format) {

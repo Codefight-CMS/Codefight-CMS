@@ -2,7 +2,7 @@
 <?php
 $menu = array(
     'menu_type' => 'blog',
-    'ul_param' => 'class="blog_categories"',
+    'ul_param' => 'class="nav blog_categories"',
     //'a_param' => 'rel="external nofollow"'
 );
 $menu = Library('menu')->get($menu);

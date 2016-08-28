@@ -38,13 +38,13 @@ function tla_ads()
     $links = tla_decode($xml);
 
     if (is_array($links)) {
-        echo "<div class=\"blog_categories friends\"><ul style=\"margin: 0;padding: 0;\">\n";
+        echo "<ul class='nav nav-pills nav-stacked sponsored_links cfm_level1'>\n";
         foreach ($links as $link) {
             if (isset($link['PostID']) && $link['PostID'] > 0) {
                 continue;
             }
 
-            echo "<li style=\"border-bottom: 1px solid #DDDDDD;display: block;margin: 0;padding: 5px 0 2px;\">" . ($link['BeforeText'] ? $link['BeforeText'] . ' ' : '') . '<a href="' . $link['URL'] . '">' . $link['Text'] . '</a>' . ($link['AfterText'] ? ' ' . $link['AfterText'] : '') . "</li>\n";
+            echo "<li><span>" . ($link['BeforeText'] ? $link['BeforeText'] . ' ' : '') . '<a href="' . $link['URL'] . '">' . $link['Text'] . '</a>' . ($link['AfterText'] ? ' ' . $link['AfterText'] : '') . "</span></li>\n";
         }
         echo '</ul>';
     }
@@ -184,6 +184,6 @@ function tla_decode_str($str)
 
 
 $baseUrl = base_url();
-if(in_array($baseUrl, array('http://www.codefight.org/', 'http://codefight.org/'))){
+if(in_array($baseUrl, array('http://www.codefight.org/', 'http://codefight.org/', 'http://local.codefight.org/'))){
     tla_ads();
 }

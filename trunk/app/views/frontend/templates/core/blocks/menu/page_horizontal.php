@@ -2,7 +2,7 @@
 <?php
 $menu = array(
     'menu_type' => 'page',
-    'ul_param' => 'class="jd_menu"',
+    'ul_param' => 'class="nav navbar-nav jd_menu"',
 );
 $menu = Library('menu')->get($menu);
 if (!empty($menu)) {

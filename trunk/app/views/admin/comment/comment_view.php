@@ -33,12 +33,12 @@
     <input class="btn btn-danger" name="delete" type="submit" id="delete" value="<?php echo __('Delete Selected') ?>"/>
     <input class="btn btn-primary" name="approve" type="submit" id="approve" value="<?php echo __('Approve Selected') ?>"/>
     <input class="btn btn-inverse" name="reset" type="reset" id="reset" value="<?php echo __('Reset') ?>"/>
-
-    <p class="clear">&nbsp;</p>
-    <?php if (isset($pagination)) echo $pagination; ?>
-
-
 </div>
 <?php echo form_close(); ?>
+
+<p class="clear">&nbsp;</p>
+<nav aria-label="Page navigation">
+    <?php if (isset($pagination)) echo $pagination; ?>
+</nav>
 
 <?php $this->load->view('admin/inc/footer'); ?>

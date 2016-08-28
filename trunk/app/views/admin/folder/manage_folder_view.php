@@ -47,13 +47,15 @@
     <input class="btn btn-primary" name="edit" type="submit" id="edit" value="Edit Folder"/>
     <input class="btn btn-inverse" name="reset" type="reset" id="reset" value="Reset"/>
 
-    <p class="clear">&nbsp;</p>
-    <?php if (isset($pagination)) echo $pagination; ?>
-
     <div class="footer_info"><?php echo __('You have used'); ?> <?php echo Model('file')->disk_free_space(FCPATH . "media/"); ?>
         <?php echo __('of'); ?> <?php echo Model('file')->disk_total_space(FCPATH . "media/"); ?> <?php echo __('Available space'); ?>.
     </div>
 </div>
 <?php echo form_close(); ?>
+
+<p class="clear">&nbsp;</p>
+<nav aria-label="Page navigation">
+    <?php if (isset($pagination)) echo $pagination; ?>
+</nav>
 
 <?php $this->load->view('admin/inc/footer'); ?>
