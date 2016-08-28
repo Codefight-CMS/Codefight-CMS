@@ -28,6 +28,7 @@ ul#main-nav {
     z-index: 10;
 }
 ul#main-nav li {
+	background: #222;
 	float: left;
 	margin: 0;
     overflow: visible;
@@ -61,6 +62,7 @@ ul#main-nav li ul.grand-child {
 	width: 180px;
 	border: 1px solid #555;
     z-index: 20;
+	overflow: visible !important;
 }
 ul#main-nav li ul.child li{
 	margin: 0;
@@ -117,7 +119,7 @@ foreach ($menu_item as $k => $v)
     echo anchor($admin.$v['url'], __($v['title']), $attr);
     if(isset($v['child']) && is_array($v['child']) && count($v['child']) > 0)
     {
-        echo '<ul class="child">';
+        echo '<ul class="child" style="overflow: visible !important;">';
         foreach($v['child'] as $ck => $cv)
         {
 			if(isset($cv['is_menu']) && (int)$cv['is_menu'] < 1){
