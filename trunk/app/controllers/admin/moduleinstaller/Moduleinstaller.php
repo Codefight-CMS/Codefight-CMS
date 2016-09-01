@@ -46,6 +46,7 @@ class Moduleinstaller extends MY_Controller
 
 		$query = $this->db->order_by('parent')->get('module');
 		$modules_db = $query->result_array();
+
 		foreach($modules_db as $k => $v)
 		{
 			$modules_db[$v['url']] = $v;
