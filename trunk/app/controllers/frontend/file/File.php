@@ -28,13 +28,6 @@
  */
 class File extends MY_Controller
 {
-
-    /**
-     * Constructor method
-     *
-     * @access public
-     * @return void
-     */
     public function __construct()
     {
         /*
@@ -46,7 +39,7 @@ class File extends MY_Controller
             'helper' => 'text + form'
         );
 
-        parent::MY_Controller($load);
+        parent::__construct($load);
 
     }
 

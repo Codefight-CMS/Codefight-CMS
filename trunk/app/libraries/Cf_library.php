@@ -14,8 +14,8 @@ if (!defined('BASEPATH')) {
 
 class Cf_library
 {
-	function __construct()
-	{
+    public function __construct()
+    {
 		log_message('debug', "Cf_library Class Initialized");
 	}
 

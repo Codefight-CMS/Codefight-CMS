@@ -15,6 +15,8 @@
 
 // ------------------------------------------------------------------------
 
+require_once APPPATH.'core/CF_Controller.php';
+
 /**
  * Codefight MY_Model Class
  *
@@ -24,7 +26,7 @@
  * @author        Codefight CMS Team
  * @link        http://codefight.org
  */
-class MY_Model extends CI_Model
+class MY_Model extends CF_Model
 {
     var
         $my_data,
@@ -148,7 +150,7 @@ class MY_Model extends CI_Model
     /**
      * @param string $model
      *
-     * @return mixed
+     * @return MY_Model
      */
     public function Model($model = 'codefight', $config=FALSE)
     {

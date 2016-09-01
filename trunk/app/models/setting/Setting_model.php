@@ -8,8 +8,10 @@ class Setting_model extends MY_Model
 {
     var $setting;
 
-    function __construct()
+    public function __construct()
     {
+        parent::__construct();
+
         if (!isset($this->setting->site_enabled)) {
             $this->load_setting();
         }

@@ -28,13 +28,6 @@
  */
 class Registration extends MY_Controller
 {
-
-    /**
-     * Constructor method
-     *
-     * @access public
-     * @return void
-     */
     public function __construct()
     {
         /*
@@ -47,7 +40,7 @@ class Registration extends MY_Controller
             'helper' => 'form'
         );
 
-        parent::MY_Controller($load);
+        parent::__construct($load);
 
     }
 

@@ -64,7 +64,7 @@ class Keywordanalyzer extends MY_Controller
             'helper' => 'form'
         );
 
-        parent::MY_Controller($load);
+        parent::__construct($load);
     }
 
     /**

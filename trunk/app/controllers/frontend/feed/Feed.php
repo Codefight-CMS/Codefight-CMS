@@ -28,16 +28,10 @@
  */
 class Feed extends MY_Controller
 {
-
-    /*
-      * Constructor method
-      *
-      * @access public
-      * @return void
-      */
     public function __construct()
     {
-        parent::MY_Controller();
+        parent::__construct();
+
         $this->load->helper('xml');
     }
 

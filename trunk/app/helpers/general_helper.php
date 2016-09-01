@@ -46,7 +46,7 @@ if (!function_exists('Model')) {
     /**
      * @param string $model
      *
-     * @return mixed
+     * @return object
      */
     function Model($model = 'codefight', $config = FALSE)
     {

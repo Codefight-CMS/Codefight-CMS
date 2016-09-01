@@ -44,7 +44,7 @@ class MY_Language {
      *
      * @access	public
      */
-    function __construct()
+    public function __construct()
     {
         log_message('debug', "My Language Class Initialized");
     }
