@@ -256,5 +256,3 @@ class Setting_model extends MY_Model
         return $ret;
     }
 }
-
-?>
