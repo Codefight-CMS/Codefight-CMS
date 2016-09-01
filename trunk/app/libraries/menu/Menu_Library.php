@@ -45,6 +45,8 @@ class Menu_Library extends MY_Library
         $this->counter = 0;
         $this->holder = array();
         $this->menu_type = 'page';
+        $this->a_param = '';
+        $this->li_param = '';
         $this->is_last = FALSE;
         $this->reduce_space = TRUE;
     }

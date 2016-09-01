@@ -15,7 +15,7 @@
 
 // ------------------------------------------------------------------------
 
-require_once APPPATH.'core/CF_Controller.php';
+require_once APPPATH.'core/CF_Model.php';
 
 /**
  * Codefight MY_Model Class

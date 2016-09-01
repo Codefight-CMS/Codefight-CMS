@@ -37,7 +37,10 @@ Library('block')->load('page_html/head'); ?>
     </div>
 </nav>
 
-<a href="https://github.com/Codefight-CMS/Codefight-CMS/releases" class="v4-tease">Download Latest Codefight CMS From Github</a>
+<?php
+
+//Load Footer Block
+Library('block')->load('menu/teaser_links'); ?>
 
 <div class="container">
 <?php
