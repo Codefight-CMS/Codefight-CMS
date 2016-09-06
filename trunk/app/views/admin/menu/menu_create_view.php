@@ -19,14 +19,14 @@ foreach ($menu_array as $v)
 <?php echo form_open('admin/menu/' . $this->uri->segment(3, 'page')); ?>
 <div class="menu_create">
     <label><?php echo __('STATUS'); ?>:</label>
-    <?php echo form_dropdown('menu_active', $options_active, set_value('menu_active'), 'class="txtFld"'); ?>
+    <?php echo form_dropdown('menu_active', $options_active, set_value('menu_active'), 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
 
     <label><?php echo __('PARENT MENU'); ?>:</label>
-    <?php echo form_dropdown('menu_parent_id', $options_menu, set_value('menu_parent_id'), 'class="txtFld"'); ?>
+    <?php echo form_dropdown('menu_parent_id', $options_menu, set_value('menu_parent_id'), 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('TITLE'); ?>:</label><input class="txtFld" name="menu_title" type="text" id="menu_title"
+    <label><?php echo __('TITLE'); ?>:</label><input class="form-control txtFld" name="menu_title" type="text" id="menu_title"
                                                      value="<?php echo set_value('menu_title'); ?>"/>
 
     <p class="clear">&nbsp;</p>
@@ -35,16 +35,16 @@ foreach ($menu_array as $v)
     <p><?php echo __('Created Automatically'); ?>
         (<?php echo __('Enter Only If Linking External Site'); ?> <?php echo __('e.g.'); ?>
         http://www.codefight.org/)</p>
-    <label><?php echo __('LINK'); ?>:</label><input class="txtFld" name="menu_link" type="text" id="menu_link"
+    <label><?php echo __('LINK'); ?>:</label><input class="form-control txtFld" name="menu_link" type="text" id="menu_link"
                                                     value="<?php echo set_value('menu_link'); ?>"/>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('PARAMS'); ?>:</label><input class="txtFld" name="menu_params" type="text" id="menu_params"
+    <label><?php echo __('PARAMS'); ?>:</label><input class="form-control txtFld" name="menu_params" type="text" id="menu_params"
                                                      value="<?php echo form_prep(set_value('menu_params')); ?>"/>
 
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('SORT'); ?>:</label><input class="txtFld" name="menu_sort" type="text" id="menu_sort"
+    <label><?php echo __('SORT'); ?>:</label><input class="form-control txtFld" name="menu_sort" type="text" id="menu_sort"
                                                     value="<?php echo Model('data')->get_sort_id('menu'); ?>"/>
 
     <p class="clear">&nbsp;</p>

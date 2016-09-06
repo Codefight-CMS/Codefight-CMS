@@ -23,7 +23,7 @@ if (!isset($head_includes) || !is_array($head_includes)) {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="description" content="<?php echo $meta['description'];?>"/>
     <meta name="keywords" content="<?php echo $meta['keywords'];?>"/>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php Library('asset')->get(); //Load Assets (js|css) ?>
 
 <?php

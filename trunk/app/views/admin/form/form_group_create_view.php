@@ -6,15 +6,15 @@
 <?php echo form_open('admin/form/group'); ?>
 <div class="group_create">
     <label><?php echo __('NAME'); ?>:</label>
-    <input name="form_group_name" type="text" class="txtFld" id="form_group_name"
+    <input name="form_group_name" type="text" class="form-control txtFld" id="form_group_name"
            value="<?php echo set_value('form_group_name'); ?>" maxlength="25"/>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('IDENTIFIER'); ?>:</label><input class="txtFld" name="form_group_identifier" type="text" id="form_group_identifier"
+    <label><?php echo __('IDENTIFIER'); ?>:</label><input class="form-control txtFld" name="form_group_identifier" type="text" id="form_group_identifier"
                                      value="<?php echo set_value('form_group_identifier'); ?>" maxlength="35"/>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('SEND TO'); ?>:</label><textarea class="txtFld" name="form_group_send_to"
+    <label><?php echo __('SEND TO'); ?>:</label><textarea class="form-control txtFld" name="form_group_send_to"
                                      id="form_group_send_to"><?php echo set_value('form_group_send_to'); ?></textarea><br/>
 
     <p class="clear">&nbsp;</p>

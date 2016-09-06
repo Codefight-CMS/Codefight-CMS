@@ -25,14 +25,14 @@ foreach ($menu_ary as $v) {
                                                        id="menu_<?php echo $k; ?>_id" value="<?php echo $v['id']; ?>"/>
     <p class="clear">&nbsp;</p>
     <label><?php echo __('STATUS'); ?>:</label>
-    <?php echo form_dropdown('menu[' . $k . '][menu_active]', $options_active, $v['menu_active'], 'class="txtFld"'); ?>
+    <?php echo form_dropdown('menu[' . $k . '][menu_active]', $options_active, $v['menu_active'], 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
 
     <label><?php echo __('PARENT MENU'); ?>:</label>
-    <?php echo form_dropdown('menu[' . $k . '][menu_parent_id]', $options_menu, $v['menu_parent_id'], 'class="txtFld"'); ?>
+    <?php echo form_dropdown('menu[' . $k . '][menu_parent_id]', $options_menu, $v['menu_parent_id'], 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('TITLE'); ?>:</label><input class="txtFld" name="menu[<?php echo $k; ?>][menu_title]"
+    <label><?php echo __('TITLE'); ?>:</label><input class="form-control txtFld" name="menu[<?php echo $k; ?>][menu_title]"
                                                      type="text"
                                                      id="menu_<?php echo $k; ?>_menu_title"
                                                      value="<?php echo $v['menu_title']; ?>"/>
@@ -41,18 +41,18 @@ foreach ($menu_ary as $v) {
     <label>&nbsp;</label><p><?php echo __('Created Automatically'); ?>
         (<?php echo __('Enter Only If Linking External Site'); ?> <?php echo __('e.g.'); ?>
         http://www.codefight.org/)</p>
-    <label><?php echo __('LINK'); ?>:</label><input class="txtFld" name="menu[<?php echo $k; ?>][menu_link]" type="text"
+    <label><?php echo __('LINK'); ?>:</label><input class="form-control txtFld" name="menu[<?php echo $k; ?>][menu_link]" type="text"
                                                     id="menu_<?php echo $k; ?>_menu_link"
                                                     value="<?php echo $v['menu_link']; ?>"/>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('PARAMS'); ?>:</label><input class="txtFld" name="menu[<?php echo $k; ?>][menu_params]"
+    <label><?php echo __('PARAMS'); ?>:</label><input class="form-control txtFld" name="menu[<?php echo $k; ?>][menu_params]"
                                                      type="text"
                                                      id="menu_<?php echo $k; ?>_menu_params"
                                                      value="<?php echo form_prep($v['menu_params']); ?>"/>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('SORT'); ?>:</label><input class="txtFld" name="menu[<?php echo $k; ?>][menu_sort]" type="text"
+    <label><?php echo __('SORT'); ?>:</label><input class="form-control txtFld" name="menu[<?php echo $k; ?>][menu_sort]" type="text"
                                                     id="menu_<?php echo $k; ?>_menu_sort"
                                                     value="<?php echo $v['menu_sort']; ?>"/>
     <p class="clear">&nbsp;</p>

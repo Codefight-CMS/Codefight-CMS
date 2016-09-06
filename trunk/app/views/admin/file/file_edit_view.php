@@ -30,14 +30,14 @@
     <p class="clear">&nbsp;</p>
 
     <label><?php echo __('STATUS'); ?>:</label>
-    <?php echo form_dropdown('file[' . $k . '][active]', $options_active, $v['active'], 'class="txtFld"'); ?>
+    <?php echo form_dropdown('file[' . $k . '][active]', $options_active, $v['active'], 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('FILE TITLE'); ?>:</label><input class="txtFld" name="file[<?php echo $k; ?>][name]" type="text"
+    <label><?php echo __('FILE TITLE'); ?>:</label><input class="form-control txtFld" name="file[<?php echo $k; ?>][name]" type="text"
                                      id="file_<?php echo $k; ?>_name" value="<?php echo $v['name']; ?>"/>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('FILE DESCRIPTION'); ?>:</label><textarea class="txtFld" cols="35" rows="3"
+    <label><?php echo __('FILE DESCRIPTION'); ?>:</label><textarea class="form-control txtFld" cols="35" rows="3"
                                               name="file[<?php echo $k; ?>][description]"
                                               id="file_<?php echo $k; ?>_description"><?php echo $v['description']; ?></textarea>
     <p class="clear">&nbsp;</p>
@@ -75,7 +75,7 @@
                 {
                     $groups[$g['group_id']] = $g['group_title'];
                 }
-                echo form_multiselect('file[' . $k . '][group][]', $groups, $v['group'], 'class="txtFld"');
+                echo form_multiselect('file[' . $k . '][group][]', $groups, $v['group'], 'class="form-control txtFld"');
                 ?>
             </td>
         </tr>
@@ -95,7 +95,7 @@
                 {
                     $users[$g['user_id']] = $g['firstname'] . ' ' . $g['lastname'] . ' (' . $g['email'] . ')';
                 }
-                echo form_multiselect('file[' . $k . '][user][]', $users, $v['user'], 'class="txtFld"');
+                echo form_multiselect('file[' . $k . '][user][]', $users, $v['user'], 'class="form-control txtFld"');
                 ?>
             </td>
         </tr>

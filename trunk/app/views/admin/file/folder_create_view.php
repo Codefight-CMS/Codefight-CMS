@@ -18,14 +18,14 @@ foreach ($folder as $v) {
 <div class="file_create">
 
     <label><?php echo __('STATUS'); ?>:</label>
-    <?php echo form_dropdown('active', $options_active, set_value('active'), 'class="txtFld"'); ?>
+    <?php echo form_dropdown('active', $options_active, set_value('active'), 'class="form-control txtFld"'); ?>
 
     <p class="clear">&nbsp;</p>
     <label><?php echo __('PARENT FOLDER'); ?>:</label><?php echo form_dropdown('parent', $options_group,
-                                                                                     set_value('parent'), 'class="txtFld"'); ?>
+                                                                                     set_value('parent'), 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('FOLDER NAME'); ?>:</label><input class="txtFld" name="name" type="text" id="name"
+    <label><?php echo __('FOLDER NAME'); ?>:</label><input class="form-control txtFld" name="name" type="text" id="name"
                                       value="<?php echo set_value('name'); ?>"/>
 
     <p class="clear">&nbsp;</p>

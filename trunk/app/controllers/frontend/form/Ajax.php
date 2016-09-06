@@ -72,7 +72,7 @@ class Ajax extends MY_Controller
         }
 
         if ($this->form_validation->run() == FALSE) {
-            echo '<div class="alert alert-danger alert-error">' . validation_errors() . '</div>';
+            echo '<div class="alert alert-danger alert-error" role="alert">' . validation_errors() . '</div>';
         }
         else
         {
@@ -180,7 +180,7 @@ Message Received From Web Form
                 }
             }
 
-            echo '<div class="alert alert-success">Form Submitted Successfully.</div>';
+            echo '<div class="alert alert-success" role="alert">Form Submitted Successfully.</div>';
         }
     }
 }

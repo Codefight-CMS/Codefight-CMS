@@ -14,7 +14,7 @@
 }
     ?>
 
-    <label for="longurl"><?php echo __('URL to trim'); ?></label> <input class="txtFld" type="text" name="longurl"
+    <label for="longurl"><?php echo __('URL to trim'); ?></label> <input class="form-control txtFld" type="text" name="longurl"
                                                                          id="longurl">
 
     <p class="clear">&nbsp;</p>

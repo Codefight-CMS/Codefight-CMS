@@ -8,7 +8,7 @@
                 <div class="loginBg">
 
                     <?php $attributes = array('id' => 'pLoginForm'); echo form_open('registration/forgotten-password', $attributes);?>
-                    <label class="txtFld">Email Address:</label><input class="txtFld" name="email" type="text"
+                    <label class="txtFld">Email Address:</label><input class="form-control txtFld" name="email" type="text"
                                                                        id="email"/>
 
                     <p class="clear">&nbsp;</p>

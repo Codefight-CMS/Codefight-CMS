@@ -251,15 +251,15 @@ CREATE TABLE IF NOT EXISTS `cf_form_item` (
 --
 
 INSERT INTO `cf_form_item` (`form_item_id`, `form_item_name`, `form_item_label`, `form_item_input_type`, `form_item_validations`, `form_item_default_value`, `form_item_parameters`, `form_item_data_type`, `form_item_grid`) VALUES
-(13, 'name', 'Your Name', 'textbox', 'trim|xss_clean', '', 'class="txtFld"', 'varchar', 1),
-(14, 'contact_email', 'Contact Email', 'textbox', 'trim|required|valid_email', '', 'class="txtFld"', 'varchar', 1),
+(13, 'name', 'Your Name', 'textbox', 'trim|xss_clean', '', 'class="form-control txtFld"', 'varchar', 1),
+(14, 'contact_email', 'Contact Email', 'textbox', 'trim|required|valid_email', '', 'class="form-control txtFld"', 'varchar', 1),
 (15, 'submit', 'Submit', 'submit', '', '', ' class="btn btn-primary"', 'varchar', 0),
-(16, 'message', 'Your Message', 'textarea', 'trim|required', '', 'class="txtFld"', 'text', 0),
+(16, 'message', 'Your Message', 'textarea', 'trim|required', '', 'class="form-control txtFld"', 'text', 0),
 (17, 'gender', 'Gender', 'radio', '', 'm=Male|f=Female', '', 'varchar', 1),
 (18, 'newsletters_options[]', 'Select newsletters you would like to subscribe', 'checkbox', '', '1=maths|2=computer|3=science', '', 'varchar', 0),
-(20, 'file', 'file', 'file', 'trim|required', '', 'class=&quot;txtFld&quot;', 'text', 0),
-(21, 'receive_by', 'Who do you want to receive this submission?', 'select', 'trim|required', 'Admin=Admin|Sales=Sales|Support=Support', 'class=&quot;txtFld&quot;', 'varchar', 0),
-(22, 'contact_number', 'Contact Number', 'textbox', 'trim', '', 'class="txtFld"', 'varchar', 1);
+(20, 'file', 'file', 'file', 'trim|required', '', 'class=&quot;form-control txtFld&quot;', 'text', 0),
+(21, 'receive_by', 'Who do you want to receive this submission?', 'select', 'trim|required', 'Admin=Admin|Sales=Sales|Support=Support', 'class=&quot;form-control txtFld&quot;', 'varchar', 0),
+(22, 'contact_number', 'Contact Number', 'textbox', 'trim', '', 'class="form-control txtFld"', 'varchar', 1);
 
 -- --------------------------------------------------------
 

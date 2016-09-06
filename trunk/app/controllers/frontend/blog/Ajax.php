@@ -116,7 +116,7 @@ class Ajax extends MY_Controller
                     $this->form_validation->set_rules('page_url', lang('page_url'), 'xss_clean|trim');
 
                     if ($this->form_validation->run() == FALSE) {
-                        echo '<div class="alert alert-error">' . validation_errors() . '</div>';
+                        echo '<div class="alert alert-error" role="alert">' . validation_errors() . '</div>';
                     }
                     else
                     {

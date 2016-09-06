@@ -36,21 +36,21 @@ foreach ($options_ary as $v) {
 <div class="page_create">
     <?php foreach ($_POST['page'] as $k => $v) { ?>
     <div class="left">
-        <label><?php echo __('ID'); ?>:</label><input class="txtFld" readonly="readonly"
+        <label><?php echo __('ID'); ?>:</label><input class="form-control txtFld" readonly="readonly"
                                                       name="page[<?php echo $k; ?>][id]" type="text"
                                                       id="page_<?php echo $k; ?>_id" value="<?php echo $v['id']; ?>"/>
 
         <p class="clear">&nbsp;</p>
 
         <label><?php echo __('STATUS'); ?>:</label>
-        <?php echo form_dropdown('page[' . $k . '][page_active]', $options_active, $v['page_active'], 'class="txtFld"'); ?>
+        <?php echo form_dropdown('page[' . $k . '][page_active]', $options_active, $v['page_active'], 'class="form-control txtFld"'); ?>
         <p class="clear">&nbsp;</p>
 
         <label><?php echo __('PAGE ACCESS BY'); ?>:</label>
-        <?php echo form_dropdown('page[' . $k . '][group_id][]', $options_group, $v['group_id'], 'class="txtFld"'); ?>
+        <?php echo form_dropdown('page[' . $k . '][group_id][]', $options_group, $v['group_id'], 'class="form-control txtFld"'); ?>
         <p class="clear">&nbsp;</p>
 
-        <label><?php echo __('TITLE'); ?>:</label><input class="txtFld" name="page[<?php echo $k; ?>][page_title]"
+        <label><?php echo __('TITLE'); ?>:</label><input class="form-control txtFld" name="page[<?php echo $k; ?>][page_title]"
                                                          type="text"
                                                          id="page_<?php echo $k; ?>_page_title"
                                                          value="<?php echo $v['page_title']; ?>"/>
@@ -90,10 +90,10 @@ foreach ($options_ary as $v) {
 
     <label><?php echo __('DESCRIPTION'); ?>:</label>
     <p class="clear">&nbsp;</p>
-    <textarea class="txtFld" name="page[<?php echo $k; ?>][page_body]" cols="180" rows="15" id="page_<?php echo $k; ?>_page_body"><?php echo form_prep($v['page_body']); ?></textarea>
+    <textarea class="form-control txtFld" name="page[<?php echo $k; ?>][page_body]" cols="180" rows="15" id="page_<?php echo $k; ?>_page_body"><?php echo form_prep($v['page_body']); ?></textarea>
     <p class="clear">&nbsp;</p><br/>
 
-    <label><?php echo __('PUBLISHED DATE'); ?>:</label><input class="txtFld" name="page[<?php echo $k; ?>][page_date]"
+    <label><?php echo __('PUBLISHED DATE'); ?>:</label><input class="form-control txtFld" name="page[<?php echo $k; ?>][page_date]"
                                                               type="text"
                                                               id="page_<?php echo $k; ?>_page_date"
                                                               value="<?php echo $v['page_date']; ?>"/>
@@ -103,14 +103,14 @@ foreach ($options_ary as $v) {
                                                                                       value="1"<?php if ($v['show_date']) {
             echo ' checked="checked"';
         } ?> id="page_<?php echo $k; ?>_show_date" name="page[<?php echo $k; ?>][show_date]"/>
-        <label><?php echo __('AUTHOR'); ?>:</label><input class="txtFld" name="page[<?php echo $k; ?>][page_author]"
+        <label><?php echo __('AUTHOR'); ?>:</label><input class="form-control txtFld" name="page[<?php echo $k; ?>][page_author]"
                                                           type="text"
                                                           id="page_<?php echo $k; ?>_page_author"
                                                           value="<?php echo $v['page_author']; ?>"/>&nbsp;&nbsp;<?php echo __('Show Author'); ?>
         &nbsp;<input type="checkbox" value="1"<?php if ($v['show_author']) {
             echo ' checked="checked"';
         } ?> id="page[<?php echo $k; ?>][show_author]" name="page[<?php echo $k; ?>][show_author]"/>
-<input class="txtFld" name="page[<?php echo $k; ?>][user_id]"
+<input class="form-control txtFld" name="page[<?php echo $k; ?>][user_id]"
                                                           type="hidden"
                                                           id="page_<?php echo $k; ?>_user_id"
                                                           value="<?php echo $v['user_id']; ?>"/>
@@ -123,7 +123,7 @@ foreach ($options_ary as $v) {
 
         <p class="clear">&nbsp;</p>
 
-        <label><?php echo __('TAGS'); ?>:</label><input class="txtFld" name="page[<?php echo $k; ?>][page_tag]"
+        <label><?php echo __('TAGS'); ?>:</label><input class="form-control txtFld" name="page[<?php echo $k; ?>][page_tag]"
                                                         type="text"
                                                         id="page_<?php echo $k; ?>_page_tag"
                                                         value="<?php //echo $v['page_tag']; ?>"
@@ -131,27 +131,27 @@ foreach ($options_ary as $v) {
 
         <p class="clear">&nbsp;</p>
     </div>
-    <label><?php echo __('META TITLE'); ?>:</label><input class="txtFld" name="page[<?php echo $k; ?>][page_meta_title]"
+    <label><?php echo __('META TITLE'); ?>:</label><input class="form-control txtFld" name="page[<?php echo $k; ?>][page_meta_title]"
                                                           type="text"
                                                           id="page_<?php echo $k; ?>_page_meta_title"
                                                           value="<?php echo $v['page_meta_title']; ?>"/>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('META KEYWORDS'); ?>:</label><input class="txtFld"
+    <label><?php echo __('META KEYWORDS'); ?>:</label><input class="form-control txtFld"
                                                              name="page[<?php echo $k; ?>][page_meta_keywords]"
                                                              type="text"
                                                              id="page_<?php echo $k; ?>_page_meta_keywords"
                                                              value="<?php echo $v['page_meta_keywords']; ?>"/>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('META DESCRIPTION'); ?>:</label><input class="txtFld"
+    <label><?php echo __('META DESCRIPTION'); ?>:</label><input class="form-control txtFld"
                                                                 name="page[<?php echo $k; ?>][page_meta_description]"
                                                                 type="text"
                                                                 id="page_<?php echo $k; ?>_page_meta_description"
                                                                 value="<?php echo $v['page_meta_description']; ?>"/>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('SORT'); ?>:</label><input class="txtFld" name="page[<?php echo $k; ?>][page_sort]" type="text"
+    <label><?php echo __('SORT'); ?>:</label><input class="form-control txtFld" name="page[<?php echo $k; ?>][page_sort]" type="text"
                                                     id="page_<?php echo $k; ?>_page_sort"
                                                     value="<?php echo $v['page_sort']; ?>"/>
     <p class="clear">&nbsp;</p>

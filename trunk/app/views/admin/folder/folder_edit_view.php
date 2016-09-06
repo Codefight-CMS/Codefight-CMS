@@ -20,25 +20,25 @@ foreach ($folder as $v) {
     <input name="file[<?php echo $k; ?>][id]" type="hidden" id="file_<?php echo $k; ?>_id"
            value="<?php echo $v['id']; ?>"/>
     <label><?php echo __('STATUS'); ?>:</label>
-    <?php echo form_dropdown('file[' . $k . '][active]', $options_active, $v['active'], 'class="txtFld"'); ?>
+    <?php echo form_dropdown('file[' . $k . '][active]', $options_active, $v['active'], 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
 
     <input name="file[<?php echo $k; ?>][parent]" type="hidden" id="file_<?php echo $k; ?>_parent"
            value="<?php echo $v['parent']; ?>"/>
     <?php
             /*
-		<label>PARENT FOLDER:</label><?php echo form_dropdown('file['.$k.'][parent]', $options_group, $v['parent'], 'class="txtFld"'); ?>
+		<label>PARENT FOLDER:</label><?php echo form_dropdown('file['.$k.'][parent]', $options_group, $v['parent'], 'class="form-control txtFld"'); ?>
 		<p class="clear">&nbsp;</p>
 		*/
     ?>
 
-    <label><?php echo __('FOLDER NAME'); ?>:</label><input class="txtFld" name="file[<?php echo $k; ?>][name]" type="text"
+    <label><?php echo __('FOLDER NAME'); ?>:</label><input class="form-control txtFld" name="file[<?php echo $k; ?>][name]" type="text"
                                       id="file_<?php echo $k; ?>_name" value="<?php echo $v['name']; ?>"/><em><?php echo __('do not use'); ?>
     <span style="color:#f00"> \ : / * ? " < | > </span></em>
 
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('THUMBNAIL'); ?>:</label><input class="txtFld" name="file_<?php echo $k; ?>" type="file"
+    <label><?php echo __('THUMBNAIL'); ?>:</label><input class="form-control txtFld" name="file_<?php echo $k; ?>" type="file"
                                     id="file_<?php echo $k; ?>"/>
 
     <p class="clear">&nbsp;</p>
@@ -76,7 +76,7 @@ foreach ($folder as $v) {
                 {
                     $groups[$g['group_id']] = $g['group_title'];
                 }
-                echo form_multiselect('file[' . $k . '][group][]', $groups, $v['group'], 'class="txtFld"');
+                echo form_multiselect('file[' . $k . '][group][]', $groups, $v['group'], 'class="form-control txtFld"');
                 ?>
             </td>
         </tr>
@@ -96,7 +96,7 @@ foreach ($folder as $v) {
                 {
                     $users[$g['user_id']] = $g['firstname'] . ' ' . $g['lastname'] . ' (' . $g['email'] . ')';
                 }
-                echo form_multiselect('file[' . $k . '][user][]', $users, $v['user'], 'class="txtFld"');
+                echo form_multiselect('file[' . $k . '][user][]', $users, $v['user'], 'class="form-control txtFld"');
                 ?>
             </td>
         </tr>

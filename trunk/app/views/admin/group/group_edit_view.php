@@ -10,12 +10,12 @@
     <label><?php echo __('GROUP ID'); ?>:</label><input readonly="readonly" name="group[<?php echo $k; ?>][id]" type="text"
                                    id="group_<?php echo $k; ?>_id" value="<?php echo $v['id']; ?>"/>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('TITLE'); ?>:</label><input class="txtFld" name="group[<?php echo $k; ?>][title]" type="text"
+    <label><?php echo __('TITLE'); ?>:</label><input class="form-control txtFld" name="group[<?php echo $k; ?>][title]" type="text"
                                 id="group_<?php echo $k; ?>_title" value="<?php echo $v['title']; ?>"/>
     <p class="clear">&nbsp;</p>
     <label><?php echo __('DESCRIPTION'); ?>:</label>
     <br/>
-    <textarea class="txtFld" name="group[<?php echo $k; ?>][description]" cols="35" rows="5"
+    <textarea class="form-control txtFld" name="group[<?php echo $k; ?>][description]" cols="35" rows="5"
               id="group_<?php echo $k; ?>_description"><?php echo $v['description']; ?></textarea>
     <p class="clear">&nbsp;</p>
 

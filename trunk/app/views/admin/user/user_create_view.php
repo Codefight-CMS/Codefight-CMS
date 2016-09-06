@@ -20,35 +20,35 @@ foreach ($g_rslt as $v) {
 <div class="user_create">
 
     <label><?php echo __('Status'); ?>:</label>
-    <?php echo form_dropdown('active', $options_active, set_value('active'), 'class="txtFld"'); ?>
+    <?php echo form_dropdown('active', $options_active, set_value('active'), 'class="form-control txtFld"'); ?>
 
     <p class="clear">&nbsp;</p>
 
     <label><?php echo __('Is Admin'); ?>:</label>
-    <?php echo form_dropdown('is_admin', $yes_no, set_value('is_admin'), 'class="txtFld"'); ?>
+    <?php echo form_dropdown('is_admin', $yes_no, set_value('is_admin'), 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
 
     <label><?php echo __('Is Author'); ?>:</label>
-    <?php echo form_dropdown('is_author', $yes_no, set_value('is_author'), 'class="txtFld"'); ?>
+    <?php echo form_dropdown('is_author', $yes_no, set_value('is_author'), 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('E-mail'); ?>:</label><input class="txtFld" name="email" type="text" id="email"
+    <label><?php echo __('E-mail'); ?>:</label><input class="form-control txtFld" name="email" type="text" id="email"
                                                      value="<?php echo set_value('email'); ?>"/>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('Password'); ?>:</label><input class="txtFld" name="password" type="password" id="password"/>
+    <label><?php echo __('Password'); ?>:</label><input class="form-control txtFld" name="password" type="password" id="password"/>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('Firstname'); ?>:</label><input class="txtFld" name="firstname" type="text" id="firstname"
+    <label><?php echo __('Firstname'); ?>:</label><input class="form-control txtFld" name="firstname" type="text" id="firstname"
                                                          value="<?php echo set_value('firstname'); ?>"/>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('Lastname'); ?>:</label><input class="txtFld" name="lastname" type="text" id="lastname"
+    <label><?php echo __('Lastname'); ?>:</label><input class="form-control txtFld" name="lastname" type="text" id="lastname"
                                                         value="<?php echo set_value('lastname'); ?>"/>
 
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('Profile Link'); ?>:</label><input class="txtFld" name="profile_link"
+    <label><?php echo __('Profile Link'); ?>:</label><input class="form-control txtFld" name="profile_link"
                                                         type="text"
                                                         id="profile_link"
                                                         value="<?php echo set_value('profile_link'); ?>"/>
@@ -57,12 +57,12 @@ foreach ($g_rslt as $v) {
     <p class="clear">&nbsp;</p>
 
     <label><?php echo __('Group'); ?>:</label>
-    <?php echo form_dropdown('group_id', $options_group, set_value('group_id'), 'class="txtFld"'); ?>
+    <?php echo form_dropdown('group_id', $options_group, set_value('group_id'), 'class="form-control txtFld"'); ?>
 
     <p class="clear">&nbsp;</p>
     <label><?php echo __('Profile'); ?>:</label>
     <br/>
-    <textarea class="txtFld" name="profile" cols="80" rows="15"
+    <textarea class="form-control txtFld" name="profile" cols="80" rows="15"
               id="profile"><?php echo form_prep(set_value('profile')); ?></textarea>
 
 	      <p class="clear">&nbsp;</p>

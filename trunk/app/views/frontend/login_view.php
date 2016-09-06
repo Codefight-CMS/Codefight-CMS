@@ -8,9 +8,9 @@
                 <div class="loginBg">
 
                     <?php $attributes = array('id' => 'pLoginForm'); echo form_open('registration/login', $attributes);?>
-                    <label class="txtFld">Email Address:</label><input class="txtFld" name="email" type="text"
+                    <label class="txtFld">Email Address:</label><input class="form-control txtFld" name="email" type="text"
                                                                        id="email"/>
-                    <label class="txtFld">Password:</label><input class="txtFld" name="password" type="password"
+                    <label class="txtFld">Password:</label><input class="form-control txtFld" name="password" type="password"
                                                                   id="password"/>
 
                     <p class="clear">&nbsp;</p>

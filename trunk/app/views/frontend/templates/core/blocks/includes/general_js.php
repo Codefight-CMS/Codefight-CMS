@@ -7,7 +7,7 @@
             return;
         }
         else {
-            jQuery('#loading_language').html('<p class="alert alert-error"><img alt="<?php echo lang('processing_wait');?>" src="<?php echo skin_url('global/images','ajax-loader.gif') ?>" border="0" width="128" height="15"/></p>');
+            jQuery('#loading_language').html('<p class="alert alert-error" role="alert"><img alt="<?php echo lang('processing_wait');?>" src="<?php echo skin_url('global/images','ajax-loader.gif') ?>" border="0" width="128" height="15"/></p>');
 
             jQuery.post(
                     'page/ajax/set-language',

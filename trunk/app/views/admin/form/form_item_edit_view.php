@@ -20,27 +20,27 @@
     <label><?php echo __('ID'); ?>:</label><input readonly="readonly" name="item[<?php echo $k; ?>][form_item_id]" type="text"
                              id="item_<?php echo $k; ?>_form_item_id" value="<?php echo $v['form_item_id']; ?>"/>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('LABEL'); ?>:</label><input class="txtFld" name="item[<?php echo $k; ?>][form_item_label]" type="text"
+    <label><?php echo __('LABEL'); ?>:</label><input class="form-control txtFld" name="item[<?php echo $k; ?>][form_item_label]" type="text"
                                 id="item_<?php echo $k; ?>_form_item_label"
                                 value="<?php echo $v['form_item_label']; ?>"/>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('NAME'); ?>:</label><input class="txtFld" name="item[<?php echo $k; ?>][form_item_name]" type="text"
+    <label><?php echo __('NAME'); ?>:</label><input class="form-control txtFld" name="item[<?php echo $k; ?>][form_item_name]" type="text"
                                id="item_<?php echo $k; ?>_form_item_name" value="<?php echo $v['form_item_name']; ?>"/>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('INPUT TYPE'); ?>:</label><?php echo form_dropdown("item[$k][form_item_input_type]", $form_option, $v['form_item_input_type'], 'class="txtFld"'); ?>
+    <label><?php echo __('INPUT TYPE'); ?>:</label><?php echo form_dropdown("item[$k][form_item_input_type]", $form_option, $v['form_item_input_type'], 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('DATA TYPE'); ?>:</label><?php echo form_dropdown("item[$k][form_item_data_type]", $form_data_option, $v['form_item_data_type'], 'class="txtFld"'); ?>
+    <label><?php echo __('DATA TYPE'); ?>:</label><?php echo form_dropdown("item[$k][form_item_data_type]", $form_data_option, $v['form_item_data_type'], 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('VALIDATIONS'); ?>:</label><input class="txtFld" name="item[<?php echo $k; ?>][form_item_validations]" type="text"
+    <label><?php echo __('VALIDATIONS'); ?>:</label><input class="form-control txtFld" name="item[<?php echo $k; ?>][form_item_validations]" type="text"
                                       id="item_<?php echo $k; ?>_form_item_validations"
                                       value="<?php echo $v['form_item_validations']; ?>"/>
     <p class="clear">&nbsp;</p>
-    <label class="lblclear"><?php echo __('DEFAULT VALUE'); ?>:</label><input class="txtFld"
+    <label class="lblclear"><?php echo __('DEFAULT VALUE'); ?>:</label><input class="form-control txtFld"
                                                          name="item[<?php echo $k; ?>][form_item_default_value]"
                                                          type="text" id="item_<?php echo $k; ?>_form_item_default_value"
                                                          value="<?php echo $v['form_item_default_value']; ?>"/><br/>
     <p class="clear">&nbsp;</p>
-    <label class="lblclear"><?php echo __('PARAMETERS'); ?>:</label><textarea class="txtFld"
+    <label class="lblclear"><?php echo __('PARAMETERS'); ?>:</label><textarea class="form-control txtFld"
                                                          name="item[<?php echo $k; ?>][form_item_parameters]"
                                                          id="item_<?php echo $k; ?>_form_item_parameters"><?php echo ($v['form_item_parameters']); ?></textarea>
     <br/>

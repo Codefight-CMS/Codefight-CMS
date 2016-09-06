@@ -125,7 +125,7 @@ class Ajax extends MY_Controller
         $remaining_item = $query->result_array();
 
         if (count($remaining_item) > 0) {
-            echo '<select class="txtFld" name="selectItem' . $group_id . '" id="selectItem' . $group_id . '">';
+            echo '<select class="form-control txtFld" name="selectItem' . $group_id . '" id="selectItem' . $group_id . '">';
 
             foreach ($remaining_item as $v)
             {

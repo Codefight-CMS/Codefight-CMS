@@ -23,28 +23,28 @@
         ) ?>
 <div class="group_create">
     <label><?php echo __('LABEL'); ?>:</label>
-    <input name="form_item_label" type="text" class="txtFld" id="form_item_label"
+    <input name="form_item_label" type="text" class="form-control txtFld" id="form_item_label"
            value="<?php echo set_value('form_item_label'); ?>" maxlength="50"/>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('NAME'); ?>:</label><input class="txtFld" name="form_item_name" type="text" id="form_item_name"
+    <label><?php echo __('NAME'); ?>:</label><input class="form-control txtFld" name="form_item_name" type="text" id="form_item_name"
                                value="<?php echo set_value('form_item_name'); ?>" maxlength="50"/>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('INPUT TYPE'); ?>:</label><?php echo form_dropdown("form_item_input_type", $form_option, set_value('form_item_input_type'), 'class="txtFld"'); ?>
+    <label><?php echo __('INPUT TYPE'); ?>:</label><?php echo form_dropdown("form_item_input_type", $form_option, set_value('form_item_input_type'), 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('DATA TYPE'); ?>:</label><?php echo form_dropdown("form_item_data_type", $form_data_option, set_value('form_item_data_type'), 'class="txtFld"'); ?>
+    <label><?php echo __('DATA TYPE'); ?>:</label><?php echo form_dropdown("form_item_data_type", $form_data_option, set_value('form_item_data_type'), 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('VALIDATIONS'); ?></label><input class="txtFld" name="form_item_validations" type="text" id="form_item_validations"
+    <label><?php echo __('VALIDATIONS'); ?></label><input class="form-control txtFld" name="form_item_validations" type="text" id="form_item_validations"
                                      value="<?php echo set_value('form_item_validations'); ?>"/><br/>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('DEFAULT VALUE'); ?></label><input class="txtFld" name="form_item_default_value" type="text"
+    <label><?php echo __('DEFAULT VALUE'); ?></label><input class="form-control txtFld" name="form_item_default_value" type="text"
                                        id="form_item_default_value"
                                        value="<?php echo set_value('form_item_default_value'); ?>"/><br/>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('PARAMETERS'); ?></label><textarea class="txtFld" name="form_item_parameters"
+    <label><?php echo __('PARAMETERS'); ?></label><textarea class="form-control txtFld" name="form_item_parameters"
                                        id="form_item_parameters"><?php echo set_value('form_item_parameters'); ?></textarea><br/>
 
     <p class="clear">&nbsp;</p>
