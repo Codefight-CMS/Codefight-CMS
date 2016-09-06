@@ -78,6 +78,9 @@ if (!isset($head_includes) || !is_array($head_includes)) {
 
 </head>
 <body>
+<!-- START:: Top Menu | General Helper -->
+<?php echo get_top_menu(); ?>
+<!-- END:: Top Menu -->
 
 <noscript>
     <div id="js_disabled" class="error center"><strong><?php echo __('This site works better with javascript
@@ -85,46 +88,11 @@ if (!isset($head_includes) || !is_array($head_includes)) {
 </noscript>
 
 <div class="siteContainer">
-    <div class="header">
-        <div class="logo"><?php echo anchor('admin/', 'Codefight CMS');?></div>
-        <div class="userLogged">
-			<span class="userInfo"><?php
-
-                //Login or Logout Link | @todo:: Probably move to general helper
-                if ($this->session->userdata('logged_in') === '1') {
-
-                    $loggedData = $this->session->userdata('loggedData');
-
-                    echo $loggedData['firstname'] . ' ' . $loggedData['lastname'] . " ( '" . $loggedData['group_title'] . "' ) | " . anchor('registration/logout', 'Logout');
-
-                }
-                else
-                {
-
-                    echo anchor('registration/login', 'Login');
-
-                }
-                ?> |
-
-			</span>
-
-			<span class="siteInfo"><?php
-
-                echo '<a href="' . base_url() . '">'.__('view site').'</a>'; ?>
-                | <?php $format = 'DATE_RFC822'; $time = time(); echo standard_date($format, $time); ?>
-			</span>
-
-        </div>
-    </div>
-
     <div class="pageContainer">
 
         <!-- START:: Global Messages | General Helper -->
         <?php echo getMessages(); ?>
         <!-- END:: Global Messages -->
-        <!-- START:: Top Menu | General Helper -->
-        <?php echo get_top_menu(); ?>
-        <!-- END:: Top Menu -->
         <?php //die('1233'); ?>
 		<div class="controls-wrapper" style="border:1px solid #dedede;padding:5px;display:none;">
 			<div class="search-controls">

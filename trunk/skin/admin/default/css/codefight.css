@@ -1,0 +1,11 @@
+nav.codefight-main-navbar ul.navbar-nav>li>a {font-size: 1.2em;}
+nav.codefight-footer-navbar ul.navbar-nav>li>a {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	line-height: 15px;
+}
+
+
+nav.codefight-footer-navbar {
+	min-height: 20px;
+}
