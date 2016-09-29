@@ -261,7 +261,7 @@ class Page extends MY_Controller
     {
 
         $data = '';
-        Library('asset')->addJs('tiny_mce/tiny_mce');
+        Library('asset')->addJs('tinymce/tinymce.min');
         $data['authors'] = $this->get_authors();
 
         $id_array = array();
