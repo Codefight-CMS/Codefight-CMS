@@ -33,7 +33,7 @@ if (!isset($head_includes) || !is_array($head_includes)) {
         <script>
             tinymce.init({
                 selector: 'textarea',
-                height: 500,
+                height: 300,
                 theme: 'modern',
                 plugins: [
                     'advlist autolink lists link image charmap print preview hr anchor pagebreak',

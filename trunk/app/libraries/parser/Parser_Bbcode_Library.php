@@ -18,10 +18,11 @@ class Parser_Bbcode_Library extends MY_Library
 
     /**
      * @param string $html_string
-     * @param array  $matches
+     * @param array $matches
      *
      * @return string
-     */public function parse($html_string = '', $matches = array())
+     */
+    public function parse($html_string = '', $matches = array())
     {
         return preg_replace(array_keys($this->pattern_replacement), array_values($this->pattern_replacement), $html_string);
     }
