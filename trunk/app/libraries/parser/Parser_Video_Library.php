@@ -18,15 +18,18 @@ class Parser_Video_Library extends MY_Library
      */
     public function parse($html_string = '', $matches = array())
     {
-        if(!isset($matches[2]) || !isset($matches[2][0])){
-            return $html_string;
+        foreach($matches as $k => $match){
+            if(!isset($matches[2]) || !isset($matches[2][$k])){
+                continue;
+            }
+            $video = preg_replace('#\[|\]|<br\s*/?\s*>#', "\n", $matches[2][$k]);
+            $video = explode("\n", trim($video));
+            $video = implode("&", $video);
+            parse_str($video, $output);
+            $video = $this->_get_video_script($output);
+            $html_string = str_replace($matches[0][$k], $video, $html_string);
         }
-        $video = preg_replace('#\[|\]|<br\s*/?\s*>#', "\n", $matches[2][0]);
-        $video = explode("\n", trim($video));
-        $video = implode("&", $video);
-        parse_str($video, $output);
-        $video = $this->_get_video_script($output);
-        return str_replace($matches[0][0], $video, $html_string);
+        return $html_string;
     }
 
     private function _get_video_script($params)
@@ -51,7 +54,7 @@ class Parser_Video_Library extends MY_Library
     private function _get_video_id($params)
     {
         if(isset($params['id'])){
-            return $params['id'];
+            return trim($params['id'], "'\"");
         }
         return 'video-' . time();
     }
@@ -60,7 +63,7 @@ class Parser_Video_Library extends MY_Library
     {
         $width = 320;
         if(isset($params['width'])){
-            $width = $params['width'];
+            $width = trim($params['width'], "'\"");
         }
         return " width='{$width}' ";
     }
@@ -69,7 +72,7 @@ class Parser_Video_Library extends MY_Library
     {
         $height = 0;
         if(isset($params['height'])){
-            $height = $params['height'];
+            $height = trim($params['height'], "'\"");
         }
         return $height ? " height='{$height}' " : '';
     }
@@ -78,7 +81,7 @@ class Parser_Video_Library extends MY_Library
     {
         $src = 'https://www.youtube.com/watch?v=X-bfCyGgJSU';
         if(isset($params['src'])){
-            $src = $params['src'];
+            $src = trim($params['src'], "'\"");
         }
         return $src;
     }
