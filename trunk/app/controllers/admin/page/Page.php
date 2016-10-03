@@ -26,40 +26,35 @@
 /**
  * Admin Page Controller
  */
-class Page extends MY_Controller {
-
-    var $authors=array();
+class Page extends MY_Controller
+{
+    private $authors = array();
 
     public function __construct()
     {
-        parent::MY_Controller();
+        parent::__construct();
 
         $this->load->helper(array('form', 'text'));
     }
 
     public function get_authors()
     {
-	if(!count($this->authors))
-	{
-		$this->authors = Model('user')->get_authors();
-	}
+        if (!count($this->authors)) {
+            $this->authors = Model('user')->get_authors();
+        }
 
-	return $this->authors;
+        return $this->authors;
     }
 
     public function index()
     {
         if (isset($_POST['create'])) {
             $this->_create();
-        }
-        else if (isset($_POST['delete'])) {
+        } else if (isset($_POST['delete'])) {
             $this->_delete();
-        }
-        else if (isset($_POST['edit'])) {
+        } else if (isset($_POST['edit'])) {
             $this->_edit();
-        }
-        else
-        {
+        } else {
             $data = '';
 
             //load all required include files
@@ -94,7 +89,7 @@ class Page extends MY_Controller {
     function _create()
     {
         $data = '';
-	$data['authors'] = $this->get_authors();
+        $data['authors'] = $this->get_authors();
 
         $this->load->library('form_validation');
 
@@ -126,9 +121,7 @@ class Page extends MY_Controller {
                 setMessages($msg, 'error');
             }
 
-        }
-        else
-        {
+        } else {
             if (empty($_POST['menu_id'])) $_POST['menu_id'] = array(0);
             if (empty($_POST['websites_id'])) $_POST['websites_id'] = array(0);
 
@@ -166,25 +159,25 @@ class Page extends MY_Controller {
             $group_id = $this->input->post('group_id');
 
             $this->db->insert('page', array(
-                                           'page_active' => $page_active,
-                                           'page_title' => $page_title,
-                                           'page_blurb' => $page_blurb,
-                                           //'page_blurb_length' => $page_blurb_length,
-                                           'page_body' => $page_body,
-                                           'menu_id' => $menu_id,
-                                           'websites_id' => $websites_id,
-                                           'user_id' => $user_id,
-                                           'page_author' => $page_author,
-                                           'page_tag' => $page_tag,
-                                           'page_type' => $this->uri->segment(3, 'page'),
-                                           'page_date' => $page_date,
-                                           'show_date' => $show_date,
-                                           'show_author' => $show_author,
-                                           'allow_comment' => $allow_comment,
-                                           'page_meta_title' => $page_meta_title,
-                                           'page_meta_keywords' => $page_meta_keywords,
-                                           'page_meta_description' => $page_meta_description,
-                                           'page_sort' => $page_sort));
+                'page_active' => $page_active,
+                'page_title' => $page_title,
+                'page_blurb' => $page_blurb,
+                //'page_blurb_length' => $page_blurb_length,
+                'page_body' => $page_body,
+                'menu_id' => $menu_id,
+                'websites_id' => $websites_id,
+                'user_id' => $user_id,
+                'page_author' => $page_author,
+                'page_tag' => $page_tag,
+                'page_type' => $this->uri->segment(3, 'page'),
+                'page_date' => $page_date,
+                'show_date' => $show_date,
+                'show_author' => $show_author,
+                'allow_comment' => $allow_comment,
+                'page_meta_title' => $page_meta_title,
+                'page_meta_keywords' => $page_meta_keywords,
+                'page_meta_description' => $page_meta_description,
+                'page_sort' => $page_sort));
             $page_id = $this->db->insert_id();
 
             if ($page_id) {
@@ -194,8 +187,7 @@ class Page extends MY_Controller {
                 if (isset($page_tag)) {
                     $page_tag = explode(',', $page_tag);
 
-                    if (is_array($page_tag) && count($page_tag) > 0) foreach ($page_tag as $v)
-                    {
+                    if (is_array($page_tag) && count($page_tag) > 0) foreach ($page_tag as $v) {
                         //clean tag
                         $tag = url_title($v);
 
@@ -210,9 +202,7 @@ class Page extends MY_Controller {
                 $msg = array('success' => "<p>New Page <strong> $page_title </strong> Successfully Added</p>");
                 setMessages($msg, 'success');
 
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => "<p>SYSTEM ERROR! Could't add page. Please try again later.</p>");
                 setMessages($msg, 'error');
             }
@@ -230,9 +220,7 @@ class Page extends MY_Controller {
 
         if (isset($_POST['select'])) {
             $id_array = $_POST['select'];
-        }
-        else
-        {
+        } else {
             $id_array = array();
             $msg = array('error' => "<p>You must select atleast one page to delete.</p>");
             setMessages($msg, 'error');
@@ -241,8 +229,7 @@ class Page extends MY_Controller {
         !is_array($id_array) ? $id_array = array() : '';
 
         $msg = false;
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             $this->db->where('page_id', $id);
@@ -256,9 +243,7 @@ class Page extends MY_Controller {
                 }
                 $msg = array('success' => "<p>Selected page(s) deleted successfully.</p>");
                 $type = 'success';
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => "<p>Error! couldn't delete.</p>");
                 $type = 'error';
             }
@@ -276,17 +261,15 @@ class Page extends MY_Controller {
     {
 
         $data = '';
-        Library('asset')->addJs('tiny_mce/tiny_mce');
-	$data['authors'] = $this->get_authors();
+        Library('asset')->addJs('tinymce/tinymce.min');
+        $data['authors'] = $this->get_authors();
 
         $id_array = array();
 
         if (!isset($_POST['page'])) {
             if (isset($_POST['select'])) {
                 $id_array = $_POST['select'];
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => "<p>You must select atleast one page to edit</p>");
                 setMessages($msg, 'error');
 
@@ -300,15 +283,13 @@ class Page extends MY_Controller {
         !is_array($id_array) ? $id_array = array() : '';
 
         //START: for the first page load, get data from database
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             $this->db->where('page_id', $id);
             $query = $this->db->get('page');
 
-            foreach ($query->result() as $row)
-            {
+            foreach ($query->result() as $row) {
                 $_POST['page'][$row->page_id]['id'] = $row->page_id;
                 $_POST['page'][$row->page_id]['page_active'] = $row->page_active;
                 $_POST['page'][$row->page_id]['page_title'] = $row->page_title;
@@ -336,8 +317,7 @@ class Page extends MY_Controller {
 
             //$test = $query->result_array();
 
-            foreach ($query->result() as $row)
-            {
+            foreach ($query->result() as $row) {
                 $_POST['page'][$row->page_id]['group_id'] = explode('_', $row->group_id);
             }
 
@@ -348,8 +328,7 @@ class Page extends MY_Controller {
 
         //START: clean data and update in database
         if ($this->input->post('edit') == 'Update' && isset($_POST['page']) && is_array($_POST['page'])) {
-            foreach ($_POST['page'] as $v)
-            {
+            foreach ($_POST['page'] as $v) {
 
                 if (empty($v['menu_id'])) $v['menu_id'][0] = 0;
                 if (empty($v['websites_id'])) $v['websites_id'][0] = 0;
@@ -390,23 +369,20 @@ class Page extends MY_Controller {
 
                 //clean up menu ids
                 $menu_id = array();
-                foreach ($v['menu_id'] as $w)
-                {
+                foreach ($v['menu_id'] as $w) {
                     $w = xss_clean($w);
                     $menu_id[$w] = $w;
                 }
 
                 $websites_id = array();
-                foreach ($v['websites_id'] as $w)
-                {
+                foreach ($v['websites_id'] as $w) {
                     $w = xss_clean($w);
                     $websites_id[$w] = $w;
                 }
 
                 //clean up group id, selected from multi select
                 $group_id = array();
-                foreach ($v['group_id'] as $w)
-                {
+                foreach ($v['group_id'] as $w) {
                     $group_id[] = xss_clean($w);
                 }
 
@@ -449,24 +425,24 @@ class Page extends MY_Controller {
                     //update page
                     $this->db->where('page_id', $id);
                     $this->db->update('page', array(
-                                                   'page_active' => $page_active,
-                                                   'page_title' => $page_title,
-                                                   'page_blurb' => $page_blurb,
-                                                   //'page_blurb_length' => $page_blurb_length,
-                                                   'page_body' => $page_body,
-                                                   'user_id' => $user_id,
-                                                   'page_author' => $page_author,
-                                                   'page_tag' => $page_tag,
-                                                   'page_date' => $page_date,
-                                                   'show_date' => $show_date,
-                                                   'show_author' => $show_author,
-                                                   'allow_comment' => $allow_comment,
-                                                   'menu_id' => ',' . implode(',', $menu_id) . ',',
-                                                   'websites_id' => ',' . implode(',', $websites_id) . ',',
-                                                   'page_meta_title' => $page_meta_title,
-                                                   'page_meta_keywords' => $page_meta_keywords,
-                                                   'page_meta_description' => $page_meta_description,
-                                                   'page_sort' => $page_sort));
+                        'page_active' => $page_active,
+                        'page_title' => $page_title,
+                        'page_blurb' => $page_blurb,
+                        //'page_blurb_length' => $page_blurb_length,
+                        'page_body' => $page_body,
+                        'user_id' => $user_id,
+                        'page_author' => $page_author,
+                        'page_tag' => $page_tag,
+                        'page_date' => $page_date,
+                        'show_date' => $show_date,
+                        'show_author' => $show_author,
+                        'allow_comment' => $allow_comment,
+                        'menu_id' => ',' . implode(',', $menu_id) . ',',
+                        'websites_id' => ',' . implode(',', $websites_id) . ',',
+                        'page_meta_title' => $page_meta_title,
+                        'page_meta_keywords' => $page_meta_keywords,
+                        'page_meta_description' => $page_meta_description,
+                        'page_sort' => $page_sort));
                     //update page access
                     $this->db->where('page_id', $id);
                     $this->db->delete('page_access');
@@ -476,8 +452,7 @@ class Page extends MY_Controller {
                     //update page tags
                     if (isset($page_tag)) {
                         $page_tag = explode(',', $page_tag);
-                        if (is_array($page_tag) && count($page_tag) > 0) foreach ($page_tag as $v)
-                        {
+                        if (is_array($page_tag) && count($page_tag) > 0) foreach ($page_tag as $v) {
                             //clean tag
                             $tag = url_title($v);
 

@@ -23,19 +23,19 @@ foreach ($folder as $v) {
     if ($active == '') $active = 1;
     ?>
 
-    <?php echo form_dropdown('active', $options_active, $active, 'class="txtFld"'); ?>
+    <?php echo form_dropdown('active', $options_active, $active, 'class="form-control txtFld"'); ?>
 
     <p class="clear">&nbsp;</p>
     <label><?php echo __('PARENT FOLDER'); ?>:</label><?php echo form_dropdown('parent', $options_group,
-                                                                                     set_value('parent'), 'class="txtFld"'); ?>
+                                                                                     set_value('parent'), 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('FOLDER NAME'); ?>:</label><input class="txtFld" name="name" type="text" id="name"
+    <label><?php echo __('FOLDER NAME'); ?>:</label><input class="form-control txtFld" name="name" type="text" id="name"
                                       value="<?php echo set_value('name'); ?>"/><em><?php echo __('do not use'); ?> <span style="color:#f00"> \ : / * ? " < | > </span></em>
 
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('THUMBNAIL'); ?>:</label><input class="txtFld" name="file" type="file" id="file"/>
+    <label><?php echo __('THUMBNAIL'); ?>:</label><input class="form-control txtFld" name="file" type="file" id="file"/>
 
     <p class="clear">&nbsp;</p>
 
@@ -73,7 +73,7 @@ foreach ($folder as $v) {
                 {
                     $groups[$g['group_id']] = $g['group_title'];
                 }
-                echo form_multiselect('group[]', $groups, set_value('group[]'), 'class="txtFld"');
+                echo form_multiselect('group[]', $groups, set_value('group[]'), 'class="form-control txtFld"');
                 ?>
             </td>
         </tr>
@@ -93,7 +93,7 @@ foreach ($folder as $v) {
                 {
                     $users[$g['user_id']] = $g['firstname'] . ' ' . $g['lastname'] . ' (' . $g['email'] . ')';
                 }
-                echo form_multiselect('user[]', $users, set_value('user[]'), 'class="txtFld"');
+                echo form_multiselect('user[]', $users, set_value('user[]'), 'class="form-control txtFld"');
                 ?>
             </td>
         </tr>

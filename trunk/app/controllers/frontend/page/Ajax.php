@@ -28,16 +28,9 @@
  */
 class Ajax extends MY_Controller
 {
-
-    /**
-     * Constructor method
-     *
-     * @access public
-     * @return void
-     */
     public function __construct()
     {
-        parent::MY_Controller();
+        parent::__construct();
     }
 
     /**
@@ -130,7 +123,7 @@ class Ajax extends MY_Controller
                     $this->form_validation->set_rules('page_url', lang('page_url'), 'xss_clean|trim');
 
                     if ($this->form_validation->run() == FALSE) {
-                        echo '<div class="alert alert-danger alert-error"><a class="close" data-dismiss="alert" href="'.current_url().'#">&times;</a>' . validation_errors() . '</div>';
+                        echo '<div class="alert alert-danger alert-error" role="alert"><a class="close" data-dismiss="alert" href="'.current_url().'#">&times;</a>' . validation_errors() . '</div>';
                         if(form_error('spam')){
                             echo '<script>jQuery(\'#captcha\').attr(\'src\', \''.base_url().'tools/captcha/?\' + Math.floor(new Date().getTime() / 1000));</script>';
                         }
@@ -149,7 +142,7 @@ class Ajax extends MY_Controller
                             $this->db->insert('page_comment', array('name' => $name, 'page_url' => $page_url, 'email' => $email, 'url' => $url, 'comment' => $comment, 'page_id' => $page_id));
 
                             if ($this->db->insert_id()) {
-                                echo "<p class='alert alert-success'>
+                                echo "<p class='alert alert-success' role='alert'>
 							You Just Posted: [<em>Subject to approval</em>] <br />
 							--------------------------------------------<br />
 							name: $name<br />

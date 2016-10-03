@@ -5,9 +5,6 @@ trunk/app/cache/*
 !trunk/app/cache/.htaccess
 !trunk/app/cache/index.html
 trunk/app/config/development
-trunk/app/logs/*
-!trunk/app/logs/.htaccess
-!trunk/app/logs/index.html
 trunk/media/cache/*
 trunk/media/cache/!index.html
 trunk/skin/frontend/default/cache/*
@@ -22,3 +19,16 @@ trunk/skin/admin/default/cache/*
 trunk/skin/admin/default/cache/!index.html
 /sql.sql
 trunk/skin/global/js/cfShare.js
+
+trunk/app/logs/*
+!trunk/app/logs/.htaccess
+!trunk/app/logs/index.html
+trunk/writable/logs/*
+!trunk/writable/logs/.htaccess
+!trunk/writable/logs/index.html
+trunk/writable/cache/*
+!trunk/writable/cache/.htaccess
+!trunk/writable/cache/index.html
+trunk/writable/uploads/*
+!trunk/writable/uploads/.htaccess
+!trunk/writable/uploads/index.html

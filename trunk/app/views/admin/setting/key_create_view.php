@@ -12,19 +12,19 @@
     'radio' => __('Radio Buttons')
 ) ?>
 <div class="group_create">
-    <label><?php echo __('KEY'); ?>:</label><input class="txtFld" name="setting_key" type="text" id="setting_key"
+    <label><?php echo __('KEY'); ?>:</label><input class="form-control txtFld" name="setting_key" type="text" id="setting_key"
                                                    value="<?php echo set_value('setting_key'); ?>"/>
 
     <p class="clear">&nbsp;</p>
     <label><?php echo __('INFO'); ?>:</label>
-    <input name="setting_info" type="text" class="txtFld" id="setting_info"
+    <input name="setting_info" type="text" class="form-control txtFld" id="setting_info"
            value="<?php echo set_value('setting_info'); ?>" maxlength="100"/>
 
     <p class="clear">&nbsp;</p>
     <label><?php echo __('FORM TYPE'); ?>:</label><?php echo form_dropdown("setting_form", $form_option,
-                                                                           set_value('setting_form'), 'class="txtFld"'); ?>
+                                                                           set_value('setting_form'), 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('OPTIONS'); ?>:[<?php echo __('separated with bar'); ?>(|)]</label><input class="txtFld"
+    <label><?php echo __('OPTIONS'); ?>:[<?php echo __('separated with bar'); ?>(|)]</label><input class="form-control txtFld"
                                                                                                    name="setting_option"
                                                                                                    type="text"
                                                                                                    id="setting_option"

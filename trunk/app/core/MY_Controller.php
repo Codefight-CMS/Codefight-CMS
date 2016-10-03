@@ -4,8 +4,8 @@
  | CodeFight cms since version 1.0
  | Author: Damodar Bashyal
  */
-
-class MY_Controller extends CI_Controller
+require_once APPPATH.'core/CF_Controller.php';
+class MY_Controller extends CF_Controller
 {
 
     private $_data          = array();
@@ -36,7 +36,6 @@ class MY_Controller extends CI_Controller
      */
     public function _remap($method)
     {
-
         //print_r(get_class_methods(get_class($this)));
         if ($this->uri->segment(1, 0) != 'admin') {
             $method = $this->uri->segment(2, 'index');
@@ -86,7 +85,7 @@ class MY_Controller extends CI_Controller
         }
     }
 
-    public function MY_Controller($load = array())
+    public function __construct($load = array())
     {
 
         parent::__construct();
@@ -100,7 +99,9 @@ class MY_Controller extends CI_Controller
         //Model('setting')->load_setting();
 
         //if $load is defined load them
-        foreach ((array)$load as $k => $v)
+        if(empty($load)) $load = array();
+        $load = (array)$load;
+        foreach ($load as $k => $v)
         {
             //explode files separated with +
             $v_array = explode('+', $v);

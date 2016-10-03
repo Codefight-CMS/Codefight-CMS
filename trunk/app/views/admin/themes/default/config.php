@@ -5,7 +5,7 @@
 $theme = array();
 
 // load css files
-$theme['css'] = array('bootstrap-responsive.min', 'bootstrap.min', 'codefight', 'shThemeDefault', 'shCore');
+$theme['css'] = array('helper', 'bootstrap.min', 'highlight.default', 'bootstrap-theme.min', 'font-awesome.min', 'codefight');
 
 // load js files
-$theme['js'] = array('jquery', 'jquery-ui.min', 'bootstrap.min', 'bootstrap-alert', 'shCore', 'shBrushPhp', 'general', 'codefight-bootstrap');
+$theme['js'] = array('jquery', 'jquery-ui.min', 'bootstrap.min', 'bootstrap-alert', 'codefight-bootstrap');

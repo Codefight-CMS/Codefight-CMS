@@ -9,18 +9,18 @@
                 <div class="loginBg">
 
                     <?php $attributes = array('id' => 'pLoginForm'); echo form_open('registration', $attributes);?>
-                    <label for="First Name" class="txtFld">First Name:</label><input class="txtFld" name="firstname"
+                    <label for="First Name" class="txtFld">First Name:</label><input class="form-control txtFld" name="firstname"
                                                                                      type="text" id="firstname"
                                                                                      value="<?php echo $this->validation->firstname;?>"/>
-                    <label for="Last Name" class="txtFld">Last Name:</label><input class="txtFld" name="lastname"
+                    <label for="Last Name" class="txtFld">Last Name:</label><input class="form-control txtFld" name="lastname"
                                                                                    type="text" id="lastname"
                                                                                    value="<?php echo $this->validation->lastname;?>"/>
-                    <label for="Email Address" class="txtFld">Email Address:</label><input class="txtFld" name="email"
+                    <label for="Email Address" class="txtFld">Email Address:</label><input class="form-control txtFld" name="email"
                                                                                            type="text" id="email"
                                                                                            value="<?php echo $this->validation->email;?>"/>
-                    <label for="Password" class="txtFld">Password:</label><input class="txtFld" name="password"
+                    <label for="Password" class="txtFld">Password:</label><input class="form-control txtFld" name="password"
                                                                                  type="password" id="password"/>
-                    <label for="Confirm Password" class="txtFld">Confirm Password:</label><input class="txtFld"
+                    <label for="Confirm Password" class="txtFld">Confirm Password:</label><input class="form-control txtFld"
                                                                                                  name="password_conf"
                                                                                                  type="password"
                                                                                                  id="password_conf"/>

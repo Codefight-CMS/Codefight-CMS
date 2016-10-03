@@ -9,7 +9,7 @@ $cnf['form']['global'] = array(
 			'status' => 1,
 			'sort' => 40,
             'title' => 'Form',
-            'void' => 0, /*1 = onclick="return false;"*/
+            'void' => 1, /*1 = onclick="return false;"*/
 			'parent' => 'top',
 		);
 $cnf['form']['admin'] = array(

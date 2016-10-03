@@ -18,26 +18,26 @@ foreach ($g_rslt as $v) {
 <div class="user_create">
 
     <label><?php echo __('STATUS'); ?>:</label>
-    <?php echo form_dropdown('active', $options_active, set_value('active'), 'class="txtFld"'); ?>
+    <?php echo form_dropdown('active', $options_active, set_value('active'), 'class="form-control txtFld"'); ?>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('EMAIL'); ?>:</label><input class="txtFld" name="email" type="text" id="email"
+    <label><?php echo __('EMAIL'); ?>:</label><input class="form-control txtFld" name="email" type="text" id="email"
                                 value="<?php echo set_value('email'); ?>"/>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('PASSWORD'); ?>:</label><input class="txtFld" name="password" type="password" id="password"/>
+    <label><?php echo __('PASSWORD'); ?>:</label><input class="form-control txtFld" name="password" type="password" id="password"/>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('FIRSTNAME'); ?>:</label><input class="txtFld" name="firstname" type="text" id="firstname"
+    <label><?php echo __('FIRSTNAME'); ?>:</label><input class="form-control txtFld" name="firstname" type="text" id="firstname"
                                     value="<?php echo set_value('firstname'); ?>"/>
 
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('LASTNAME'); ?>:</label><input class="txtFld" name="lastname" type="text" id="lastname"
+    <label><?php echo __('LASTNAME'); ?>:</label><input class="form-control txtFld" name="lastname" type="text" id="lastname"
                                    value="<?php echo set_value('lastname'); ?>"/>
 
     <p class="clear">&nbsp;</p>
     <label><?php echo __('GROUP'); ?>:</label>
-    <?php echo form_dropdown('group_id', $options_group, set_value('group_id'), 'class="txtFld"'); ?>
+    <?php echo form_dropdown('group_id', $options_group, set_value('group_id'), 'class="form-control txtFld"'); ?>
 
     <p class="clear">&nbsp;</p>
 

@@ -47,7 +47,7 @@ class Tag extends MY_Controller
             'helper'  => 'text + form'
         );
 
-        parent::MY_Controller($load);
+        parent::__construct($load);
 
     }
 

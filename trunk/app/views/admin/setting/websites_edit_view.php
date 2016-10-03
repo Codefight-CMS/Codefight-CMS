@@ -16,15 +16,15 @@
                                                           value="<?php echo $v['websites_id']; ?>"/>
     <p class="clear">&nbsp;</p>
     <label><?php echo __('Website Status'); ?>
-        :</label><?php echo form_dropdown('websites[' . $k . '][websites_status]', $options_active, $v['websites_status'], 'class="txtFld"'); ?>
+        :</label><?php echo form_dropdown('websites[' . $k . '][websites_status]', $options_active, $v['websites_status'], 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('Website Name'); ?>:</label><input class="txtFld"
+    <label><?php echo __('Website Name'); ?>:</label><input class="form-control txtFld"
                                                             name="websites[<?php echo $k; ?>][websites_name]"
                                                             type="text"
                                                             id="websites_<?php echo $k; ?>_websites_name"
                                                             value="<?php echo $v['websites_name']; ?>"/>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('Website URL'); ?>:</label><input class="txtFld"
+    <label><?php echo __('Website URL'); ?>:</label><input class="form-control txtFld"
                                                            name="websites[<?php echo $k; ?>][websites_url]" type="text"
                                                            id="websites_<?php echo $k; ?>_websites_url"
                                                            value="<?php echo $v['websites_url']; ?>"/>

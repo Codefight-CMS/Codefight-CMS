@@ -46,7 +46,7 @@ class Page extends MY_Controller
             'helper' => 'text + form'
         );
 
-        parent::MY_Controller($load);
+        parent::__construct($load);
 
     }
 

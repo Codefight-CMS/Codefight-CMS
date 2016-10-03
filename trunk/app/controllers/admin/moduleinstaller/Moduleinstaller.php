@@ -28,10 +28,9 @@
  */
 class Moduleinstaller extends MY_Controller
 {
-
-    function __construct()
+    public function __construct()
     {
-        parent::MY_Controller();
+        parent::__construct();
     }
 
 
@@ -47,6 +46,7 @@ class Moduleinstaller extends MY_Controller
 
 		$query = $this->db->order_by('parent')->get('module');
 		$modules_db = $query->result_array();
+
 		foreach($modules_db as $k => $v)
 		{
 			$modules_db[$v['url']] = $v;

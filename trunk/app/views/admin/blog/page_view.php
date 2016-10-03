@@ -13,13 +13,25 @@
             <th class="{sorter: 'text'}"><?php echo __('Select') ?></th>
             <th><?php echo __('Title') ?></th>
             <th><?php echo __('Websites') ?></th>
+            <th><?php echo __('Action') ?></th>
         </tr>
         </thead>
         <tbody>
+        <tr>
+            <td><input type="checkbox" name="select_all" id="select_all"/></td>
+            <td><input type="text" name="search[title]" id="search_title"/></td>
+            <td><input type="text" name="search[website]" id="search_website"/></td>
+            <td><input type="submit" value="search" class="button"/> </td>
+        </tr>
         <?php foreach ($page as $g) { ?>
         <tr>
-            <td><input name="select[<?php echo $g['page_id']; ?>]" type="checkbox"
-                       id="select_<?php echo $g['page_id']; ?>" value="<?php echo $g['page_id']; ?>"/></td>
+            <td><input
+                    type="checkbox"
+                    name="select[<?php echo $g['page_id']; ?>]"
+                    id="select_<?php echo $g['page_id']; ?>"
+                    value="<?php echo $g['page_id']; ?>"
+                    class="checkbox checkbox_select_all"
+                /></td>
             <td onclick="jQuery('#desc<?php echo $g['page_id']; ?>').slideToggle(500);">
                 <?php echo $g['page_title']; ?>
                 <div id="desc<?php echo $g['page_id']; ?>" class="page_grid_heading_description displayNone">
@@ -27,6 +39,7 @@
                 </div>
             </td>
             <td><?php echo Model('websites')->websites_name($g['websites_id']); ?></td>
+            <td>&nbsp;</td>
         </tr>
             <?php } ?>
         </tbody>

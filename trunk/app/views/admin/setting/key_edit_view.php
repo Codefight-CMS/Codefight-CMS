@@ -18,21 +18,21 @@
     <input readonly="readonly" name="setting[<?php echo $k; ?>][setting_id]" type="text"
            id="setting_<?php echo $k; ?>_setting_id" value="<?php echo $v['setting_id']; ?>"/>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('KEY'); ?>:</label><input class="txtFld" name="setting[<?php echo $k; ?>][setting_key]"
+    <label><?php echo __('KEY'); ?>:</label><input class="form-control txtFld" name="setting[<?php echo $k; ?>][setting_key]"
                                                    type="text"
                                                    id="setting_<?php echo $k; ?>_setting_key"
                                                    value="<?php echo $v['setting_key']; ?>"/>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('INFO'); ?>:</label><input class="txtFld" name="setting[<?php echo $k; ?>][setting_info]"
+    <label><?php echo __('INFO'); ?>:</label><input class="form-control txtFld" name="setting[<?php echo $k; ?>][setting_info]"
                                                     type="text"
                                                     id="setting_<?php echo $k; ?>_setting_info"
                                                     value="<?php echo $v['setting_info']; ?>"/>
     <p class="clear">&nbsp;</p>
     <label><?php echo __('FORM TYPE'); ?>
-        :</label><?php echo form_dropdown("setting[$k][setting_form]", $form_option, $v['setting_form'], 'class="txtFld"'); ?>
+        :</label><?php echo form_dropdown("setting[$k][setting_form]", $form_option, $v['setting_form'], 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
     <label class="lblclear"><?php echo __('OPTIONS'); ?>:[<?php echo __('separated with bar'); ?>(|)]</label><input
-            class="txtFld"
+            class="form-control txtFld"
             name="setting[<?php echo $k; ?>][setting_option]"
             type="text"
             id="setting_<?php echo $k; ?>_setting_option"

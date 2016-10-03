@@ -5,7 +5,7 @@
 $theme = array();
 
 // load css files
-$theme['css'] = array('bootstrap.min', 'highlight.default', 'bootstrap-theme.min', 'font-awesome.min', 'codefight');
+$theme['css'] = array('video-js.min', 'bootstrap.min', 'highlight.default', 'bootstrap-theme.min', 'font-awesome.min', 'codefight');
 
 // load js files
 $theme['js'] = array(
@@ -14,6 +14,9 @@ $theme['js'] = array(
     'vendor/modernizr-2.8.3-respond-1.4.2.min',
     'vendor/bootstrap.min',
     'plugins',
+    'videojs-ie8.min',
+    'video.min',
+    'Videojs.Youtube.min',
     'codefight'
 );
 

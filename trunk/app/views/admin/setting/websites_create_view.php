@@ -9,15 +9,15 @@
 <?php echo form_open('admin/setting/websites'); ?>
 <div class="group_create">
     <label><?php echo __('Website Status'); ?>
-        :</label><?php echo form_dropdown('websites_status', $options_active, set_value('websites_status'), 'class="txtFld"'); ?>
+        :</label><?php echo form_dropdown('websites_status', $options_active, set_value('websites_status'), 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
     <label><?php echo __('Website Name'); ?>:</label>
-    <input name="websites_name" type="text" class="txtFld" id="websites_name"
+    <input name="websites_name" type="text" class="form-control txtFld" id="websites_name"
            value="<?php echo set_value('websites_name'); ?>" maxlength="255"/>
 
     <p class="clear">&nbsp;</p>
     <label><?php echo __('Website URL'); ?>:</label>
-    <input name="websites_url" type="text" class="txtFld" id="websites_url"
+    <input name="websites_url" type="text" class="form-control txtFld" id="websites_url"
            value="<?php echo set_value('websites_url'); ?>" maxlength="255"/>
 
     <p class="clear">&nbsp;</p>

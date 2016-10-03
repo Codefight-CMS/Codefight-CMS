@@ -46,7 +46,7 @@ if (!function_exists('Model')) {
     /**
      * @param string $model
      *
-     * @return mixed
+     * @return object
      */
     function Model($model = 'codefight', $config = FALSE)
     {
@@ -78,7 +78,7 @@ if (!function_exists('getMessages')) {
 
         if (count($globalMessages) > 0) {
             foreach ($globalMessages as $k => $v) {
-                echo '<div class="alert alert-' . $k . '"><a class="close" data-dismiss="alert">X</a>';
+                echo '<div class="alert alert-' . $k . '" role="alert"><a class="close" data-dismiss="alert">X</a>';
 
                 foreach ((array)$v as $w) {
                     echo "$w\n";

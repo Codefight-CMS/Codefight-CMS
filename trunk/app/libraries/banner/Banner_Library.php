@@ -10,8 +10,9 @@ class Banner_Library extends MY_Library
 {
 	var $CI;
 
-	function __construct()
-	{
+    public function __construct()
+    {
+        parent::__construct();
 		log_message('debug', "banner/Banner_Library Class Initialized");
 		$this->CI =& get_instance();
 	}

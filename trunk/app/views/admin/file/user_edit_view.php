@@ -22,22 +22,22 @@
                                   id="user_<?php echo $k; ?>_id" value="<?php echo $v['id']; ?>"/>
     <p class="clear">&nbsp;</p>
     <label><?php echo __('STATUS'); ?>:</label>
-    <?php echo form_dropdown('user[' . $k . '][active]', $options_active, $v['active'], 'class="txtFld"'); ?>
+    <?php echo form_dropdown('user[' . $k . '][active]', $options_active, $v['active'], 'class="form-control txtFld"'); ?>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('PASSWORD'); ?>:</label><input class="txtFld" name="user[<?php echo $k; ?>][password]" type="password"
+    <label><?php echo __('PASSWORD'); ?>:</label><input class="form-control txtFld" name="user[<?php echo $k; ?>][password]" type="password"
                                    id="user_<?php echo $k; ?>_password" value=""/>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('EMAIL'); ?>:</label><input class="txtFld" name="user[<?php echo $k; ?>][email]" type="text"
+    <label><?php echo __('EMAIL'); ?>:</label><input class="form-control txtFld" name="user[<?php echo $k; ?>][email]" type="text"
                                 id="user_<?php echo $k; ?>_email" value="<?php echo $v['email']; ?>"/>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('FIRSTNAME'); ?>:</label><input class="txtFld" name="user[<?php echo $k; ?>][firstname]" type="text"
+    <label><?php echo __('FIRSTNAME'); ?>:</label><input class="form-control txtFld" name="user[<?php echo $k; ?>][firstname]" type="text"
                                     id="user_<?php echo $k; ?>_firstname" value="<?php echo $v['firstname']; ?>"/>
     <p class="clear">&nbsp;</p>
-    <label><?php echo __('LASTNAME'); ?>:</label><input class="txtFld" name="user[<?php echo $k; ?>][lastname]" type="text"
+    <label><?php echo __('LASTNAME'); ?>:</label><input class="form-control txtFld" name="user[<?php echo $k; ?>][lastname]" type="text"
                                    id="user_<?php echo $k; ?>_lastname" value="<?php echo $v['lastname']; ?>"/>
     <p class="clear">&nbsp;</p>
     <label><?php echo __('GROUP'); ?>:</label>
-    <?php echo form_dropdown('user[' . $k . '][group_id]', $options_group, $v['group_id'], 'class="txtFld"'); ?>
+    <?php echo form_dropdown('user[' . $k . '][group_id]', $options_group, $v['group_id'], 'class="form-control txtFld"'); ?>
 
     <p class="clear">&nbsp;</p>
 

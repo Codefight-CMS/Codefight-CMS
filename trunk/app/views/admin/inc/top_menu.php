@@ -14,160 +14,119 @@ $menu_item = Library('module')->get_nav_from_db();
 //print_r(get_class_vars(get_class($cache)));
 //$test = $cache->_display(json_encode($menu_item), 'blahblah_id');
 //print_r($test);
+// navbar-fixed-top
 ?>
-<style type="text/css">
-#top-menu-wrapper{background: #222;}
-ul#main-nav {
-	list-style: none;
-	padding: 0 20px;
-	margin: 0;
-	float: left;
-	min-width: 908px;
-	background: #222;
-	font-size: 12px;
-    z-index: 10;
-}
-ul#main-nav li {
-	background: #222;
-	float: left;
-	margin: 0;
-    overflow: visible;
-	padding: 0 15px 0 0;
-	position: relative;
-}
-ul#main-nav li a{
-	padding: 10px 5px;
-	color: #fff;
-	display: block;
-	text-decoration: none;
-	float: left;
-}
-ul#main-nav li.over,
-ul#main-nav li.active,
-ul#main-nav li.current,
-ul#main-nav li a:hover{
-	background: #444;
-}
-ul#main-nav li ul.child,
-ul#main-nav li ul.grand-child {
-	list-style: none;
-	position: absolute;
-	left: 0;
-    top: 35px;
-	background: #444;
-	margin: 0;
-    padding: 0;
-	display: none;
-	float: left;
-	width: 180px;
-	border: 1px solid #555;
-    z-index: 20;
-	overflow: visible !important;
-}
-ul#main-nav li ul.child li{
-	margin: 0;
-    padding: 0;
-	border-top: 1px solid #444;
-	border-bottom: 1px solid #333;
-	clear: both;
-	width: 180px;
-}
-ul#main-nav  li ul.child li.current a{background: #222;}
-html ul#main-nav li ul.child li a {
-	float: left;
-	width: 145px;
-	background: #333;
-	padding-left: 20px;
-}
-html ul#main-nav li ul.child li.active a,
-html ul#main-nav li ul.child li a:hover {background: #222;}
-ul#main-nav li.over ul {display: block;}
-ul#main-nav li.over ul ul {display: none;}
-ul#main-nav li.over ul li.over ul {display: block;}
-ul#main-nav li ul.grand-child {
-    left: 120px;
-    top: 5px;
-    z-index: 30;
-}
-html ul#main-nav li ul.child li ul.grand-child li a{background: #333;}
-html ul#main-nav li ul.child li ul.grand-child li.active a,
-html ul#main-nav li ul.child li ul.grand-child li a:hover {background: #222;}
-</style>
-<div id="wrap">
-    <div id="top-menu-wrapper">
-        <div class="roundfg">
-            <ul id="main-nav">
-<?php
-//print_r($menu_item);
-$child_menu = '';
-$admin = 'admin/'; /*@todo:: make admin url dynamic so, it doesn't need to be /admin/ */
-$current_url = substr(trim(uri_string(), '/'), strlen($admin));
+<nav class="navbar navbar-inverse codefight-main-navbar">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <?php echo anchor('admin/', 'Codefight CMS', ' class="navbar-brand"');?>
+        </div>
 
-foreach ($menu_item as $k => $v)
-{
-	if(isset($v['is_menu']) && (int)$v['is_menu'] < 1){
-		continue;
-	}
-    $class = 'cf' . preg_replace('/[^a-z0-9]/isU', '-', $v['url']) . (($v['url'] == $current_url) ? ' current' : '');
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <?php
+                //print_r($menu_item);
+                $child_menu = '';
+                $admin = 'admin/'; /*@todo:: make admin url dynamic so, it doesn't need to be /admin/ */
+                $current_url = substr(trim(uri_string(), '/'), strlen($admin));
 
-    echo '<li class="'.$class.'">';
-    $attr = '';
-    if($v['void'])
-    {
-        $attr = 'onclick="return false;"';
-    }
-    echo anchor($admin.$v['url'], __($v['title']), $attr);
-    if(isset($v['child']) && is_array($v['child']) && count($v['child']) > 0)
-    {
-        echo '<ul class="child" style="overflow: visible !important;">';
-        foreach($v['child'] as $ck => $cv)
-        {
-			if(isset($cv['is_menu']) && (int)$cv['is_menu'] < 1){
-				continue;
-			}
-            $class = 'cf' . preg_replace('/[^a-z0-9]/isU', '-', $cv['url']) . (($cv['url'] == $current_url) ? '
-            current' : '');
-            echo '<li class="'.$class.'">';
-			$attr = '';
-			if($cv['void'])
-			{
-				$attr = 'onclick="return false;"';
-			}
-            echo anchor($admin.$cv['url'], __($cv['title']), $attr);
-            if(isset($cv['child']) && is_array($cv['child']) && count($cv['child']) > 0)
-            {
-                echo '<ul class="grand-child">';
-                foreach($cv['child'] as $gk => $gv)
+                foreach ($menu_item as $k => $v)
                 {
-					if(isset($gv['is_menu']) && (int)$gv['is_menu'] < 1){
-						continue;
-					}
-                    $class = 'cf' . preg_replace('/[^a-z0-9]/isU', '-', $gv['url']) . (($gv['url'] == $current_url) ? '
-                    current' : '');
+                    if(isset($v['is_menu']) && (int)$v['is_menu'] < 1){
+                        continue;
+                    }
+                    $class = 'cf' . preg_replace('/[^a-z0-9]/isU', '-', $v['url']) . (($v['url'] == $current_url) ? ' current' : '');
+
+                    $attr = '';
+                    $caret = '';
+                    if($v['void'])
+                    {
+                        $attr = 'class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"';
+                        $class = "dropdown {$class}";
+                        $caret = ' <span class="caret"></span>';
+                    }
                     echo '<li class="'.$class.'">';
-					$attr = '';
-					if($gv['void'])
-					{
-						$attr = 'onclick="return false;"';
-					}
-                    echo anchor($admin.$gv['url'], __($gv['title']), $attr);
+                    echo anchor($admin.$v['url'], __($v['title']) . $caret, $attr);
+                    if(isset($v['child']) && is_array($v['child']) && count($v['child']) > 0)
+                    {
+                        echo '<ul class="dropdown-menu child" style="overflow: visible !important;">';
+                        foreach($v['child'] as $ck => $cv)
+                        {
+                            if(isset($cv['is_menu']) && (int)$cv['is_menu'] < 1){
+                                continue;
+                            }
+                            $class = 'cf' . preg_replace('/[^a-z0-9]/isU', '-', $cv['url']) . (($cv['url'] == $current_url) ? '
+            current' : '');
+                            $attr = '';
+                            $caret = '';
+                            if($cv['void'])
+                            {
+                                $attr = 'class="dropdown-toggle" data-toggle="dropdown-child" role="button" aria-haspopup="true" aria-expanded="false"';
+                                $class = "dropdown {$class}";
+                                $caret = ' <span class="caret"></span>';
+                            }
+                            echo '<li class="'.$class.'">';
+                            echo anchor($admin.$cv['url'], __($cv['title']) . $caret, $attr);
+                            if(isset($cv['child']) && is_array($cv['child']) && count($cv['child']) > 0)
+                            {
+                                echo '<ul class="grand-child">';
+                                foreach($cv['child'] as $gk => $gv)
+                                {
+                                    if(isset($gv['is_menu']) && (int)$gv['is_menu'] < 1){
+                                        continue;
+                                    }
+                                    $class = 'cf' . preg_replace('/[^a-z0-9]/isU', '-', $gv['url']) . (($gv['url'] == $current_url) ? '
+                    current' : '');
+                                    $attr = '';
+                                    $caret = '';
+                                    if($gv['void'])
+                                    {
+                                        $attr = 'onclick="return false;"';
+                                        $class = "dropdown {$class}";
+                                        $caret = ' <span class="caret"></span>';
+                                    }
+                                    echo '<li class="'.$class.'">';
+                                    echo anchor($admin.$gv['url'], __($gv['title']) . $caret, $attr);
+                                    echo '</li>';
+                                }
+                                echo '</ul>';
+                            }
+                            echo '</li>';
+                        }
+                        echo '</ul>';
+                    }
                     echo '</li>';
                 }
-                echo '</ul>';
-            }
-            echo '</li>';
-        }
-        echo '</ul>';
-    }
-    echo '</li>';
-}
-    ?>
+                ?>
+
             </ul>
-            <p class="clear">&nbsp;</p>
-        </div>
-        <!-- End roundfg -->
-    </div>
-    <!-- End main-handle-->
-    <p class="clear">&nbsp;</p>
-</div>
-<!-- End wrap -->
+            <ul class="nav navbar-nav navbar-right">
+                <li><?php
+
+                    //Login or Logout Link | @todo:: Probably move to general helper
+                    if ($this->session->userdata('logged_in') === '1') {
+
+                        $loggedData = $this->session->userdata('loggedData');
+
+                        echo '<a href="javascript:void(0);">' . $loggedData['firstname'] . ' ' . $loggedData['lastname'] . " ( '" . $loggedData['group_title'] . "' ) </a></li><li> " . anchor('registration/logout', 'Logout');
+
+                    }
+                    else
+                    {
+
+                        echo anchor('registration/login', 'Login');
+
+                    }
+                    ?></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>

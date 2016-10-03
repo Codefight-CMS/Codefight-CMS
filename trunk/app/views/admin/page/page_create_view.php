@@ -41,21 +41,21 @@ if (!isset($_POST['group_id']) || !is_array($_POST['group_id']) || count($_POST[
 <div class="page_create">
     <div class="left">
         <label><?php echo __('STATUS'); ?>:</label>
-        <?php echo form_dropdown('page_active', $options_active, set_value('page_active'), 'class="txtFld"'); ?>
+        <?php echo form_dropdown('page_active', $options_active, set_value('page_active'), 'class="form-control txtFld"'); ?>
         <p class="clear">&nbsp;</p>
 
         <label><?php echo __('PAGE ACCESS BY'); ?>:</label>
-        <?php echo form_dropdown('group_id[]', $options_group, $_POST['group_id'], 'class="txtFld"'); ?>
+        <?php echo form_dropdown('group_id[]', $options_group, $_POST['group_id'], 'class="form-control txtFld"'); ?>
         <p class="clear">&nbsp;</p>
 
-        <label><?php echo __('TITLE'); ?>:</label><input class="txtFld" name="page_title" type="text" id="page_title"
+        <label><?php echo __('TITLE'); ?>:</label><input class="form-control txtFld" name="page_title" type="text" id="page_title"
                                                          value="<?php echo set_value('page_title'); ?>"/>
 
         <p class="clear">&nbsp;</p>
     </div>
     <div class="right">
         <label><?php echo __('MENU'); ?>:</label>
-        <?php //echo form_dropdown('menu_id', $options_menu, set_value('menu_id'), 'class="txtFld"'); ?>
+        <?php //echo form_dropdown('menu_id', $options_menu, set_value('menu_id'), 'class="form-control txtFld"'); ?>
         <p class="clear">&nbsp;</p>
 <?php
             foreach ($options_menu as $ko => $kv) {
@@ -82,12 +82,12 @@ if (!isset($_POST['group_id']) || !is_array($_POST['group_id']) || count($_POST[
     <p class="clear">&nbsp;</p>
     <label><?php echo __('DESCRIPTION'); ?>:</label>
     <br/>
-    <textarea class="txtFld" name="page_body" cols="80" rows="15" id="page_body"
+    <textarea class="form-control txtFld" name="page_body" cols="80" rows="15" id="page_body"
               style="width: 80%"><?php echo set_value('page_body'); ?></textarea>
 
     <p class="clear">&nbsp;</p><br/>
 
-    <label><?php echo __('PUBLISHED DATE'); ?>:</label><input class="txtFld" name="page_date" type="text" id="page_date"
+    <label><?php echo __('PUBLISHED DATE'); ?>:</label><input class="form-control txtFld" name="page_date" type="text" id="page_date"
                                                               value="<?php echo date('Y-m-d H:i:s', time()); ?>"/>
 
     <p class="clear">&nbsp;</p>
@@ -96,12 +96,12 @@ if (!isset($_POST['group_id']) || !is_array($_POST['group_id']) || count($_POST[
                                                                                       value="1"<?php if (set_value('show_date')) {
         echo ' checked="checked"';
     } ?> id="show_date" name="show_date"/>
-        <label><?php echo __('AUTHOR'); ?>:</label><input class="txtFld" name="page_author" type="text" id="page_author"
+        <label><?php echo __('AUTHOR'); ?>:</label><input class="form-control txtFld" name="page_author" type="text" id="page_author"
                                                           value="<?php echo set_value('page_author'); ?>"/>&nbsp;&nbsp;<?php echo __('Show Author'); ?>
         &nbsp;<input type="checkbox" value="1"<?php if (set_value('show_author')) {
             echo ' checked="checked"';
         } ?> id="show_author" name="show_author"/>
-<input class="txtFld" name="user_id" type="hidden" id="user_id"
+<input class="form-control txtFld" name="user_id" type="hidden" id="user_id"
                                                           value="<?php echo set_value('user_id'); ?>"/>
         <p class="clear">&nbsp;</p>
 
@@ -113,31 +113,31 @@ if (!isset($_POST['group_id']) || !is_array($_POST['group_id']) || count($_POST[
         <p class="clear">&nbsp;</p>
 
         <label><?php echo __('TAGS'); ?>:</label>
-        <input name="page_tag" type="text" class="txtFld" id="page_tag" value="<?php //echo set_value('page_tag'); ?>"
+        <input name="page_tag" type="text" class="form-control txtFld" id="page_tag" value="<?php //echo set_value('page_tag'); ?>"
                maxlength="255"/>
 
         <p class="clear">&nbsp;</p>
     </div>
 
-    <label><?php echo __('META TITLE'); ?>:</label><input class="txtFld" name="page_meta_title" type="text"
+    <label><?php echo __('META TITLE'); ?>:</label><input class="form-control txtFld" name="page_meta_title" type="text"
                                                           id="page_meta_title"
                                                           value="<?php echo set_value('page_meta_title'); ?>"/>
 
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('META KEYWORDS'); ?>:</label><input class="txtFld" name="page_meta_keywords" type="text"
+    <label><?php echo __('META KEYWORDS'); ?>:</label><input class="form-control txtFld" name="page_meta_keywords" type="text"
                                                              id="page_meta_keywords"
                                                              value="<?php echo set_value('page_meta_keywords'); ?>"/>
 
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('META DESCRIPTION'); ?>:</label><input class="txtFld" name="page_meta_description" type="text"
+    <label><?php echo __('META DESCRIPTION'); ?>:</label><input class="form-control txtFld" name="page_meta_description" type="text"
                                                                 id="page_meta_description"
                                                                 value="<?php echo set_value('page_meta_description'); ?>"/>
 
     <p class="clear">&nbsp;</p>
 
-    <label><?php echo __('SORT'); ?>:</label><input readonly="readonly" class="txtFld" name="page_sort" type="text"
+    <label><?php echo __('SORT'); ?>:</label><input readonly="readonly" class="form-control txtFld" name="page_sort" type="text"
                                                     id="page_sort"
                                                     value="<?php echo Model('data')->get_sort_id('page'); ?>"/>
 
