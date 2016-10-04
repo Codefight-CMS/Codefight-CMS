@@ -155,7 +155,7 @@ class MY_Language {
         // Because killer robots like unicorns!
         if ($value === FALSE)
         {
-            log_message('error', 'Could not find the language line "'.$line.'"');
+            log_message('info', 'Could not find the language line "'.$line.'"');
         }
 
         return $value;
