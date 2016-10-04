@@ -22,7 +22,7 @@ class Parser_Video_Library extends MY_Library
             if(!isset($matches[2]) || !isset($matches[2][$k])){
                 continue;
             }
-            $video = preg_replace('#\[|\]|<br\s*/?\s*>#', "\n", $matches[2][$k]);
+            $video = preg_replace('#\[|\]|<br\s*/?\s*>|</?p>#', "\n", $matches[2][$k]);
             $video = explode("\n", trim($video));
             $video = implode("&", $video);
             parse_str($video, $output);
