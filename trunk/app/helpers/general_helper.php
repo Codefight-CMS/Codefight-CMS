@@ -62,6 +62,31 @@ if (!function_exists('Model')) {
     }
 }
 
+if (!function_exists('getCurrentPageScreenshot')) {
+    /**
+     * @return string
+     */
+    function getCurrentPageScreenshot($noindex = false)
+    {
+        if($noindex){
+            return 'https://chart.googleapis.com/chart?chs=500x500&cht=qr&choe=UTF-8&chl=' . urlencode(current_url());
+        }
+        $path = trim(base64_encode(uri_string()), '=');
+        $url = base_url('file/screenshot/index/' . $path);
+
+        $curlSession = curl_init();
+        curl_setopt($curlSession, CURLOPT_URL, $url);
+        curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+        curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curlSession, CURLOPT_SSL_VERIFYPEER, false);
+
+        $image = curl_exec($curlSession);
+        curl_close($curlSession);
+
+        return $image;
+    }
+}
+
 if (!function_exists('getMessages')) {
     /**
      * @return string

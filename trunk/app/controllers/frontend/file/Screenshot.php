@@ -49,9 +49,10 @@ class Screenshot extends MY_Controller
         $dir = FCPATH . 'media' . DIRECTORY_SEPARATOR . 'screenshots' . DIRECTORY_SEPARATOR;
         $filename = md5($url) . '.png';
 
-        $command = $this->_get_phantomjs_path() . ' ' . $this->_get_rasterize_path() . ' ' . $url . ' ' . $dir . $filename .' "500px*500px"';
-
-        $response = exec($command);
+        if(!file_exists($dir . $filename)){
+            $command = $this->_get_phantomjs_path() . ' ' . $this->_get_rasterize_path() . ' ' . $url . ' ' . $dir . $filename .' "500px*500px"';
+            $response = exec($command);
+        }
 
         echo base_url() . 'media/screenshots/' . $filename;
     }
