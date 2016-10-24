@@ -21,7 +21,7 @@ trunk/skin/admin/default/cache/*
 !trunk/skin/admin/default/cache/index.html
 /sql.sql
 trunk/skin/global/js/cfShare.js
-
+local_305242.xml
 trunk/app/logs/*
 !trunk/app/logs/.htaccess
 !trunk/app/logs/index.html

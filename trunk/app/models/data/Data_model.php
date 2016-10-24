@@ -36,6 +36,7 @@ class Data_model extends MY_Model
         if ($type) {
             $this->db->where('type', $type);
         }
+        $this->db->where('count > ', '0');
         $this->db->order_by('count', 'desc');
         $this->db->limit(20);
         if (defined('CFWEBSITEID')) {
