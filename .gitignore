@@ -32,3 +32,4 @@ trunk/writable/cache/*
 trunk/writable/uploads/*
 !trunk/writable/uploads/.htaccess
 !trunk/writable/uploads/index.html
+trunk2/
