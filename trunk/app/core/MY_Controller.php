@@ -4,34 +4,33 @@
  | CodeFight cms since version 1.0
  | Author: Damodar Bashyal
  */
-require_once APPPATH.'core/CF_Controller.php';
+require_once APPPATH . 'core/CF_Controller.php';
+
 class MY_Controller extends CF_Controller
 {
 
-    private $_data          = array();
+    private $_data = array();
     public
-        $menu_id            = 0,
-        $page_id            = 0,
-        $menu_link          = '',
-        $current_page       = '',
-        $page_links         = 0,
-        $setting            = 0,
-        $cfModule           = '',
-        $cfRedirect         = FALSE,
-        $cfQuery            = '',
-        $cfSegments         = '',
-        $current_language   = 'english',//@todo::search and remove references.
-        $language           = 'english',
-        $backUrl            = '';
+        $menu_id = 0,
+        $page_id = 0,
+        $menu_link = '',
+        $current_page = '',
+        $page_links = 0,
+        $setting = 0,
+        $cfModule = '',
+        $cfRedirect = FALSE,
+        $cfQuery = '',
+        $cfSegments = '',
+        $current_language = 'english',//@todo::search and remove references.
+        $language = 'english',
+        $backUrl = '';
 
 
     /**
      * Catch all requests and redirect to method, if exits, if not, use default method.
      *
      * @access public
-     *
-     * @param string $method, The method to call
-     *
+     * @param string $method , The method to call
      * @return void
      */
     public function _remap($method)
@@ -39,9 +38,7 @@ class MY_Controller extends CF_Controller
         //print_r(get_class_methods(get_class($this)));
         if ($this->uri->segment(1, 0) != 'admin') {
             $method = $this->uri->segment(2, 'index');
-        }
-        elseif ($this->uri->segment(1, 0) == 'admin')
-        {
+        } elseif ($this->uri->segment(1, 0) == 'admin') {
             $method = $this->uri->segment(3, 'index');
         }
 
@@ -49,9 +46,7 @@ class MY_Controller extends CF_Controller
 
         if (method_exists($this, $method)) {
             $this->$method();
-        }
-        else
-        {
+        } else {
             $this->index();
         }
     }
@@ -59,12 +54,12 @@ class MY_Controller extends CF_Controller
     public function _init()
     {
 
-        $this->cfModule          = $this->uri->segment(1, 'page');
+        $this->cfModule = $this->uri->segment(1, 'page');
         $this->cfAdminController = $this->uri->segment(2, '');
-        $this->cfAdminMethod     = $this->uri->segment(3, '');
+        $this->cfAdminMethod = $this->uri->segment(3, '');
         if (!in_array($this->cfModule, array('registration', 'skin', 'media', 'favicon.ico'))) {
             $backUrl = uri_string();
-            if(!empty($this->cfModule) && !empty($backUrl)){
+            if (!empty($this->cfModule) && !empty($backUrl)) {
                 $this->session->set_userdata('backUrl', htmlspecialchars($backUrl));
             }
         }
@@ -99,10 +94,9 @@ class MY_Controller extends CF_Controller
         //Model('setting')->load_setting();
 
         //if $load is defined load them
-        if(empty($load)) $load = array();
+        if (empty($load)) $load = array();
         $load = (array)$load;
-        foreach ($load as $k => $v)
-        {
+        foreach ($load as $k => $v) {
             //explode files separated with +
             $v_array = explode('+', $v);
 
@@ -150,7 +144,7 @@ class MY_Controller extends CF_Controller
 
         if (!is_numeric($this->menu_id) && !in_array(strtolower($this->menu_id), array('c', 'tag', 'ajax'))) {
             $this->menu_id = Model('blog')->get_menu_id($this->menu_id);
-        } else if($this->menu_id > 0 && is_numeric($this->page_id) && $this->page_id > 0) {
+        } else if ($this->menu_id > 0 && is_numeric($this->page_id) && $this->page_id > 0) {
             Model('blog')->redirect_blog($this->page_id);
         }
 
@@ -165,7 +159,7 @@ class MY_Controller extends CF_Controller
 
         $this->load->library('pagination');
 
-        $config['per_page']  = $this->setting->pagination_per_page;
+        $config['per_page'] = $this->setting->pagination_per_page;
         $config['num_links'] = $this->setting->pagination_page_links;
 
         $this->pagination->initialize($config);
@@ -176,6 +170,10 @@ class MY_Controller extends CF_Controller
 
     public function process_view($data = array(), $master_page = 'mainpage', $module = 'frontend')
     {
+        if (!is_array($data)) {
+            $data = array();
+        }
+
         //Get available templates, this should be called first
         //as this will get and set default template
         $data['templates'] = Model('setting')->get_templates();
@@ -190,12 +188,12 @@ class MY_Controller extends CF_Controller
         $this->load->vars($data);
 
         //Get data from view.
-        $template    = $module.DIRECTORY_SEPARATOR.'templates'.DIRECTORY_SEPARATOR.$template.DIRECTORY_SEPARATOR.$master_page;
+        $template = $module . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . $template . DIRECTORY_SEPARATOR . $master_page;
         $html_string = $this->load->view($template, '', true);
 
         if (isset($this->setting->display_view_path) && $this->setting->display_view_path == true
         ) {
-            echo '<p>'.$template.'</p>';
+            echo '<p>' . $template . '</p>';
         }
         Library('process')->view($html_string);
 
@@ -203,17 +201,16 @@ class MY_Controller extends CF_Controller
 
     public function load_language_files()
     {
-        require_once(APPPATH . 'libraries'.DIRECTORY_SEPARATOR.'Pregfind.php');
+        require_once(APPPATH . 'libraries' . DIRECTORY_SEPARATOR . 'Pregfind.php');
 
-        $language_path = realpath(APPPATH . 'language'.DIRECTORY_SEPARATOR.'' . $this->current_language);
+        $language_path = realpath(APPPATH . 'language' . DIRECTORY_SEPARATOR . '' . $this->current_language);
 
-        $preg_find      = new preg_find();
+        $preg_find = new preg_find();
         $language_files = $preg_find->find(
             '/^.*?\.php$/i', $language_path, PREG_FIND_RECURSIVE | PREG_FIND_SORTBASENAME
         );
 
-        foreach ((array)$language_files as $v)
-        {
+        foreach ((array)$language_files as $v) {
             $filename = (preg_replace('/(' . preg_quote($language_path, '/') . '|_lang\.php)/i', '', realpath($v)));
             $this->lang->load($filename, $this->current_language);
         }
@@ -226,9 +223,7 @@ class MY_Controller extends CF_Controller
         if ($field) {
             if (isset($data[$field])) {
                 return $data[$field];
-            }
-            else
-            {
+            } else {
                 return 0;
             }
         }
@@ -236,22 +231,25 @@ class MY_Controller extends CF_Controller
         return $data;
     }
 
-    public function setBodyId(){
-        $this->setData('body-id','codefight-body');
+    public function setBodyId()
+    {
+        $this->setData('body-id', 'codefight-body');
     }
 
-    public function getBodyId(){
+    public function getBodyId()
+    {
         $id = $this->getData('body-id');
 
-        if(!empty($id)){
-            return 'cf-'.preg_replace('/[^a-z0-9_\-\]/iSu', '', $id);
+        if (!empty($id)) {
+            return 'cf-' . preg_replace('/[^a-z0-9_\-\]/iSu', '', $id);
         }
         return 'codefight-body-id';
     }
 
-    public function setData($key=false, $val=false, $merge=true){
-        if(!empty($key)) {
-            if(is_array($val) && $merge){
+    public function setData($key = false, $val = false, $merge = true)
+    {
+        if (!empty($key)) {
+            if (is_array($val) && $merge) {
                 $_val = (array)$this->getData($key);
                 $val = array_merge($val, $_val);
             }
@@ -260,18 +258,20 @@ class MY_Controller extends CF_Controller
         return $this;
     }
 
-    public function unsetData($key=false){
-        if(!empty($key) && isset($this->_data[$key])){
+    public function unsetData($key = false)
+    {
+        if (!empty($key) && isset($this->_data[$key])) {
             unset($this->_data[$key]);
         }
         return $this;
     }
 
-    public function getData($key=false){
-        if(empty($key)) {
+    public function getData($key = false)
+    {
+        if (empty($key)) {
             return $this->_data;
         }
-        if(isset($this->_data[$key])){
+        if (isset($this->_data[$key])) {
             return $this->_data[$key];
         }
         return array();

@@ -45,8 +45,7 @@ class Form extends MY_Controller
     {
         if ($this->input->post('read')) {
             $selected = $this->input->post('select');
-            if (is_array($selected)) foreach ($selected as $v)
-            {
+            if (is_array($selected)) foreach ($selected as $v) {
                 $this->db->update('form_submitted', array('form_status' => '1'), array('form_submitted_id' => $v));
             }
         }
@@ -59,8 +58,7 @@ class Form extends MY_Controller
     {
         if ($this->input->post('unread')) {
             $selected = $this->input->post('select');
-            if (is_array($selected)) foreach ($selected as $v)
-            {
+            if (is_array($selected)) foreach ($selected as $v) {
                 $this->db->update('form_submitted', array('form_status' => '0'), array('form_submitted_id' => $v));
             }
         }
@@ -73,8 +71,7 @@ class Form extends MY_Controller
     {
         if ($this->input->post('delete')) {
             $selected = $this->input->post('select');
-            if (is_array($selected)) foreach ($selected as $v)
-            {
+            if (is_array($selected)) foreach ($selected as $v) {
                 $this->db->delete('form_submitted', array('form_submitted_id' => $v));
                 $this->db->delete('form_data_int', array('form_submitted_id' => $v));
                 $this->db->delete('form_data_varchar', array('form_submitted_id' => $v));
@@ -90,15 +87,11 @@ class Form extends MY_Controller
     {
         if (isset($_POST['read'])) {
             $this->_submit_read();
-        }
-        else if (isset($_POST['delete'])) {
+        } else if (isset($_POST['delete'])) {
             $this->_submit_delete();
-        }
-        else if (isset($_POST['unread'])) {
+        } else if (isset($_POST['unread'])) {
             $this->_submit_unread();
-        }
-        else
-        {
+        } else {
 
             $id = $this->uri->segment(4);
 
@@ -132,8 +125,7 @@ class Form extends MY_Controller
             $query->free_result();
             //$form_group_name = false;
 
-            if (count($submitted)) foreach ($submitted as $v)
-            {
+            if (count($submitted)) foreach ($submitted as $v) {
                 //---
                 $submits[$v['form_submitted_id']]['status'] = $v['form_status'];
                 $submits[$v['form_submitted_id']][$v['form_item_id']]['item_id'] = $v['form_item_id'];
@@ -180,8 +172,7 @@ class Form extends MY_Controller
             $submitted = $query->result_array();
             $query->free_result();
 
-            if (count($submitted)) foreach ($submitted as $v)
-            {
+            if (count($submitted)) foreach ($submitted as $v) {
                 //---
                 $submits[$v['form_submitted_id']]['status'] = $v['form_status'];
                 $submits[$v['form_submitted_id']][$v['form_item_id']]['item_id'] = $v['form_item_id'];
@@ -228,8 +219,7 @@ class Form extends MY_Controller
             $submitted = $query->result_array();
             $query->free_result();
 
-            if (count($submitted)) foreach ($submitted as $v)
-            {
+            if (count($submitted)) foreach ($submitted as $v) {
                 //---
                 $submits[$v['form_submitted_id']]['status'] = $v['form_status'];
                 $submits[$v['form_submitted_id']][$v['form_item_id']]['item_id'] = $v['form_item_id'];
@@ -280,16 +270,12 @@ class Form extends MY_Controller
     {
         if (isset($_POST['create'])) {
             $this->_item_create();
-        }
-        else if (isset($_POST['delete'])) {
+        } else if (isset($_POST['delete'])) {
             $this->_item_delete();
-        }
-        else if (isset($_POST['edit'])) {
+        } else if (isset($_POST['edit'])) {
             $this->_item_edit();
-        }
-        else
-        {
-            $data = '';
+        } else {
+            $data = array();
 
             $data['keys'] = Model('form')->get_form_item();
 
@@ -302,7 +288,7 @@ class Form extends MY_Controller
 
     function _item_create()
     {
-        $data = '';
+        $data = array();
 
         $this->load->library('form_validation');
 
@@ -352,9 +338,7 @@ class Form extends MY_Controller
                 $msg = array('error' => validation_errors());
                 setMessages($msg, 'error');
             }
-        }
-        else
-        {
+        } else {
             $form_item_label = set_value('form_item_label');
             $form_item_input_type = set_value('form_item_input_type');
             $form_item_name = set_value('form_item_name');
@@ -364,21 +348,19 @@ class Form extends MY_Controller
             $form_item_data_type = set_value('form_item_data_type');
 
             $insert = Model('form')->insert_form_item(array(
-                                                                  'form_item_label' => $form_item_label,
-                                                                  'form_item_name' => $form_item_name,
-                                                                  'form_item_input_type' => $form_item_input_type,
-                                                                  'form_item_validations' => $form_item_validations,
-                                                                  'form_item_default_value' => $form_item_default_value,
-                                                                  'form_item_parameters' => $form_item_parameters,
-                                                                  'form_item_data_type' => $form_item_data_type
-                                                             ));
+                'form_item_label' => $form_item_label,
+                'form_item_name' => $form_item_name,
+                'form_item_input_type' => $form_item_input_type,
+                'form_item_validations' => $form_item_validations,
+                'form_item_default_value' => $form_item_default_value,
+                'form_item_parameters' => $form_item_parameters,
+                'form_item_data_type' => $form_item_data_type
+            ));
 
             if ($insert) {
                 $msg = array('success' => '<p>New Form Item <strong>' . $form_item_label . '</strong> Successfully Added.</p>');
                 setMessages($msg, 'success');
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>Form Item <strong>' . $form_item_label . '</strong> already exists!</p>');
                 setMessages($msg, 'error');
             }
@@ -392,13 +374,9 @@ class Form extends MY_Controller
 
     function _item_delete()
     {
-        $data = '';
-
         if (isset($_POST['select'])) {
             $id_array = $_POST['select'];
-        }
-        else
-        {
+        } else {
             $id_array = array();
             $msg = array('error' => '<p>You must select atleast one item to delete.</p>');
             setMessages($msg, 'error');
@@ -407,16 +385,13 @@ class Form extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         $msg = false;
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             if ($this->db->delete('form_item', array('form_item_id' => $id))) {
                 $msg = array('success' => '<p>Selected item(s) deleted successfully.</p>');
                 $type = 'success';
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>Error! couldn\'t delete.</p>');
                 $type = 'error';
             }
@@ -432,15 +407,13 @@ class Form extends MY_Controller
 
     function _item_edit()
     {
-        $data = '';
+        $data = array();
         $id_array = array();
 
         if (!isset($_POST['item'])) { //i.e. if its not submitting edit page (form_item_edit_view.php)
             if (isset($_POST['select'])) {
                 $id_array = $_POST['select'];
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>You must select atleast one item to edit.</p>');
                 setMessages($msg, 'error');
 
@@ -460,8 +433,7 @@ class Form extends MY_Controller
             $this->db->where('form_item_id', $id);
             $query = $this->db->get('form_item');
 
-            foreach ($query->result() as $row)
-            {
+            foreach ($query->result() as $row) {
                 $_POST['item'][$row->form_item_id]['form_item_id'] = $row->form_item_id;
                 $_POST['item'][$row->form_item_id]['form_item_label'] = $row->form_item_label;
                 $_POST['item'][$row->form_item_id]['form_item_name'] = $row->form_item_name;
@@ -494,14 +466,14 @@ class Form extends MY_Controller
                 if (!empty($v['form_item_name']) && !empty($v['form_item_label']) && !empty($v['form_item_id'])) {
                     $this->db->where('form_item_id', $v['form_item_id']);
                     $this->db->update('form_item', array(
-                                                        'form_item_label' => $v['form_item_label'],
-                                                        'form_item_name' => $v['form_item_name'],
-                                                        'form_item_input_type' => $v['form_item_input_type'],
-                                                        'form_item_parameters' => $v['form_item_parameters'],
-                                                        'form_item_validations' => $v['form_item_validations'],
-                                                        'form_item_default_value' => $v['form_item_default_value'],
-                                                        'form_item_data_type' => $v['form_item_data_type']
-                                                   )
+                            'form_item_label' => $v['form_item_label'],
+                            'form_item_name' => $v['form_item_name'],
+                            'form_item_input_type' => $v['form_item_input_type'],
+                            'form_item_parameters' => $v['form_item_parameters'],
+                            'form_item_validations' => $v['form_item_validations'],
+                            'form_item_default_value' => $v['form_item_default_value'],
+                            'form_item_data_type' => $v['form_item_data_type']
+                        )
                     );
                 }
 
@@ -523,19 +495,14 @@ class Form extends MY_Controller
     {
         if (isset($_POST['create'])) {
             $this->_group_create();
-        }
-        else if (isset($_POST['delete'])) {
+        } else if (isset($_POST['delete'])) {
             $this->_group_delete();
-        }
-        else if (isset($_POST['edit'])) {
+        } else if (isset($_POST['edit'])) {
             $this->_group_edit();
-        }
-        else if (isset($_POST['add_item'])) {
+        } else if (isset($_POST['add_item'])) {
             $this->_manage_group_item();
-        }
-        else
-        {
-            $data = '';
+        } else {
+            $data = array();
 
             $data['keys'] = Model('form')->get_form_group();
 
@@ -548,7 +515,7 @@ class Form extends MY_Controller
 
     function _group_create()
     {
-        $data = '';
+        $data = array();
 
         $this->load->library('form_validation');
 
@@ -577,25 +544,21 @@ class Form extends MY_Controller
                 $msg = array('error' => validation_errors());
                 setMessages($msg, 'error');
             }
-        }
-        else
-        {
+        } else {
             $form_group_name = set_value('form_group_name');
             $form_group_identifier = set_value('form_group_identifier');
             $form_group_send_to = set_value('form_group_send_to');
 
             $insert = Model('form')->insert_form_group(array(
-                                                                   'form_group_name' => $form_group_name,
-                                                                   'form_group_identifier' => $form_group_identifier,
-                                                                   'form_group_send_to' => $form_group_send_to
-                                                              ));
+                'form_group_name' => $form_group_name,
+                'form_group_identifier' => $form_group_identifier,
+                'form_group_send_to' => $form_group_send_to
+            ));
 
             if ($insert) {
                 $msg = array('success' => "<p>New Form Group <strong>$form_group_name</strong> Successfully Added.</p>");
                 setMessages($msg, 'success');
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => "<p>Form Group Indetifier <strong>$form_group_identifier</strong> already exists!</p>");
                 setMessages($msg, 'error');
             }
@@ -609,13 +572,9 @@ class Form extends MY_Controller
 
     function _group_delete()
     {
-        $data = '';
-
         if (isset($_POST['select'])) {
             $id_array = $_POST['select'];
-        }
-        else
-        {
+        } else {
             $id_array = array();
             $msg = array('error' => '<p>You must select atleast one item to delete.</p>');
             setMessages($msg, 'error');
@@ -623,17 +582,14 @@ class Form extends MY_Controller
 
         !is_array($id_array) ? $id_array = array() : '';
 
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             if ($this->db->delete('form_group', array('form_group_id' => $id))) {
                 $this->db->delete('form_item_to_group', array('form_group_id' => $id));
                 $msg = array('success' => '<p>Selected item(s) deleted successfully.</p>');
                 setMessages($msg, 'success');
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>Error! couldn\'t delete.</p>');
                 setMessages($msg, 'error');
             }
@@ -647,16 +603,14 @@ class Form extends MY_Controller
 
     function _group_edit()
     {
-        $data = '';
+        $data = array();
         $id_array = array();
 
         //if its not submitting edit page (form_item_edit_view.php)
         if (!isset($_POST['group'])) {
             if (isset($_POST['select'])) {
                 $id_array = $_POST['select'];
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>You must select atleast one item to edit.</p>');
                 setMessages($msg, 'error');
 
@@ -670,16 +624,14 @@ class Form extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         //START: for the first page load, get data from database
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
 
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             $this->db->where('form_group_id', $id);
             $query = $this->db->get('form_group');
 
-            foreach ($query->result() as $row)
-            {
+            foreach ($query->result() as $row) {
                 $_POST['group'][$row->form_group_id]['form_group_id'] = $row->form_group_id;
                 $_POST['group'][$row->form_group_id]['form_group_name'] = $row->form_group_name;
                 $_POST['group'][$row->form_group_id]['form_group_identifier'] = $row->form_group_identifier;
@@ -690,8 +642,7 @@ class Form extends MY_Controller
 
         //START: clean data and update in database
         if ($this->input->post('edit') == 'Update' && isset($_POST['group']) && is_array($_POST['group'])) {
-            foreach ($_POST['group'] as $v)
-            {
+            foreach ($_POST['group'] as $v) {
                 //cleaning
                 $form_group_id = $v['form_group_id'];
 
@@ -705,10 +656,10 @@ class Form extends MY_Controller
                 if (!empty($v['form_group_name']) && !empty($v['form_group_identifier']) && !empty($v['form_group_id'])) {
                     $this->db->where('form_group_id', $v['form_group_id']);
                     $this->db->update('form_group', array(
-                                                         'form_group_name' => $v['form_group_name'],
-                                                         'form_group_identifier' => $v['form_group_identifier'],
-                                                         'form_group_send_to' => $v['form_group_send_to']
-                                                    )
+                            'form_group_name' => $v['form_group_name'],
+                            'form_group_identifier' => $v['form_group_identifier'],
+                            'form_group_send_to' => $v['form_group_send_to']
+                        )
                     );
                 }
 
@@ -728,16 +679,14 @@ class Form extends MY_Controller
 
     function _manage_group_item()
     {
-        $data = '';
+        $data = array();
         $id_array = array();
 
         //if its not submitting edit page (form_item_edit_view.php)
         if (!isset($_POST['group'])) {
             if (isset($_POST['select'])) {
                 $id_array = $_POST['select'];
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>You must select atleast one item to edit.</p>');
                 setMessages($msg, 'error');
 
@@ -750,15 +699,13 @@ class Form extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         //START: for the first page load, get data from database
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             $this->db->where('form_group_id', $id);
             $query = $this->db->get('form_group');
 
-            foreach ($query->result() as $row)
-            {
+            foreach ($query->result() as $row) {
                 $_POST['group'][$row->form_group_id]['form_group_id'] = $row->form_group_id;
                 $_POST['group'][$row->form_group_id]['form_group_name'] = $row->form_group_name;
                 $_POST['group'][$row->form_group_id]['form_group_identifier'] = $row->form_group_identifier;
@@ -769,8 +716,7 @@ class Form extends MY_Controller
 
         //START: clean data and update in database
         if ($this->input->post('edit') == 'Update' && isset($_POST['group']) && is_array($_POST['group'])) {
-            foreach ($_POST['group'] as $v)
-            {
+            foreach ($_POST['group'] as $v) {
                 //cleaning
                 $form_group_id = $v['form_group_id'];
 
@@ -784,10 +730,10 @@ class Form extends MY_Controller
                 if (!empty($v['form_group_name']) && !empty($v['form_group_identifier']) && !empty($v['form_group_id'])) {
                     $this->db->where('form_group_id', $v['form_group_id']);
                     $this->db->update('form_group', array(
-                                                         'form_group_name' => $v['form_group_name'],
-                                                         'form_group_identifier' => $v['form_group_identifier'],
-                                                         'form_group_send_to' => $v['form_group_send_to']
-                                                    )
+                            'form_group_name' => $v['form_group_name'],
+                            'form_group_identifier' => $v['form_group_identifier'],
+                            'form_group_send_to' => $v['form_group_send_to']
+                        )
                     );
                 }
 

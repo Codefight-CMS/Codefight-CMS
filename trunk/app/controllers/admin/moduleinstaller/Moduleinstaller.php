@@ -40,85 +40,76 @@ class Moduleinstaller extends MY_Controller
      */
     function index()
     {
-        $data = '';
-		$sort = 1;
-		$menu_item = Library('module')->_getAdminNav();
+        $data = array();
+        $sort = 1;
+        $menu_item = Library('module')->_getAdminNav();
 
-		$query = $this->db->order_by('parent')->get('module');
-		$modules_db = $query->result_array();
+        $query = $this->db->order_by('parent')->get('module');
+        $modules_db = $query->result_array();
 
-		foreach($modules_db as $k => $v)
-		{
-			$modules_db[$v['url']] = $v;
-			unset($modules_db[$k]);
-		}
+        foreach ($modules_db as $k => $v) {
+            $modules_db[$v['url']] = $v;
+            unset($modules_db[$k]);
+        }
 
-		foreach($menu_item as $v)
-		{
-			$sql = array();
-			$key = 0;
+        foreach ($menu_item as $v) {
+            $sql = array();
+            $key = 0;
 
-			$sql[$key] = array(
-				'parent' => 'top',
-				'status' => 1,
-				'sort' => $sort++,
-				'url' => $v['url'],
-				'title' => $v['title'],
-				'is_menu' => $v['is_menu'],
-				'void' => $v['void'],
-				'menu' => serialize($v),
-				'child' => ''
-			);
-			if(isset($v['child']) && count($v['child']) > 0)
-			{
-				$sql[$key++]['child'] = serialize(array_keys($v['child']));
-				foreach($v['child'] as $k2 => $v2)
-				{
-					$sql[$key] = array(
-						'parent' => $v['url'],
-						'status' => 1,
-						'sort' => $sort++,
-						'url' => $v2['url'],
-						'title' => $v2['title'],
-						'is_menu' => $v2['is_menu'],
-						'void' => $v2['void'],
-						'child' => ''
-					);
-					if(isset($v2['child']) && count($v2['child']) > 0)
-					{
-						$sql[$key++]['child'] = serialize(array_keys($v2['child']));
-						foreach($v2['child'] as $k3 => $v3)
-						{
-							$sql[$key++] = array(
-								'parent' => $v2['url'],
-								'status' => 1,
-								'sort' => $sort++,
-								'url' => $v3['url'],
-								'title' => $v3['title'],
-								'is_menu' => $v3['is_menu'],
-								'void' => $v3['void'],
-								'child' => ''
-							);
-						}
-					}
-					$key++;
-				}
-				$key++;
-			}
+            $sql[$key] = array(
+                'parent' => 'top',
+                'status' => 1,
+                'sort' => $sort++,
+                'url' => $v['url'],
+                'title' => $v['title'],
+                'is_menu' => $v['is_menu'],
+                'void' => $v['void'],
+                'menu' => serialize($v),
+                'child' => ''
+            );
+            if (isset($v['child']) && count($v['child']) > 0) {
+                $sql[$key++]['child'] = serialize(array_keys($v['child']));
+                foreach ($v['child'] as $k2 => $v2) {
+                    $sql[$key] = array(
+                        'parent' => $v['url'],
+                        'status' => 1,
+                        'sort' => $sort++,
+                        'url' => $v2['url'],
+                        'title' => $v2['title'],
+                        'is_menu' => $v2['is_menu'],
+                        'void' => $v2['void'],
+                        'child' => ''
+                    );
+                    if (isset($v2['child']) && count($v2['child']) > 0) {
+                        $sql[$key++]['child'] = serialize(array_keys($v2['child']));
+                        foreach ($v2['child'] as $k3 => $v3) {
+                            $sql[$key++] = array(
+                                'parent' => $v2['url'],
+                                'status' => 1,
+                                'sort' => $sort++,
+                                'url' => $v3['url'],
+                                'title' => $v3['title'],
+                                'is_menu' => $v3['is_menu'],
+                                'void' => $v3['void'],
+                                'child' => ''
+                            );
+                        }
+                    }
+                    $key++;
+                }
+                $key++;
+            }
 
-			foreach($sql as $k => $v)
-			{
-				if(isset($modules_db[$v['url']]))
-				{
-					$this->db->update('module', $v, array('url' => $v['url']));
-					unset($sql[$k]);
-				}
-			}
-			if(count($sql) > 0)
-			{
-				$this->db->insert_batch('module', $sql);
-			}
-		}
+            foreach ($sql as $k => $v) {
+                if (isset($modules_db[$v['url']])) {
+                    $this->db->update('module', $v, array('url' => $v['url']));
+                    unset($sql[$k]);
+                }
+            }
+            if (count($sql) > 0) {
+                $this->db->insert_batch('module', $sql);
+            }
+        }
 
         //---
         $html_string = $this->load->view('admin/moduleinstaller/moduleinstaller_view', $data, true); //Get view data in place of sending to browser.

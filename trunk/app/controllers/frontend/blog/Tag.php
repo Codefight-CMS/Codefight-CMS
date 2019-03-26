@@ -38,13 +38,13 @@ class Tag extends MY_Controller
      */
     public function __construct()
     {
-        /*
-           | define an array $load with keys model,library etc
-           | you can load multiple models etc separated by + sign
-           | you can load the CI way as well though :)
-           */
+        /**
+         * | define an array $load with keys model,library etc
+         * | you can load multiple models etc separated by + sign
+         * | you can load the CI way as well though :)
+         */
         $load = array(
-            'helper'  => 'text + form'
+            'helper' => 'text + form'
         );
 
         parent::__construct($load);
@@ -62,9 +62,9 @@ class Tag extends MY_Controller
      */
     public function index()
     {
-        /*
-           * START: Pagination config and initialization
-           */
+        /**
+         * START: Pagination config and initialization
+         */
         //if(!$this->page_id) $this->page_id = '0';
         //$this->uri->segment(3, 'blog')
 
@@ -103,11 +103,11 @@ class Tag extends MY_Controller
         //get created page links from library -> MY_Controller (paginate_page)
         $data['pagination'] = $this->page_links;
 
-        /*
-           | Send data to Format Content and get back.
-           | See These Files For Processing:
-           | libraries/block/block_Library.php
-           */
+        /**
+         * | Send data to Format Content and get back.
+         * | See These Files For Processing:
+         * | libraries/block/block_Library.php
+         */
         //if(isset($data['content'])) $data['content'] = Model('blog')->parseContent($data['content']);
         if (isset($data['content']) && count((array)$data['content']) > 0) {
             $data['content'] = Model('blog')->parseContent($data['content']);
@@ -120,13 +120,13 @@ class Tag extends MY_Controller
         //main content block [content view]
         $data['content_block'] = 'page_html/blog_view';
 
-        /*
-           | @process_view('data', 'master page')
-           | @see app/core/MY_Controller.php
-           */
+        /**
+         * | @process_view('data', 'master page')
+         * | @see app/core/MY_Controller.php
+         */
         $this->process_view($data);
     }
 }
 
-/* End of file tag.php */
-/* Location: ./app/frontend/controllers/blog/tag.php */
+/* End of file Tag.php */
+/* Location: ./app/controllers/frontend/blog/Tag.php */

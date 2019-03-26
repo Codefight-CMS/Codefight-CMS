@@ -85,9 +85,7 @@ class Trim extends MY_Controller
                     // URL has already been trimed
                     $integer = $already_trimed[0]['trim_id'];
                     $trimed_url = $this->_getShortUrl($integer);
-                }
-                else
-                {
+                } else {
                     // URL not in database, insert
                     $sql = array(
                         'long_url' => $url_to_trim,
@@ -116,8 +114,7 @@ class Trim extends MY_Controller
     function _getShortUrl($integer)
     {
         $length = strlen($this->base);
-        while ($integer > $length - 1)
-        {
+        while ($integer > $length - 1) {
             $this->out = $this->base[fmod($integer, $length)] . $this->out;
             $integer = floor($integer / $length);
         }

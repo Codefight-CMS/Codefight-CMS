@@ -30,11 +30,11 @@ class File extends MY_Controller
 {
     public function __construct()
     {
-        /*
-           | define an array $load with keys model,library etc
-           | you can load multiple models etc separated by + sign
-           | you can load the CI way as well though :)
-           */
+        /**
+         * | define an array $load with keys model,library etc
+         * | you can load multiple models etc separated by + sign
+         * | you can load the CI way as well though :)
+         */
         $load = array(
             'helper' => 'text + form'
         );
@@ -56,18 +56,16 @@ class File extends MY_Controller
 
         $data = Model('page')->get_page_contents($this->menu_link);
 
-        /*
-           | Send data to Format Content and get back.
-           | See These Files For Processing:
-           | libraries/block/block_Library.php
-           */
+        /**
+         * | Send data to Format Content and get back.
+         * | See These Files For Processing:
+         * | libraries/block/block_Library.php
+         */
         if (isset($data['content']) && count((array)$data['content']) > 0) {
             //For static page, display full content by passing 2nd param as false.
             $data['content'] = Model('page')->parseContent($data['content'], FALSE);
             $data['content'] = Model('file')->process($data['content']);
-        }
-        else
-        {
+        } else {
             //if content not found | Set meta to noindex to save your website value to search engines.
             $data['noindex'] = 'yes';
         }
@@ -75,10 +73,10 @@ class File extends MY_Controller
         //main content block [content view]
         $data['content_block'] = 'page_html/page_view';
 
-        /*
-           | @process_view('data', 'master page')
-           | @see app/core/MY_Controller.php
-           */
+        /**
+         * | @process_view('data', 'master page')
+         * | @see app/core/MY_Controller.php
+         */
         $this->process_view($data);
     }
 
@@ -104,6 +102,5 @@ class File extends MY_Controller
     }
 }
 
-/* End of file page.php */
-/* Location: ./app/frontend/controllers/page/page.php */
-?>
+/* End of file File.php */
+/* Location: ./app/controllers/frontend/file/File.php */

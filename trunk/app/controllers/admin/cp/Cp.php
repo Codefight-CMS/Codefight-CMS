@@ -40,9 +40,9 @@ class Cp extends MY_Controller
      */
     function index()
     {
-        $data = '';
-
-        $data['top_page'] = Model('cp')->get_top_page();
+        $data = array(
+            'top_page' => Model('cp')->get_top_page()
+        );
 
         //---
         $html_string = $this->load->view('admin/cp/cp_view', $data, true); //Get view data in place of sending to browser.
@@ -58,23 +58,19 @@ class Cp extends MY_Controller
     function update()
     {
         error_reporting(0);
-        $data = '';
 
         $codefight = array();
         if ($xml = &simplexml_load_file('http://codefight.org/feed/releases')) {
             $channel = ($xml->channel);
 
-            foreach ($channel as $v)
-            {
-                foreach ($v->item as $w)
-                {
+            foreach ($channel as $v) {
+                foreach ($v->item as $w) {
                     $codefight[] = $w;
                 }
             }
         }
 
-        $data['codefight'] = $codefight;
-
+        $data = array('codefight' => $codefight);
 
         //---
         $html_string = $this->load->view('admin/cp/update_view', $data, true); //Get view data in place of sending to browser.

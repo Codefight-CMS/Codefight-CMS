@@ -63,7 +63,7 @@ class File extends MY_Controller
         //---
         $this->q = $this->input->post('q', TRUE);
 
-        $data = '';
+        $data = array();
 
         /*
            * START: Pagination config and initialization
@@ -113,7 +113,7 @@ class File extends MY_Controller
             return;
         }
 
-        $data = '';
+        $data = array();
 
         /*
            * START: Pagination config and initialization
@@ -145,13 +145,9 @@ class File extends MY_Controller
 
     function delete_file()
     {
-        $data = '';
-
         if (isset($_POST['select'])) {
             $id_array = $_POST['select'];
-        }
-        else
-        {
+        } else {
             $id_array = array();
 
             $msg = array('error' => '<p>You must select atleast one file to delete.</p>');
@@ -160,8 +156,7 @@ class File extends MY_Controller
 
         !is_array($id_array) ? $id_array = array() : '';
 
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             //$id = preg_replace('/[^0-9]+/','',$id);
             //$this->db->delete('file', array('file_id' => $id));
             $delete = Model('file')->delete_file($id);
@@ -171,9 +166,7 @@ class File extends MY_Controller
 
                 $msg = array('success' => '<p>Selected file(s) deleted successfully.</p>');
                 setMessages($msg, 'success');
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>Error! couldn\'t delete.</p>');
                 setMessages($msg, 'error');
             }
@@ -208,16 +201,14 @@ class File extends MY_Controller
             setMessages($msg, 'error');
 
             return FALSE;
-        }
-        else
-        {
+        } else {
             return $this->upload->data();
         }
     }
 
     function upload_file()
     {
-        $data = '';
+        $data = array();
         $this->load->library('form_validation');
 
         $data['folder'] = Model('file')->get_active_folder();
@@ -233,8 +224,7 @@ class File extends MY_Controller
         );
         if (isset($_POST['access'])) {
             //---
-            switch ($_POST['access'])
-            {
+            switch ($_POST['access']) {
                 case 'group':
                     $val[] = array('field' => 'group[]', 'label' => 'User Group', 'rules' => 'trim|required|xss_clean');
                     $val[] = array('field' => 'user[]', 'label' => 'User', 'rules' => 'trim|xss_clean');
@@ -257,9 +247,7 @@ class File extends MY_Controller
                 setMessages($msg, 'error');
             }
 
-        }
-        else
-        {
+        } else {
             $active = set_value('active');
             $parent = set_value('parent');
             $name = set_value('name');
@@ -273,9 +261,7 @@ class File extends MY_Controller
             if (!$config['upload_path']) {
                 $msg = array('error' => '<p>Upload Path Not Found.</p>');
                 setMessages($msg, 'error');
-            }
-            else
-            {
+            } else {
                 if ($upload_data = $this->_upload($config)) {
                     $file = array(
                         'active' => $active,
@@ -293,9 +279,7 @@ class File extends MY_Controller
                     if ($insert) {
                         $msg = array('success' => '<p>New file successfully uploaded</p>');
                         setMessages($msg, 'success');
-                    }
-                    else
-                    {
+                    } else {
                         $msg = array('error' => '<p>Could not upload file.</p>');
                         setMessages($msg, 'error');
                     }
@@ -312,7 +296,7 @@ class File extends MY_Controller
     function edit_file()
     {
 
-        $data = '';
+        $data = array();
         $success_count = 1;
         $id_array = array();
 
@@ -320,9 +304,7 @@ class File extends MY_Controller
         if (!isset($_POST['file'])) {
             if (isset($_POST['select'])) {
                 $id_array = $_POST['select'];
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>You must select atleast one file to edit.</p>');
                 setMessages($msg, 'error');
 
@@ -341,16 +323,14 @@ class File extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         //START: for the first page load, get data from database
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
 
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             $this->db->where('file_id', $id);
             $query = $this->db->get('file');
 
-            foreach ($query->result() as $row)
-            {
+            foreach ($query->result() as $row) {
                 $_POST['file'][$row->file_id]['id'] = $row->file_id;
                 $_POST['file'][$row->file_id]['active'] = $row->file_status;
                 $_POST['file'][$row->file_id]['access'] = $row->file_access;
@@ -366,8 +346,7 @@ class File extends MY_Controller
 
         //START: clean data and update in database
         if ($this->input->post('edit') == 'Update' && isset($_POST['file']) && is_array($_POST['file'])) {
-            foreach ($_POST['file'] as $k => $v)
-            {
+            foreach ($_POST['file'] as $k => $v) {
                 //cleaning
                 $id = xss_clean($v['id']); //set_value('id');
                 $active = xss_clean($v['active']); //set_value('active');
@@ -399,8 +378,7 @@ class File extends MY_Controller
                     );
                     if (isset($_POST['file'][$k]['access'])) {
                         //---
-                        switch ($_POST['file'][$k]['access'])
-                        {
+                        switch ($_POST['file'][$k]['access']) {
                             case 'group':
                                 $val[] = array('field' => 'file[' . $k . '][group][]', 'label' => 'User Group', 'rules' => 'trim|required|xss_clean');
                                 $val[] = array('field' => 'file[' . $k . '][user][]', 'label' => 'User', 'rules' => 'trim|xss_clean');
@@ -422,9 +400,7 @@ class File extends MY_Controller
                             $msg = array('error' => validation_errors());
                             setMessages($msg, 'error');
                         }
-                    }
-                    else
-                    {
+                    } else {
                         $file = array(
                             'id' => $id,
                             'active' => $active,
@@ -441,18 +417,14 @@ class File extends MY_Controller
                         if ($update) {
                             $msg = array('success' => '<p>' . $success_count++ . ' Records Updated successfully.</p>');
                             setMessages($msg, 'success', false);
-                        }
-                        else
-                        {
+                        } else {
                             $msg = array('error' => '<p>Could not update files specified.</p>');
                             setMessages($msg, 'error');
                         }
 
                     }
 
-                }
-                else
-                {
+                } else {
                     $msg = array('error' => '<p>Required fields can not be empty!</p>');
                     setMessages($msg, 'error');
                 }

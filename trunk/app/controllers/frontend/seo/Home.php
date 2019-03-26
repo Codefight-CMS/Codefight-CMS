@@ -82,6 +82,5 @@ class Home extends MY_Controller
     }
 }
 
-/* End of file home.php */
-/* Location: ./app/frontend/controllers/seo/home.php */
-?>
+/* End of file Home.php */
+/* Location: ./app/controllers/frontend/seo/Home.php */

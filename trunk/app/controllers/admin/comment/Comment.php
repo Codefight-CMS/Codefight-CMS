@@ -39,18 +39,16 @@ class Comment extends MY_Controller
     function index()
     {
 
-        $data = '';
+        $data = array();
         if (isset($_POST['delete'])) {
-            $data = $this->_delete();
-        }
-        elseif (isset($_POST['approve']))
-        {
-            $data = $this->_approve();
+            $this->_delete();
+        } elseif (isset($_POST['approve'])) {
+            $this->_approve();
         }
 
-        /*
-           * START: Pagination config and initialization
-           */
+        /**
+         * START: Pagination config and initialization
+         */
         $this->load->library('pagination');
         $config['per_page'] = '20';
         $config['uri_segment'] = 3;
@@ -58,9 +56,7 @@ class Comment extends MY_Controller
 
         if ($this->uri->segment(3, 'pending-comment') == 'pending-comment') {
             $status = 0;
-        }
-        else
-        {
+        } else {
             $status = 1;
         }
 
@@ -84,13 +80,9 @@ class Comment extends MY_Controller
 
     function _delete()
     {
-        $data = '';
-
         if (isset($_POST['select'])) {
             $id_array = $_POST['select'];
-        }
-        else
-        {
+        } else {
             $id_array = array();
 
             $msg = array('error' => "<p>You must select atleast one comment to delete.</p>");
@@ -100,35 +92,30 @@ class Comment extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         $msg = false;
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             if ($this->db->delete('page_comment', array('page_comment_id' => $id))) {
                 $msg = array('success' => "<p>Selected comment(s) deleted successfully.</p>");
                 $type = 'success';
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => "<p>Error! couldn't delete.</p>");
                 $type = 'error';
             }
 
         }
-        if ($msg) setMessages($msg, $type);
+        if ($msg) {
+            setMessages($msg, $type);
+        }
 
         redirect(current_url());
     }
 
     function _approve()
     {
-        $data = '';
-
         if (isset($_POST['select'])) {
             $id_array = $_POST['select'];
-        }
-        else
-        {
+        } else {
             $id_array = array();
 
             $msg = array('error' => "<p>You must select atleast one comment to approve.</p>");
@@ -138,25 +125,22 @@ class Comment extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         $msg = false;
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             $this->db->where('page_comment_id', $id);
             if ($this->db->update('page_comment', array('page_comment_status' => '1'))) {
                 $msg = array('error' => "<p>Selected comment(s) approved successfully.</p>");
                 $type = 'success';
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => "<p>Error! couldn't approve.</p>");
                 $type = 'error';
             }
 
         }
-        if ($msg) setMessages($msg, $type);
 
-        return $data;
+        if ($msg && $type) {
+            setMessages($msg, $type);
+        }
     }
-
 }

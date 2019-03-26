@@ -1,4 +1,4 @@
-<?php  if (!defined('BASEPATH')) {
+<?php if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 /**
@@ -50,7 +50,7 @@ if (!function_exists('Model')) {
      */
     function Model($model = 'codefight', $config = FALSE)
     {
-        if(!is_object('MY_Model')){
+        if (!is_object('MY_Model')) {
             include_once APPPATH . DS . 'core' . DS . 'MY_Model.php';
         }
 
@@ -69,7 +69,7 @@ if (!function_exists('getMessages')) {
     function getMessages()
     {
         $str = '';
-        $CI  =& get_instance();
+        $CI =& get_instance();
 
         $globalMessages = (array)$CI->session->userdata('globalMessages');
 
@@ -98,7 +98,7 @@ if (!function_exists('setMessages')) {
     /**
      * @param string $msg
      * @param string $type
-     * @param bool   $is_multiple
+     * @param bool $is_multiple
      */
     function setMessages($msg = '', $type = 'error', $is_multiple = true)
     {
@@ -147,7 +147,7 @@ if (!function_exists('get_page_url')) {
     {
 
         $url = ''; //base_url();
-        $CI  =& get_instance();
+        $CI =& get_instance();
 
         $data = (array)$data;
         if (!count($data)) {
@@ -197,13 +197,13 @@ if (!function_exists('get_canonical_url')) {
      * @param $meta array
      * @return mixed
      */
-    function get_canonical_url($meta=array())
+    function get_canonical_url($meta = array())
     {
-        if(!empty($meta['canonical'])){
+        if (!empty($meta['canonical'])) {
             $url = site_url($meta['canonical']);
         } else {
             $url = current_url();
-            $CI      =& get_instance();
+            $CI =& get_instance();
             $page_id = (int)$CI->uri->segment(3);
 
             if ($page_id) {
@@ -230,7 +230,7 @@ if (!function_exists('get_canonical_url')) {
 
         // if duplicate site created with same content and want to notify google
         // set CANONICAL as original base url.
-        if(defined('CANONICAL')){
+        if (defined('CANONICAL')) {
             $url = str_replace(base_url(), CANONICAL, $url);
         }
 
@@ -285,14 +285,14 @@ if (!function_exists('get_random_bg')) {
     function get_random_bg()
     {
         $ret = array();
-        $CI  =& get_instance();
+        $CI =& get_instance();
 
         if (!defined('SKINPATH')) {
             define('SKINPATH', (FCPATH));
         }
 
         $folder_path = 'skin/frontend/' . Library('asset')->template . 'images/bg/';
-        $dir         = SKINPATH . $folder_path;
+        $dir = SKINPATH . $folder_path;
 
         $skin_url = $CI->config->item('skin_url');
         if (empty($skin_url)) {
@@ -312,8 +312,7 @@ if (!function_exists('get_random_bg')) {
             $rand_key = array_rand($ret, 1);
 
             return $skin_url . $folder_path . $ret[$rand_key];
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -330,9 +329,9 @@ if (!function_exists('latest_version')) {
 
         $string = '';
 
-        $url      = 'http://codefight.org/tools/version/' . preg_replace('/[^a-z0-9\-]+/i', '_', $_SERVER['HTTP_HOST']);
+        $url = 'http://codefight.org/tools/version/' . preg_replace('/[^a-z0-9\-]+/i', '_', $_SERVER['HTTP_HOST']);
         $ver_file = FCPATH . "version.txt";
-        $fh       = fopen($ver_file, 'r');
+        $fh = fopen($ver_file, 'r');
         $ver_data = fgets($fh);
         fclose($fh);
 
@@ -378,8 +377,8 @@ if (!function_exists('get_default_recipients')) {
 
 /**
  * @param string $language_key : Text to translate
- * @param bool   $return : default return, false to echo translated text
- * @param string   $file : load translation file
+ * @param bool $return : default return, false to echo translated text
+ * @param string $file : load translation file
  *
  * @return string
  */
@@ -395,7 +394,7 @@ if (!function_exists('__')) {
 
         $appPath = APPPATH;
 
-        foreach($files as $file) {
+        foreach ($files as $file) {
             if (!empty($file)) {
                 $filename = 'language' . DS . $CI->language . DS . "{$file}_lang.php";
                 $filename_path = $appPath . $filename;
@@ -418,7 +417,7 @@ if (!function_exists('__')) {
             $string = $language_key;
         }
 
-        if($return){
+        if ($return) {
             return $string;
         }
         echo $string;
@@ -429,15 +428,15 @@ if (!function_exists('__')) {
 
 /**
  * @param string $language_key : Text to translate
- * @param bool   $return : default echo, true to return translated text
- * @param string   $file : load translation file
+ * @param bool $return : default echo, true to return translated text
+ * @param string $file : load translation file
  *
  * @return string
  */
 if (!function_exists('___')) {
     function ___($language_key = '', $return = false, $file = false)
     {
-		return __($language_key, $return, $file);
+        return __($language_key, $return, $file);
     }
 }
 

@@ -55,7 +55,7 @@ class Page extends MY_Controller
         } else if (isset($_POST['edit'])) {
             $this->_edit();
         } else {
-            $data = '';
+            $data = array();
 
             //load all required include files
             //$data['head_includes'] = array('sortable.php'); //include file's location is relative to header location
@@ -88,7 +88,7 @@ class Page extends MY_Controller
 
     function _create()
     {
-        $data = '';
+        $data = array();
         $data['authors'] = $this->get_authors();
 
         $this->load->library('form_validation');
@@ -216,8 +216,6 @@ class Page extends MY_Controller
 
     function _delete()
     {
-        $data = '';
-
         if (isset($_POST['select'])) {
             $id_array = $_POST['select'];
         } else {
@@ -259,8 +257,7 @@ class Page extends MY_Controller
 
     function _edit()
     {
-
-        $data = '';
+        $data = array();
         Library('asset')->addJs('tinymce/tinymce.min');
         $data['authors'] = $this->get_authors();
 

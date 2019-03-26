@@ -30,11 +30,11 @@ class Registration extends MY_Controller
 {
     public function __construct()
     {
-        /*
-           | define an array $load with keys model,library etc
-           | you can load multiple models etc separated by + sign
-           | you can load the CI way as well though :)
-           */
+        /**
+         * | define an array $load with keys model,library etc
+         * | you can load multiple models etc separated by + sign
+         * | you can load the CI way as well though :)
+         */
         $load = array(
             'library' => 'form_validation',
             'helper' => 'form'
@@ -121,9 +121,7 @@ class Registration extends MY_Controller
                 $msg = array('login' => '<p>Registration Successful. You will be notified once your account is activated.</p>');
                 setMessages($msg, 'success');
 
-            }
-            else
-            {
+            } else {
 
                 //Set Error Message
                 $msg = array('login' => '<p>User with such email is already registered.</p>');
@@ -131,9 +129,7 @@ class Registration extends MY_Controller
 
             }
 
-        }
-        else
-        {
+        } else {
 
             if (validation_errors()) {
 
@@ -148,10 +144,10 @@ class Registration extends MY_Controller
         //main content block [content view]
         $data['content_block'] = 'registration/registration_view';
 
-        /*
-           | @process_view('data', 'master page')
-           | @see app/core/MY_Controller.php
-           */
+        /**
+         * | @process_view('data', 'master page')
+         * | @see app/core/MY_Controller.php
+         */
         $this->process_view($data);
 
     }
@@ -166,7 +162,7 @@ class Registration extends MY_Controller
     public function login()
     {
 
-        $data = '';
+        $data = array();
 
         $val = array(
             array(
@@ -190,9 +186,7 @@ class Registration extends MY_Controller
                 setMessages($msg, 'error');
             }
 
-        }
-        else
-        {
+        } else {
             $email = set_value('email');
             $password = set_value('password');
 
@@ -204,9 +198,7 @@ class Registration extends MY_Controller
                 // display login error
                 $msg = array('error' => '<p>Invalid Login Data, Please try again.</p>');
                 setMessages($msg, 'error');
-            }
-            else
-            {
+            } else {
                 // display login success message
                 $msg = array('success' => '<p>Login Successful.</p>');
                 setMessages($msg, 'success');
@@ -260,7 +252,7 @@ class Registration extends MY_Controller
     public function forgotten_password()
     {
 
-        $data = '';
+        $data = array();
 
         //Define Validation Rules
         $val = array(
@@ -332,9 +324,7 @@ Your New Password is:
 
                     $_POST = array();
 
-                }
-                else
-                {
+                } else {
 
                     //Set Error Message
                     //echo $this->email->print_debugger();
@@ -343,9 +333,7 @@ Your New Password is:
 
                 }
 
-            }
-            else
-            {
+            } else {
 
                 //Set Error Message
                 $msg = array('login' => '<p>Invalid Email.</p>');
@@ -365,10 +353,10 @@ Your New Password is:
         //main content block [content view]
         $data['content_block'] = 'registration/forgotten_password_view';
 
-        /*
-           | @process_view('data', 'master page')
-           | @see app/core/MY_Controller.php
-           */
+        /**
+         * | @process_view('data', 'master page')
+         * | @see app/core/MY_Controller.php
+         */
         $this->process_view($data);
 
     }
@@ -391,8 +379,7 @@ Your New Password is:
 
         $pass = '';
 
-        while ($i <= 7)
-        {
+        while ($i <= 7) {
 
             $num = rand() % 29;
 
@@ -410,5 +397,5 @@ Your New Password is:
 
 }
 
-/* End of file registration.php */
-/* Location: ./app/frontend/controllers/registration/registration.php */
+/* End of file Registration.php */
+/* Location: ./app/controllers/frontend/registration/Registration.php */

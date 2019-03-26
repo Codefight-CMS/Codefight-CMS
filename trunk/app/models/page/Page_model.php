@@ -53,15 +53,13 @@ class Page_model extends MY_Model
             $data['meta'] = Model('blog')->meta_fetch($data1[0]);
             $data['content'] = $data1;
 
-        }
-        else
-        {
+        } else {
             $data['meta'] = Model('blog')->defaults();
             $data['content'] = array();
         }
 
         $data['meta']['index'] = true;
-        if(!$menu_id){
+        if (!$menu_id) {
             $data['meta']['index'] = false;
         }
 

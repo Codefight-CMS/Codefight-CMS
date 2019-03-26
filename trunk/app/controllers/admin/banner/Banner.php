@@ -33,12 +33,12 @@ class Banner extends MY_Controller
         parent::__construct();
 
         $this->load->helper('file');
-		Library('banner');
+        Library('banner');
     }
 
     function index()
     {
-        $data = '';
+        $data = array();
 
         $banner_extension = $this->_tep_banner_image_extension();
 
@@ -46,24 +46,20 @@ class Banner extends MY_Controller
         $dir_ok = false;
 
         if (function_exists('imagecreate') && !empty($banner_extension)) {
-            if (is_dir(FCPATH . 'media'.DS.'graph')) {
-                if (is_writeable(FCPATH . 'media'.DS.'graph')) {
+            if (is_dir(FCPATH . 'media' . DS . 'graph')) {
+                if (is_writable(FCPATH . 'media' . DS . 'graph')) {
                     $dir_ok = true;
-                }
-                else
-                {
+                } else {
                     // display login error
                     //$data['error_message'][] = 'Folder "' . dirname(FCPATH) . '/media/graph" must be writeable.';
-                    $msg = array('error' => '<p>Folder ' . FCPATH . 'media'.DS.'graph must be writeable.</p>');
+                    $msg = array('error' => '<p>Folder ' . FCPATH . 'media' . DS . 'graph must be writeable.</p>');
                     setMessages($msg, 'error');
                 }
 
-            }
-            else
-            {
+            } else {
                 // display login error
                 //$data['error_message'][] = 'Folder "' . dirname(FCPATH) . '/media/graph" does not exists.';
-                $msg = array('error' => "<p>Folder " . FCPATH . 'media'.DS.'graph does not exists.</p>');
+                $msg = array('error' => "<p>Folder " . FCPATH . 'media' . DS . 'graph does not exists.</p>');
                 setMessages($msg, 'error');
             }
         }
@@ -73,8 +69,7 @@ class Banner extends MY_Controller
         $banner_query = $this->db->get('banner');
         $data['banner'] = $banner_query->result_array();
 
-        foreach ($data['banner'] as $k => $v)
-        {
+        foreach ($data['banner'] as $k => $v) {
             $info_query = $this->db->query("select sum(banner_shown) as banner_shown, sum(banner_clicked) as banner_clicked from cf_banner_history where banner_id = '" . (int)$v['banner_id'] . "'");
             $data['banner'][$k]['info'] = $info_query->result_array();
         }
@@ -86,26 +81,26 @@ class Banner extends MY_Controller
     {
         $data = array();
         $data['banner'] = array('banner_title' => '',
-                                'banner_url' => '',
-                                'banner_image' => '',
-                                'banner_html_text' => '',
-                                'expire_date' => '',
-                                'expire_impressions' => '',
-                                'expire_clicks' => '',
-                                'date_scheduled' => '',
-                                'status' => '1');
+            'banner_url' => '',
+            'banner_image' => '',
+            'banner_html_text' => '',
+            'expire_date' => '',
+            'expire_impressions' => '',
+            'expire_clicks' => '',
+            'date_scheduled' => '',
+            'status' => '1');
         $data['action'] = 'new';
         $data['form_action'] = 'insert';
 
         $banner[0] = array('expire_date' => '',
-                           'date_scheduled' => '',
-                           'banner_title' => '',
-                           'banner_url' => '',
-                           'banner_group' => '',
-                           'banner_image' => '',
-                           'banner_html_text' => '',
-                           'expire_impressions' => '',
-                           'expire_clicks' => '');
+            'date_scheduled' => '',
+            'banner_title' => '',
+            'banner_url' => '',
+            'banner_group' => '',
+            'banner_image' => '',
+            'banner_html_text' => '',
+            'expire_impressions' => '',
+            'expire_clicks' => '');
 
         if ($this->uri->segment(3, 0)) {
             $data['form_action'] = 'update';
@@ -116,21 +111,19 @@ class Banner extends MY_Controller
 
             $banner = $banner_query->result_array();
 
-        }
-        elseif (!empty($_POST))
-        {
+        } elseif (!empty($_POST)) {
             $banner[0] = $_POST;
         }
 
-        if (isset($banner[0])) $data['banner'] = $banner[0];
-        /*
-
-
-
-          TODO:: write validation part here
-
-
-          */
+        if (isset($banner[0])) {
+            $data['banner'] = $banner[0];
+        }
+        /**
+         *
+         *
+         *
+         * TODO:: write validation part here
+         */
         if (isset($_POST['submit'])) {
             $banner_id = (isset($_POST['banner_id'])) ? preg_replace('/[^0-9]+/', '', $_POST['banner_id']) : false;
 
@@ -145,25 +138,24 @@ class Banner extends MY_Controller
             $expire_clicks = $_POST['expire_clicks'];
             $date_scheduled = $_POST['date_scheduled'];
 
-            /*
-
-               TODO:: upload image
-
-               */
+            /**
+             *
+             * TODO:: upload image
+             */
 
 
             //if validation success do following
             $db_image_location = (!empty($banner_image_local)) ? $banner_image_local : '';
 
             $sql_data_array = array('banner_title' => $banner_title,
-                                    'banner_url' => $banner_url,
-                                    'banner_image' => $db_image_location,
-                                    'banner_html_text' => $banner_html_text,
-                                    'expire_date' => $expire_date,
-                                    'expire_impressions' => $expire_impressions,
-                                    'expire_clicks' => $expire_clicks,
-                                    'date_scheduled' => $date_scheduled,
-                                    'status' => '1');
+                'banner_url' => $banner_url,
+                'banner_image' => $db_image_location,
+                'banner_html_text' => $banner_html_text,
+                'expire_date' => $expire_date,
+                'expire_impressions' => $expire_impressions,
+                'expire_clicks' => $expire_clicks,
+                'date_scheduled' => $date_scheduled,
+                'status' => '1');
 
             /* if insert - then do following */
             if (!$banner_id) {
@@ -174,14 +166,14 @@ class Banner extends MY_Controller
                 $this->db->insert('banner', $sql_data_array);
 
                 $banner_id = $this->db->insert_id();
-            }
-            else
-            {
+            } else {
                 $this->db->where('banner_id', (int)$banner_id);
                 $this->db->update('banner', $sql_data_array);
             }
 
-            if ($banner_id) redirect('admin/banner');
+            if ($banner_id) {
+                redirect('admin/banner');
+            }
         }
 
         $this->load->view('admin/banner/banner_view', $data);
@@ -191,10 +183,10 @@ class Banner extends MY_Controller
     {
         if ($this->uri->segment(4, 0)) {
             $this
-				->db
-				->where('banner_id', (int)$this->uri->segment(4, 0))
-				->set('status', (int)$this->uri->segment(5, 0))
-				->update('banner');
+                ->db
+                ->where('banner_id', (int)$this->uri->segment(4, 0))
+                ->set('status', (int)$this->uri->segment(5, 0))
+                ->update('banner');
         }
         redirect('admin/banner');
     }
@@ -214,26 +206,16 @@ class Banner extends MY_Controller
         if (function_exists('imagetypes')) {
             if (imagetypes() & IMG_PNG) {
                 return 'png';
-            }
-            elseif (imagetypes() & IMG_JPG)
-            {
+            } elseif (imagetypes() & IMG_JPG) {
                 return 'jpg';
-            }
-            elseif (imagetypes() & IMG_GIF)
-            {
+            } elseif (imagetypes() & IMG_GIF) {
                 return 'gif';
             }
-        }
-        elseif (function_exists('imagecreatefrompng') && function_exists('imagepng'))
-        {
+        } elseif (function_exists('imagecreatefrompng') && function_exists('imagepng')) {
             return 'png';
-        }
-        elseif (function_exists('imagecreatefromjpeg') && function_exists('imagejpeg'))
-        {
+        } elseif (function_exists('imagecreatefromjpeg') && function_exists('imagejpeg')) {
             return 'jpg';
-        }
-        elseif (function_exists('imagecreatefromgif') && function_exists('imagegif'))
-        {
+        } elseif (function_exists('imagecreatefromgif') && function_exists('imagegif')) {
             return 'gif';
         }
 

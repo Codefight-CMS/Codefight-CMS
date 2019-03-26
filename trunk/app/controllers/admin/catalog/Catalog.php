@@ -31,15 +31,15 @@ class User extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-	}
+    }
 
-	function index()
-	{
-		$data = '';
+    function index()
+    {
+        $data = array();
 
-		//---
-		$html_string = $this->load->view('admin/catalog/catalog_view', $data, true); //Get view data in place of sending to browser.
+        //---
+        $html_string = $this->load->view('admin/catalog/catalog_view', $data, true); //Get view data in place of sending to browser.
 
-		Library('process')->view($html_string);
-	}
+        Library('process')->view($html_string);
+    }
 }

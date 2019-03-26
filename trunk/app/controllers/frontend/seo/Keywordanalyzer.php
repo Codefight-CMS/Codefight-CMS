@@ -34,7 +34,6 @@
 /**
  * Keywordanalyzer Controller
  */
-
 class Keywordanalyzer extends MY_Controller
 {
     var $website = "";
@@ -70,13 +69,11 @@ class Keywordanalyzer extends MY_Controller
     /**
      * Function to pre process and store the values of Keyword and Website
      *
-     * @param string $keyword
-     * @param string $website
-     * @return resource
+     * @return void
      */
     public function index()
     {
-        $data = '';
+        $data = array();
         $data['result'] = '';
 
         $val = array(
@@ -99,8 +96,7 @@ class Keywordanalyzer extends MY_Controller
             if (!validation_errors() == '')
                 $data['error_message'][] = validation_errors();
 
-        }
-        else {
+        } else {
 
             $website = set_value('website');
             $keyword = set_value('keyword');
@@ -166,8 +162,7 @@ class Keywordanalyzer extends MY_Controller
                     $result .= "</ul></ul>";
 
                     return $result;
-                }
-                else {
+                } else {
                     $result .= "<li>Result not found on Page: $c and Record: $j</li>";
                 }
             }
@@ -181,8 +176,7 @@ class Keywordanalyzer extends MY_Controller
             $domain = $this->website;
             $keyword = $this->keyword;
             $result .= "<div>Sorry, We searched google's top 10 page for <b>\"$keyword\"</b>, but was unable to find your domain <b>\"$domain\"</b> listed anywhere. </div>";
-        }
-        else {
+        } else {
             $page = $this->page;
             $records = $this->records;
             $domain = $this->website;
@@ -229,7 +223,6 @@ class Keywordanalyzer extends MY_Controller
 
     /**
      * Function to get HTML code from remote url
-
      *
      * @access private
      * @param string $url
@@ -248,5 +241,5 @@ class Keywordanalyzer extends MY_Controller
     }
 }
 
-/* End of file keywordanalyzer.php */
-/* Location: ./app/frontend/controllers/seo/keywordanalyzer.php */
+/* End of file Keywordanalyzer.php */
+/* Location: ./app/controllers/frontend/seo/Keywordanalyzer.php */

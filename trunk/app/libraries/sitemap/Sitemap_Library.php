@@ -3,6 +3,7 @@
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
+
 /** A class for generating simple google sitemaps
  * @author Svetoslav Marinov <svetoslav.marinov@gmail.com>
  * @copyright 2005
@@ -11,7 +12,6 @@ if (!defined('BASEPATH')) {
  * @package google_sitemap
  * @link http://devquickref.com
  */
-
 class Sitemap_Library extends MY_Library
 {
 
@@ -45,8 +45,7 @@ class Sitemap_Library extends MY_Library
     {
         $map = $this->header . "\n";
 
-        foreach ($this->items as $item)
-        {
+        foreach ($this->items as $item) {
             $item->loc = htmlentities($item->loc, ENT_QUOTES);
             $map .= "\t\t<url>\n\t\t\t<loc>$item->loc</loc>\n";
 

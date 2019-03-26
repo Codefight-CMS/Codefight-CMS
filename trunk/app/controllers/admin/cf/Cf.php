@@ -39,7 +39,9 @@ class Cf extends MY_Controller
         $data['logged_in'] = 0;
         $_isLoggedIn = $this->session->userdata('logged_in');
 
-        if ($_isLoggedIn != 1) die(json_encode($data));
+        if ($_isLoggedIn != 1) {
+            die(json_encode($data));
+        }
 
         $data['logged_in'] = 1;
         $data['FCPATH'] = FCPATH;

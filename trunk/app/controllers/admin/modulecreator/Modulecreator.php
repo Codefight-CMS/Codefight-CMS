@@ -40,8 +40,7 @@ class Modulecreator extends MY_Controller
      */
     function index()
     {
-        $data = '';
-
+        $data = array();
         //---
         $html_string = $this->load->view('admin/modulecreator/modulecreator_view', $data, true); //Get view data in place of sending to browser.
 

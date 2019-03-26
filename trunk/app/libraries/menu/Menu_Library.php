@@ -58,8 +58,7 @@ class Menu_Library extends MY_Library
 
         if (!is_array($parameters)) $parameters = array($parameters);
 
-        foreach ($parameters as $k => $v)
-        {
+        foreach ($parameters as $k => $v) {
             $this->$k = $v;
         }
 
@@ -140,15 +139,13 @@ class Menu_Library extends MY_Library
                 if (preg_match('/class=".*"/', $this->ul_param))
                     $this->ul_param = preg_replace('/class="(.*)"/', 'class="$1 cfm_level' . $this->counter . '"', $this->ul_param);
                 $ul_param = ' ' . $this->ul_param;
-            }
-            else {
+            } else {
                 $ul_param = ' class="cfm_level' . $this->counter . '"';
             }
 
             $this->echo_list .= "\n" . str_repeat(' ', $space) . "<ul$ul_param>";
             //parent menu list
-            foreach ($this->holder[$this->counter] as $v)
-            {
+            foreach ($this->holder[$this->counter] as $v) {
                 if ($v['id'] == 0) $this->is_last = TRUE; //Check to see if it is last one
 
                 if ($v['id'] > 0) {
@@ -164,14 +161,10 @@ class Menu_Library extends MY_Library
                     if (preg_match('@(http(s)?:\/\/|javascript::?void\(0\);?)@', $v['url'])) {
                         $this->echo_list .= '<a' . $a_param . ' ' . $v['params'] . ' href="' . $v['url'] . '">' .
                             $v['title'] . '</a>';
-                    }
-                    elseif($v['title'] == '[Login|Logout]')
-                    {
+                    } elseif ($v['title'] == '[Login|Logout]') {
                         $this->echo_list .= Model('data')->welcome_get(false,
                             $a_param . ' ' . $v['params']);
-                    }
-                    else
-                    {
+                    } else {
                         if ($this->menu_type != 'page')
                             $this->echo_list .= anchor($this->menu_type . '/c/' . $v['url'], $v['title'],
                                 $a_param . '' . $v['params']);

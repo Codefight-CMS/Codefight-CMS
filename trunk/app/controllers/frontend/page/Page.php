@@ -37,11 +37,11 @@ class Page extends MY_Controller
      */
     public function __construct()
     {
-        /*
-           | define an array $load with keys model,library etc
-           | you can load multiple models etc separated by + sign
-           | you can load the CI way as well though :)
-           */
+        /**
+         * | define an array $load with keys model,library etc
+         * | you can load multiple models etc separated by + sign
+         * | you can load the CI way as well though :)
+         */
         $load = array(
             'helper' => 'text + form'
         );
@@ -63,11 +63,11 @@ class Page extends MY_Controller
 
         $data = Model('page')->get_page_contents($this->menu_link);
 
-        /*
-           | Send data to Format Content and get back.
-           | See These Files For Processing:
-           | libraries/block/block_Library.php
-           */
+        /**
+         * | Send data to Format Content and get back.
+         * | See These Files For Processing:
+         * | libraries/block/block_Library.php
+         */
         if (count($data['content']) > 0) {
             //For static page, display full content by passing 2nd param as false.
             $data['content'] = Model('page')->parseContent($data['content'], FALSE);
@@ -75,7 +75,7 @@ class Page extends MY_Controller
 
         // if it's 404 or set to no index
         // send 404 header
-        if(!$data['meta']['index']){
+        if (!$data['meta']['index']) {
             //if content not found | Set meta to noindex to save your website value to search engines.
             header("HTTP/1.0 404 Not Found");
             $data['noindex'] = 'yes';
@@ -84,10 +84,14 @@ class Page extends MY_Controller
         //main content block [content view]
         $data['content_block'] = 'page_html/page_view';
 
-        /*
-           | @process_view('data', 'master page')
-           | @see app/core/MY_Controller.php
-           */
+        /**
+         * | @process_view('data', 'master page')
+         * | @see app/core/MY_Controller.php
+         */
         $this->process_view($data);
     }
 }
+
+
+/* End of file Page.php */
+/* Location: ./app/controllers/frontend/page/Page.php */

@@ -40,16 +40,12 @@ class Menu extends MY_Controller
     {
         if (isset($_POST['create'])) {
             $this->_create();
-        }
-        else if (isset($_POST['delete'])) {
+        } else if (isset($_POST['delete'])) {
             $this->_delete();
-        }
-        else if (isset($_POST['edit'])) {
+        } else if (isset($_POST['edit'])) {
             $this->_edit();
-        }
-        else
-        {
-            $data = '';
+        } else {
+            $data = array();
 
             $data['head_includes'] = array('sortable.php');
             $data['menu'] = Library('menu')->get(array('menu_type' => $this->uri->segment(3, 'page')), true);
@@ -63,7 +59,7 @@ class Menu extends MY_Controller
 
     function _create()
     {
-        $data = '';
+        $data = array();
         $this->load->library('form_validation');
 
         $val = array(
@@ -83,9 +79,7 @@ class Menu extends MY_Controller
                 $msg = array('error' => validation_errors());
                 setMessages($msg, 'error');
             }
-        }
-        else
-        {
+        } else {
             $menu_active = set_value('menu_active');
             $menu_parent_id = set_value('menu_parent_id');
             $menu_title = set_value('menu_title');
@@ -101,8 +95,7 @@ class Menu extends MY_Controller
             }
 
             //remove last dashes if any
-            while (substr($menu_link, -1) == '-')
-            {
+            while (substr($menu_link, -1) == '-') {
                 $menu_link = substr($menu_link, 0, -1);
             }
 
@@ -150,13 +143,9 @@ class Menu extends MY_Controller
 
     function _delete()
     {
-        $data = '';
-
         if (isset($_POST['select'])) {
             $id_array = $_POST['select'];
-        }
-        else
-        {
+        } else {
             $id_array = array();
             $msg = array('error' => '<p>You must select atleast one menu to delete.</p>');
             setMessages($msg, 'error');
@@ -165,16 +154,13 @@ class Menu extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         $msg = false;
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             if ($this->db->delete('menu', array('menu_id' => $id))) {
                 $msg = array('success' => '<p>Selected menu(s) deleted successfully.</p>');
                 $type = 'success';
-            }
-            else
-            {
+            } else {
                 $msg = array('success' => '<p>Error! couldn\'t delete..</p>');
                 $type = 'error';
             }
@@ -190,16 +176,13 @@ class Menu extends MY_Controller
 
     function _edit()
     {
-
-        $data = '';
+        $data = array();
         $id_array = array();
 
         if (!isset($_POST['menu'])) {
             if (isset($_POST['select'])) {
                 $id_array = $_POST['select'];
-            }
-            else
-            {
+            } else {
                 //$data['error_message']['select'] = "You must select atleast one menu to edit";
                 $msg = array('error' => '<p>You must select atleast one menu to edit.</p>');
                 setMessages($msg, 'error');
@@ -215,15 +198,13 @@ class Menu extends MY_Controller
         $menu_type = $this->uri->segment(3, 'page');
 
         //START: for the first page load, get data from database
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             $this->db->where('menu_id', $id);
             $query = $this->db->get('menu');
 
-            foreach ($query->result() as $row)
-            {
+            foreach ($query->result() as $row) {
                 $_POST['menu'][$row->menu_id]['id'] = $row->menu_id;
                 $_POST['menu'][$row->menu_id]['menu_active'] = $row->menu_active;
                 $_POST['menu'][$row->menu_id]['menu_parent_id'] = $row->menu_parent_id;
@@ -238,8 +219,7 @@ class Menu extends MY_Controller
 
         //START: clean data and update in database
         if ($this->input->post('edit') == 'Update' && isset($_POST['menu']) && is_array($_POST['menu'])) {
-            foreach ($_POST['menu'] as $v)
-            {
+            foreach ($_POST['menu'] as $v) {
                 //cleaning
                 $id = xss_clean($v['id']);
                 $menu_active = xss_clean($v['menu_active']);
@@ -249,8 +229,7 @@ class Menu extends MY_Controller
                 $menu_params = ($v['menu_params']);
                 $menu_sort = xss_clean($v['menu_sort']);
                 $menu_type = $this->uri->segment(3, 'page');
-                if(!isset($v['websites_id']))
-                {
+                if (!isset($v['websites_id'])) {
                     $v['websites_id'] = 0;
                 }
                 $websites_id = xss_clean($v['websites_id']);
@@ -261,8 +240,7 @@ class Menu extends MY_Controller
                 }
 
                 //remove last dashes if any
-                while (substr($menu_link, -1) == '-')
-                {
+                while (substr($menu_link, -1) == '-') {
                     $menu_link = substr($menu_link, 0, -1);
                 }
 

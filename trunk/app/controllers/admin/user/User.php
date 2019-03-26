@@ -39,16 +39,12 @@ class User extends MY_Controller
     {
         if (isset($_POST['create'])) {
             $this->_create();
-        }
-        else if (isset($_POST['delete'])) {
+        } else if (isset($_POST['delete'])) {
             $this->_delete();
-        }
-        else if (isset($_POST['edit'])) {
+        } else if (isset($_POST['edit'])) {
             $this->_edit();
-        }
-        else
-        {
-            $data = '';
+        } else {
+            $data = array();
 
             /*
                 * START: Pagination config and initialization
@@ -75,7 +71,7 @@ class User extends MY_Controller
 
     function _create()
     {
-        $data = '';
+        $data = array();
         $this->load->library('form_validation');
 
         $val = array(
@@ -99,9 +95,7 @@ class User extends MY_Controller
                 setMessages($msg, 'error');
             }
 
-        }
-        else
-        {
+        } else {
             $active = set_value('active');
             $email = set_value('email');
             $password = set_value('password');
@@ -116,8 +110,7 @@ class User extends MY_Controller
             $user_exists = (array)Model('user')->user_exists($email);
             //$insert = Model('user')->insert($active, $email, $password, $firstname, $lastname, $group_id);
 
-            if (!count($user_exists))
-            {
+            if (!count($user_exists)) {
                 $my_data = array(
                     'active' => $active,
                     'email' => $email,
@@ -132,18 +125,15 @@ class User extends MY_Controller
                 );
 
                 $save = Model('user')->reset()
-                            ->set('table', 'user')
-                            ->set('action', 'insert')
-                            ->save($my_data);
+                    ->set('table', 'user')
+                    ->set('action', 'insert')
+                    ->save($my_data);
 
-                if($save)
-                {
+                if ($save) {
                     $msg = array('success' => '<p>New User <strong>' . $firstname . ' ' . $lastname . '</strong> Successfully Added.</p>');
                     setMessages($msg, 'success');
                 }
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>User with email <strong>$email</strong> already exists!.</p>');
                 setMessages($msg, 'error');
             }
@@ -157,13 +147,11 @@ class User extends MY_Controller
 
     function _delete()
     {
-        $data = '';
+        $data = array();
 
         if (isset($_POST['select'])) {
             $id_array = $_POST['select'];
-        }
-        else
-        {
+        } else {
             $id_array = array();
 
             $msg = array('error' => '<p>You must select atleast one user to delete.</p>');
@@ -172,17 +160,14 @@ class User extends MY_Controller
 
         !is_array($id_array) ? $id_array = array() : '';
 
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
             $this->db->delete('user', array('user_id' => $id));
 
             if ($this->db->affected_rows()) {
                 $msg = array('success' => '<p>Selected user(s) deleted successfully.</p>');
                 setMessages($msg, 'success');
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>Error! couldn\'t delete.</p>');
                 setMessages($msg, 'error');
             }
@@ -197,16 +182,14 @@ class User extends MY_Controller
     {
         $this->load->library('form_validation');
 
-        $data = '';
+        $data = array();
         $success_count = 1;
         $id_array = array();
 
         if (!isset($_POST['user'])) {
             if (isset($_POST['select'])) {
                 $id_array = $_POST['select'];
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>You must select atleast one user to edit.</p>');
                 setMessages($msg, 'error');
 
@@ -219,16 +202,14 @@ class User extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         //START: for the first page load, get data from database
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
 
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             $this->db->where('user_id', $id);
             $query = $this->db->get('user');
 
-            foreach ($query->result() as $row)
-            {
+            foreach ($query->result() as $row) {
                 $_POST['user'][$row->user_id]['id'] = $row->user_id;
                 $_POST['user'][$row->user_id]['active'] = $row->active;
                 $_POST['user'][$row->user_id]['email'] = $row->email;
@@ -246,8 +227,7 @@ class User extends MY_Controller
 
         //START: clean data and update in database
         if ($this->input->post('edit') == 'Update' && isset($_POST['user']) && is_array($_POST['user'])) {
-            foreach ($_POST['user'] as $v)
-            {
+            foreach ($_POST['user'] as $v) {
                 //cleaning
                 $id = (int)preg_replace('/[^0-9]+/', '', $v['id']); //only intergers
                 $active = (int)preg_replace('/[^0-9]+/', '', $v['active']);
@@ -305,9 +285,7 @@ class User extends MY_Controller
                             $msg = array('error' => validation_errors());
                             setMessages($msg, 'error');
                         }
-                    }
-                    else
-                    {
+                    } else {
                         $my_data = array(
                             'active' => $active,
                             'email' => set_value('email'),
@@ -324,19 +302,16 @@ class User extends MY_Controller
                         if (!empty($password)) $my_data['password'] = set_value('password');
 
                         $save = Model('user')->reset()
-                                    ->set('table', 'user')
-                                    ->set('action', 'update')
-                                    ->save($my_data);
+                            ->set('table', 'user')
+                            ->set('action', 'update')
+                            ->save($my_data);
 
-                        if($save)
-                        {
+                        if ($save) {
                             $msg = array('success' => '<p>' . $success_count++ . ' Records Updated successfully.</p>');
                             setMessages($msg, 'success', false);
                         }
                     }
-                }
-                else
-                {
+                } else {
                     $msg = array('error' => '<p>Required fields can not be empty!</p>');
                     setMessages($msg, 'error');
                 }
@@ -357,9 +332,7 @@ class User extends MY_Controller
         if ($this->db->count_all_results()) {
             $this->form_validation->set_message('_email_check', 'A User with such email is already registered');
             return FALSE;
-        }
-        else
-        {
+        } else {
             return TRUE;
         }
     }

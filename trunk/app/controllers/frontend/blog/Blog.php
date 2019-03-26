@@ -40,13 +40,13 @@ class Blog extends MY_Controller
      */
     public function __construct()
     {
-        /*
-           | define an array $load with keys model,library etc
-           | you can load multiple models etc separated by + sign
-           | you can load the CI way as well though :)
-           */
+        /**
+         * | define an array $load with keys model,library etc
+         * | you can load multiple models etc separated by + sign
+         * | you can load the CI way as well though :)
+         */
         $load = array(
-            'helper'  => 'text + form'
+            'helper' => 'text + form'
         );
 
         parent::__construct($load);
@@ -65,19 +65,18 @@ class Blog extends MY_Controller
 
         //if page_id is numeric and is greater than 0, that means request for full article
         if (is_numeric($this->page_id) && $this->page_id > 0) {
+            /* @var $blogModel Blog_model */
+            $blogModel = Model('blog');
             //Get full page text on clicking more >> link
-            $data = Model('blog')->get_page_full($this->page_id);
-        }
-        else
-        {
-
-            /*
-                * START: Pagination config and initialization
-                */
+            $data = $blogModel->get_page_full($this->page_id);
+        } else {
+            /**
+             * START: Pagination config and initialization
+             */
             //if(!$this->page_id) $this->page_id = 'home';
 
-            $config['base_url']    = base_url() . 'blog/' . $this->menu_id . '/' . $this->page_id . '/';
-            $config['total_rows']  = Model('blog')->get_blog_count($this->menu_id);
+            $config['base_url'] = base_url() . 'blog/' . $this->menu_id . '/' . $this->page_id . '/';
+            $config['total_rows'] = Model('blog')->get_blog_count($this->menu_id);
             $config['uri_segment'] = 4;
             //END: Pagination
 
@@ -93,11 +92,11 @@ class Blog extends MY_Controller
             $data['pagination'] = $this->page_links;
         }
 
-        /*
-           | Send data to Format Content and get back.
-           | See These Files For Processing:
-           | libraries/block/block_Library.php
-           */
+        /**
+         * | Send data to Format Content and get back.
+         * | See These Files For Processing:
+         * | libraries/block/block_Library.php
+         */
         if (count($data['content']) > 0) {
             $data['content'] = Model('blog')->parseContent($data['content']);
         } else {
@@ -120,10 +119,10 @@ class Blog extends MY_Controller
         //main content block [content view]
         $data['content_block'] = 'page_html/blog_view';
 
-        /*
-           | @process_view('data', 'master page')
-           | @see app/core/MY_Controller.php
-           */
+        /**
+         * | @process_view('data', 'master page')
+         * | @see app/core/MY_Controller.php
+         */
         $this->process_view($data);
     }
 
@@ -141,13 +140,12 @@ class Blog extends MY_Controller
         $this->db->where('menu_link', $this->menu_link);
         $this->db->limit(1);
         $query = $this->db->get('menu');
-        $row   = $query->result_array();
+        $row = $query->result_array();
 
         $this->menu_id = 0;
         $meta['title'] = $meta['keywords'] = $meta['description'] = $this->menu_link . ' - Blog Category';
 
-        foreach ($row as $v)
-        {
+        foreach ($row as $v) {
             $this->menu_id = $v['menu_id'];
 
             if (!empty($v['menu_meta_title'])) {
@@ -173,5 +171,5 @@ class Blog extends MY_Controller
     }
 }
 
-/* End of file blog.php */
-/* Location: ./app/frontend/controllers/blog/blog.php */
+/* End of file Blog.php */
+/* Location: ./app/controllers/frontend/blog/Blog.php */

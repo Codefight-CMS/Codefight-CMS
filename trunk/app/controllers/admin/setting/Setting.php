@@ -37,7 +37,7 @@ class Setting extends MY_Controller
 
     function index()
     {
-        $data = '';
+        $data = array();
 
         if ($this->input->post('submit')) Model('setting')->set_setting($_POST);
 
@@ -60,15 +60,14 @@ class Setting extends MY_Controller
 
     function cache()
     {
-        $data = '';
+        $data = array();
 
         //get templates for user selection
         $data['templates'] = Model('setting')->get_templates();
 
         if ($this->input->post('cache')) {
             //delete all cache
-            foreach ($data['templates'] as $v)
-            {
+            foreach ($data['templates'] as $v) {
                 $admin_fol = dirname(FCPATH) . "/skin/admin/$v/cache";
                 $frontend_fol = dirname(FCPATH) . "/skin/frontend/$v/cache";
 
@@ -98,8 +97,7 @@ class Setting extends MY_Controller
     {
         if (!$dh = @opendir($dir)) return;
 
-        while (false !== ($obj = readdir($dh)))
-        {
+        while (false !== ($obj = readdir($dh))) {
             if ($obj == '.' || $obj == '..') continue;
             if (!@unlink($dir . '/' . $obj)) $this->_emptydir($dir . '/' . $obj, true);
         }
@@ -114,16 +112,12 @@ class Setting extends MY_Controller
     {
         if (isset($_POST['create'])) {
             $this->_key_create();
-        }
-        else if (isset($_POST['delete'])) {
+        } else if (isset($_POST['delete'])) {
             $this->_key_delete();
-        }
-        else if (isset($_POST['edit'])) {
+        } else if (isset($_POST['edit'])) {
             $this->_key_edit();
-        }
-        else
-        {
-            $data = '';
+        } else {
+            $data = array();
 
             $data['keys'] = Model('setting')->get_setting_keys();
 
@@ -138,16 +132,12 @@ class Setting extends MY_Controller
     {
         if (isset($_POST['create'])) {
             $this->_websites_create();
-        }
-        else if (isset($_POST['delete'])) {
+        } else if (isset($_POST['delete'])) {
             $this->_websites_delete();
-        }
-        else if (isset($_POST['edit'])) {
+        } else if (isset($_POST['edit'])) {
             $this->_websites_edit();
-        }
-        else
-        {
-            $data = '';
+        } else {
+            $data = array();
 
             $data['websites'] = Model('websites')->get_websites();
 
@@ -160,7 +150,7 @@ class Setting extends MY_Controller
 
     function _websites_create()
     {
-        $data = '';
+        $data = array();
 
         $this->load->library('form_validation');
 
@@ -190,9 +180,7 @@ class Setting extends MY_Controller
                 setMessages($msg, 'error');
             }
 
-        }
-        else
-        {
+        } else {
             $sql = array(
                 'websites_name' => set_value('websites_name'),
                 'websites_url' => prep_url(trim(set_value('websites_url'), '/')),
@@ -210,15 +198,13 @@ class Setting extends MY_Controller
 
     function _websites_edit()
     {
-        $data = '';
+        $data = array();
         $id_array = array();
 
         if (!isset($_POST['websites'])) {
             if (isset($_POST['select'])) {
                 $id_array = $_POST['select'];
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => "<p>You must select atleast one website to edit.</p>");
                 setMessages($msg, 'error');
 
@@ -231,15 +217,13 @@ class Setting extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         //START: for the first page load, get data from database
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = (int)$id;
 
             $this->db->where('websites_id', $id);
             $query = $this->db->get('websites');
 
-            foreach ($query->result() as $row)
-            {
+            foreach ($query->result() as $row) {
                 $_POST['websites'][$row->websites_id]['websites_id'] = $row->websites_id;
                 $_POST['websites'][$row->websites_id]['websites_name'] = $row->websites_name;
                 $_POST['websites'][$row->websites_id]['websites_status'] = $row->websites_status;
@@ -250,8 +234,7 @@ class Setting extends MY_Controller
 
         //START: clean data and update in database
         if ($this->input->post('edit') == 'Update' && isset($_POST['websites']) && is_array($_POST['websites'])) {
-            foreach ($_POST['websites'] as $v)
-            {
+            foreach ($_POST['websites'] as $v) {
                 //cleaning
                 $websites_id = $v['websites_id'];
 
@@ -281,9 +264,7 @@ class Setting extends MY_Controller
 
         if (isset($_POST['select'])) {
             $id_array = $_POST['select'];
-        }
-        else
-        {
+        } else {
             $msg = array('error' => "<p>You must select atleast one website to delete.</p>");
             setMessages($msg, 'error');
         }
@@ -298,7 +279,7 @@ class Setting extends MY_Controller
 
     function _key_create()
     {
-        $data = '';
+        $data = array();
 
         $this->load->library('form_validation');
 
@@ -333,9 +314,7 @@ class Setting extends MY_Controller
                 setMessages($msg, 'error');
             }
 
-        }
-        else
-        {
+        } else {
             $setting_key = set_value('setting_key');
             $setting_info = set_value('setting_info');
             $setting_form = set_value('setting_form');
@@ -343,19 +322,17 @@ class Setting extends MY_Controller
 
             $insert = Model('setting')->insert_keys(
                 array(
-                     'setting_key' => $setting_key,
-                     'setting_form' => $setting_form,
-                     'setting_option' => $setting_option,
-                     'setting_info' => $setting_info
+                    'setting_key' => $setting_key,
+                    'setting_form' => $setting_form,
+                    'setting_option' => $setting_option,
+                    'setting_info' => $setting_info
                 )
             );
 
             if ($insert) {
                 $msg = array('success' => "<p>New Setting Key <strong>$setting_key</strong> Successfully Added.</p>");
                 setMessages($msg, 'success');
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => "<p>Setting Key <strong>$setting_key</strong> already exists!</p>");
                 setMessages($msg, 'error');
             }
@@ -369,13 +346,11 @@ class Setting extends MY_Controller
 
     function _key_delete()
     {
-        $data = '';
+        $data = array();
 
         if (isset($_POST['select'])) {
             $id_array = $_POST['select'];
-        }
-        else
-        {
+        } else {
             $id_array = array();
 
             $msg = array('error' => "<p>You must select atleast one setting key to delete.</p>");
@@ -384,8 +359,7 @@ class Setting extends MY_Controller
 
         !is_array($id_array) ? $id_array = array() : '';
 
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             //find setting_key for the selected ID
@@ -401,9 +375,7 @@ class Setting extends MY_Controller
 
                 $msg = array('success' => "<p>Selected key(s) deleted successfully.</p>");
                 setMessages($msg, 'success');
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => "<p>Error! couldn't delete.</p>");
                 setMessages($msg, 'error');
             }
@@ -417,15 +389,13 @@ class Setting extends MY_Controller
 
     function _key_edit()
     {
-        $data = '';
+        $data = array();
         $id_array = array();
 
         if (!isset($_POST['setting'])) {
             if (isset($_POST['select'])) {
                 $id_array = $_POST['select'];
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => "<p>You must select atleast one setting key to edit.</p>");
                 setMessages($msg, 'error');
 
@@ -438,15 +408,13 @@ class Setting extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         //START: for the first page load, get data from database
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             $this->db->where('setting_id', $id);
             $query = $this->db->get('setting_keys');
 
-            foreach ($query->result() as $row)
-            {
+            foreach ($query->result() as $row) {
                 $_POST['setting'][$row->setting_id]['setting_id'] = $row->setting_id;
                 $_POST['setting'][$row->setting_id]['setting_key'] = $row->setting_key;
                 $_POST['setting'][$row->setting_id]['setting_info'] = $row->setting_info;
@@ -458,8 +426,7 @@ class Setting extends MY_Controller
 
         //START: clean data and update in database
         if ($this->input->post('edit') == 'Update' && isset($_POST['setting']) && is_array($_POST['setting'])) {
-            foreach ($_POST['setting'] as $v)
-            {
+            foreach ($_POST['setting'] as $v) {
                 //cleaning
                 $setting_id = $v['setting_id'];
 
@@ -505,7 +472,7 @@ class Setting extends MY_Controller
     function sitemap()
     {
         $data = array();
-    	$data['websites'] = Model('websites')->get_websites();
+        $data['websites'] = Model('websites')->get_websites();
 
         //---
         $html_string = $this->load->view('admin/setting/sitemap_view', $data, true); //Get view data in place of sending to browser.

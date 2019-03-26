@@ -63,8 +63,7 @@ class File_model extends MY_Model
         $this->menu = array();
         $this->menu_string = '';
 
-        foreach ($folders as $v)
-        {
+        foreach ($folders as $v) {
             $this->menu['relation'][$v['folder_id']] = $v['folder_parent_id'];
             $this->menu['menu'][$v['folder_id']] = $v['folder_name'];
         }
@@ -75,8 +74,7 @@ class File_model extends MY_Model
 
         $this->menu_string .= '<ul class="folder_menu">';
 
-        foreach ($parent as $v)
-        {
+        foreach ($parent as $v) {
 
             $class = ($this->current_folder_id == $v) ? ' class="rootFolder active"' : ' class="rootFolder"';
 
@@ -99,8 +97,7 @@ class File_model extends MY_Model
         if (!empty($child[$this->i])) {
             $this->_menuLevel++;
             $this->menu_string .= '<ul>';
-            foreach ($child[$this->i] as $c[$this->i])
-            {
+            foreach ($child[$this->i] as $c[$this->i]) {
                 //---
 
                 $class = ($this->current_folder_id == $c[$this->i]) ? ' class="active"' : '';
@@ -132,8 +129,7 @@ class File_model extends MY_Model
         if ($_breadCount) {
             $string = '<div class="breadcrumb">';
             $i = 1;
-            foreach ($bread as $v)
-            {
+            foreach ($bread as $v) {
                 //--------
                 $string .= $v;
                 if ($i++ != $_breadCount) $string .= '<span> &raquo; </span>';
@@ -155,8 +151,7 @@ class File_model extends MY_Model
 
         $result[$this->i] = $query->result_array();
 
-        foreach ($result[$this->i] as $k[$this->i] => $v[$this->i])
-        {
+        foreach ($result[$this->i] as $k[$this->i] => $v[$this->i]) {
 
             $this->_folderBreadcrumb[] = '<a href="' . site_url('file/folder/' . $id[$this->i]) . '">' . $v[$this->i]['folder_name'] . '</a>';
 
@@ -212,8 +207,7 @@ class File_model extends MY_Model
         $query = $this->db->get('file');
         $result = $query->result_array();
 
-        foreach ($result as $v)
-        {
+        foreach ($result as $v) {
             $file = FCPATH . 'media' . $v['file_path'] . $v['file_name'];
 
             //echo $file;
@@ -360,8 +354,7 @@ class File_model extends MY_Model
         $current_dir = $parent_dir;
 
         if (count($name)) {
-            foreach ($name as $v)
-            {
+            foreach ($name as $v) {
                 //---------------
                 $v = trim($v);
 
@@ -444,8 +437,7 @@ class File_model extends MY_Model
 
         $update_success = FALSE;
         if (count($name)) {
-            foreach ($name as $v)
-            {
+            foreach ($name as $v) {
                 //---------------
                 $v = trim($v);
 
@@ -511,11 +503,11 @@ class File_model extends MY_Model
             return false;
         } else {
             $sql = array('active' => $active,
-                         'email' => $email,
-                         'password' => $password,
-                         'firstname' => $firstname,
-                         'lastname' => $lastname,
-                         'group_id' => $group_id);
+                'email' => $email,
+                'password' => $password,
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'group_id' => $group_id);
             $this->db->insert('file', $sql);
             return true;
         }
@@ -530,8 +522,7 @@ class File_model extends MY_Model
         if ($this->session->userdata('logged_in') === '1') $loggedData = $this->session->userdata('loggedData');
 
         //print_r($content['content']);
-        foreach ($content as $k => $v)
-        {
+        foreach ($content as $k => $v) {
             $result = array();
 
             if (empty($loggedData)) {
@@ -562,9 +553,7 @@ class File_model extends MY_Model
                 $result_folder = $query->result_array();
 
                 //$content[$k]['content'] = preg_replace('/\[\[FILES\]\]/i', '<p><strong>Please login to access files.</strong></p>', $v['content']);
-            }
-            else
-            {
+            } else {
                 $query = $this->db->query("SELECT *
 										   FROM
 										   	cf_file
@@ -623,8 +612,7 @@ class File_model extends MY_Model
             $file_list = '';
 
             if ($_folderCount > 0) {
-                foreach ($result_folder as $r)
-                {
+                foreach ($result_folder as $r) {
                     if (($fi++ % $_columnCount) == 0) {
                         $file_list .= '<ol class="user_folders">';
                     }
@@ -665,8 +653,7 @@ class File_model extends MY_Model
 
             if (!empty($result)) {
                 $file_list = '<ol class="user_files">';
-                foreach ($result as $r)
-                {
+                foreach ($result as $r) {
                     $file_list .= '<li><div class="file_title">' . $r['file_title'] . ' (<a href="' . $this->config->item('skin_url') . ltrim($r['file_path'], '/') . $r['file_name'] . '" target="_blank">' . $r['file_name'] . '</a> - <strong>' . $r['file_size'] . 'KB)</strong></div><p>' . $r['file_description'] . '</p></li>';
                 }
                 $file_list .= '</ol>';

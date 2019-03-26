@@ -45,16 +45,12 @@ class Group extends MY_Controller
 
         if (isset($_POST['create'])) {
             $this->_create();
-        }
-        else if (isset($_POST['delete'])) {
+        } else if (isset($_POST['delete'])) {
             $this->_delete();
-        }
-        else if (isset($_POST['edit'])) {
+        } else if (isset($_POST['edit'])) {
             $this->_edit();
-        }
-        else
-        {
-            $data = '';
+        } else {
+            $data = array();
 
             $data['head_includes'] = array('sortable.php');
 
@@ -84,7 +80,7 @@ class Group extends MY_Controller
 
     function _create()
     {
-        $data = '';
+        $data = array();
 
         $this->load->library('form_validation');
 
@@ -109,9 +105,7 @@ class Group extends MY_Controller
                 $msg = array('error' => validation_errors());
                 setMessages($msg, 'error');
             }
-        }
-        else
-        {
+        } else {
             $title = set_value('title');
             $description = set_value('description');
 
@@ -120,9 +114,7 @@ class Group extends MY_Controller
             if ($insert) {
                 $msg = array('success' => '<p>New Group <strong>' . $title . '</strong> Successfully Added.</p>');
                 setMessages($msg, 'success');
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>Group <strong>' . $title . '</strong> already exists!.</p>');
                 setMessages($msg, 'error');
             }
@@ -136,13 +128,9 @@ class Group extends MY_Controller
 
     function _delete()
     {
-        $data = '';
-
         if (isset($_POST['select'])) {
             $id_array = $_POST['select'];
-        }
-        else
-        {
+        } else {
             $id_array = array();
             $msg = array('error' => '<p>You must select atleast one group to delete.</p>');
             setMessages($msg, 'error');
@@ -151,8 +139,7 @@ class Group extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         $msg = false;
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             if ($this->db->delete('group', array('group_id' => $id))) {
@@ -161,9 +148,7 @@ class Group extends MY_Controller
                     $msg = array('success' => '<p>Selected group(s) deleted successfully.</p>');
                     setMessages($msg, 'success');
                 }
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>Error! couldn\'t delete.</p>');
                 setMessages($msg, 'error');
 
@@ -180,16 +165,13 @@ class Group extends MY_Controller
 
     function _edit()
     {
-
-        $data = '';
+        $data = array();
         $id_array = array();
 
         if (!isset($_POST['group'])) {
             if (isset($_POST['select'])) {
                 $id_array = $_POST['select'];
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>You must select atleast one group to edit.</p>');
                 setMessages($msg, 'error');
 
@@ -203,16 +185,14 @@ class Group extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         //START: for the first page load, get data from database
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
 
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             $this->db->where('group_id', $id);
             $query = $this->db->get('group');
 
-            foreach ($query->result() as $row)
-            {
+            foreach ($query->result() as $row) {
                 $_POST['group'][$row->group_id]['id'] = $row->group_id;
                 $_POST['group'][$row->group_id]['title'] = $row->group_title;
                 $_POST['group'][$row->group_id]['description'] = $row->group_description;
@@ -223,8 +203,7 @@ class Group extends MY_Controller
         //START: clean data and update in database
         if ($this->input->post('edit') == 'Update' && isset($_POST['group']) && is_array($_POST['group'])) {
             $msg = false;
-            foreach ($_POST['group'] as $v)
-            {
+            foreach ($_POST['group'] as $v) {
                 //cleaning
                 $id = xss_clean($v['id']);
                 $title = xss_clean($v['title']);

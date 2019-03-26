@@ -50,7 +50,7 @@ Library('block')->load('page_html/message'); ?>
 <div class="pageContainer">
 
     <div class="row">
-        <div class="col-md-9" role="main"><?php
+        <div class="col-md-9 m1" role="main"><?php
             //Load Content Block
             Library('block')->load($content_block, 'responsive'); ?>
         </div>

@@ -58,62 +58,59 @@ class User extends MY_Controller
      */
     public function index()
     {
-	$data = array();
+        $data = array();
 
-	/*
-	 * Get User Data
-	 */
-	 $user_id = (int)$this->uri->segment(2, 0);
+        /*
+         * Get User Data
+         */
+        $user_id = (int)$this->uri->segment(2, 0);
 
-	 $query = $this->db->where('user_id', $user_id)->limit(1)->get('user');
-	 $data['user'] = $query->result_array();
+        $query = $this->db->where('user_id', $user_id)->limit(1)->get('user');
+        $data['user'] = $query->result_array();
 
-	 foreach($data['user'] as $v)
-	 {
-		$user['name'] = $v['firstname'] . ' ' . $v['lastname'];
-		$data['meta'] = array(
-				'title' => 'Profile - '.$user['name'] . ' - ' . $this->setting->site_name,
-				'keywords' => $v['firstname'] . ',' . $v['lastname'] . ',' . $user['name'] . ',profile,author,editor,writer,user'.$v['user_id'],
-				'description' => character_limiter(strip_tags($v['profile']), 60),
-				);
-	 }
+        foreach ($data['user'] as $v) {
+            $user['name'] = $v['firstname'] . ' ' . $v['lastname'];
+            $data['meta'] = array(
+                'title' => 'Profile - ' . $user['name'] . ' - ' . $this->setting->site_name,
+                'keywords' => $v['firstname'] . ',' . $v['lastname'] . ',' . $user['name'] . ',profile,author,editor,writer,user' . $v['user_id'],
+                'description' => character_limiter(strip_tags($v['profile']), 60),
+            );
+        }
 
 
-	 $query = $this->db
-			->where('user_id', $user_id)
-			->where('page_active', 1)
-			->order_by('page_date', 'desc')
-			->limit(5)
-			->get('page');
-	 $result = $query->result_array();
-	 $blogs = array();
-	 foreach($result as $v)
-	 {
-		$v['menu_id'] = explode(',', trim($v['menu_id'], ','));
-		$v['menu_id'] = $v['menu_id'][0];
-		$title = url_title($v['page_title']);
-		$blogs[$v['page_id']]['url'] = site_url('blog/'.$v['menu_id'].'/'.$v['page_id'].'/'.$title);
-		$blogs[$v['page_id']]['title'] = $v['page_title'];
-	 }
-	 $data['blogs']['Latest'] = $blogs;
+        $query = $this->db
+            ->where('user_id', $user_id)
+            ->where('page_active', 1)
+            ->order_by('page_date', 'desc')
+            ->limit(5)
+            ->get('page');
+        $result = $query->result_array();
+        $blogs = array();
+        foreach ($result as $v) {
+            $v['menu_id'] = explode(',', trim($v['menu_id'], ','));
+            $v['menu_id'] = $v['menu_id'][0];
+            $title = url_title($v['page_title']);
+            $blogs[$v['page_id']]['url'] = site_url('blog/' . $v['menu_id'] . '/' . $v['page_id'] . '/' . $title);
+            $blogs[$v['page_id']]['title'] = $v['page_title'];
+        }
+        $data['blogs']['Latest'] = $blogs;
 
-	 $query = $this->db
-			->where('user_id', $user_id)
-			->where('page_active', 1)
-			->order_by('page_view', 'desc')
-			->limit(5)
-			->get('page');
-	 $result = $query->result_array();
-	 $blogs = array();
-	 foreach($result as $v)
-	 {
-		$v['menu_id'] = explode(',', trim($v['menu_id'], ','));
-		$v['menu_id'] = $v['menu_id'][0];
-		$title = url_title($v['page_title']);
-		$blogs[$v['page_id']]['url'] = site_url('blog/'.$v['menu_id'].'/'.$v['page_id'].'/'.$title);
-		$blogs[$v['page_id']]['title'] = $v['page_title'];
-	 }
-	 $data['blogs']['Most Viewed'] = $blogs;
+        $query = $this->db
+            ->where('user_id', $user_id)
+            ->where('page_active', 1)
+            ->order_by('page_view', 'desc')
+            ->limit(5)
+            ->get('page');
+        $result = $query->result_array();
+        $blogs = array();
+        foreach ($result as $v) {
+            $v['menu_id'] = explode(',', trim($v['menu_id'], ','));
+            $v['menu_id'] = $v['menu_id'][0];
+            $title = url_title($v['page_title']);
+            $blogs[$v['page_id']]['url'] = site_url('blog/' . $v['menu_id'] . '/' . $v['page_id'] . '/' . $title);
+            $blogs[$v['page_id']]['title'] = $v['page_title'];
+        }
+        $data['blogs']['Most Viewed'] = $blogs;
 
         //main content block [content view]
         $data['content_block'] = 'user/user_view';
@@ -126,6 +123,5 @@ class User extends MY_Controller
     }
 }
 
-/* End of file user.php */
-/* Location: ./app/controllers/frontend/user/user.php */
-?>
+/* End of file User.php */
+/* Location: ./app/controllers/frontend/user/User.php */

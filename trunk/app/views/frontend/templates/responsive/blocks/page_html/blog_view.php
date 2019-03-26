@@ -59,7 +59,7 @@ if (isset($content) && is_array($content) && ($count=count($content)) > 0)
             <article>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-9" role="main">
+                        <div class="col-md-9 bv2" role="main">
                             <?php
 
                             // Show content

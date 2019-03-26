@@ -64,7 +64,7 @@ class Folder extends MY_Controller
             return;
         }
 
-        $data = '';
+        $data = array();
         $data['head_includes'] = array('sortable.php');
 
         /*
@@ -91,7 +91,7 @@ class Folder extends MY_Controller
 
     function edit_folder()
     {
-        $data = '';
+        $data = array();
         $success_count = 1;
         $id_array = array();
 
@@ -99,9 +99,7 @@ class Folder extends MY_Controller
         if (!isset($_POST['file'])) {
             if (isset($_POST['select'])) {
                 $id_array = $_POST['select'];
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>You must select atleast one folder to edit.</p>');
                 setMessages($msg, 'error');
 
@@ -120,16 +118,14 @@ class Folder extends MY_Controller
         !is_array($id_array) ? $id_array = array() : '';
 
         //START: for the first page load, get data from database
-        foreach ($id_array as $id)
-        {
+        foreach ($id_array as $id) {
 
             $id = preg_replace('/[^0-9]+/', '', $id);
 
             $this->db->where('folder_id', $id);
             $query = $this->db->get('folder');
 
-            foreach ($query->result() as $row)
-            {
+            foreach ($query->result() as $row) {
                 $_POST['file'][$row->folder_id]['id'] = $row->folder_id;
                 $_POST['file'][$row->folder_id]['parent'] = $row->folder_parent_id;
                 $_POST['file'][$row->folder_id]['name'] = $row->folder_name;
@@ -144,8 +140,7 @@ class Folder extends MY_Controller
         //START: clean data and update in database
         if ($this->input->post('edit') == 'Update' && isset($_POST['file']) && is_array($_POST['file'])) {
 
-            foreach ($_POST['file'] as $k => $v)
-            {
+            foreach ($_POST['file'] as $k => $v) {
                 //cleaning :|
                 $id = xss_clean($v['id']);
                 $active = xss_clean($v['active']);
@@ -183,8 +178,7 @@ class Folder extends MY_Controller
                     );
                     if (isset($_POST['file'][$k]['access'])) {
                         //---
-                        switch ($_POST['file'][$k]['access'])
-                        {
+                        switch ($_POST['file'][$k]['access']) {
                             case 'group':
                                 $val[] = array('field' => 'file[' . $k . '][group][]', 'label' => 'User Group', 'rules' => 'trim|required|xss_clean');
                                 $val[] = array('field' => 'file[' . $k . '][user][]', 'label' => 'User', 'rules' => 'trim|xss_clean');
@@ -207,9 +201,7 @@ class Folder extends MY_Controller
                             $msg = array('error' => validation_errors());
                             setMessages($msg, 'error');
                         }
-                    }
-                    else
-                    {
+                    } else {
                         $config['upload_path'] = FCPATH . 'media/folder-thumbs/';
                         $config['file_field'] = 'file_' . $k;
 
@@ -232,18 +224,14 @@ class Folder extends MY_Controller
                         if ($update) {
                             $msg = array('success' => '<p>' . $success_count++ . ' Records Updated successfully.</p>');
                             setMessages($msg, 'success', false);
-                        }
-                        else
-                        {
+                        } else {
                             $msg = array('error' => '<p>Could not update folder specified.</p>');
                             setMessages($msg, 'error');
                         }
 
                     }
 
-                }
-                else
-                {
+                } else {
                     $msg = array('error' => '<p>Required fields can not be empty!</p>');
                     setMessages($msg, 'error');
                 }
@@ -262,7 +250,7 @@ class Folder extends MY_Controller
 
     function create_folder()
     {
-        $data = '';
+        $data = array();
 
         $this->load->library('form_validation');
 
@@ -278,8 +266,7 @@ class Folder extends MY_Controller
         );
         if (isset($_POST['access'])) {
             //---
-            switch ($_POST['access'])
-            {
+            switch ($_POST['access']) {
                 case 'group':
                     $val[] = array('field' => 'group[]', 'label' => 'User Group', 'rules' => 'trim|required|xss_clean');
                     $val[] = array('field' => 'user[]', 'label' => 'User', 'rules' => 'trim|xss_clean');
@@ -302,9 +289,7 @@ class Folder extends MY_Controller
                 setMessages($msg, 'error');
             }
 
-        }
-        else
-        {
+        } else {
             $active = set_value('active');
             $parent = set_value('parent');
             $name = set_value('name');
@@ -331,9 +316,7 @@ class Folder extends MY_Controller
             if ($insert) {
                 $msg = array('success' => '<p>New Folder(s) Created.</p>');
                 setMessages($msg, 'success');
-            }
-            else
-            {
+            } else {
                 $msg = array('error' => '<p>Could not create folder specified.</p>');
                 setMessages($msg, 'error');
             }
@@ -385,9 +368,7 @@ class Folder extends MY_Controller
             setMessages($msg, 'error');
 
             return FALSE;
-        }
-        else
-        {
+        } else {
             return $this->upload->data();
         }
     }

@@ -34,12 +34,11 @@ class Permissions extends MY_Controller
 
         $this->load->helper(array('form', 'text'));
 
-		$id = $this->uri->segment(5, 0);
+        $id = $this->uri->segment(5, 0);
 
-		if(!isset($_POST['group_id']) && $id)
-		{
-			$_POST['group_id'] = (int)$id;
-		}
+        if (!isset($_POST['group_id']) && $id) {
+            $_POST['group_id'] = (int)$id;
+        }
     }
 
     /**
@@ -48,23 +47,22 @@ class Permissions extends MY_Controller
      */
     function index()
     {
-        $data = '';
+        $data = array();
 
         $data['group_id'] = $group_id = $this->input->post('group_id', 1);
         $data['modules'] = Model('module')->get();
         $data['module_ids'] = Model('module')->get_ids();
         $data['groups'] = Model('groups/permission')->get_group();
 
-		if(isset($_POST['group_id']) && isset($_POST['permission']))
-		{
-			Model('groups/permission')->update_permissions($_POST['group_id'], $_POST['permission']);
-		}
+        if (isset($_POST['group_id']) && isset($_POST['permission'])) {
+            Model('groups/permission')->update_permissions($_POST['group_id'], $_POST['permission']);
+        }
 
-		$data['permissions'] = Model('groups/permission')->get_group_permission($group_id);
+        $data['permissions'] = Model('groups/permission')->get_group_permission($group_id);
 
-		//---
-		$html_string = $this->load->view('admin/group/permission_view', $data, true); //Get view data in place of sending to browser.
+        //---
+        $html_string = $this->load->view('admin/group/permission_view', $data, true); //Get view data in place of sending to browser.
 
-		Library('process')->view($html_string);
+        Library('process')->view($html_string);
     }
 }

@@ -9,11 +9,12 @@ if (!defined('BASEPATH')) {
  */
 class Login_Library extends MY_Library
 {
-    function redirect(){
+    function redirect()
+    {
         $isLogin = $this->CI()->session->userdata('isLogin');
         $backUrl = $this->CI()->session->userdata('backUrl');
 
-        if(!empty($isLogin)){
+        if (!empty($isLogin)) {
             empty($backUrl) ? $backUrl = 'home' : '';
             $this->CI()->session->unset_userdata('isLogin');
             redirect($backUrl);
@@ -44,9 +45,7 @@ class Login_Library extends MY_Library
 
                     redirect('registration/login');
                 }
-            }
-            else
-            {
+            } else {
                 $this->CI()->session->set_userdata('login_error', '1');
                 $msg = array('login' => '<p>You must have appropriate rights to access secure page.</p>');
                 setMessages($msg, 'error');

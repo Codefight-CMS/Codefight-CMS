@@ -1,4 +1,4 @@
-<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
  * CodeIgniter
  *
@@ -145,24 +145,21 @@ Then, on the page that accepts the submission you'll have something like this:
 
 
 /**
-|==========================================================
-| Create Captcha
-|==========================================================
-|
+ * |==========================================================
+ * | Create Captcha
+ * |==========================================================
+ * |
  */
 function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = '')
 {
     $defaults = array('word' => '', 'img_path' => '', 'img_url' => '', 'img_width' => '150', 'img_height' => '30', 'font_path' => '', 'expiration' => 7200);
 
-    foreach ($defaults as $key => $val)
-    {
+    foreach ($defaults as $key => $val) {
         if (!is_array($data)) {
             if (!isset($$key) OR $$key == '') {
                 $$key = $val;
             }
-        }
-        else
-        {
+        } else {
             $$key = (!isset($data[$key])) ? $val : $data[$key];
         }
     }
@@ -192,8 +189,7 @@ function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = 
 
     $current_dir = @opendir($img_path);
 
-    while ($filename = @readdir($current_dir))
-    {
+    while ($filename = @readdir($current_dir)) {
         if ($filename != "." and $filename != ".." and $filename != "index.html") {
             $name = str_replace(".jpg", "", $filename);
 
@@ -213,8 +209,7 @@ function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = 
         $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
         $str = '';
-        for ($i = 0; $i < 8; $i++)
-        {
+        for ($i = 0; $i < 8; $i++) {
             $str .= substr($pool, mt_rand(0, strlen($pool) - 1), 1);
         }
 
@@ -237,9 +232,7 @@ function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = 
     // PHP.net recommends imagecreatetruecolor(), but it isn't always available
     if (function_exists('imagecreatetruecolor')) {
         $im = imagecreatetruecolor($img_width, $img_height);
-    }
-    else
-    {
+    } else {
         $im = imagecreate($img_width, $img_height);
     }
 
@@ -269,8 +262,7 @@ function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = 
     $circles = 20;
     $points = 32;
 
-    for ($i = 0; $i < ($circles * $points) - 1; $i++)
-    {
+    for ($i = 0; $i < ($circles * $points) - 1; $i++) {
         $theta = $theta + $thetac;
         $rad = $radius * ($i / $points);
         $x = ($rad * cos($theta)) + $x_axis;
@@ -293,23 +285,18 @@ function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = 
         $font_size = 5;
         $x = rand(0, $img_width / ($length / 3));
         $y = 0;
-    }
-    else
-    {
+    } else {
         $font_size = 16;
         $x = rand(0, $img_width / ($length / 1.5));
         $y = $font_size + 2;
     }
 
-    for ($i = 0; $i < strlen($word); $i++)
-    {
+    for ($i = 0; $i < strlen($word); $i++) {
         if ($use_font == FALSE) {
             $y = rand(0, $img_height / 2);
             imagestring($im, $font_size, $x, $y, substr($word, $i, 1), $text_color);
             $x += ($font_size * 2);
-        }
-        else
-        {
+        } else {
             $y = rand($img_height / 2, $img_height - 3);
             imagettftext($im, $font_size, $angle, $x, $y, $text_color, $font_path, substr($word, $i, 1));
             $x += $font_size;

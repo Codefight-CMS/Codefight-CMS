@@ -76,14 +76,13 @@ class Sitemap extends MY_Controller
         $google = 'www.google.com';
         if ($fp = @fsockopen($google, 80)) {
             $req = 'GET /webmasters/sitemaps/ping?sitemap=' .
-                   urlencode($url_xml) . " HTTP/1.1\r\n" .
-                   "Host: $google\r\n" .
-                   "User-Agent: Mozilla/5.0 (compatible; " .
-                   PHP_OS . ") PHP/" . PHP_VERSION . "\r\n" .
-                   "Connection: Close\r\n\r\n";
+                urlencode($url_xml) . " HTTP/1.1\r\n" .
+                "Host: $google\r\n" .
+                "User-Agent: Mozilla/5.0 (compatible; " .
+                PHP_OS . ") PHP/" . PHP_VERSION . "\r\n" .
+                "Connection: Close\r\n\r\n";
             fwrite($fp, $req);
-            while (!feof($fp))
-            {
+            while (!feof($fp)) {
                 if (@preg_match('~^HTTP/\d\.\d (\d+)~i', fgets($fp, 128), $m)) {
                     $status = intval($m[1]);
                     break;
